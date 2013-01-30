@@ -9,6 +9,7 @@
 #import "NOCTableOfContentsViewController.h"
 #import "NOCChapter.h"
 #import "NOCSketch.h"
+#import "NOCSketchViewController.h"
 
 @interface NOCTableOfContentsViewController ()
 {
@@ -32,7 +33,7 @@
             [chapters addObject:chapter];
         }
         _tableOfContents = [NSArray arrayWithArray:chapters];
-        NSLog(@"_tableOfContents: %@", _tableOfContents);
+
     }
     return self;
 }
@@ -43,12 +44,18 @@
 {
     [super viewDidLoad];
     self.tableView.directionalLockEnabled = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
 }
 
 #pragma mark - Table view data source
@@ -112,8 +119,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NOCChapter *chapter = _tableOfContents[indexPath.row];
-    NSLog(@"Clicked CELL %@", chapter.name);
+    // Let the cell buttons handle this
+    //NOCChapter *chapter = _tableOfContents[indexPath.row];
+    //NSLog(@"Clicked CELL %@", chapter.name);
 }
 
 #pragma mark - NOCTableOfContentsCellSelectionDelegate
@@ -121,6 +129,17 @@
 - (void)chapterCell:(NOCTableOfContentsCell *)cell selectedSketch:(NOCSketch *)sketch inChapter:(NOCChapter *)chapter
 {
     NSLog(@"Selected sketch: %@ in chapter %@", sketch.name, chapter.name);
+    NOCSketchViewController *sketchViewController = [[NOCSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                                              bundle:nil];
+    /*
+    NOCSketchViewController *sketchViewController = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        sketchViewController = [[NOCSketchViewController alloc] initWithNibName:@"NOCSketchViewController_iPhone" bundle:nil];
+    } else {
+        sketchViewController = [[NOCSketchViewController alloc] initWithNibName:@"NOCSketchViewController_iPad" bundle:nil];
+    }*/
+    
+    [self.navigationController pushViewController:sketchViewController animated:YES];
 }
 
 @end

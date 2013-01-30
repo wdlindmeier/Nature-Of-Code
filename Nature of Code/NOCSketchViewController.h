@@ -11,4 +11,9 @@
 
 @interface NOCSketchViewController : GLKViewController
 
+@property (nonatomic, strong) IBOutlet UIView *viewControls;
+@property (nonatomic, strong) IBOutlet UIButton *buttonHideControls;
+
+- (IBAction)buttonHideControlsPressed:(id)sender;
+
 @end

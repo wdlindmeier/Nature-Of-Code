@@ -83,6 +83,11 @@ GLfloat gCubeVertexData[216] =
     
     GLuint _vertexArray;
     GLuint _vertexBuffer;
+    
+    BOOL _isDraggingDrawer;
+    CGPoint _posDrawerClosed;
+    BOOL _isDrawerOpen;
+    
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -98,22 +103,7 @@ GLfloat gCubeVertexData[216] =
 
 @implementation NOCSketchViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-
-    if (!self.context) {
-        NSLog(@"Failed to create ES context");
-    }
-    
-    GLKView *view = (GLKView *)self.view;
-    view.context = self.context;
-    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-    
-    [self setupGL];
-}
+#pragma mark Memory
 
 - (void)dealloc
 {    
@@ -142,8 +132,189 @@ GLfloat gCubeVertexData[216] =
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - View
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    
+    if (!self.context) {
+        NSLog(@"Failed to create ES context");
+    }
+    
+    GLKView *view = (GLKView *)self.view;
+    view.context = self.context;
+    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    [self setupGL];
+    
+    UIPanGestureRecognizer *gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    self.view.gestureRecognizers = @[gr];
+    
+    _isDraggingDrawer = NO;
+    _isDrawerOpen = NO;
+    self.viewControls.hidden = YES;
+    [self.view addSubview:self.viewControls];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self repositionDrawer:YES];
+    [self teaseDrawer];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self repositionDrawer:NO];
+}
+
+#pragma mark - Gesture Recognizer
+
+- (void)handleGesture:(UIPanGestureRecognizer *)gr
+{
+    if(!_isDrawerOpen){
+        CGPoint grPos = [gr locationInView:self.view];
+        CGPoint grTrans = [gr translationInView:self.view];
+        float startingY = grPos.y - grTrans.y;
+
+        BOOL shouldOpenDrawer = NO;
+        BOOL shouldCloseDrawer = NO;
+        CGSize sizeDrawer = self.viewControls.frame.size;
+        CGSize sizeView = self.view.frame.size;
+
+        switch (gr.state) {
+            case UIGestureRecognizerStateBegan:
+                _isDraggingDrawer = NO;
+                // Check if it started at the bottom of the screen
+                if(fabs(grTrans.y) > fabs(grTrans.x * 2)){
+                    // This is a vertical swipe
+                    if(startingY > (sizeView.height - 40)){
+                        _isDraggingDrawer = YES;
+                    }
+                }
+                break;
+            case UIGestureRecognizerStateChanged:
+                
+                break;
+            case UIGestureRecognizerStateEnded:
+                if(_isDraggingDrawer){
+                    if(grTrans.y * -1 > sizeDrawer.height * 0.25){
+                        shouldOpenDrawer = YES;
+                    }else{
+                        shouldCloseDrawer = YES;
+                    }
+                }
+                _isDraggingDrawer = NO;
+                break;
+            case UIGestureRecognizerStateCancelled:
+                _isDraggingDrawer = NO;
+                shouldCloseDrawer = YES;
+                break;
+            case UIGestureRecognizerStateFailed:
+                _isDraggingDrawer = NO;
+                shouldCloseDrawer = YES;
+                break;
+            default:
+                break;
+        }
+
+        if(_isDraggingDrawer){
+            self.viewControls.center = CGPointMake(_posDrawerClosed.x,
+                                                   MAX(grPos.y + (sizeDrawer.height*0.5),
+                                                       _posDrawerClosed.y - sizeDrawer.height));
+        }else{
+            if(shouldCloseDrawer){
+                [self closeDrawer];
+            }else{
+                [self openDrawer];
+            }
+        }
+    }
+}
+
+#pragma mark - View States
+
+- (void)repositionDrawer:(BOOL)setViewCenter
+{
+    CGSize sizeView = self.view.frame.size;
+    CGSize sizeViewDrawer = self.viewControls.frame.size;
+    _posDrawerClosed = CGPointMake(sizeView.width * 0.5, sizeView.height + (sizeViewDrawer.height * 0.5));
+    if(setViewCenter){
+        self.viewControls.center = _posDrawerClosed;
+        self.viewControls.hidden = NO;
+    }    
+}
+
+- (void)closeDrawer
+{
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         self.viewControls.center = _posDrawerClosed;
+                     }
+                     completion:^(BOOL finished) {
+                         _isDrawerOpen = NO;
+                     }];
+}
+
+- (void)openDrawer
+{
+    CGSize sizeDrawer = self.viewControls.frame.size;
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         self.viewControls.center = CGPointMake(_posDrawerClosed.x,
+                                                                _posDrawerClosed.y - sizeDrawer.height);
+                     }
+                     completion:^(BOOL finished) {
+                         _isDrawerOpen = YES;
+                     }];
+}
+
+- (void)teaseDrawer
+{
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.viewControls.center = CGPointMake(_posDrawerClosed.x,
+                                                                _posDrawerClosed.y - 50.0f);
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.5
+                                               delay:0.3
+                                             options:0
+                                          animations:^{
+                                              self.viewControls.center = _posDrawerClosed;
+                                          } completion:^(BOOL finished) {
+                                             //...
+                                          }];
+                     }];
+}
+
+#pragma mark - IBActions
+
+- (IBAction)buttonHideControlsPressed:(id)sender
+{
+    [self closeDrawer];
+}
+
+#pragma mark - GL
+
 - (void)setupGL
 {
+    NSLog(@"setupGL");
+    
     [EAGLContext setCurrentContext:self.context];
     
     [self loadShaders];
@@ -171,6 +342,7 @@ GLfloat gCubeVertexData[216] =
 
 - (void)tearDownGL
 {
+    NSLog(@"tearDownGL");
     [EAGLContext setCurrentContext:self.context];
     
     glDeleteBuffers(1, &_vertexBuffer);

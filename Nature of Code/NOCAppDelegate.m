@@ -14,9 +14,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    // TODO: Set appearances
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     NOCTableOfContentsViewController *tocViewController = [[NOCTableOfContentsViewController alloc] init];
-    self.viewController = [[UINavigationController alloc] initWithRootViewController:tocViewController];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:tocViewController];
+    self.viewController = nvc;
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     return YES;
