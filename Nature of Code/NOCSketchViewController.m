@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 wdlindmeier. All rights reserved.
 //
 
-#import "WDLViewController.h"
+#import "NOCSketchViewController.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -74,7 +74,7 @@ GLfloat gCubeVertexData[216] =
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
 };
 
-@interface WDLViewController () {
+@interface NOCSketchViewController () {
     GLuint _program;
     
     GLKMatrix4 _modelViewProjectionMatrix;
@@ -96,7 +96,7 @@ GLfloat gCubeVertexData[216] =
 - (BOOL)validateProgram:(GLuint)prog;
 @end
 
-@implementation WDLViewController
+@implementation NOCSketchViewController
 
 - (void)viewDidLoad
 {

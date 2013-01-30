@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class WDLViewController;
-
-@interface WDLAppDelegate : UIResponder <UIApplicationDelegate>
+@interface NOCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) WDLViewController *viewController;
+@property (strong, nonatomic) UINavigationController *viewController;
 
 @end

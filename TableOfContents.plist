@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 0 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+			<string>Sketch 1</string>
+			<string>Sketch 2</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 1 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 2 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+			<string>Sketch 1</string>
+			<string>Sketch 2</string>
+			<string>Sketch 3</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 3 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+			<string>Sketch 1</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 4 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+			<string>Sketch 1</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 5 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+			<string>Sketch 1</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Chapter 6 Name</string>
+		<key>Sketches</key>
+		<array>
+			<string>Sketch 0</string>
+			<string>Sketch 1</string>
+		</array>
+	</dict>
+</array>
+</plist>

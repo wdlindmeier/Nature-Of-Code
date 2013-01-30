@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "WDLAppDelegate.h"
+#import "NOCAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WDLAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([NOCAppDelegate class]));
     }
 }

@@ -14,15 +14,26 @@
 		A9D1AE8616B99A77000BE623 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8516B99A77000BE623 /* OpenGLES.framework */; };
 		A9D1AE8C16B99A77000BE623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE8A16B99A77000BE623 /* InfoPlist.strings */; };
 		A9D1AE8E16B99A77000BE623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE8D16B99A77000BE623 /* main.m */; };
-		A9D1AE9216B99A77000BE623 /* WDLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE9116B99A77000BE623 /* WDLAppDelegate.m */; };
+		A9D1AE9216B99A77000BE623 /* NOCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE9116B99A77000BE623 /* NOCAppDelegate.m */; };
 		A9D1AE9416B99A77000BE623 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE9316B99A77000BE623 /* Default.png */; };
 		A9D1AE9616B99A77000BE623 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE9516B99A77000BE623 /* Default@2x.png */; };
 		A9D1AE9816B99A77000BE623 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE9716B99A77000BE623 /* Default-568h@2x.png */; };
 		A9D1AE9A16B99A77000BE623 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE9916B99A77000BE623 /* Shader.fsh */; };
 		A9D1AE9C16B99A77000BE623 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE9B16B99A77000BE623 /* Shader.vsh */; };
-		A9D1AE9F16B99A78000BE623 /* WDLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE9E16B99A78000BE623 /* WDLViewController.m */; };
-		A9D1AEA216B99A78000BE623 /* WDLViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEA016B99A78000BE623 /* WDLViewController_iPhone.xib */; };
-		A9D1AEA516B99A78000BE623 /* WDLViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEA316B99A78000BE623 /* WDLViewController_iPad.xib */; };
+		A9D1AE9F16B99A78000BE623 /* NOCSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */; };
+		A9D1AEA216B99A78000BE623 /* NOCSketchViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEA016B99A78000BE623 /* NOCSketchViewController_iPhone.xib */; };
+		A9D1AEA516B99A78000BE623 /* NOCSketchViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEA316B99A78000BE623 /* NOCSketchViewController_iPad.xib */; };
+		A9D1AEB216B99E68000BE623 /* Icon1024.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEAC16B99E68000BE623 /* Icon1024.png */; };
+		A9D1AEB316B99E68000BE623 /* Icon512.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEAD16B99E68000BE623 /* Icon512.png */; };
+		A9D1AEB416B99E68000BE623 /* Icon@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEAE16B99E68000BE623 /* Icon@2x~ipad.png */; };
+		A9D1AEB516B99E68000BE623 /* Icon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEAF16B99E68000BE623 /* Icon@2x~iphone.png */; };
+		A9D1AEB616B99E68000BE623 /* Icon~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEB016B99E68000BE623 /* Icon~ipad.png */; };
+		A9D1AEB716B99E68000BE623 /* Icon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEB116B99E68000BE623 /* Icon~iphone.png */; };
+		A9D1AEBB16B9A111000BE623 /* NOCTableOfContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEB916B9A111000BE623 /* NOCTableOfContentsViewController.m */; };
+		A9D1AEC216B9A288000BE623 /* TableOfContents.plist in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEC116B9A288000BE623 /* TableOfContents.plist */; };
+		A9D1AEC516B9A77D000BE623 /* NOCTableOfContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC416B9A77D000BE623 /* NOCTableOfContentsCell.m */; };
+		A9D1AEC816B9A7B1000BE623 /* NOCChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC716B9A7B1000BE623 /* NOCChapter.m */; };
+		A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AECA16B9A806000BE623 /* NOCSketch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,17 +47,33 @@
 		A9D1AE8B16B99A77000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A9D1AE8D16B99A77000BE623 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A9D1AE8F16B99A77000BE623 /* Nature of Code-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nature of Code-Prefix.pch"; sourceTree = "<group>"; };
-		A9D1AE9016B99A77000BE623 /* WDLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDLAppDelegate.h; sourceTree = "<group>"; };
-		A9D1AE9116B99A77000BE623 /* WDLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDLAppDelegate.m; sourceTree = "<group>"; };
+		A9D1AE9016B99A77000BE623 /* NOCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCAppDelegate.h; sourceTree = "<group>"; };
+		A9D1AE9116B99A77000BE623 /* NOCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOCAppDelegate.m; sourceTree = "<group>"; };
 		A9D1AE9316B99A77000BE623 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A9D1AE9516B99A77000BE623 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A9D1AE9716B99A77000BE623 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A9D1AE9916B99A77000BE623 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		A9D1AE9B16B99A77000BE623 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
-		A9D1AE9D16B99A77000BE623 /* WDLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDLViewController.h; sourceTree = "<group>"; };
-		A9D1AE9E16B99A78000BE623 /* WDLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDLViewController.m; sourceTree = "<group>"; };
-		A9D1AEA116B99A78000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WDLViewController_iPhone.xib; sourceTree = "<group>"; };
-		A9D1AEA416B99A78000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WDLViewController_iPad.xib; sourceTree = "<group>"; };
+		A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCSketchViewController.h; sourceTree = "<group>"; };
+		A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOCSketchViewController.m; sourceTree = "<group>"; };
+		A9D1AEA116B99A78000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NOCSketchViewController_iPhone.xib; sourceTree = "<group>"; };
+		A9D1AEA416B99A78000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NOCSketchViewController_iPad.xib; sourceTree = "<group>"; };
+		A9D1AEAC16B99E68000BE623 /* Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1024.png; sourceTree = "<group>"; };
+		A9D1AEAD16B99E68000BE623 /* Icon512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon512.png; sourceTree = "<group>"; };
+		A9D1AEAE16B99E68000BE623 /* Icon@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x~ipad.png"; sourceTree = "<group>"; };
+		A9D1AEAF16B99E68000BE623 /* Icon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x~iphone.png"; sourceTree = "<group>"; };
+		A9D1AEB016B99E68000BE623 /* Icon~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~ipad.png"; sourceTree = "<group>"; };
+		A9D1AEB116B99E68000BE623 /* Icon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon~iphone.png"; sourceTree = "<group>"; };
+		A9D1AEB816B9A111000BE623 /* NOCTableOfContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTableOfContentsViewController.h; sourceTree = "<group>"; };
+		A9D1AEB916B9A111000BE623 /* NOCTableOfContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTableOfContentsViewController.m; sourceTree = "<group>"; };
+		A9D1AEC116B9A288000BE623 /* TableOfContents.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TableOfContents.plist; sourceTree = "<group>"; };
+		A9D1AEC316B9A77D000BE623 /* NOCTableOfContentsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTableOfContentsCell.h; sourceTree = "<group>"; };
+		A9D1AEC416B9A77D000BE623 /* NOCTableOfContentsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTableOfContentsCell.m; sourceTree = "<group>"; };
+		A9D1AEC616B9A7B1000BE623 /* NOCChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCChapter.h; path = "Nature of Code/NOCChapter.h"; sourceTree = "<group>"; };
+		A9D1AEC716B9A7B1000BE623 /* NOCChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCChapter.m; path = "Nature of Code/NOCChapter.m"; sourceTree = "<group>"; };
+		A9D1AEC916B9A806000BE623 /* NOCSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCSketch.h; path = "Nature of Code/NOCSketch.h"; sourceTree = "<group>"; };
+		A9D1AECA16B9A806000BE623 /* NOCSketch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCSketch.m; path = "Nature of Code/NOCSketch.m"; sourceTree = "<group>"; };
+		A9D1AECC16B9A850000BE623 /* NOCGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCGlobals.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +95,8 @@
 		A9D1AE6E16B99A77000BE623 = {
 			isa = PBXGroup;
 			children = (
+				A9D1AEC016B9A275000BE623 /* Data */,
+				A9D1AEAB16B99E68000BE623 /* Assets */,
 				A9D1AE8716B99A77000BE623 /* Nature of Code */,
 				A9D1AE7C16B99A77000BE623 /* Frameworks */,
 				A9D1AE7A16B99A77000BE623 /* Products */,
@@ -97,15 +126,12 @@
 		A9D1AE8716B99A77000BE623 /* Nature of Code */ = {
 			isa = PBXGroup;
 			children = (
-				A9D1AE9016B99A77000BE623 /* WDLAppDelegate.h */,
-				A9D1AE9116B99A77000BE623 /* WDLAppDelegate.m */,
-				A9D1AE9916B99A77000BE623 /* Shader.fsh */,
-				A9D1AE9B16B99A77000BE623 /* Shader.vsh */,
-				A9D1AE9D16B99A77000BE623 /* WDLViewController.h */,
-				A9D1AE9E16B99A78000BE623 /* WDLViewController.m */,
-				A9D1AEA016B99A78000BE623 /* WDLViewController_iPhone.xib */,
-				A9D1AEA316B99A78000BE623 /* WDLViewController_iPad.xib */,
+				A9D1AE9016B99A77000BE623 /* NOCAppDelegate.h */,
+				A9D1AE9116B99A77000BE623 /* NOCAppDelegate.m */,
+				A9D1AEBD16B9A169000BE623 /* Shaders */,
 				A9D1AE8816B99A77000BE623 /* Supporting Files */,
+				A9D1AEBE16B9A1B3000BE623 /* View Controllers */,
+				A9D1AEBF16B9A1B9000BE623 /* Views */,
 			);
 			path = "Nature of Code";
 			sourceTree = "<group>";
@@ -120,8 +146,65 @@
 				A9D1AE9316B99A77000BE623 /* Default.png */,
 				A9D1AE9516B99A77000BE623 /* Default@2x.png */,
 				A9D1AE9716B99A77000BE623 /* Default-568h@2x.png */,
+				A9D1AECC16B9A850000BE623 /* NOCGlobals.h */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A9D1AEAB16B99E68000BE623 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A9D1AEAC16B99E68000BE623 /* Icon1024.png */,
+				A9D1AEAD16B99E68000BE623 /* Icon512.png */,
+				A9D1AEAE16B99E68000BE623 /* Icon@2x~ipad.png */,
+				A9D1AEAF16B99E68000BE623 /* Icon@2x~iphone.png */,
+				A9D1AEB016B99E68000BE623 /* Icon~ipad.png */,
+				A9D1AEB116B99E68000BE623 /* Icon~iphone.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A9D1AEBD16B9A169000BE623 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				A9D1AE9916B99A77000BE623 /* Shader.fsh */,
+				A9D1AE9B16B99A77000BE623 /* Shader.vsh */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		A9D1AEBE16B9A1B3000BE623 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */,
+				A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */,
+				A9D1AEA316B99A78000BE623 /* NOCSketchViewController_iPad.xib */,
+				A9D1AEA016B99A78000BE623 /* NOCSketchViewController_iPhone.xib */,
+				A9D1AEB816B9A111000BE623 /* NOCTableOfContentsViewController.h */,
+				A9D1AEB916B9A111000BE623 /* NOCTableOfContentsViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		A9D1AEBF16B9A1B9000BE623 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A9D1AEC316B9A77D000BE623 /* NOCTableOfContentsCell.h */,
+				A9D1AEC416B9A77D000BE623 /* NOCTableOfContentsCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A9D1AEC016B9A275000BE623 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A9D1AEC616B9A7B1000BE623 /* NOCChapter.h */,
+				A9D1AEC716B9A7B1000BE623 /* NOCChapter.m */,
+				A9D1AEC916B9A806000BE623 /* NOCSketch.h */,
+				A9D1AECA16B9A806000BE623 /* NOCSketch.m */,
+				A9D1AEC116B9A288000BE623 /* TableOfContents.plist */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +233,7 @@
 		A9D1AE7016B99A77000BE623 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = WDL;
+				CLASSPREFIX = NOC;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = wdlindmeier;
 			};
@@ -182,8 +265,15 @@
 				A9D1AE9816B99A77000BE623 /* Default-568h@2x.png in Resources */,
 				A9D1AE9A16B99A77000BE623 /* Shader.fsh in Resources */,
 				A9D1AE9C16B99A77000BE623 /* Shader.vsh in Resources */,
-				A9D1AEA216B99A78000BE623 /* WDLViewController_iPhone.xib in Resources */,
-				A9D1AEA516B99A78000BE623 /* WDLViewController_iPad.xib in Resources */,
+				A9D1AEA216B99A78000BE623 /* NOCSketchViewController_iPhone.xib in Resources */,
+				A9D1AEA516B99A78000BE623 /* NOCSketchViewController_iPad.xib in Resources */,
+				A9D1AEB216B99E68000BE623 /* Icon1024.png in Resources */,
+				A9D1AEB316B99E68000BE623 /* Icon512.png in Resources */,
+				A9D1AEB416B99E68000BE623 /* Icon@2x~ipad.png in Resources */,
+				A9D1AEB516B99E68000BE623 /* Icon@2x~iphone.png in Resources */,
+				A9D1AEB616B99E68000BE623 /* Icon~ipad.png in Resources */,
+				A9D1AEB716B99E68000BE623 /* Icon~iphone.png in Resources */,
+				A9D1AEC216B9A288000BE623 /* TableOfContents.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,8 +285,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9D1AE8E16B99A77000BE623 /* main.m in Sources */,
-				A9D1AE9216B99A77000BE623 /* WDLAppDelegate.m in Sources */,
-				A9D1AE9F16B99A78000BE623 /* WDLViewController.m in Sources */,
+				A9D1AE9216B99A77000BE623 /* NOCAppDelegate.m in Sources */,
+				A9D1AE9F16B99A78000BE623 /* NOCSketchViewController.m in Sources */,
+				A9D1AEBB16B9A111000BE623 /* NOCTableOfContentsViewController.m in Sources */,
+				A9D1AEC516B9A77D000BE623 /* NOCTableOfContentsCell.m in Sources */,
+				A9D1AEC816B9A7B1000BE623 /* NOCChapter.m in Sources */,
+				A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,20 +305,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A9D1AEA016B99A78000BE623 /* WDLViewController_iPhone.xib */ = {
+		A9D1AEA016B99A78000BE623 /* NOCSketchViewController_iPhone.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A9D1AEA116B99A78000BE623 /* en */,
 			);
-			name = WDLViewController_iPhone.xib;
+			name = NOCSketchViewController_iPhone.xib;
 			sourceTree = "<group>";
 		};
-		A9D1AEA316B99A78000BE623 /* WDLViewController_iPad.xib */ = {
+		A9D1AEA316B99A78000BE623 /* NOCSketchViewController_iPad.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A9D1AEA416B99A78000BE623 /* en */,
 			);
-			name = WDLViewController_iPad.xib;
+			name = NOCSketchViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
