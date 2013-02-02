@@ -10,6 +10,7 @@
 #import "NOCChapter.h"
 #import "NOCSketch.h"
 #import "NOCSketchViewController.h"
+#import "NOCSampleSketchViewController.h"
 
 @interface NOCTableOfContentsViewController ()
 {
@@ -129,7 +130,7 @@
 - (void)chapterCell:(NOCTableOfContentsCell *)cell selectedSketch:(NOCSketch *)sketch inChapter:(NOCChapter *)chapter
 {
     NSLog(@"Selected sketch: %@ in chapter %@", sketch.name, chapter.name);
-    NOCSketchViewController *sketchViewController = [[NOCSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+    NOCSampleSketchViewController *sketchViewController = [[NOCSampleSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
                                                                                               bundle:nil];
     /*
     NOCSketchViewController *sketchViewController = nil;
