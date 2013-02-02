@@ -118,7 +118,7 @@
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MCAwLjUAA</bytes>
+					<bytes key="NSWhite">MCAwAA</bytes>
 					<reference key="NSCustomColorSpace" ref="1072615762"/>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>

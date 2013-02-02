@@ -187,4 +187,9 @@
     }
 }
 
+- (void)use
+{
+    glUseProgram(self.glPointer);
+}
+
 @end

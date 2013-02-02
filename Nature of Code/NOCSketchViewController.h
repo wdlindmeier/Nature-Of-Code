@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "NOCShaderProgram.h"
+#import "NOCOpenGLTypes.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -29,6 +30,9 @@
 
 // IBActions
 - (IBAction)buttonHideControlsPressed:(id)sender;
+
+// GUI
+- (NSString *)nibNameForControlGUI;
 
 // Loop
 - (void)setup;

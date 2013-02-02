@@ -14,6 +14,13 @@
 		A95C900C16BD7351003C8F5B /* SampleShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C900616BD7351003C8F5B /* SampleShader.fsh */; };
 		A95C900D16BD7351003C8F5B /* SampleShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C900716BD7351003C8F5B /* SampleShader.vsh */; };
 		A95C900E16BD7351003C8F5B /* NOCShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */; };
+		A95C901116BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */; };
+		A95C901316BD7DBB003C8F5B /* RandomWalker.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C901216BD7DBB003C8F5B /* RandomWalker.fsh */; };
+		A95C901516BD7DC6003C8F5B /* RandomWalker.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */; };
+		A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */; };
+		A95C901D16BD813F003C8F5B /* NOCWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901C16BD813F003C8F5B /* NOCWalker.m */; };
+		A95C902016BD81FA003C8F5B /* NOCOpenGLTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */; };
+		A95C902316BDA798003C8F5B /* NOCGuiRandomWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -48,6 +55,18 @@
 		A95C900716BD7351003C8F5B /* SampleShader.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = SampleShader.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C900916BD7351003C8F5B /* NOCShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCShaderProgram.h; sourceTree = "<group>"; };
 		A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShaderProgram.m; sourceTree = "<group>"; };
+		A95C900F16BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCRandomWalkerSketchViewController.h; sourceTree = "<group>"; };
+		A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCRandomWalkerSketchViewController.m; sourceTree = "<group>"; };
+		A95C901216BD7DBB003C8F5B /* RandomWalker.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RandomWalker.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = RandomWalker.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
+		A95C901616BD7EBB003C8F5B /* NOCTemplateSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTemplateSketchViewController.h; sourceTree = "<group>"; };
+		A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTemplateSketchViewController.m; sourceTree = "<group>"; };
+		A95C901B16BD813F003C8F5B /* NOCWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCWalker.h; sourceTree = "<group>"; };
+		A95C901C16BD813F003C8F5B /* NOCWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCWalker.m; sourceTree = "<group>"; };
+		A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCOpenGLTypes.h; sourceTree = "<group>"; };
+		A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCOpenGLTypes.m; sourceTree = "<group>"; };
+		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCGeometryHelpers.h; sourceTree = "<group>"; };
+		A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiRandomWalker.xib; sourceTree = "<group>"; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,6 +131,7 @@
 		A95C900016BD7351003C8F5B /* Chapter 1 */ = {
 			isa = PBXGroup;
 			children = (
+				A95C901916BD811A003C8F5B /* Random Walker */,
 			);
 			path = "Chapter 1";
 			sourceTree = "<group>";
@@ -135,6 +155,8 @@
 			children = (
 				A95C900416BD7351003C8F5B /* NOCSampleSketchViewController.h */,
 				A95C900516BD7351003C8F5B /* NOCSampleSketchViewController.m */,
+				A95C901616BD7EBB003C8F5B /* NOCTemplateSketchViewController.h */,
+				A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */,
 				A95C900616BD7351003C8F5B /* SampleShader.fsh */,
 				A95C900716BD7351003C8F5B /* SampleShader.vsh */,
 			);
@@ -146,8 +168,25 @@
 			children = (
 				A95C900916BD7351003C8F5B /* NOCShaderProgram.h */,
 				A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */,
+				A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */,
+				A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */,
+				A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		A95C901916BD811A003C8F5B /* Random Walker */ = {
+			isa = PBXGroup;
+			children = (
+				A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */,
+				A95C900F16BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.h */,
+				A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */,
+				A95C901B16BD813F003C8F5B /* NOCWalker.h */,
+				A95C901C16BD813F003C8F5B /* NOCWalker.m */,
+				A95C901216BD7DBB003C8F5B /* RandomWalker.fsh */,
+				A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */,
+			);
+			name = "Random Walker";
 			sourceTree = "<group>";
 		};
 		A9D1AE6E16B99A77000BE623 = {
@@ -309,6 +348,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95C901316BD7DBB003C8F5B /* RandomWalker.fsh in Resources */,
+				A95C901516BD7DC6003C8F5B /* RandomWalker.vsh in Resources */,
 				A9D1AE8C16B99A77000BE623 /* InfoPlist.strings in Resources */,
 				A9D1AEA216B99A78000BE623 /* NOCSketchViewController~iphone.xib in Resources */,
 				A9D1AEA516B99A78000BE623 /* NOCSketchViewController~ipad.xib in Resources */,
@@ -324,6 +365,7 @@
 				A95C900D16BD7351003C8F5B /* SampleShader.vsh in Resources */,
 				A95C8FED16BD6E11003C8F5B /* Default.png in Resources */,
 				A95C8FEE16BD6E11003C8F5B /* Default@2x.png in Resources */,
+				A95C902316BDA798003C8F5B /* NOCGuiRandomWalker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +385,10 @@
 				A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */,
 				A95C900B16BD7351003C8F5B /* NOCSampleSketchViewController.m in Sources */,
 				A95C900E16BD7351003C8F5B /* NOCShaderProgram.m in Sources */,
+				A95C901116BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m in Sources */,
+				A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */,
+				A95C901D16BD813F003C8F5B /* NOCWalker.m in Sources */,
+				A95C902016BD81FA003C8F5B /* NOCOpenGLTypes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

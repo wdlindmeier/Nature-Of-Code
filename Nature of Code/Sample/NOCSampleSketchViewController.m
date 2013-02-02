@@ -169,8 +169,6 @@ GLfloat gCubeVertexData[216] =
 
 - (void)update
 {
-    [super update];
-    
     float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
     
@@ -211,11 +209,10 @@ GLfloat gCubeVertexData[216] =
     
     glDrawArrays(GL_TRIANGLES, 0, 36);
     
-    NOCShaderProgram *sampleShader = self.shaders[SampleShaderName];
-    
     // Render the object again with ES2
-    glUseProgram(sampleShader.glPointer);
-    
+    NOCShaderProgram *sampleShader = self.shaders[SampleShaderName];
+    [sampleShader use];
+
     NSNumber *mvProjMatLoc = sampleShader.uniformLocations[UniformMVProjectionMatrix];
     NSNumber *normMatLoc = sampleShader.uniformLocations[UniformNormalMatrix];
     

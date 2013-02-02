@@ -4,10 +4,10 @@
 <array>
 	<dict>
 		<key>Name</key>
-		<string>Chapter 0 Name</string>
+		<string>Chapter 1: Vectors</string>
 		<key>Sketches</key>
 		<array>
-			<string>Sketch 0</string>
+			<string>Random Walker</string>
 			<string>Sketch 1</string>
 			<string>Sketch 2</string>
 		</array>

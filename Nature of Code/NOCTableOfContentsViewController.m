@@ -130,15 +130,17 @@
 - (void)chapterCell:(NOCTableOfContentsCell *)cell selectedSketch:(NOCSketch *)sketch inChapter:(NOCChapter *)chapter
 {
     NSLog(@"Selected sketch: %@ in chapter %@", sketch.name, chapter.name);
-    NOCSampleSketchViewController *sketchViewController = [[NOCSampleSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-                                                                                              bundle:nil];
-    /*
-    NOCSketchViewController *sketchViewController = nil;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        sketchViewController = [[NOCSketchViewController alloc] initWithNibName:@"NOCSketchViewController_iPhone" bundle:nil];
-    } else {
-        sketchViewController = [[NOCSketchViewController alloc] initWithNibName:@"NOCSketchViewController_iPad" bundle:nil];
-    }*/
+    
+    NSString *camelCaseSketchName = [sketch.name stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *sketchControllerName = [NSString stringWithFormat:@"NOC%@SketchViewController", camelCaseSketchName];
+    Class ControllerClass = NSClassFromString(sketchControllerName);
+    if(!ControllerClass){
+        ControllerClass = [NOCSampleSketchViewController class];
+    }
+    NOCSampleSketchViewController *sketchViewController = [[ControllerClass alloc]
+                                                           initWithNibName:@"NOCSketchViewController"
+                                                           bundle:nil];
+    sketchViewController.title = sketch.name;
     
     [self.navigationController pushViewController:sketchViewController animated:YES];
 }

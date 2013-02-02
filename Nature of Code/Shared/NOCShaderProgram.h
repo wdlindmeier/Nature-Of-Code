@@ -20,5 +20,6 @@
 - (id)initWithName:(NSString *)name;
 - (BOOL)load;
 - (void)unload;
+- (void)use;
 
 @end

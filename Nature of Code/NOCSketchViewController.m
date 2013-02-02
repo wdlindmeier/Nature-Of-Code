@@ -9,17 +9,14 @@
 #import "NOCSketchViewController.h"
 
 @interface NOCSketchViewController ()
-{    
+{
+    UIPanGestureRecognizer *_gestureRecognizerDrawer;
 }
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
 - (void)setupGL;
 - (void)tearDownGL;
-
 - (BOOL)loadShaders;
-- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type file:(NSString *)file;
-- (BOOL)linkProgram:(GLuint)prog;
-- (BOOL)validateProgram:(GLuint)prog;
 
 @end
 
@@ -73,14 +70,22 @@
     [self setupGL];
     
     // Setup the GUI Drawer
-    _isDraggingDrawer = NO;
-    _isDrawerOpen = NO;
-    self.viewControls.hidden = YES;
-    [self.view addSubview:self.viewControls];
-    
-    // A gesture recognizer to handle opening/closing the drawer
-    UIPanGestureRecognizer *gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    self.view.gestureRecognizers = @[gr];
+    NSString *guiName = [self nibNameForControlGUI];
+    if(guiName){
+        
+        _isDraggingDrawer = NO;
+        _isDrawerOpen = NO;
+        self.viewControls.hidden = YES;
+        [self.view addSubview:self.viewControls];
+        
+        UIView *controlView = [[NSBundle mainBundle] loadNibNamed:guiName owner:self options:0][0];
+        controlView.frame = self.viewControls.bounds;
+        [self.viewControls insertSubview:controlView atIndex:0];
+        
+        // A gesture recognizer to handle opening/closing the drawer
+        _gestureRecognizerDrawer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        self.view.gestureRecognizers = @[_gestureRecognizerDrawer];
+    }
     
 }
 
@@ -107,11 +112,19 @@
     [self repositionDrawer:NO];
 }
 
+#pragma mark - Accessors
+
+- (NSString *)nibNameForControlGUI
+{
+    return nil;
+}
+
 #pragma mark - Gesture Recognizer
 
 - (void)handleGesture:(UIPanGestureRecognizer *)gr
 {
     if(!_isDrawerOpen){
+        
         CGPoint grPos = [gr locationInView:self.view];
         CGPoint grTrans = [gr translationInView:self.view];
         float startingY = grPos.y - grTrans.y;
@@ -120,8 +133,9 @@
         BOOL shouldCloseDrawer = NO;
         CGSize sizeDrawer = self.viewControls.frame.size;
         CGSize sizeView = self.view.frame.size;
-
+        
         switch (gr.state) {
+                
             case UIGestureRecognizerStateBegan:
                 _isDraggingDrawer = NO;
                 // Check if it started at the bottom of the screen
@@ -146,12 +160,12 @@
                 _isDraggingDrawer = NO;
                 break;
             case UIGestureRecognizerStateCancelled:
+                shouldCloseDrawer = _isDraggingDrawer;
                 _isDraggingDrawer = NO;
-                shouldCloseDrawer = YES;
                 break;
             case UIGestureRecognizerStateFailed:
+                shouldCloseDrawer = _isDraggingDrawer;
                 _isDraggingDrawer = NO;
-                shouldCloseDrawer = YES;
                 break;
             default:
                 break;
@@ -164,7 +178,7 @@
         }else{
             if(shouldCloseDrawer){
                 [self closeDrawer];
-            }else{
+            }else if(shouldOpenDrawer){
                 [self openDrawer];
             }
         }
@@ -192,6 +206,8 @@
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = NO;
+                         // Turn on the gesture recognizer
+                         self.view.gestureRecognizers = @[_gestureRecognizerDrawer];
                      }];
 }
 
@@ -205,6 +221,8 @@
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = YES;
+                         // Turn off the gesture recognizer
+                         self.view.gestureRecognizers = @[];
                      }];
 }
 
@@ -248,8 +266,9 @@
 {
     NSLog(@"tearDownGL");
     [self teardown];
-    for(NOCShaderProgram *program in self.shaders){
-        [program unload];
+    for(NSString *shaderName in self.shaders){
+        NOCShaderProgram *shader = self.shaders[shaderName];
+        [shader unload];
     }
     [EAGLContext setCurrentContext:self.context];
 }
@@ -272,73 +291,6 @@
         if(!didLoad){
             return NO;
         }
-        
-        /*
-        GLuint vertShader, fragShader;
-        NSString *vertShaderPathname, *fragShaderPathname;
-        
-        // Create shader program.
-        _program = glCreateProgram();
-        
-        // Create and compile vertex shader.
-        vertShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"vsh"];
-        if (![self compileShader:&vertShader type:GL_VERTEX_SHADER file:vertShaderPathname]) {
-            NSLog(@"Failed to compile vertex shader");
-            return NO;
-        }
-        
-        // Create and compile fragment shader.
-        fragShaderPathname = [[NSBundle mainBundle] pathForResource:@"Shader" ofType:@"fsh"];
-        if (![self compileShader:&fragShader type:GL_FRAGMENT_SHADER file:fragShaderPathname]) {
-            NSLog(@"Failed to compile fragment shader");
-            return NO;
-        }
-        
-        // Attach vertex shader to program.
-        glAttachShader(_program, vertShader);
-        
-        // Attach fragment shader to program.
-        glAttachShader(_program, fragShader);
-        
-        // Bind attribute locations.
-        // This needs to be done prior to linking.
-        glBindAttribLocation(_program, GLKVertexAttribPosition, "position");
-        glBindAttribLocation(_program, GLKVertexAttribNormal, "normal");
-        
-        // Link program.
-        if (![self linkProgram:_program]) {
-            NSLog(@"Failed to link program: %d", _program);
-            
-            if (vertShader) {
-                glDeleteShader(vertShader);
-                vertShader = 0;
-            }
-            if (fragShader) {
-                glDeleteShader(fragShader);
-                fragShader = 0;
-            }
-            if (_program) {
-                glDeleteProgram(_program);
-                _program = 0;
-            }
-            
-            return NO;
-        }
-        
-        // Get uniform locations.
-        uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(_program, "modelViewProjectionMatrix");
-        uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(_program, "normalMatrix");
-        
-        // Release vertex and fragment shaders.
-        if (vertShader) {
-            glDetachShader(_program, vertShader);
-            glDeleteShader(vertShader);
-        }
-        if (fragShader) {
-            glDetachShader(_program, fragShader);
-            glDeleteShader(fragShader);
-        }
-         */
 
     }
     
