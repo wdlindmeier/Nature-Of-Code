@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import "NOCGlobals.h"
     #import "NOCGeometryHelpers.h"
+    #import "NOCUIKitHelpers.h"
 #endif

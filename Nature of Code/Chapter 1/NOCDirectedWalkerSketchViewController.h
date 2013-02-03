@@ -8,10 +8,13 @@
 
 #import "NOC2DSketchViewController.h"
 
-@interface NOCRandomWalkerSketchViewController : NOC2DSketchViewController
+@interface NOCDirectedWalkerSketchViewController : NOC2DSketchViewController
 
 // Variables GUI
 @property (nonatomic, strong) IBOutlet UISlider *sliderPixelSize;
 @property (nonatomic, strong) IBOutlet UISwitch *switchClearBuffer;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControlMode;
+
+- (IBAction)segmentedControlValueDidChange:(id)sender;
 
 @end

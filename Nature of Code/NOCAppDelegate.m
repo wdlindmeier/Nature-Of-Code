@@ -7,7 +7,6 @@
 //
 
 #import "NOCAppDelegate.h"
-
 #import "NOCTableOfContentsViewController.h"
 
 @implementation NOCAppDelegate

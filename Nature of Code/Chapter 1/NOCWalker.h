@@ -15,7 +15,6 @@
 @property (nonatomic, assign) CGSize size;
 
 - (id)initWithSize:(CGSize)size position:(CGPoint)position;
-- (void)stepInRect:(CGRect)rect;
 - (void)render;
 - (GLKMatrix4)modelMatrixForPixelUnit:(float)pxUnit;
 

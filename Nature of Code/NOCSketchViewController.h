@@ -15,9 +15,6 @@
 
 @interface NOCSketchViewController : GLKViewController
 {
-    BOOL _isDraggingDrawer;
-    CGPoint _posDrawerClosed;
-    BOOL _isDrawerOpen;
 }
 
 // Properties

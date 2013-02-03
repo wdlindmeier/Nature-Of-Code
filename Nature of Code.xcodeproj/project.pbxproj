@@ -21,6 +21,13 @@
 		A95C901D16BD813F003C8F5B /* NOCWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901C16BD813F003C8F5B /* NOCWalker.m */; };
 		A95C902016BD81FA003C8F5B /* NOCOpenGLTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */; };
 		A95C902316BDA798003C8F5B /* NOCGuiRandomWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */; };
+		A95C902616BDD70F003C8F5B /* NOCRandomWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C902516BDD70E003C8F5B /* NOCRandomWalker.m */; };
+		A95C902916BDD721003C8F5B /* NOCDirectedWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C902816BDD720003C8F5B /* NOCDirectedWalker.m */; };
+		A95C902F16BDD847003C8F5B /* NOCDirectedWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C902E16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.m */; };
+		A95C903216BDD950003C8F5B /* NOC2DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C903116BDD94E003C8F5B /* NOC2DSketchViewController.m */; };
+		A95C903416BDE641003C8F5B /* NOCGuiDirectedWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */; };
+		A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987360F16BDF37E001D74E8 /* CoreMotion.framework */; };
+		A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -65,8 +72,20 @@
 		A95C901C16BD813F003C8F5B /* NOCWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCWalker.m; sourceTree = "<group>"; };
 		A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCOpenGLTypes.h; sourceTree = "<group>"; };
 		A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCOpenGLTypes.m; sourceTree = "<group>"; };
-		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCGeometryHelpers.h; sourceTree = "<group>"; };
+		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NOCGeometryHelpers.h; path = Shared/NOCGeometryHelpers.h; sourceTree = "<group>"; };
 		A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiRandomWalker.xib; sourceTree = "<group>"; };
+		A95C902416BDD70D003C8F5B /* NOCRandomWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCRandomWalker.h; sourceTree = "<group>"; };
+		A95C902516BDD70E003C8F5B /* NOCRandomWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCRandomWalker.m; sourceTree = "<group>"; };
+		A95C902716BDD71F003C8F5B /* NOCDirectedWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCDirectedWalker.h; sourceTree = "<group>"; };
+		A95C902816BDD720003C8F5B /* NOCDirectedWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCDirectedWalker.m; sourceTree = "<group>"; };
+		A95C902D16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCDirectedWalkerSketchViewController.h; sourceTree = "<group>"; };
+		A95C902E16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCDirectedWalkerSketchViewController.m; sourceTree = "<group>"; };
+		A95C903016BDD94E003C8F5B /* NOC2DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOC2DSketchViewController.h; path = "Chapter 1/NOC2DSketchViewController.h"; sourceTree = "<group>"; };
+		A95C903116BDD94E003C8F5B /* NOC2DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOC2DSketchViewController.m; path = "Chapter 1/NOC2DSketchViewController.m"; sourceTree = "<group>"; };
+		A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiDirectedWalker.xib; sourceTree = "<group>"; };
+		A987360F16BDF37E001D74E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCUIKitHelpers.h; sourceTree = "<group>"; };
+		A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCUIKitHelpers.m; sourceTree = "<group>"; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */,
 				A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */,
 				A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */,
 				A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */,
@@ -170,7 +190,6 @@
 				A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */,
 				A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */,
 				A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */,
-				A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -178,7 +197,14 @@
 		A95C901916BD811A003C8F5B /* Random Walker */ = {
 			isa = PBXGroup;
 			children = (
+				A95C902716BDD71F003C8F5B /* NOCDirectedWalker.h */,
+				A95C902816BDD720003C8F5B /* NOCDirectedWalker.m */,
+				A95C902D16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.h */,
+				A95C902E16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.m */,
+				A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */,
 				A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */,
+				A95C902416BDD70D003C8F5B /* NOCRandomWalker.h */,
+				A95C902516BDD70E003C8F5B /* NOCRandomWalker.m */,
 				A95C900F16BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.h */,
 				A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */,
 				A95C901B16BD813F003C8F5B /* NOCWalker.h */,
@@ -187,6 +213,16 @@
 				A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */,
 			);
 			name = "Random Walker";
+			sourceTree = "<group>";
+		};
+		A987361616BE04FD001D74E8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */,
+				A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */,
+				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		A9D1AE6E16B99A77000BE623 = {
@@ -211,6 +247,7 @@
 		A9D1AE7C16B99A77000BE623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A987360F16BDF37E001D74E8 /* CoreMotion.framework */,
 				A9D1AE7D16B99A77000BE623 /* UIKit.framework */,
 				A9D1AE7F16B99A77000BE623 /* Foundation.framework */,
 				A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */,
@@ -223,6 +260,7 @@
 		A9D1AE8716B99A77000BE623 /* Nature of Code */ = {
 			isa = PBXGroup;
 			children = (
+				A987361616BE04FD001D74E8 /* Helpers */,
 				A95C900816BD7351003C8F5B /* Shared */,
 				A95C8FEF16BD6E41003C8F5B /* Chapters */,
 				A9D1AE9016B99A77000BE623 /* NOCAppDelegate.h */,
@@ -265,6 +303,8 @@
 		A9D1AEBE16B9A1B3000BE623 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A95C903016BDD94E003C8F5B /* NOC2DSketchViewController.h */,
+				A95C903116BDD94E003C8F5B /* NOC2DSketchViewController.m */,
 				A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */,
 				A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */,
 				A9D1AEA316B99A78000BE623 /* NOCSketchViewController~ipad.xib */,
@@ -366,6 +406,7 @@
 				A95C8FED16BD6E11003C8F5B /* Default.png in Resources */,
 				A95C8FEE16BD6E11003C8F5B /* Default@2x.png in Resources */,
 				A95C902316BDA798003C8F5B /* NOCGuiRandomWalker.xib in Resources */,
+				A95C903416BDE641003C8F5B /* NOCGuiDirectedWalker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +430,11 @@
 				A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */,
 				A95C901D16BD813F003C8F5B /* NOCWalker.m in Sources */,
 				A95C902016BD81FA003C8F5B /* NOCOpenGLTypes.m in Sources */,
+				A95C902616BDD70F003C8F5B /* NOCRandomWalker.m in Sources */,
+				A95C902916BDD721003C8F5B /* NOCDirectedWalker.m in Sources */,
+				A95C902F16BDD847003C8F5B /* NOCDirectedWalkerSketchViewController.m in Sources */,
+				A95C903216BDD950003C8F5B /* NOC2DSketchViewController.m in Sources */,
+				A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

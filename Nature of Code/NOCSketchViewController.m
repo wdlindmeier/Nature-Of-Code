@@ -10,7 +10,10 @@
 
 @interface NOCSketchViewController ()
 {
-    UIPanGestureRecognizer *_gestureRecognizerDrawer;
+    BOOL _isDraggingDrawer;
+    CGPoint _posDrawerClosed;
+    CGPoint _posDrawerOpen;
+    BOOL _isDrawerOpen;
 }
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
@@ -19,6 +22,8 @@
 - (BOOL)loadShaders;
 
 @end
+
+static const float DrawerRevealHeight = 20.0f;
 
 @implementation NOCSketchViewController
 
@@ -83,8 +88,8 @@
         [self.viewControls insertSubview:controlView atIndex:0];
         
         // A gesture recognizer to handle opening/closing the drawer
-        _gestureRecognizerDrawer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        self.view.gestureRecognizers = @[_gestureRecognizerDrawer];
+        UIPanGestureRecognizer *gestureRecognizerDrawer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        self.viewControls.gestureRecognizers = @[gestureRecognizerDrawer];
     }
     
 }
@@ -100,6 +105,11 @@
     [super viewDidAppear:animated];
     [self repositionDrawer:YES];
     [self teaseDrawer];
+}
+
+- (BOOL)shouldAutorotate
+{
+    return YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -125,25 +135,19 @@
 {
     if(!_isDrawerOpen){
         
-        CGPoint grPos = [gr locationInView:self.view];
-        CGPoint grTrans = [gr translationInView:self.view];
-        float startingY = grPos.y - grTrans.y;
-
         BOOL shouldOpenDrawer = NO;
         BOOL shouldCloseDrawer = NO;
+        CGPoint grPos = [gr locationInView:self.view];
+        CGPoint grTrans = [gr translationInView:self.view];
         CGSize sizeDrawer = self.viewControls.frame.size;
-        CGSize sizeView = self.view.frame.size;
-        
+
         switch (gr.state) {
                 
             case UIGestureRecognizerStateBegan:
                 _isDraggingDrawer = NO;
-                // Check if it started at the bottom of the screen
                 if(fabs(grTrans.y) > fabs(grTrans.x * 2)){
                     // This is a vertical swipe
-                    if(startingY > (sizeView.height - 40)){
-                        _isDraggingDrawer = YES;
-                    }
+                    _isDraggingDrawer = YES;
                 }
                 break;
             case UIGestureRecognizerStateChanged:
@@ -174,7 +178,7 @@
         if(_isDraggingDrawer){
             self.viewControls.center = CGPointMake(_posDrawerClosed.x,
                                                    MAX(grPos.y + (sizeDrawer.height*0.5),
-                                                       _posDrawerClosed.y - sizeDrawer.height));
+                                                       _posDrawerOpen.y));
         }else{
             if(shouldCloseDrawer){
                 [self closeDrawer];
@@ -191,7 +195,11 @@
 {
     CGSize sizeView = self.view.frame.size;
     CGSize sizeViewDrawer = self.viewControls.frame.size;
-    _posDrawerClosed = CGPointMake(sizeView.width * 0.5, sizeView.height + (sizeViewDrawer.height * 0.5));
+
+    _posDrawerOpen = CGPointMake(sizeView.width * 0.5,
+                                   sizeView.height - (sizeViewDrawer.height * 0.5));
+    _posDrawerClosed = CGPointMake(sizeView.width * 0.5,
+                                   sizeView.height + (sizeViewDrawer.height * 0.5) - DrawerRevealHeight);
     if(setViewCenter){
         self.viewControls.center = _posDrawerClosed;
         self.viewControls.hidden = NO;
@@ -206,23 +214,17 @@
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = NO;
-                         // Turn on the gesture recognizer
-                         self.view.gestureRecognizers = @[_gestureRecognizerDrawer];
                      }];
 }
 
 - (void)openDrawer
 {
-    CGSize sizeDrawer = self.viewControls.frame.size;
     [UIView animateWithDuration:0.25
                      animations:^{
-                         self.viewControls.center = CGPointMake(_posDrawerClosed.x,
-                                                                _posDrawerClosed.y - sizeDrawer.height);
+                         self.viewControls.center = _posDrawerOpen;
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = YES;
-                         // Turn off the gesture recognizer
-                         self.view.gestureRecognizers = @[];
                      }];
 }
 

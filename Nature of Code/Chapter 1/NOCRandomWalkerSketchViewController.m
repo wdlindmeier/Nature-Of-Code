@@ -7,14 +7,12 @@
 //
 
 #import "NOCRandomWalkerSketchViewController.h"
-#import "NOCWalker.h"
+#import "NOCRandomWalker.h"
 
 @interface NOCRandomWalkerSketchViewController ()
 {
     NOCShaderProgram *_shader;
-    NOCWalker *_walker;
-    GLKMatrix4 _projectionMatrix2D;
-    float _pxUnit;
+    NOCRandomWalker *_walker;
 }
 
 @end
@@ -51,30 +49,21 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
     self.shaders = @{ NOCShaderNameRandomWalker : _shader };
     
     // Setup the Walker    
-    _walker = [[NOCWalker alloc] initWithSize:CGSizeMake(10, 10)
-                                     position:CGPointMake(0, 0)];
+    _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(10, 10)
+                                           position:CGPointMake(0, 0)];
     
 }
 
 - (void)update
 {
-    // Setup the 2D projection matrix that fits the screen.
-    // We want a 1x1 object to be square rather than share the aspect of the screen.
-    
-    // Recalculate this every update so the matrix adjusts to device-orientation changes.
-    
-    CGRect bounds = self.view.bounds;
-    CGSize sizeView = bounds.size;
-    float aspect = fabsf(sizeView.width / sizeView.height);
-    _projectionMatrix2D = GLKMatrix4MakeScale(1, 1 * aspect, 1);
-    
-    _pxUnit = (1.0f/sizeView.width) * 2;
-    
+    [super update];
+
     // Update the walker size according to the slider.
     float walkerSize = self.sliderPixelSize.value;
     _walker.size = CGSizeMake(walkerSize, walkerSize);
 
     // Step w/in the bounds
+    CGSize sizeView = self.view.frame.size;
     [_walker stepInRect:CGRectMake(sizeView.width * -0.5,
                                    sizeView.height * -0.5,
                                    sizeView.width,
