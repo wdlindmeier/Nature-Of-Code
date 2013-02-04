@@ -122,13 +122,11 @@
 								<string key="NSFrameSize">{79, 27}</string>
 								<reference key="NSSuperview" ref="103882153"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
-								<bool key="IBUIOn">YES</bool>
 							</object>
 						</array>
 						<string key="NSFrame">{{17, 177}, {286, 27}}</string>
@@ -261,8 +259,16 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">NOCRandomWalkerSketchViewController</string>
+					<string key="className">NOC2DSketchViewController</string>
 					<string key="superclassName">NOCSketchViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NOC2DSketchViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NOCRandomWalkerSketchViewController</string>
+					<string key="superclassName">NOC2DSketchViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="sliderPixelSize">UISlider</string>
 						<string key="switchClearBuffer">UISwitch</string>

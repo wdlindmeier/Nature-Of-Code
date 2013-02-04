@@ -9,15 +9,15 @@
 		<array>
 			<string>Random Walker</string>
 			<string>Directed Walker</string>
-			<string>TEST</string>
+			<string>Perlin Walker</string>
 		</array>
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Chapter 1 Name</string>
+		<string>TEST Chapter</string>
 		<key>Sketches</key>
 		<array>
-			<string>Sketch 0</string>
+			<string>TEST</string>
 		</array>
 	</dict>
 	<dict>

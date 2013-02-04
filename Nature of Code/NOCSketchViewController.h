@@ -33,6 +33,7 @@
 // Loop
 - (void)setup;
 - (void)update;
+- (void)resize;
 - (void)draw;
 - (void)teardown;
 

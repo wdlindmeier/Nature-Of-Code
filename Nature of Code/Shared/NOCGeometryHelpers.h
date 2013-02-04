@@ -11,15 +11,12 @@
 
 #define CONSTRAIN(n,min,max)    MIN(MAX(n,min),max)
 
-static inline double drand()   /* uniform distribution, (0..1] */
+static inline float map(float n, float minIn, float maxIn, float minOut, float maxOut)
 {
-    return (rand()+1.0)/(RAND_MAX+1.0);
-}
-
-static inline double randomNormal()
-/* normal distribution, centered on 0, std dev 1 */
-{
-    return sqrt(-2*log(drand())) * cos(2*M_PI*drand());
+    float inRange = maxIn - minIn;
+    float outRange = maxOut - minOut;
+    float scalarN = (n-minIn) / inRange;
+    return minOut + (outRange * scalarN);
 }
 
 #endif

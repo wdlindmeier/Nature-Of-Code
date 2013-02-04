@@ -54,6 +54,13 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
     
 }
 
+- (void)resize
+{
+    [super resize];
+    glClearColor(0.2, 0.2, 0.2, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
 - (void)update
 {
     [super update];

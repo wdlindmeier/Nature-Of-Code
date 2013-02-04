@@ -74,7 +74,6 @@ static const float DrawerRevealHeight = 20.0f;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
 
-    
     [self setupGL];
     
     // Setup the GUI Drawer
@@ -106,6 +105,7 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self resize];
     [self repositionDrawer:YES];
     [self teaseDrawer];
 }
@@ -123,6 +123,7 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self repositionDrawer:NO];
+    [self resize];
 }
 
 #pragma mark - Accessors
@@ -312,6 +313,11 @@ static const float DrawerRevealHeight = 20.0f;
 }
 
 - (void)update
+{
+    //...
+}
+
+- (void)resize
 {
     //...
 }

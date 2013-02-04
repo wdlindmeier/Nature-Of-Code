@@ -14,12 +14,12 @@
 
 @implementation NOC2DSketchViewController
 
-- (void)update
+- (void)resize
 {
+    [super resize];
+    
     // Setup the 2D projection matrix that fits the screen.
     // We want a 1x1 object to be square rather than share the aspect of the screen.
-    
-    // Recalculate this every update so the matrix adjusts to device-orientation changes.
     CGRect bounds = self.view.bounds;
     CGSize sizeView = bounds.size;
     float aspect = fabsf(sizeView.width / sizeView.height);

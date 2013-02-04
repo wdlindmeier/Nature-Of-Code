@@ -90,27 +90,8 @@ static int frameNum = 0;
 {
     frameNum++;
     
-    [super update];
+    [super update];    
     
-    /*
-    
-    //if(frameNum % 10 == 0){
-        
-        double randx = randomNormal();
-        CGSize sizeView = self.view.frame.size;
-        float x = randx * sizeView.width;
-        // Randomly scatter across the width
-        // Center vertically
-        CGPoint vp = CGPointMake((sizeView.width * 0.5) + x,
-                    sizeView.height * 0.5);
-        
-        // Add views into the screen
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(vp.x - 5, vp.y - 5, 10, 10)];
-        v.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.25];
-        [self.view addSubview:v];
-        
-    //}
-     */
     CGSize sizeView = self.view.frame.size;
     [_walker stepInRect:CGRectMake(sizeView.width * -0.5,
                                    sizeView.height * -0.5,

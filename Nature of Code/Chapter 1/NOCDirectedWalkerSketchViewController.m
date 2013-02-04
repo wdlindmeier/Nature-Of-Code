@@ -112,6 +112,13 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     
 }
 
+- (void)resize
+{
+    [super resize];
+    glClearColor(0.2, 0.2, 0.2, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
 - (void)update
 {
     [super update];
@@ -138,8 +145,8 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
 - (void)draw
 {
     
-    // Clear to gray
     if(self.switchClearBuffer.on){
+        // Clear to gray
         glClearColor(0.2, 0.2, 0.2, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
     }
