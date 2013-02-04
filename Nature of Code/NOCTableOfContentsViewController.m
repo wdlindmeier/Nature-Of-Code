@@ -46,6 +46,7 @@
     [super viewDidLoad];
     self.tableView.directionalLockEnabled = YES;
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -68,8 +69,10 @@
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: This should probably not be dynamic
-    return self.view.frame.size.height * 0.1;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        return 120.0f;
+    }
+    return 60.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -93,8 +96,14 @@
 
 - (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    /*
     CGSize sizeView = self.view.frame.size;
     return sizeView.height * 0.2;
+    */
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        return 200.0f;
+    }
+    return 100.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -121,16 +130,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Let the cell buttons handle this
-    //NOCChapter *chapter = _tableOfContents[indexPath.row];
-    //NSLog(@"Clicked CELL %@", chapter.name);
 }
 
 #pragma mark - NOCTableOfContentsCellSelectionDelegate
 
 - (void)chapterCell:(NOCTableOfContentsCell *)cell selectedSketch:(NOCSketch *)sketch inChapter:(NOCChapter *)chapter
 {
-    NSLog(@"Selected sketch: %@ in chapter %@", sketch.name, chapter.name);
-    
+
     NSString *camelCaseSketchName = [sketch.name stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *sketchControllerName = [NSString stringWithFormat:@"NOC%@SketchViewController", camelCaseSketchName];
     Class ControllerClass = NSClassFromString(sketchControllerName);

@@ -46,6 +46,12 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:_scrollView];
     
+    _labelChapterName = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 300, 300)];
+    _labelChapterName.backgroundColor = [UIColor blackColor];
+    _labelChapterName.font = [UIFont systemFontOfSize:24.0f];
+    _labelChapterName.textColor = [UIColor whiteColor];
+    [self.contentView addSubview:_labelChapterName];
+    
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [self addObserver:self
@@ -77,13 +83,19 @@
 
 - (void)updateViewWithCurrentChapter
 {
+    
+    _labelChapterName.text = self.chapter.name;
+    CGRect labelFrame = _labelChapterName.frame;
+    labelFrame.size.width = 9999;
+    _labelChapterName.frame = labelFrame;
+    [_labelChapterName sizeToFit];
+    
     // Remove previous buttons
     for(UIView *v in _scrollView.subviews){
         if([v isKindOfClass:[UIButton class]]){
             [v removeFromSuperview];
         }
     }
-    //[_scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // Create some buttons
     for(int i=0;i<self.chapter.sketches.count;i++){
@@ -91,10 +103,17 @@
         UIButton *btnSketch = [[UIButton alloc] initWithFrame:CGRectZero];
         btnSketch.tag = i;
         [btnSketch setTitle:sketch.name forState:UIControlStateNormal];
-        [btnSketch setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btnSketch setTitleColor:[UIColor colorWithWhite:0.8 alpha:1]
+                        forState:UIControlStateNormal];
         float randBGWhite = (arc4random() % 50) * 0.01;
         btnSketch.backgroundColor = [UIColor colorWithWhite:randBGWhite
                                                       alpha:1.0];
+        // Get the thumbnail
+        NSString *nameTitleized = [sketch.name stringByReplacingOccurrencesOfString:@" "
+                                                                         withString:@""];
+        NSString *thumbName = [NSString stringWithFormat:@"thumb_%@", nameTitleized];
+        [btnSketch setBackgroundImage:[UIImage imageNamed:thumbName]
+                             forState:UIControlStateNormal];
         [btnSketch addTarget:self
                       action:@selector(buttonSketchPressed:)
             forControlEvents:UIControlEventTouchUpInside];
@@ -111,11 +130,20 @@
 
     // Resize the buttons
     CGSize sizeContent = self.contentView.frame.size;
-    float buttonWidth = sizeContent.width * 0.4;
+
+    float buttonHeight = sizeContent.height;
+    float buttonWidth = 140.0f;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        buttonWidth = 240.0f;
+    }
+
     for(UIView *v in _scrollView.subviews){
         if([v isKindOfClass:[UIButton class]]){
             int buttonIdx = v.tag;
-            v.frame = CGRectMake(buttonWidth*buttonIdx, 0, buttonWidth, sizeContent.height);
+            v.frame = CGRectMake((buttonWidth*buttonIdx) + buttonIdx, 0, buttonWidth, buttonHeight);
+            // Can I push the label down a bit?
+            ((UIButton *)v).titleEdgeInsets = UIEdgeInsetsMake(buttonHeight * 0.6,
+                                                               0, 0, 0);
         }
     }
     
