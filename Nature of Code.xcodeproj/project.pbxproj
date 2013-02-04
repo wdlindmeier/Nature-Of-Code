@@ -28,6 +28,11 @@
 		A95C903416BDE641003C8F5B /* NOCGuiDirectedWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */; };
 		A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987360F16BDF37E001D74E8 /* CoreMotion.framework */; };
 		A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */; };
+		A987361D16BE0D2D001D74E8 /* NOCTESTSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */; };
+		A987361F16BF2D8E001D74E8 /* BackgroundFBO.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A987361E16BF2D8E001D74E8 /* BackgroundFBO.fsh */; };
+		A987362116BF2D98001D74E8 /* BackgroundFBO.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A987362016BF2D98001D74E8 /* BackgroundFBO.vsh */; };
+		A987362316BF443D001D74E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987362216BF443D001D74E8 /* QuartzCore.framework */; };
+		A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -86,6 +91,13 @@
 		A987360F16BDF37E001D74E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCUIKitHelpers.h; sourceTree = "<group>"; };
 		A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCUIKitHelpers.m; sourceTree = "<group>"; };
+		A987361B16BE0D2D001D74E8 /* NOCTESTSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTESTSketchViewController.h; sourceTree = "<group>"; };
+		A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTESTSketchViewController.m; sourceTree = "<group>"; };
+		A987361E16BF2D8E001D74E8 /* BackgroundFBO.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundFBO.fsh; sourceTree = "<group>"; };
+		A987362016BF2D98001D74E8 /* BackgroundFBO.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundFBO.vsh; sourceTree = "<group>"; };
+		A987362216BF443D001D74E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAEAGLLayer+Retained.h"; sourceTree = "<group>"; };
+		A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAEAGLLayer+Retained.m"; sourceTree = "<group>"; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A987362316BF443D001D74E8 /* QuartzCore.framework in Frameworks */,
 				A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */,
 				A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */,
 				A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */,
@@ -173,10 +186,9 @@
 		A95C900316BD7351003C8F5B /* Sample */ = {
 			isa = PBXGroup;
 			children = (
+				A987362716BF5142001D74E8 /* SCRATCH */,
 				A95C900416BD7351003C8F5B /* NOCSampleSketchViewController.h */,
 				A95C900516BD7351003C8F5B /* NOCSampleSketchViewController.m */,
-				A95C901616BD7EBB003C8F5B /* NOCTemplateSketchViewController.h */,
-				A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */,
 				A95C900616BD7351003C8F5B /* SampleShader.fsh */,
 				A95C900716BD7351003C8F5B /* SampleShader.vsh */,
 			);
@@ -221,8 +233,23 @@
 				A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */,
 				A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */,
 				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
+				A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */,
+				A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A987362716BF5142001D74E8 /* SCRATCH */ = {
+			isa = PBXGroup;
+			children = (
+				A95C901616BD7EBB003C8F5B /* NOCTemplateSketchViewController.h */,
+				A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */,
+				A987361B16BE0D2D001D74E8 /* NOCTESTSketchViewController.h */,
+				A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */,
+				A987361E16BF2D8E001D74E8 /* BackgroundFBO.fsh */,
+				A987362016BF2D98001D74E8 /* BackgroundFBO.vsh */,
+			);
+			name = SCRATCH;
 			sourceTree = "<group>";
 		};
 		A9D1AE6E16B99A77000BE623 = {
@@ -247,6 +274,7 @@
 		A9D1AE7C16B99A77000BE623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A987362216BF443D001D74E8 /* QuartzCore.framework */,
 				A987360F16BDF37E001D74E8 /* CoreMotion.framework */,
 				A9D1AE7D16B99A77000BE623 /* UIKit.framework */,
 				A9D1AE7F16B99A77000BE623 /* Foundation.framework */,
@@ -388,6 +416,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A987361F16BF2D8E001D74E8 /* BackgroundFBO.fsh in Resources */,
+				A987362116BF2D98001D74E8 /* BackgroundFBO.vsh in Resources */,
 				A95C901316BD7DBB003C8F5B /* RandomWalker.fsh in Resources */,
 				A95C901516BD7DC6003C8F5B /* RandomWalker.vsh in Resources */,
 				A9D1AE8C16B99A77000BE623 /* InfoPlist.strings in Resources */,
@@ -435,6 +465,8 @@
 				A95C902F16BDD847003C8F5B /* NOCDirectedWalkerSketchViewController.m in Sources */,
 				A95C903216BDD950003C8F5B /* NOC2DSketchViewController.m in Sources */,
 				A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */,
+				A987361D16BE0D2D001D74E8 /* NOCTESTSketchViewController.m in Sources */,
+				A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

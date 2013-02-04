@@ -10,8 +10,7 @@
 #import <GLKit/GLKit.h>
 #import "NOCShaderProgram.h"
 #import "NOCOpenGLTypes.h"
-
-#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+#import "CAEAGLLayer+Retained.h"
 
 @interface NOCSketchViewController : GLKViewController
 {

@@ -7,6 +7,7 @@
 //
 
 #import "NOCSketchViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface NOCSketchViewController ()
 {
@@ -14,6 +15,7 @@
     CGPoint _posDrawerClosed;
     CGPoint _posDrawerOpen;
     BOOL _isDrawerOpen;
+    UIPanGestureRecognizer *_gestureRecognizerDrawer;
 }
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
@@ -71,6 +73,7 @@ static const float DrawerRevealHeight = 20.0f;
     GLKView *view = (GLKView *)self.view;
     view.context = self.context;
     view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+
     
     [self setupGL];
     
@@ -88,8 +91,8 @@ static const float DrawerRevealHeight = 20.0f;
         [self.viewControls insertSubview:controlView atIndex:0];
         
         // A gesture recognizer to handle opening/closing the drawer
-        UIPanGestureRecognizer *gestureRecognizerDrawer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-        self.viewControls.gestureRecognizers = @[gestureRecognizerDrawer];
+        _gestureRecognizerDrawer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+        self.viewControls.gestureRecognizers = @[_gestureRecognizerDrawer];
     }
     
 }
@@ -214,6 +217,7 @@ static const float DrawerRevealHeight = 20.0f;
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = NO;
+                         self.viewControls.gestureRecognizers = @[_gestureRecognizerDrawer];
                      }];
 }
 
@@ -225,6 +229,7 @@ static const float DrawerRevealHeight = 20.0f;
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = YES;
+                         self.viewControls.gestureRecognizers = @[];
                      }];
 }
 

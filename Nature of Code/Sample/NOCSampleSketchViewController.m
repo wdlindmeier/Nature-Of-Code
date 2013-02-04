@@ -121,6 +121,7 @@ GLfloat gCubeVertexData[216] =
 
 - (void)setup
 {
+    
     // Setup the sample shader
     NOCShaderProgram *sampleShader = [[NOCShaderProgram alloc] initWithName:@"SampleShader"];
     

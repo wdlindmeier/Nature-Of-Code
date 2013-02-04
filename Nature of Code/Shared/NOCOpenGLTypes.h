@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
+#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+
 typedef struct {
     CGPoint geometryVertex;
     CGPoint textureVertex;
