@@ -13,63 +13,60 @@
 
 @implementation NOCPerlinWalker
 {
-    float _curTime;
-    float _rads;
+    float _curTimeX;
+    float _curTimeY;
 }
 
-- (id)initWithSize:(CGSize)size position:(CGPoint)position
+- (id)initWithSize:(CGSize)size position:(GLKVector2)position
 {
     self = [super initWithSize:size position:position];
     if(self){
-        _curTime = 0.0f;
-        self.timeStep = 0.1f;
+
+        self.timeStep = 0.01f;
         self.perlinAlpha = 1.5f;
         self.perlinBeta = 1.5f;
-        self.perlinNumOctaves = 12;
+        self.perlinNumOctaves = 5;
+
+        _curTimeX = 0;
+        _curTimeY = 0;
+
     }
     return self;
 }
 
 - (void)stepInRect:(CGRect)rect
 {
-    _curTime += self.timeStep;
     
-    double perlinVal = PerlinNoise1D(_curTime,
-                                     self.perlinAlpha,
-                                     self.perlinBeta,
-                                     self.perlinNumOctaves);
-    
-    _rads = _rads + perlinVal;
-    
-    CGPoint moveDir = RadiansToVector(_rads);
-    
-    // Rounding will keep the walker on the pixel bounds.
-    // But it looks nicer as a smooth line IMO.
-    float moveX = moveDir.x; // round(moveDir.x);
-    float moveY = moveDir.y; // round(moveDir.y);
-
-    float x = self.position.x + moveX;
-    float y = self.position.y + moveY;
-    
-    // Account for the scale
+    // Get the bounds for the current scale
     float minX = rect.origin.x / self.size.width;
     float maxX = (rect.origin.x + rect.size.width) / self.size.width;
     float minY = rect.origin.y / self.size.height;
     float maxY = (rect.origin.y + rect.size.height) / self.size.height;
     
-    if(x<minX || x>maxX || y<minY || y>maxY){
-        // If we're outside the bounds, turn in a random direction
-        // Maybe this should just be -180 deg
-        float addRads = RAND_SCALAR * M_PI * 2;
-        double newRads = fmod(_rads + addRads, M_PI * 2);
-        _rads = newRads;
-    }
+    // Increment the time
+    _curTimeX += self.timeStep;
+    _curTimeY += self.timeStep;
+    
+    float randX = PerlinNoise2D(_curTimeX, 0,
+                                self.perlinAlpha,
+                                self.perlinBeta,
+                                self.perlinNumOctaves);
+    
+    float randY = PerlinNoise2D(0, _curTimeY,
+                                self.perlinAlpha,
+                                self.perlinBeta,
+                                self.perlinNumOctaves);
+    
+    CGPoint normalRandXY = CGPointNormalize(CGPointMake(randX, randY));
+    
+    float x = self.position.x + normalRandXY.x;
+    float y = self.position.y + normalRandXY.y;
     
     // Dont let the walker move outside of the rect.
     x = CONSTRAIN(x,minX,maxX);
     y = CONSTRAIN(y,minY,maxY);
     
-    self.position = CGPointMake(x,y);
+    self.position = GLKVector2Make(x,y);
 }
 
 @end

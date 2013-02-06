@@ -11,5 +11,8 @@
 
 static NSString * NOCTOCKeyChapterName = @"Name";
 static NSString * NOCTOCKeyChapterSketches = @"Sketches";
+static NSString * NOCTOCKeySketchName = @"Name";
+static NSString * NOCTOCKeySketchDescription = @"Description";
+static NSString * NOCTOCKeySketchControllerName = @"Controller";
 
 #endif

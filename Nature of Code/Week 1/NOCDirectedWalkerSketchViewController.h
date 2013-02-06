@@ -12,6 +12,7 @@
 
 // Variables GUI
 @property (nonatomic, strong) IBOutlet UISlider *sliderPixelSize;
+@property (nonatomic, strong) IBOutlet UISlider *sliderProbability;
 @property (nonatomic, strong) IBOutlet UISwitch *switchClearBuffer;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControlMode;
 

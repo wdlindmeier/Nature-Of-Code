@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define RAND_SCALAR ((arc4random() % 100) * 0.01)
+#define RAND_SCALAR ((arc4random() % 1000) * 0.001)
 
 extern CGPoint CGPointScale(CGPoint A, double b);
 extern CGPoint CGPointAdd(CGPoint a, CGPoint b);

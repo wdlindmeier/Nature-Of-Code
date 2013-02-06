@@ -31,11 +31,22 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
 
 - (IBAction)buttonClearPressed:(id)sender
 {
-    glClearColor(0.2, 0.2, 0.2, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);   
+    [self clear];
+}
+
+- (IBAction)buttonResetPressed:(id)sender
+{
+    [self clear];
+    _walker.position = GLKVector2Make(0, 0);
 }
 
 #pragma mark - Draw Loop
+
+- (void)clear
+{
+    glClearColor(0.2, 0.2, 0.2, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+}
 
 - (void)setup
 {
@@ -56,7 +67,7 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
     
     // Setup the Walker
     _walker = [[NOCPerlinWalker alloc] initWithSize:CGSizeMake(5, 5)
-                                           position:CGPointZero];
+                                           position:GLKVector2Make(0,0)];
 
     // Clear out the values so it takes on the slider values
     _walker.perlinAlpha = 0;

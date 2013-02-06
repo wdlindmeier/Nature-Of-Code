@@ -21,5 +21,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *labelNumOctaves;
 
 - (IBAction)buttonClearPressed:(id)sender;
+- (IBAction)buttonResetPressed:(id)sender;
 
 @end

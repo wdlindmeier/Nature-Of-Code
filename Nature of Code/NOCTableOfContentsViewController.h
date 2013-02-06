@@ -13,4 +13,12 @@
 NOCTableOfContentsCellSelectionDelegate
 >
 
+@property (nonatomic, strong) IBOutlet UITextView *textViewSketchDescription;
+@property (nonatomic, strong) IBOutlet UILabel *labelSketchName;
+@property (nonatomic, strong) IBOutlet UIImageView *imageViewSketchThumbnail;
+@property (nonatomic, strong) IBOutlet UIView *viewSketchInfoContainer;
+
+- (IBAction)buttonRunSketchPressed:(id)sender;
+- (IBAction)buttonCancelSketchPressed:(id)sender;
+
 @end

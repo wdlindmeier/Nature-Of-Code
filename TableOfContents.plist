@@ -7,9 +7,30 @@
 		<string>Week 1: Introduction</string>
 		<key>Sketches</key>
 		<array>
-			<string>Random Walker</string>
-			<string>Directed Walker</string>
-			<string>Perlin Walker</string>
+			<dict>
+				<key>Name</key>
+				<string>Random Walker</string>
+				<key>Description</key>
+				<string>A particle that moves in a random direction each frame.</string>
+				<key>Controller</key>
+				<string>RandomWalker</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Directed Walker</string>
+				<key>Description</key>
+				<string>A Random Walker that probabilistically follows a touch point, or the device tilt.</string>
+				<key>Controller</key>
+				<string>DirectedWalker</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Perlin Walker</string>
+				<key>Description</key>
+				<string>A Radom Walker whos direction is determined by Perlin Noise.</string>
+				<key>Controller</key>
+				<string>PerlinWalker</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -17,7 +38,14 @@
 		<string>Week 2: Vectors and Forces</string>
 		<key>Sketches</key>
 		<array>
-			<string>FPO</string>
+			<dict>
+				<key>Name</key>
+				<string>Accelerated Mover</string>
+				<key>Description</key>
+				<string>A Mover whos velocity is influenced by acceleration.</string>
+				<key>Controller</key>
+				<string>AccelMover</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>
@@ -25,7 +53,14 @@
 		<string>Scratchpad</string>
 		<key>Sketches</key>
 		<array>
-			<string>TEST</string>
+			<dict>
+				<key>Name</key>
+				<string>Sandbox</string>
+				<key>Description</key>
+				<string>For testing purposes</string>
+				<key>Controller</key>
+				<string>TEST</string>
+			</dict>
 		</array>
 	</dict>
 </array>

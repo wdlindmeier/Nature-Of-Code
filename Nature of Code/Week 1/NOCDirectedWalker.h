@@ -10,6 +10,8 @@
 
 @interface NOCDirectedWalker : NOCWalker
 
-- (void)stepInRect:(CGRect)rect toward:(CGPoint)followPoint;
+@property (nonatomic, assign) float probabilityOfFollowingPoint;
+
+- (void)stepInRect:(CGRect)rect toward:(GLKVector2)followPoint;
 
 @end

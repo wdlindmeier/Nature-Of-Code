@@ -15,7 +15,11 @@
 @interface NOCTableOfContentsViewController ()
 {
     NSArray *_tableOfContents;
+    NOCSketch *_selectedSketch;
 }
+
+@property (nonatomic, strong) IBOutlet UIView *selectedSketchView;
+
 @end
 
 @implementation NOCTableOfContentsViewController
@@ -136,19 +140,95 @@
 
 - (void)chapterCell:(NOCTableOfContentsCell *)cell selectedSketch:(NOCSketch *)sketch inChapter:(NOCChapter *)chapter
 {
+    [self presentSelectedSketch:sketch];
+}
 
-    NSString *camelCaseSketchName = [sketch.name stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *sketchControllerName = [NSString stringWithFormat:@"NOC%@SketchViewController", camelCaseSketchName];
+#pragma mark - Selected Sketch View
+
+#pragma mark - IBActions
+
+- (IBAction)buttonRunSketchPressed:(id)sender
+{
+    NSString *sketchControllerName = [NSString stringWithFormat:@"NOC%@SketchViewController", _selectedSketch.controllerName];
     Class ControllerClass = NSClassFromString(sketchControllerName);
     if(!ControllerClass){
         ControllerClass = [NOCSampleSketchViewController class];
     }
+    
     NOCSampleSketchViewController *sketchViewController = [[ControllerClass alloc]
                                                            initWithNibName:@"NOCSketchViewController"
                                                            bundle:nil];
-    sketchViewController.title = sketch.name;
+    sketchViewController.title = _selectedSketch.name;
     
+    // Remove the sketch
+    [self dismissSelectedSketch:NO];
+
     [self.navigationController pushViewController:sketchViewController animated:YES];
+    
+}
+
+- (IBAction)buttonCancelSketchPressed:(id)sender
+{
+    [self dismissSelectedSketch:YES];
+}
+
+#pragma mark - View State
+
+- (void)presentSelectedSketch:(NOCSketch *)sketch
+{
+    _selectedSketch = sketch;
+    
+    if(!self.selectedSketchView){
+        [[NSBundle mainBundle] loadNibNamed:@"NOCSketchDescriptionView"
+                                      owner:self
+                                    options:0];
+    }else{
+        [self.selectedSketchView removeFromSuperview];
+    }
+    
+    self.textViewSketchDescription.text = _selectedSketch.description;
+    self.labelSketchName.text = _selectedSketch.name;
+    UIImage *thumbnail = [UIImage imageNamed:[NSString stringWithFormat:@"thumb_%@", _selectedSketch.controllerName]];
+    self.imageViewSketchThumbnail.image = thumbnail;
+    
+    self.selectedSketchView.alpha = 0;
+    self.selectedSketchView.frame = self.view.bounds;
+    
+    CGSize sizeSketchView = self.selectedSketchView.frame.size;
+    self.viewSketchInfoContainer.center = CGPointMake(sizeSketchView.width * 0.5,
+                                                      sizeSketchView.width * 0.5);
+
+    // Make sure the frame doesn't land on a 1/2 pixel
+    CGRect framePopup = self.viewSketchInfoContainer.frame;
+    framePopup.origin.x = round(framePopup.origin.x);
+    framePopup.origin.y = round(framePopup.origin.y);
+    self.viewSketchInfoContainer.frame = framePopup;
+    
+    [self.view addSubview:self.selectedSketchView];
+    
+    [UIView animateWithDuration:0.35
+                     animations:^{
+                         self.selectedSketchView.alpha = 1;
+                     }
+                     completion:nil];
+}
+
+- (void)dismissSelectedSketch:(BOOL)animated
+{
+    if(animated){
+        [UIView animateWithDuration:0.35
+                         animations:^{
+                             self.selectedSketchView.alpha = 0;
+                         }
+                         completion:^(BOOL finished) {
+                             [self.selectedSketchView removeFromSuperview];
+                             _selectedSketch = nil;
+                         }];
+    }else{
+        self.selectedSketchView.alpha = 0;
+        [self.selectedSketchView removeFromSuperview];
+        _selectedSketch = nil;
+    }
 }
 
 @end

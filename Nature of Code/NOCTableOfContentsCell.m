@@ -109,9 +109,7 @@
         btnSketch.backgroundColor = [UIColor colorWithWhite:randBGWhite
                                                       alpha:1.0];
         // Get the thumbnail
-        NSString *nameTitleized = [sketch.name stringByReplacingOccurrencesOfString:@" "
-                                                                         withString:@""];
-        NSString *thumbName = [NSString stringWithFormat:@"thumb_%@", nameTitleized];
+        NSString *thumbName = [NSString stringWithFormat:@"thumb_%@", sketch.controllerName];
         [btnSketch setBackgroundImage:[UIImage imageNamed:thumbName]
                              forState:UIControlStateNormal];
         [btnSketch addTarget:self

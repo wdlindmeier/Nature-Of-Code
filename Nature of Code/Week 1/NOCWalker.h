@@ -7,15 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GLKit/GLKit.h>
+#import "NOCParticle.h"
 
-@interface NOCWalker : NSObject
-
-@property (nonatomic, assign) CGPoint position;
-@property (nonatomic, assign) CGSize size;
-
-- (id)initWithSize:(CGSize)size position:(CGPoint)position;
-- (void)render;
-- (GLKMatrix4)modelMatrixForPixelUnit:(float)pxUnit;
+@interface NOCWalker : NOCParticle
 
 @end

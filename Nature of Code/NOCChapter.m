@@ -18,9 +18,8 @@
         self.name = [chapterInfo valueForKey:NOCTOCKeyChapterName];
         NSArray *sketchInfos = [chapterInfo valueForKey:NOCTOCKeyChapterSketches];
         NSMutableArray *chSketches = [NSMutableArray arrayWithCapacity:5];
-        for(NSString *sketchName in sketchInfos){
-            NOCSketch *s = [[NOCSketch alloc] init];
-            s.name = sketchName;
+        for(NSDictionary *sketchInfo in sketchInfos){
+            NOCSketch *s = [[NOCSketch alloc] initWithSketchInfo:sketchInfo];
             [chSketches addObject:s];
         }
         self.sketches = [NSArray arrayWithArray:chSketches];

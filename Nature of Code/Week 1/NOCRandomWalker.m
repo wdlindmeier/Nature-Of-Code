@@ -27,7 +27,7 @@
                   rect.origin.y / self.size.height,
                   (rect.origin.y + rect.size.height) / self.size.height);
     
-    self.position = CGPointMake(round(x),round(y));
+    self.position = GLKVector2Make(round(x),round(y));
 }
 
 @end

@@ -11,5 +11,9 @@
 @interface NOCSketch : NSObject
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *controllerName;
+
+- (id)initWithSketchInfo:(NSDictionary *)sketchInfo;
 
 @end

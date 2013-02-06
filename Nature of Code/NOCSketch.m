@@ -10,4 +10,15 @@
 
 @implementation NOCSketch
 
+- (id)initWithSketchInfo:(NSDictionary *)sketchInfo
+{
+    self = [super init];
+    if(self){
+        self.name = [sketchInfo valueForKey:NOCTOCKeySketchName];
+        self.description = [sketchInfo valueForKey:NOCTOCKeySketchDescription];
+        self.controllerName = [sketchInfo valueForKey:NOCTOCKeySketchControllerName];
+    }
+    return self;
+}
+
 @end

@@ -50,7 +50,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
     
     // Setup the Walker    
     _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(10, 10)
-                                           position:CGPointMake(0, 0)];
+                                           position:GLKVector2Make(0, 0)];
     
 }
 

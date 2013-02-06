@@ -19,7 +19,7 @@ enum {
 {
     NOCShaderProgram *_shader;
     NOCDirectedWalker *_walker;
-    CGPoint _pointFollow;
+    GLKVector2 _positionFollow;
     CMMotionManager *_motionManager;
 }
 
@@ -103,9 +103,9 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     self.shaders = @{ NOCShaderNameDirectedWalker : _shader };
     
     // Setup the Walker
-    _pointFollow = CGPointZero;
+    _positionFollow = GLKVector2Make(0, 0);
     _walker = [[NOCDirectedWalker alloc] initWithSize:CGSizeMake(10, 10)
-                                             position:_pointFollow];
+                                             position:_positionFollow];
     
     // Call this to trigger the initial mode
     [self segmentedControlValueDidChange:self.segmentedControlMode];
@@ -138,7 +138,9 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
                                      sizeView.width,
                                      sizeView.height);
 
-    [_walker stepInRect:walkerBounds toward:_pointFollow];
+    _walker.probabilityOfFollowingPoint = self.sliderProbability.value;
+    
+    [_walker stepInRect:walkerBounds toward:_positionFollow];
     
 }
 
@@ -209,7 +211,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
             break;
     }
     
-    _pointFollow = CGPointMake(x, y);
+    _positionFollow = GLKVector2Make(x, y);
 
 }
 
@@ -229,7 +231,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
         float x = posTouch.x - halfWidth;
         float y = (posTouch.y - halfHeight) * -1;
         
-        _pointFollow = CGPointMake(x, y);
+        _positionFollow = GLKVector2Make(x, y);
     }
 }
 
