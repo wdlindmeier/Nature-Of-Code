@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A920CEB216C021FA00284EAF /* NOCGuiPerlinWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB116C021FA00284EAF /* NOCGuiPerlinWalker.xib */; };
 		A920CEBB16C0373D00284EAF /* thumb_DirectedWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB516C0373D00284EAF /* thumb_DirectedWalker.png */; };
 		A920CEBC16C0373D00284EAF /* thumb_DirectedWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */; };
 		A920CEBD16C0373D00284EAF /* thumb_PerlinWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB716C0373D00284EAF /* thumb_PerlinWalker.png */; };
@@ -21,18 +20,8 @@
 		A95C900C16BD7351003C8F5B /* SampleShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C900616BD7351003C8F5B /* SampleShader.fsh */; };
 		A95C900D16BD7351003C8F5B /* SampleShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C900716BD7351003C8F5B /* SampleShader.vsh */; };
 		A95C900E16BD7351003C8F5B /* NOCShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */; };
-		A95C901116BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */; };
-		A95C901316BD7DBB003C8F5B /* RandomWalker.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C901216BD7DBB003C8F5B /* RandomWalker.fsh */; };
-		A95C901516BD7DC6003C8F5B /* RandomWalker.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */; };
 		A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */; };
-		A95C901D16BD813F003C8F5B /* NOCWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901C16BD813F003C8F5B /* NOCWalker.m */; };
 		A95C902016BD81FA003C8F5B /* NOCOpenGLTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */; };
-		A95C902316BDA798003C8F5B /* NOCGuiRandomWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */; };
-		A95C902616BDD70F003C8F5B /* NOCRandomWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C902516BDD70E003C8F5B /* NOCRandomWalker.m */; };
-		A95C902916BDD721003C8F5B /* NOCDirectedWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C902816BDD720003C8F5B /* NOCDirectedWalker.m */; };
-		A95C902F16BDD847003C8F5B /* NOCDirectedWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C902E16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.m */; };
-		A95C903216BDD950003C8F5B /* NOC2DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C903116BDD94E003C8F5B /* NOC2DSketchViewController.m */; };
-		A95C903416BDE641003C8F5B /* NOCGuiDirectedWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */; };
 		A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987360F16BDF37E001D74E8 /* CoreMotion.framework */; };
 		A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */; };
 		A987361D16BE0D2D001D74E8 /* NOCTESTSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */; };
@@ -40,10 +29,21 @@
 		A987362116BF2D98001D74E8 /* BackgroundTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A987362016BF2D98001D74E8 /* BackgroundTexture.vsh */; };
 		A987362316BF443D001D74E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987362216BF443D001D74E8 /* QuartzCore.framework */; };
 		A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */; };
-		A987362F16C00405001D74E8 /* NOCPerlinWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362E16C00404001D74E8 /* NOCPerlinWalkerSketchViewController.m */; };
-		A987363216C00492001D74E8 /* NOCPerlinWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A987363116C00491001D74E8 /* NOCPerlinWalker.m */; };
 		A987363E16C00885001D74E8 /* perlin.c in Sources */ = {isa = PBXBuildFile; fileRef = A987363D16C00885001D74E8 /* perlin.c */; };
 		A987364316C00C00001D74E8 /* CGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A987364216C00C00001D74E8 /* CGGeometry.m */; };
+		A99889B016C1FADB002C924F /* NOCDirectedWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A998899D16C1FADB002C924F /* NOCDirectedWalker.m */; };
+		A99889B116C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A998899F16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m */; };
+		A99889B216C1FADB002C924F /* NOCGuiDirectedWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889A016C1FADB002C924F /* NOCGuiDirectedWalker.xib */; };
+		A99889B316C1FADB002C924F /* NOCGuiPerlinWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889A116C1FADB002C924F /* NOCGuiPerlinWalker.xib */; };
+		A99889B416C1FADB002C924F /* NOCGuiRandomWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889A216C1FADB002C924F /* NOCGuiRandomWalker.xib */; };
+		A99889B516C1FADB002C924F /* NOCPerlinWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889A416C1FADB002C924F /* NOCPerlinWalker.m */; };
+		A99889B616C1FADB002C924F /* NOCPerlinWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889A616C1FADB002C924F /* NOCPerlinWalkerSketchViewController.m */; };
+		A99889B716C1FADB002C924F /* NOCRandomWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889A816C1FADB002C924F /* NOCRandomWalker.m */; };
+		A99889B816C1FADB002C924F /* NOCRandomWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889AA16C1FADB002C924F /* NOCRandomWalkerSketchViewController.m */; };
+		A99889B916C1FADB002C924F /* NOCWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889AC16C1FADB002C924F /* NOCWalker.m */; };
+		A99889BA16C1FADB002C924F /* RandomWalker.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A99889AD16C1FADB002C924F /* RandomWalker.fsh */; };
+		A99889BB16C1FADB002C924F /* RandomWalker.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A99889AE16C1FADB002C924F /* RandomWalker.vsh */; };
+		A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -75,7 +75,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A920CEB116C021FA00284EAF /* NOCGuiPerlinWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiPerlinWalker.xib; sourceTree = "<group>"; };
 		A920CEB516C0373D00284EAF /* thumb_DirectedWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_DirectedWalker.png; sourceTree = "<group>"; };
 		A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_DirectedWalker@2x.png"; sourceTree = "<group>"; };
 		A920CEB716C0373D00284EAF /* thumb_PerlinWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PerlinWalker.png; sourceTree = "<group>"; };
@@ -91,27 +90,11 @@
 		A95C900716BD7351003C8F5B /* SampleShader.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = SampleShader.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C900916BD7351003C8F5B /* NOCShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCShaderProgram.h; sourceTree = "<group>"; };
 		A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShaderProgram.m; sourceTree = "<group>"; };
-		A95C900F16BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCRandomWalkerSketchViewController.h; sourceTree = "<group>"; };
-		A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCRandomWalkerSketchViewController.m; sourceTree = "<group>"; };
-		A95C901216BD7DBB003C8F5B /* RandomWalker.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RandomWalker.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */ = {isa = PBXFileReference; explicitFileType = sourcecode.glsl; fileEncoding = 4; path = RandomWalker.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C901616BD7EBB003C8F5B /* NOCTemplateSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTemplateSketchViewController.h; sourceTree = "<group>"; };
 		A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTemplateSketchViewController.m; sourceTree = "<group>"; };
-		A95C901B16BD813F003C8F5B /* NOCWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCWalker.h; sourceTree = "<group>"; };
-		A95C901C16BD813F003C8F5B /* NOCWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCWalker.m; sourceTree = "<group>"; };
 		A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCOpenGLTypes.h; sourceTree = "<group>"; };
 		A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCOpenGLTypes.m; sourceTree = "<group>"; };
 		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NOCGeometryHelpers.h; path = Shared/NOCGeometryHelpers.h; sourceTree = "<group>"; };
-		A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiRandomWalker.xib; sourceTree = "<group>"; };
-		A95C902416BDD70D003C8F5B /* NOCRandomWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCRandomWalker.h; sourceTree = "<group>"; };
-		A95C902516BDD70E003C8F5B /* NOCRandomWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCRandomWalker.m; sourceTree = "<group>"; };
-		A95C902716BDD71F003C8F5B /* NOCDirectedWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCDirectedWalker.h; sourceTree = "<group>"; };
-		A95C902816BDD720003C8F5B /* NOCDirectedWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCDirectedWalker.m; sourceTree = "<group>"; };
-		A95C902D16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCDirectedWalkerSketchViewController.h; sourceTree = "<group>"; };
-		A95C902E16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCDirectedWalkerSketchViewController.m; sourceTree = "<group>"; };
-		A95C903016BDD94E003C8F5B /* NOC2DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOC2DSketchViewController.h; path = "Chapter 1/NOC2DSketchViewController.h"; sourceTree = "<group>"; };
-		A95C903116BDD94E003C8F5B /* NOC2DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOC2DSketchViewController.m; path = "Chapter 1/NOC2DSketchViewController.m"; sourceTree = "<group>"; };
-		A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiDirectedWalker.xib; sourceTree = "<group>"; };
 		A987360F16BDF37E001D74E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCUIKitHelpers.h; sourceTree = "<group>"; };
 		A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCUIKitHelpers.m; sourceTree = "<group>"; };
@@ -122,14 +105,31 @@
 		A987362216BF443D001D74E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAEAGLLayer+Retained.h"; sourceTree = "<group>"; };
 		A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAEAGLLayer+Retained.m"; sourceTree = "<group>"; };
-		A987362D16C00403001D74E8 /* NOCPerlinWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCPerlinWalkerSketchViewController.h; sourceTree = "<group>"; };
-		A987362E16C00404001D74E8 /* NOCPerlinWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCPerlinWalkerSketchViewController.m; sourceTree = "<group>"; };
-		A987363016C00491001D74E8 /* NOCPerlinWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCPerlinWalker.h; sourceTree = "<group>"; };
-		A987363116C00491001D74E8 /* NOCPerlinWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCPerlinWalker.m; sourceTree = "<group>"; };
 		A987363D16C00885001D74E8 /* perlin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = perlin.c; sourceTree = "<group>"; };
 		A987364016C0093D001D74E8 /* perlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perlin.h; sourceTree = "<group>"; };
 		A987364116C00BFF001D74E8 /* CGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGGeometry.h; sourceTree = "<group>"; };
 		A987364216C00C00001D74E8 /* CGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGGeometry.m; sourceTree = "<group>"; };
+		A998899C16C1FADB002C924F /* NOCDirectedWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCDirectedWalker.h; path = "Nature of Code/Week 1/NOCDirectedWalker.h"; sourceTree = SOURCE_ROOT; };
+		A998899D16C1FADB002C924F /* NOCDirectedWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCDirectedWalker.m; path = "Nature of Code/Week 1/NOCDirectedWalker.m"; sourceTree = SOURCE_ROOT; };
+		A998899E16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCDirectedWalkerSketchViewController.h; path = "Nature of Code/Week 1/NOCDirectedWalkerSketchViewController.h"; sourceTree = SOURCE_ROOT; };
+		A998899F16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCDirectedWalkerSketchViewController.m; path = "Nature of Code/Week 1/NOCDirectedWalkerSketchViewController.m"; sourceTree = SOURCE_ROOT; };
+		A99889A016C1FADB002C924F /* NOCGuiDirectedWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiDirectedWalker.xib; path = "Nature of Code/Week 1/NOCGuiDirectedWalker.xib"; sourceTree = SOURCE_ROOT; };
+		A99889A116C1FADB002C924F /* NOCGuiPerlinWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiPerlinWalker.xib; path = "Nature of Code/Week 1/NOCGuiPerlinWalker.xib"; sourceTree = SOURCE_ROOT; };
+		A99889A216C1FADB002C924F /* NOCGuiRandomWalker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiRandomWalker.xib; path = "Nature of Code/Week 1/NOCGuiRandomWalker.xib"; sourceTree = SOURCE_ROOT; };
+		A99889A316C1FADB002C924F /* NOCPerlinWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCPerlinWalker.h; path = "Nature of Code/Week 1/NOCPerlinWalker.h"; sourceTree = SOURCE_ROOT; };
+		A99889A416C1FADB002C924F /* NOCPerlinWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCPerlinWalker.m; path = "Nature of Code/Week 1/NOCPerlinWalker.m"; sourceTree = SOURCE_ROOT; };
+		A99889A516C1FADB002C924F /* NOCPerlinWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCPerlinWalkerSketchViewController.h; path = "Nature of Code/Week 1/NOCPerlinWalkerSketchViewController.h"; sourceTree = SOURCE_ROOT; };
+		A99889A616C1FADB002C924F /* NOCPerlinWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCPerlinWalkerSketchViewController.m; path = "Nature of Code/Week 1/NOCPerlinWalkerSketchViewController.m"; sourceTree = SOURCE_ROOT; };
+		A99889A716C1FADB002C924F /* NOCRandomWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCRandomWalker.h; path = "Nature of Code/Week 1/NOCRandomWalker.h"; sourceTree = SOURCE_ROOT; };
+		A99889A816C1FADB002C924F /* NOCRandomWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCRandomWalker.m; path = "Nature of Code/Week 1/NOCRandomWalker.m"; sourceTree = SOURCE_ROOT; };
+		A99889A916C1FADB002C924F /* NOCRandomWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCRandomWalkerSketchViewController.h; path = "Nature of Code/Week 1/NOCRandomWalkerSketchViewController.h"; sourceTree = SOURCE_ROOT; };
+		A99889AA16C1FADB002C924F /* NOCRandomWalkerSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCRandomWalkerSketchViewController.m; path = "Nature of Code/Week 1/NOCRandomWalkerSketchViewController.m"; sourceTree = SOURCE_ROOT; };
+		A99889AB16C1FADB002C924F /* NOCWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCWalker.h; path = "Nature of Code/Week 1/NOCWalker.h"; sourceTree = SOURCE_ROOT; };
+		A99889AC16C1FADB002C924F /* NOCWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCWalker.m; path = "Nature of Code/Week 1/NOCWalker.m"; sourceTree = SOURCE_ROOT; };
+		A99889AD16C1FADB002C924F /* RandomWalker.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = RandomWalker.fsh; path = "Nature of Code/Week 1/RandomWalker.fsh"; sourceTree = SOURCE_ROOT; };
+		A99889AE16C1FADB002C924F /* RandomWalker.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = RandomWalker.vsh; path = "Nature of Code/Week 1/RandomWalker.vsh"; sourceTree = SOURCE_ROOT; };
+		A99889BC16C1FB09002C924F /* NOC2DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOC2DSketchViewController.h; path = Shared/NOC2DSketchViewController.h; sourceTree = "<group>"; };
+		A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOC2DSketchViewController.m; path = Shared/NOC2DSketchViewController.m; sourceTree = "<group>"; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,55 +201,49 @@
 			path = thumbnails;
 			sourceTree = "<group>";
 		};
-		A95C8FEF16BD6E41003C8F5B /* Chapters */ = {
+		A95C8FEF16BD6E41003C8F5B /* Chapters / Weeks */ = {
 			isa = PBXGroup;
 			children = (
-				A95C900016BD7351003C8F5B /* Chapter 1 */,
-				A95C900116BD7351003C8F5B /* Chapter 2 */,
-				A95C900216BD7351003C8F5B /* Chapter 3 */,
+				A95C900016BD7351003C8F5B /* Week 1 */,
+				A95C900116BD7351003C8F5B /* Week 2 */,
 				A95C900316BD7351003C8F5B /* Sample */,
 			);
-			name = Chapters;
+			name = "Chapters / Weeks";
 			sourceTree = "<group>";
 		};
-		A95C900016BD7351003C8F5B /* Chapter 1 */ = {
+		A95C900016BD7351003C8F5B /* Week 1 */ = {
 			isa = PBXGroup;
 			children = (
-				A95C902716BDD71F003C8F5B /* NOCDirectedWalker.h */,
-				A95C902816BDD720003C8F5B /* NOCDirectedWalker.m */,
-				A95C902D16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.h */,
-				A95C902E16BDD846003C8F5B /* NOCDirectedWalkerSketchViewController.m */,
-				A95C903316BDE63E003C8F5B /* NOCGuiDirectedWalker.xib */,
-				A920CEB116C021FA00284EAF /* NOCGuiPerlinWalker.xib */,
-				A95C902216BDA797003C8F5B /* NOCGuiRandomWalker.xib */,
-				A987363016C00491001D74E8 /* NOCPerlinWalker.h */,
-				A987363116C00491001D74E8 /* NOCPerlinWalker.m */,
-				A987362D16C00403001D74E8 /* NOCPerlinWalkerSketchViewController.h */,
-				A987362E16C00404001D74E8 /* NOCPerlinWalkerSketchViewController.m */,
-				A95C902416BDD70D003C8F5B /* NOCRandomWalker.h */,
-				A95C902516BDD70E003C8F5B /* NOCRandomWalker.m */,
-				A95C900F16BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.h */,
-				A95C901016BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m */,
-				A95C901B16BD813F003C8F5B /* NOCWalker.h */,
-				A95C901C16BD813F003C8F5B /* NOCWalker.m */,
-				A95C901216BD7DBB003C8F5B /* RandomWalker.fsh */,
-				A95C901416BD7DC6003C8F5B /* RandomWalker.vsh */,
+				A998899C16C1FADB002C924F /* NOCDirectedWalker.h */,
+				A998899D16C1FADB002C924F /* NOCDirectedWalker.m */,
+				A998899E16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.h */,
+				A998899F16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m */,
+				A99889A016C1FADB002C924F /* NOCGuiDirectedWalker.xib */,
+				A99889A116C1FADB002C924F /* NOCGuiPerlinWalker.xib */,
+				A99889A216C1FADB002C924F /* NOCGuiRandomWalker.xib */,
+				A99889A316C1FADB002C924F /* NOCPerlinWalker.h */,
+				A99889A416C1FADB002C924F /* NOCPerlinWalker.m */,
+				A99889A516C1FADB002C924F /* NOCPerlinWalkerSketchViewController.h */,
+				A99889A616C1FADB002C924F /* NOCPerlinWalkerSketchViewController.m */,
+				A99889A716C1FADB002C924F /* NOCRandomWalker.h */,
+				A99889A816C1FADB002C924F /* NOCRandomWalker.m */,
+				A99889A916C1FADB002C924F /* NOCRandomWalkerSketchViewController.h */,
+				A99889AA16C1FADB002C924F /* NOCRandomWalkerSketchViewController.m */,
+				A99889AB16C1FADB002C924F /* NOCWalker.h */,
+				A99889AC16C1FADB002C924F /* NOCWalker.m */,
+				A99889AD16C1FADB002C924F /* RandomWalker.fsh */,
+				A99889AE16C1FADB002C924F /* RandomWalker.vsh */,
 			);
+			name = "Week 1";
 			path = "Chapter 1";
 			sourceTree = "<group>";
 		};
-		A95C900116BD7351003C8F5B /* Chapter 2 */ = {
+		A95C900116BD7351003C8F5B /* Week 2 */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = "Week 2";
 			path = "Chapter 2";
-			sourceTree = "<group>";
-		};
-		A95C900216BD7351003C8F5B /* Chapter 3 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Chapter 3";
 			sourceTree = "<group>";
 		};
 		A95C900316BD7351003C8F5B /* Sample */ = {
@@ -350,7 +344,7 @@
 				A987363C16C00879001D74E8 /* Math */,
 				A987361616BE04FD001D74E8 /* Helpers */,
 				A95C900816BD7351003C8F5B /* Shared */,
-				A95C8FEF16BD6E41003C8F5B /* Chapters */,
+				A95C8FEF16BD6E41003C8F5B /* Chapters / Weeks */,
 				A9D1AE9016B99A77000BE623 /* NOCAppDelegate.h */,
 				A9D1AE9116B99A77000BE623 /* NOCAppDelegate.m */,
 				A9D1AE8816B99A77000BE623 /* Supporting Files */,
@@ -398,8 +392,8 @@
 		A9D1AEBE16B9A1B3000BE623 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A95C903016BDD94E003C8F5B /* NOC2DSketchViewController.h */,
-				A95C903116BDD94E003C8F5B /* NOC2DSketchViewController.m */,
+				A99889BC16C1FB09002C924F /* NOC2DSketchViewController.h */,
+				A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */,
 				A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */,
 				A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */,
 				A9D1AEA316B99A78000BE623 /* NOCSketchViewController~ipad.xib */,
@@ -483,10 +477,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A99889BA16C1FADB002C924F /* RandomWalker.fsh in Resources */,
+				A99889BB16C1FADB002C924F /* RandomWalker.vsh in Resources */,
 				A987361F16BF2D8E001D74E8 /* BackgroundTexture.fsh in Resources */,
 				A987362116BF2D98001D74E8 /* BackgroundTexture.vsh in Resources */,
-				A95C901316BD7DBB003C8F5B /* RandomWalker.fsh in Resources */,
-				A95C901516BD7DC6003C8F5B /* RandomWalker.vsh in Resources */,
 				A9D1AE8C16B99A77000BE623 /* InfoPlist.strings in Resources */,
 				A9D1AEA216B99A78000BE623 /* NOCSketchViewController~iphone.xib in Resources */,
 				A9D1AEA516B99A78000BE623 /* NOCSketchViewController~ipad.xib in Resources */,
@@ -502,9 +496,6 @@
 				A95C900D16BD7351003C8F5B /* SampleShader.vsh in Resources */,
 				A95C8FED16BD6E11003C8F5B /* Default.png in Resources */,
 				A95C8FEE16BD6E11003C8F5B /* Default@2x.png in Resources */,
-				A95C902316BDA798003C8F5B /* NOCGuiRandomWalker.xib in Resources */,
-				A95C903416BDE641003C8F5B /* NOCGuiDirectedWalker.xib in Resources */,
-				A920CEB216C021FA00284EAF /* NOCGuiPerlinWalker.xib in Resources */,
 				A920CEBB16C0373D00284EAF /* thumb_DirectedWalker.png in Resources */,
 				A920CEBC16C0373D00284EAF /* thumb_DirectedWalker@2x.png in Resources */,
 				A920CEBD16C0373D00284EAF /* thumb_PerlinWalker.png in Resources */,
@@ -517,6 +508,9 @@
 				A9D7CB5916C1E86E00BD5331 /* Default-Landscape~iphone.png in Resources */,
 				A9D7CB5A16C1E86E00BD5331 /* Default-Portrait@2x~ipad.png in Resources */,
 				A9D7CB5B16C1E86E00BD5331 /* Default-Portrait~ipad.png in Resources */,
+				A99889B216C1FADB002C924F /* NOCGuiDirectedWalker.xib in Resources */,
+				A99889B316C1FADB002C924F /* NOCGuiPerlinWalker.xib in Resources */,
+				A99889B416C1FADB002C924F /* NOCGuiRandomWalker.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,21 +530,21 @@
 				A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */,
 				A95C900B16BD7351003C8F5B /* NOCSampleSketchViewController.m in Sources */,
 				A95C900E16BD7351003C8F5B /* NOCShaderProgram.m in Sources */,
-				A95C901116BD7DA1003C8F5B /* NOCRandomWalkerSketchViewController.m in Sources */,
 				A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */,
-				A95C901D16BD813F003C8F5B /* NOCWalker.m in Sources */,
 				A95C902016BD81FA003C8F5B /* NOCOpenGLTypes.m in Sources */,
-				A95C902616BDD70F003C8F5B /* NOCRandomWalker.m in Sources */,
-				A95C902916BDD721003C8F5B /* NOCDirectedWalker.m in Sources */,
-				A95C902F16BDD847003C8F5B /* NOCDirectedWalkerSketchViewController.m in Sources */,
-				A95C903216BDD950003C8F5B /* NOC2DSketchViewController.m in Sources */,
 				A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */,
 				A987361D16BE0D2D001D74E8 /* NOCTESTSketchViewController.m in Sources */,
 				A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */,
-				A987362F16C00405001D74E8 /* NOCPerlinWalkerSketchViewController.m in Sources */,
-				A987363216C00492001D74E8 /* NOCPerlinWalker.m in Sources */,
 				A987363E16C00885001D74E8 /* perlin.c in Sources */,
 				A987364316C00C00001D74E8 /* CGGeometry.m in Sources */,
+				A99889B016C1FADB002C924F /* NOCDirectedWalker.m in Sources */,
+				A99889B116C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m in Sources */,
+				A99889B516C1FADB002C924F /* NOCPerlinWalker.m in Sources */,
+				A99889B616C1FADB002C924F /* NOCPerlinWalkerSketchViewController.m in Sources */,
+				A99889B716C1FADB002C924F /* NOCRandomWalker.m in Sources */,
+				A99889B816C1FADB002C924F /* NOCRandomWalkerSketchViewController.m in Sources */,
+				A99889B916C1FADB002C924F /* NOCWalker.m in Sources */,
+				A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

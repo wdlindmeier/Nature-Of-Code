@@ -11,8 +11,6 @@
 #import "NOCGeometryHelpers.h"
 #import "CGGeometry.h"
 
-static const int NumSavedPositions = 5;
-
 @implementation NOCPerlinWalker
 {
     float _curTime;
