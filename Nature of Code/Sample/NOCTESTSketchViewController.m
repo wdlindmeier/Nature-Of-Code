@@ -11,42 +11,23 @@
 #import "NOCRandomWalker.h"
 #import <QuartzCore/QuartzCore.h>
 
-GLfloat ScreenQuadVerts[20] = {
-    -1,-1,1.0,
-    0,1,
-    
-    1,-1,1.0,
-    1,1,
-    
-    -1,1,1.0,
-    0,0,
-    
-    1,1,1.0,
-    1,0
-};
+// NOTE
+// This controller is used for experimentation
 
 @implementation NOCTESTSketchViewController
 {
-    GLsizei _cxFBO;
-    GLsizei _cyFBO;
-    GLuint _frameBufferID;
-//    GLuint _colorRenderBuffer;
-    GLuint _depthRenderBuffer;
-    GLuint _fboTextureID;
-    
     NOCRandomWalker *_walker;
 }
 
 static NSString * UniformFBOTexture = @"texture";
-static NSString * FBOShaderName = @"BackgroundFBO";
+static NSString * BackgroundShaderName = @"BackgroundTexture";
 static NSString * WalkerShaderName = @"RandomWalker";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
 - (void)setup
 {
     // Setup the sample shader
-
-    NOCShaderProgram *texShader = [[NOCShaderProgram alloc] initWithName:FBOShaderName];
+    NOCShaderProgram *texShader = [[NOCShaderProgram alloc] initWithName:BackgroundShaderName];
     
     texShader.attributes = @{
      @"position" : @(GLKVertexAttribPosition),
@@ -59,7 +40,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     ];
     
 
-    // Setup the shader
+    // Setup the walker shader
     NOCShaderProgram *walkerShader = [[NOCShaderProgram alloc] initWithName:WalkerShaderName];
     
     walkerShader.attributes = @{
@@ -71,14 +52,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         UniformMVProjectionMatrix,
     ];
     
-    self.shaders = @{ FBOShaderName : texShader, WalkerShaderName : walkerShader };
-    
-    // TODO: This should be done in update / resize
-    CGSize sizeView = self.view.frame.size;
-    float scale = [UIScreen mainScreen].scale;
-	//float aspect = (GLfloat) sizeView.width / sizeView.height;
-	_cxFBO = sizeView.width * scale;
-	_cyFBO = sizeView.height * scale;
+    self.shaders = @{ BackgroundShaderName : texShader,
+                      WalkerShaderName : walkerShader };
     
     _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(10, 10) position:CGPointMake(0, 0)];
 

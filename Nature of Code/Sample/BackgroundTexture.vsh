@@ -8,7 +8,7 @@ uniform sampler2D texture;
 
 void main()
 {
-    colorVarying = texture2D(texture, texCoord);//texture2D(texture, texCoord);//vec4(1.0,0.0,0.0,1.0);//
+    colorVarying = texture2D(texture, texCoord);
     gl_Position = modelViewProjectionMatrix * vec4(position, 1.0);
 }
 

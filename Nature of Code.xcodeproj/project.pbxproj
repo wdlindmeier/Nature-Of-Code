@@ -36,8 +36,8 @@
 		A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987360F16BDF37E001D74E8 /* CoreMotion.framework */; };
 		A987361A16BE052C001D74E8 /* NOCUIKitHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */; };
 		A987361D16BE0D2D001D74E8 /* NOCTESTSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */; };
-		A987361F16BF2D8E001D74E8 /* BackgroundFBO.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A987361E16BF2D8E001D74E8 /* BackgroundFBO.fsh */; };
-		A987362116BF2D98001D74E8 /* BackgroundFBO.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A987362016BF2D98001D74E8 /* BackgroundFBO.vsh */; };
+		A987361F16BF2D8E001D74E8 /* BackgroundTexture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A987361E16BF2D8E001D74E8 /* BackgroundTexture.fsh */; };
+		A987362116BF2D98001D74E8 /* BackgroundTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A987362016BF2D98001D74E8 /* BackgroundTexture.vsh */; };
 		A987362316BF443D001D74E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987362216BF443D001D74E8 /* QuartzCore.framework */; };
 		A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */; };
 		A987362F16C00405001D74E8 /* NOCPerlinWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362E16C00404001D74E8 /* NOCPerlinWalkerSketchViewController.m */; };
@@ -66,6 +66,12 @@
 		A9D1AEC516B9A77D000BE623 /* NOCTableOfContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC416B9A77D000BE623 /* NOCTableOfContentsCell.m */; };
 		A9D1AEC816B9A7B1000BE623 /* NOCChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC716B9A7B1000BE623 /* NOCChapter.m */; };
 		A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AECA16B9A806000BE623 /* NOCSketch.m */; };
+		A9D7CB5616C1E86E00BD5331 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */; };
+		A9D7CB5716C1E86E00BD5331 /* Default-Landscape@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */; };
+		A9D7CB5816C1E86E00BD5331 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */; };
+		A9D7CB5916C1E86E00BD5331 /* Default-Landscape~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5316C1E86E00BD5331 /* Default-Landscape~iphone.png */; };
+		A9D7CB5A16C1E86E00BD5331 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */; };
+		A9D7CB5B16C1E86E00BD5331 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,8 +117,8 @@
 		A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCUIKitHelpers.m; sourceTree = "<group>"; };
 		A987361B16BE0D2D001D74E8 /* NOCTESTSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTESTSketchViewController.h; sourceTree = "<group>"; };
 		A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTESTSketchViewController.m; sourceTree = "<group>"; };
-		A987361E16BF2D8E001D74E8 /* BackgroundFBO.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundFBO.fsh; sourceTree = "<group>"; };
-		A987362016BF2D98001D74E8 /* BackgroundFBO.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundFBO.vsh; sourceTree = "<group>"; };
+		A987361E16BF2D8E001D74E8 /* BackgroundTexture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundTexture.fsh; sourceTree = "<group>"; };
+		A987362016BF2D98001D74E8 /* BackgroundTexture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundTexture.vsh; sourceTree = "<group>"; };
 		A987362216BF443D001D74E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAEAGLLayer+Retained.h"; sourceTree = "<group>"; };
 		A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAEAGLLayer+Retained.m"; sourceTree = "<group>"; };
@@ -156,6 +162,12 @@
 		A9D1AEC916B9A806000BE623 /* NOCSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCSketch.h; path = "Nature of Code/NOCSketch.h"; sourceTree = "<group>"; };
 		A9D1AECA16B9A806000BE623 /* NOCSketch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCSketch.m; path = "Nature of Code/NOCSketch.m"; sourceTree = "<group>"; };
 		A9D1AECC16B9A850000BE623 /* NOCGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCGlobals.h; sourceTree = "<group>"; };
+		A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~iphone.png"; sourceTree = "<group>"; };
+		A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		A9D7CB5316C1E86E00BD5331 /* Default-Landscape~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~iphone.png"; sourceTree = "<group>"; };
+		A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,8 +293,8 @@
 				A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */,
 				A987361B16BE0D2D001D74E8 /* NOCTESTSketchViewController.h */,
 				A987361C16BE0D2D001D74E8 /* NOCTESTSketchViewController.m */,
-				A987361E16BF2D8E001D74E8 /* BackgroundFBO.fsh */,
-				A987362016BF2D98001D74E8 /* BackgroundFBO.vsh */,
+				A987361E16BF2D8E001D74E8 /* BackgroundTexture.fsh */,
+				A987362016BF2D98001D74E8 /* BackgroundTexture.vsh */,
 			);
 			name = SCRATCH;
 			sourceTree = "<group>";
@@ -363,8 +375,13 @@
 		A9D1AEAB16B99E68000BE623 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				A920CEB416C0373D00284EAF /* thumbnails */,
 				A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */,
+				A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */,
+				A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */,
+				A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */,
+				A9D7CB5316C1E86E00BD5331 /* Default-Landscape~iphone.png */,
+				A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */,
+				A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */,
 				A95C8FEA16BD6E11003C8F5B /* Default.png */,
 				A95C8FEB16BD6E11003C8F5B /* Default@2x.png */,
 				A9D1AEAC16B99E68000BE623 /* Icon1024.png */,
@@ -373,6 +390,7 @@
 				A9D1AEAF16B99E68000BE623 /* Icon@2x~iphone.png */,
 				A9D1AEB016B99E68000BE623 /* Icon~ipad.png */,
 				A9D1AEB116B99E68000BE623 /* Icon~iphone.png */,
+				A920CEB416C0373D00284EAF /* thumbnails */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -465,8 +483,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A987361F16BF2D8E001D74E8 /* BackgroundFBO.fsh in Resources */,
-				A987362116BF2D98001D74E8 /* BackgroundFBO.vsh in Resources */,
+				A987361F16BF2D8E001D74E8 /* BackgroundTexture.fsh in Resources */,
+				A987362116BF2D98001D74E8 /* BackgroundTexture.vsh in Resources */,
 				A95C901316BD7DBB003C8F5B /* RandomWalker.fsh in Resources */,
 				A95C901516BD7DC6003C8F5B /* RandomWalker.vsh in Resources */,
 				A9D1AE8C16B99A77000BE623 /* InfoPlist.strings in Resources */,
@@ -493,6 +511,12 @@
 				A920CEBE16C0373D00284EAF /* thumb_PerlinWalker@2x.png in Resources */,
 				A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */,
 				A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */,
+				A9D7CB5616C1E86E00BD5331 /* Default-Landscape@2x~ipad.png in Resources */,
+				A9D7CB5716C1E86E00BD5331 /* Default-Landscape@2x~iphone.png in Resources */,
+				A9D7CB5816C1E86E00BD5331 /* Default-Landscape~ipad.png in Resources */,
+				A9D7CB5916C1E86E00BD5331 /* Default-Landscape~iphone.png in Resources */,
+				A9D7CB5A16C1E86E00BD5331 /* Default-Portrait@2x~ipad.png in Resources */,
+				A9D7CB5B16C1E86E00BD5331 /* Default-Portrait~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
