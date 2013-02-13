@@ -104,7 +104,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     
     // Setup the Walker
     _positionFollow = GLKVector2Make(0, 0);
-    _walker = [[NOCDirectedWalker alloc] initWithSize:CGSizeMake(10, 10)
+    _walker = [[NOCDirectedWalker alloc] initWithSize:CGSizeMake(0.01, 0.01)
                                              position:_positionFollow];
     
     // Call this to trigger the initial mode
@@ -133,10 +133,9 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     
     // Step w/in the bounds
     CGSize sizeView = self.view.frame.size;
-    CGRect walkerBounds = CGRectMake(sizeView.width * -0.5,
-                                     sizeView.height * -0.5,
-                                     sizeView.width,
-                                     sizeView.height);
+    float aspect = sizeView.width / sizeView.height;
+    CGRect walkerBounds = CGRectMake(-1, -1 / aspect,
+                                     2, 2 / aspect);
 
     _walker.probabilityOfFollowingPoint = self.sliderProbability.value;
     
@@ -159,7 +158,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     NSNumber *projMatLoc = _shader.uniformLocations[UniformMVProjectionMatrix];
     
     // Get the model matrix
-    GLKMatrix4 modelMat = [_walker modelMatrixForPixelUnit:_pxUnit];
+    GLKMatrix4 modelMat = [_walker modelMatrix];
 
     // Multiply by the projection matrix
     GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, modelMat);
@@ -182,10 +181,13 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
 - (void)getFollowPointFromGravity
 {
     CGSize sizeView = self.view.frame.size;
+    float aspect = sizeView.width / sizeView.height;
+
     CMDeviceMotion *motion = [_motionManager deviceMotion];
     CMAcceleration gravity = motion.gravity;
-    float halfWidth = sizeView.width * 0.5;
-    float halfHeight = sizeView.height * 0.5;
+    
+    float halfWidth = 1;
+    float halfHeight = 1 / aspect;
 
     // Calibrate for the amount of tily by eyeballing 
     const static float GravityMultiplier = 2.0f;
@@ -220,18 +222,20 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
 - (void)followTouches:(NSSet *)touches
 {
     CGSize sizeView = self.view.frame.size;
+    float halfWidth = (sizeView.width * 0.5);
+    float halfHeight =  (sizeView.height * 0.5);
+    float aspect = sizeView.width / sizeView.height;
     
     for(UITouch *t in touches){
         
-        // We have to map this touch onto a -1..1 coord system
         CGPoint posTouch = [t locationInView:self.view];
         
-        float halfWidth = sizeView.width * 0.5;
-        float halfHeight = sizeView.height * 0.5;
-        float x = posTouch.x - halfWidth;
-        float y = (posTouch.y - halfHeight) * -1;
+        // Convert to GL coords -1..1
+        float x = (posTouch.x - halfWidth) / halfWidth;
+        float y = ((posTouch.y - halfHeight) / halfHeight) * -1 / aspect;
         
         _positionFollow = GLKVector2Make(x, y);
+        
     }
 }
 

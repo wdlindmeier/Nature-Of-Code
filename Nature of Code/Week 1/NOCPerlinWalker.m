@@ -38,10 +38,10 @@
 {
     
     // Get the bounds for the current scale
-    float minX = rect.origin.x / self.size.width;
-    float maxX = (rect.origin.x + rect.size.width) / self.size.width;
-    float minY = rect.origin.y / self.size.height;
-    float maxY = (rect.origin.y + rect.size.height) / self.size.height;
+    float minX = rect.origin.x;
+    float maxX = rect.origin.x + rect.size.width;
+    float minY = rect.origin.y;
+    float maxY = rect.origin.y + rect.size.height;
     
     // Increment the time
     _curTimeX += self.timeStep;
@@ -57,10 +57,14 @@
                                 self.perlinBeta,
                                 self.perlinNumOctaves);
     
-    CGPoint normalRandXY = CGPointNormalize(CGPointMake(randX, randY));
+    GLKVector2 normalRandXY = GLKVector2Normalize(GLKVector2Make(randX, randY));
+
+    // Scaling the position to the size of the model unit
+    float addX = normalRandXY.x * self.size.width;
+    float addY = normalRandXY.y * self.size.height;
     
-    float x = self.position.x + normalRandXY.x;
-    float y = self.position.y + normalRandXY.y;
+    float x = self.position.x + addX;
+    float y = self.position.y + addY;
     
     // Dont let the walker move outside of the rect.
     x = CONSTRAIN(x,minX,maxX);

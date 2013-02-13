@@ -20,18 +20,25 @@
     return self;
 }
 
-- (GLKMatrix4)modelMatrixForPixelUnit:(float)pxUnit
+
+- (GLKMatrix4)modelMatrix
 {
     GLKMatrix4 modelMat = GLKMatrix4Identity;
     
+    float scaleX = self.size.width;
+    float scaleY = self.size.height;
+    
+    // NOTE:
+    // This assumes the model geometry is on a 1.0 unit scale
+    
     modelMat = GLKMatrix4Scale(modelMat,
-                               self.size.width * pxUnit,
-                               self.size.height * pxUnit,
+                               scaleX,
+                               scaleY,
                                1.0);
     
     modelMat = GLKMatrix4Translate(modelMat,
-                                   self.position.x,
-                                   self.position.y,
+                                   self.position.x / scaleX,
+                                   self.position.y / scaleY,
                                    1.0);
     
     return modelMat;

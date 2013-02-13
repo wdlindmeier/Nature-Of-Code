@@ -14,12 +14,20 @@
 
 #define CONSTRAIN(n,min,max)    MIN(MAX(n,min),max)
 
+static float Gravity = 0.4f;
+
 static inline float map(float n, float minIn, float maxIn, float minOut, float maxOut)
 {
     float inRange = maxIn - minIn;
     float outRange = maxOut - minOut;
     float scalarN = (n-minIn) / inRange;
-    return minOut + (outRange * scalarN);
+    float ret = minOut + (outRange * scalarN);
+    if(isinf(ret) || isnan(ret)){
+        ret = maxOut;
+    }else{
+        ret = CONSTRAIN(ret, minOut, maxOut);
+    }
+    return ret;
 }
 
 #define GLKVector2Zero  GLKVector2Make(0, 0)
@@ -39,6 +47,11 @@ static inline GLKVector2 GLKVector2Limit(GLKVector2 vec, float max)
         return GLKVector2Multiply(vec, GLKVector2Make(ratio,ratio));
     }
     return vec;
+}
+
+static inline BOOL GLKVector2Equal(GLKVector2 vecA, GLKVector2 vecB)
+{
+    return vecA.x == vecB.x && vecA.y == vecB.y;
 }
 
 #endif

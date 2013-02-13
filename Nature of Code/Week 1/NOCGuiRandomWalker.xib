@@ -83,9 +83,9 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<float key="IBUIValue">4</float>
-						<float key="IBUIMinValue">1</float>
-						<float key="IBUIMaxValue">20</float>
+						<float key="IBUIValue">0.0099999997764825821</float>
+						<float key="IBUIMinValue">0.0010000000474974513</float>
+						<float key="IBUIMaxValue">0.05000000074505806</float>
 					</object>
 					<object class="IBUILabel" id="971575222">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -93,7 +93,7 @@
 						<string key="NSFrame">{{17, 142}, {286, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="42406189"/>
+						<reference key="NSNextKeyView" ref="103882153"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -122,6 +122,7 @@
 								<string key="NSFrameSize">{79, 27}</string>
 								<reference key="NSSuperview" ref="103882153"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -132,6 +133,7 @@
 						<string key="NSFrame">{{17, 177}, {286, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="42406189"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>

@@ -12,7 +12,6 @@
 @interface NOC2DSketchViewController : NOCSketchViewController
 {
     GLKMatrix4 _projectionMatrix2D;
-    float _pxUnit;
 }
 
 @end

@@ -46,6 +46,14 @@
 				<key>Controller</key>
 				<string>AccelMover</string>
 			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Mover Swarm</string>
+				<key>Description</key>
+				<string>Multiple movers that are mutually repulsed when near and attracted when distant. Acceleration is also affected by swipe gestures.</string>
+				<key>Controller</key>
+				<string>MultiMover</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

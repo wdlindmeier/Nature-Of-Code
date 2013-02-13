@@ -15,19 +15,20 @@
     int moveX = (arc4random() % 3) - 1;
     int moveY = (arc4random() % 3) - 1;
     
-    float x = self.position.x + moveX;
-    float y = self.position.y + moveY;
+    // Move on pixel units
+    float x = self.position.x + (moveX * self.size.width);
+    float y = self.position.y + (moveY * self.size.height);
     
     // Dont let the walker move outside of the rect.
-    // Also scale the rect to the size of the pixel.
-    x = CONSTRAIN(x,
-                  rect.origin.x / self.size.width,
-                  (rect.origin.x + rect.size.width) / self.size.width);
-    y = CONSTRAIN(y,
-                  rect.origin.y / self.size.height,
-                  (rect.origin.y + rect.size.height) / self.size.height);
+    float minX = rect.origin.x;
+    float minY = rect.origin.y;
+    float maxX = rect.origin.x + rect.size.width;
+    float maxY = rect.origin.y + rect.size.height;
     
-    self.position = GLKVector2Make(round(x),round(y));
+    x = CONSTRAIN(x,minX,maxX);
+    y = CONSTRAIN(y,minY,maxY);
+    
+    self.position = GLKVector2Make(x, y);
 }
 
 @end

@@ -95,7 +95,7 @@ static int frameNum = 0;
     NSNumber *projMatLoc = walkerShader.uniformLocations[UniformMVProjectionMatrix];
     
     // Get the model matrix
-    GLKMatrix4 modelMat = [_walker modelMatrixForPixelUnit:_pxUnit];
+    GLKMatrix4 modelMat = [_walker modelMatrix];
     
     // Multiply by the projection matrix
     GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, modelMat);

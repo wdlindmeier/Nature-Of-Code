@@ -7,8 +7,10 @@
 //
 
 #import "NOCMover.h"
+#import "NOCGeometryHelpers.h"
 
 // Mover Shape
+// A simple square
 GLfloat moverVertexData[12] =
 {
     // positionX, positionY, positionZ
@@ -19,62 +21,92 @@ GLfloat moverVertexData[12] =
     
 };
 
-// Mover Color
-// The alpha is only relevant if blending is enabled w/ glEnable(GL_BLEND)
+// Mover Texture coords
+// A square texture
 GLfloat moverTexCoords[8] =
 {
     0.f, 1.f,
     1.f, 1.f,
     0.f, 0.f,
-    1.f, 0.f
-    
+    1.f, 0.f    
 };
 
 @implementation NOCMover
 
-- (id)initWithSize:(CGSize)size position:(GLKVector2)position
+- (id)initWithSize:(CGSize)size position:(GLKVector2)position mass:(float)mass
 {
     self = [super initWithSize:size position:position];
     if(self){
         self.velocity = GLKVector2Zero;
         self.acceleration = GLKVector2Zero;
         self.maxVelocity = 5.0f;
+        self.mass = mass;
     }
     return self;
 }
 
-- (void)stepInRect:(CGRect)rect
+#pragma mark - Force
+
+- (void)applyForce:(GLKVector2)vecForce
 {
-    // Accelleration is handled in the sketch
-    
+    self.acceleration = GLKVector2Add(self.acceleration, vecForce);
+}
+
+- (GLKVector2)forceOnPositionedMass:(id<NOCPositionedMass>)positionedMass
+{
+    GLKVector2 vecDir = GLKVector2Subtract(positionedMass.position, self.position);
+    float magnitude = GLKVector2Length(vecDir);
+    vecDir = GLKVector2Normalize(vecDir);
+    float forceMagnitude = (Gravity * self.mass * positionedMass.mass) / (magnitude * magnitude);
+    GLKVector2 vecForce = GLKVector2MultiplyScalar(vecDir, forceMagnitude);
+    return vecForce;
+}
+
+#pragma mark - Update
+
+- (void)stepInRect:(CGRect)rect shouldWrap:(BOOL)shouldWrap
+{    
     // Add accel to velocity
     self.velocity = GLKVector2Add(self.velocity, self.acceleration);
     
     // Add velocity to location
-    self.position = GLKVector2Add(self.position, self.velocity);
+    GLKVector2 projectedPosition = GLKVector2Add(self.position, self.velocity);
+    float x = projectedPosition.x;
+    float y = projectedPosition.y;
     
     // Limit the velocity
     self.velocity = GLKVector2Limit(self.velocity, self.maxVelocity);
+    
+    float minX = rect.origin.x;
+    float maxX = (rect.origin.x + rect.size.width);
+    float minY = rect.origin.y;
+    float maxY = (rect.origin.y + rect.size.height);
 
-    // Wrap the mover around the rect
-    float x = self.position.x;
-    float y = self.position.y;
-    
-    float minX = rect.origin.x / self.size.width;
-    float maxX = (rect.origin.x + rect.size.width) / self.size.width;
-    if(x < minX) x = maxX + (x - minX);
-    else if(x > maxX) x = minX + (x - maxX);
-    
-    float minY = rect.origin.y / self.size.height;
-    float maxY = (rect.origin.y + rect.size.height) / self.size.height;
-    if(y < minY) y = maxY + (y - minY);
-    else if(y > maxY) y = minY + (y - maxY);
+    if(shouldWrap){
+        // Wrap the mover around the rect
+        if(x < minX) x = maxX + (x - minX);
+        else if(x > maxX) x = minX + (x - maxX);
+        
+        if(y < minY) y = maxY + (y - minY);
+        else if(y > maxY) y = minY + (y - maxY);
+    }else{
+        // Constrain
+        // Dont let the walker move outside of the rect.
+        x = CONSTRAIN(x, minX, maxX);
+        y = CONSTRAIN(y, minY, maxY);
+    }
     
     self.position = GLKVector2Make(x, y);
+    
+    // Reset the acceleration
+    self.acceleration = GLKVector2Zero;
 }
+
+#pragma mark - Draw
 
 - (void)render
 {
+    
     // Draw a colored square
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);

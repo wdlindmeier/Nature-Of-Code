@@ -24,8 +24,8 @@
 {
     
     // Account for the walker scale
-    float followX = followPoint.x / self.size.width;
-    float followY = followPoint.y / self.size.height;
+    float followX = followPoint.x;
+    float followY = followPoint.y;
     
     float xDelta = followX - self.position.x;
     float yDelta = followY - self.position.y;
@@ -55,19 +55,22 @@
 
     }
     
-    float x = self.position.x + round(vecFollow.x);
-    float y = self.position.y + round(vecFollow.y);
+    // Move on pixel units
+    float x = self.position.x + (round(vecFollow.x) * self.size.width);
+    float y = self.position.y + (round(vecFollow.y) * self.size.height);
+
+    // Dont let the walker move outside of the rect.
+    float minX = rect.origin.x;
+    float minY = rect.origin.y;
+    float maxX = rect.origin.x + rect.size.width;
+    float maxY = rect.origin.y + rect.size.height;
     
     // Dont let the walker move outside of the rect.
     // Also scale the rect to the size of the pixel.
-    x = CONSTRAIN(x,
-                  rect.origin.x / self.size.width,
-                  (rect.origin.x + rect.size.width) / self.size.width);
-    y = CONSTRAIN(y,
-                  rect.origin.y / self.size.height,
-                  (rect.origin.y + rect.size.height) / self.size.height);
+    x = CONSTRAIN(x,minX,maxX);
+    y = CONSTRAIN(y,minY,maxY);
     
-    self.position = GLKVector2Make(round(x),round(y));
+    self.position = GLKVector2Make(x,y);
 
 }
 

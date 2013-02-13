@@ -196,7 +196,7 @@
     
     CGSize sizeSketchView = self.selectedSketchView.frame.size;
     self.viewSketchInfoContainer.center = CGPointMake(sizeSketchView.width * 0.5,
-                                                      sizeSketchView.width * 0.5);
+                                                      sizeSketchView.height * 0.5);
 
     // Make sure the frame doesn't land on a 1/2 pixel
     CGRect framePopup = self.viewSketchInfoContainer.frame;

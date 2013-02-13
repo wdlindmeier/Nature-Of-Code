@@ -66,7 +66,7 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
     self.shaders = @{ NOCShaderNamePerlinWalker : _shader };
     
     // Setup the Walker
-    _walker = [[NOCPerlinWalker alloc] initWithSize:CGSizeMake(5, 5)
+    _walker = [[NOCPerlinWalker alloc] initWithSize:CGSizeMake(0.01, 0.01)
                                            position:GLKVector2Make(0,0)];
 
     // Clear out the values so it takes on the slider values
@@ -103,10 +103,9 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
     
     // Step w/in the bounds
     CGSize sizeView = self.view.frame.size;
-    CGRect walkerBounds = CGRectMake(sizeView.width * -0.5,
-                                     sizeView.height * -0.5,
-                                     sizeView.width,
-                                     sizeView.height);
+    float aspect = sizeView.width / sizeView.height;
+    CGRect walkerBounds = CGRectMake(-1, -1 / aspect,
+                                     2, 2 / aspect);
     
     [_walker stepInRect:walkerBounds];
     
@@ -127,7 +126,7 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
     NSNumber *projMatLoc = _shader.uniformLocations[UniformMVProjectionMatrix];
     
     // Get the model matrix
-    GLKMatrix4 modelMat = [_walker modelMatrixForPixelUnit:_pxUnit];
+    GLKMatrix4 modelMat = [_walker modelMatrix];
     
     // Multiply by the projection matrix
     GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, modelMat);

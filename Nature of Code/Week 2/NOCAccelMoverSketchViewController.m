@@ -9,6 +9,7 @@
 #import "NOCAccelMoverSketchViewController.h"
 #import "NOCShaderProgram.h"
 #import "NOCMover.h"
+#import "NOCGeometryHelpers.h"
 
 @implementation NOCAccelMoverSketchViewController
 {
@@ -74,7 +75,9 @@ static NSString * UniformMoverTexture = @"texture";
     self.shaders = @{ NOCShaderNameAccelMover : _shader };
     
     // Setup the Mover
-    _mover = [[NOCMover alloc] initWithSize:CGSizeMake(30, 30) position:GLKVector2Zero];
+    _mover = [[NOCMover alloc] initWithSize:CGSizeMake(0.1, 0.1)
+                                   position:GLKVector2Zero
+                                       mass:1.0f];
     
 }
 
@@ -83,8 +86,14 @@ static NSString * UniformMoverTexture = @"texture";
     [super update];
 
     _mover.maxVelocity = self.sliderMaxRandomAccel.value;
+    
     if(self.switchRandom.on){
-        _mover.acceleration = GLKVector2Random();
+        GLKVector2 randVec = GLKVector2Random();
+        // Tamp down the jitteriness a bit.
+        // I'm just eyeballing 0.005 because it feels right,
+        // but this could be another slider.
+        randVec = GLKVector2Multiply(randVec, GLKVector2Make(0.005, 0.005));
+        _mover.acceleration = randVec;
     }else{
         _mover.acceleration = GLKVector2Make(self.sliderAccelX.value,
                                              self.sliderAccelY.value);
@@ -92,12 +101,11 @@ static NSString * UniformMoverTexture = @"texture";
     
     // Step w/in the bounds
     CGSize sizeView = self.view.frame.size;
-    CGRect walkerBounds = CGRectMake(sizeView.width * -0.5,
-                                     sizeView.height * -0.5,
-                                     sizeView.width,
-                                     sizeView.height);
+    float aspect = sizeView.width / sizeView.height;
+    CGRect moverBounds = CGRectMake(-1, -1 / aspect,
+                                    2, 2 / aspect);
 
-    [_mover stepInRect:walkerBounds];
+    [_mover stepInRect:moverBounds shouldWrap:YES];
     
 }
 
@@ -124,21 +132,21 @@ static NSString * UniformMoverTexture = @"texture";
     glActiveTexture(0);
     glBindTexture(GL_TEXTURE_2D, _moverTexture.name);
     
+    // Attach the texture to the shader
+    NSNumber *samplerLoc = _shader.uniformLocations[UniformMoverTexture];
+    glUniform1i([samplerLoc intValue], 0);
+    
     // Create the Model View Projection matrix for the shader
     NSNumber *projMatLoc = _shader.uniformLocations[UniformMVProjectionMatrix];
     
     // Get the model matrix
-    GLKMatrix4 modelMat = [_mover modelMatrixForPixelUnit:_pxUnit];
+    GLKMatrix4 modelMat = [_mover modelMatrix];
     
     // Multiply by the projection matrix
     GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, modelMat);
     
     // Pass mvp into shader
     glUniformMatrix4fv([projMatLoc intValue], 1, 0, mvProjMat.m);
-
-    // Attach the texture to the shader
-    NSNumber *samplerLoc = _shader.uniformLocations[UniformMoverTexture];
-    glUniform1i([samplerLoc intValue], 0);
 
     [_mover render];
     

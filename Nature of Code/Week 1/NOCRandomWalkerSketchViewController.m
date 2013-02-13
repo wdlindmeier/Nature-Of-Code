@@ -49,7 +49,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
     self.shaders = @{ NOCShaderNameRandomWalker : _shader };
     
     // Setup the Walker    
-    _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(10, 10)
+    _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(0.01, 0.01)
                                            position:GLKVector2Make(0, 0)];
     
 }
@@ -71,10 +71,11 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
 
     // Step w/in the bounds
     CGSize sizeView = self.view.frame.size;
-    [_walker stepInRect:CGRectMake(sizeView.width * -0.5,
-                                   sizeView.height * -0.5,
-                                   sizeView.width,
-                                   sizeView.height)];
+    float aspect = sizeView.width / sizeView.height;
+    CGRect walkerBounds = CGRectMake(-1, -1 / aspect,
+                                     2, 2 / aspect);
+    [_walker stepInRect:walkerBounds];
+
 }
 
 - (void)draw
@@ -96,7 +97,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
     NSNumber *projMatLoc = _shader.uniformLocations[UniformMVProjectionMatrix];
     
     // Get the model matrix
-    GLKMatrix4 modelMat = [_walker modelMatrixForPixelUnit:_pxUnit];
+    GLKMatrix4 modelMat = [_walker modelMatrix];
 
     // Multiply by the projection matrix
     GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, modelMat);

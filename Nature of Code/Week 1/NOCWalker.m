@@ -35,6 +35,7 @@ GLfloat walkerColorData[16] =
 
 @implementation NOCWalker
 
+
 - (void)render
 {
     // Draw a colored square

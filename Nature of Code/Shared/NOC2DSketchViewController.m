@@ -24,8 +24,6 @@
     CGSize sizeView = bounds.size;
     float aspect = fabsf(sizeView.width / sizeView.height);
     _projectionMatrix2D = GLKMatrix4MakeScale(1, 1 * aspect, 1);
-    
-    _pxUnit = (1.0f/sizeView.width) * 2;
 }
 
 @end
