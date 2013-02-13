@@ -66,6 +66,8 @@
 		A9BC923816CBF899009AD45C /* SceneBox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923616CBF898009AD45C /* SceneBox.fsh */; };
 		A9BC923916CBF899009AD45C /* SceneBox.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923716CBF899009AD45C /* SceneBox.vsh */; };
 		A9BC923C16CC04E8009AD45C /* NOCSceneBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC923B16CC04E7009AD45C /* NOCSceneBox.m */; };
+		A9BC923F16CC10DE009AD45C /* thumb_Movers3D.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */; };
+		A9BC924016CC10DE009AD45C /* thumb_Movers3D@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -184,6 +186,8 @@
 		A9BC923716CBF899009AD45C /* SceneBox.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SceneBox.vsh; path = "Nature of Code/Week 2/SceneBox.vsh"; sourceTree = SOURCE_ROOT; };
 		A9BC923A16CC04E6009AD45C /* NOCSceneBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCSceneBox.h; path = "Nature of Code/Week 2/NOCSceneBox.h"; sourceTree = SOURCE_ROOT; };
 		A9BC923B16CC04E7009AD45C /* NOCSceneBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCSceneBox.m; path = "Nature of Code/Week 2/NOCSceneBox.m"; sourceTree = SOURCE_ROOT; };
+		A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Movers3D.png; sourceTree = "<group>"; };
+		A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Movers3D@2x.png"; sourceTree = "<group>"; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,6 +253,8 @@
 				A9077A3916CB4ECF008032C7 /* thumb_AccelMover@2x.png */,
 				A920CEB516C0373D00284EAF /* thumb_DirectedWalker.png */,
 				A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */,
+				A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */,
+				A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */,
 				A9077A3A16CB4ECF008032C7 /* thumb_MultiMover.png */,
 				A9077A3B16CB4ECF008032C7 /* thumb_MultiMover@2x.png */,
 				A920CEB716C0373D00284EAF /* thumb_PerlinWalker.png */,
@@ -618,6 +624,8 @@
 				A9077A3E16CB4ECF008032C7 /* thumb_MultiMover.png in Resources */,
 				A9077A3F16CB4ECF008032C7 /* thumb_MultiMover@2x.png in Resources */,
 				A9BC923516CBF481009AD45C /* NOCGuiMover3D.xib in Resources */,
+				A9BC923F16CC10DE009AD45C /* thumb_Movers3D.png in Resources */,
+				A9BC924016CC10DE009AD45C /* thumb_Movers3D@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
