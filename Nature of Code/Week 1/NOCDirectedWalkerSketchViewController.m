@@ -104,7 +104,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     
     // Setup the Walker
     _positionFollow = GLKVector2Make(0, 0);
-    _walker = [[NOCDirectedWalker alloc] initWithSize:CGSizeMake(0.01, 0.01)
+    _walker = [[NOCDirectedWalker alloc] initWithSize:GLKVector2Make(0.01, 0.01)
                                              position:_positionFollow];
     
     // Call this to trigger the initial mode
@@ -129,7 +129,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
     
     // Update the walker size according to the slider.
     float walkerSize = self.sliderPixelSize.value;
-    _walker.size = CGSizeMake(walkerSize, walkerSize);
+    _walker.size = GLKVector2Make(walkerSize, walkerSize);
     
     // Step w/in the bounds
     CGSize sizeView = self.view.frame.size;

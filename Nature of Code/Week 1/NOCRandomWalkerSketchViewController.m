@@ -49,7 +49,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
     self.shaders = @{ NOCShaderNameRandomWalker : _shader };
     
     // Setup the Walker    
-    _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(0.01, 0.01)
+    _walker = [[NOCRandomWalker alloc] initWithSize:GLKVector2Make(0.01, 0.01)
                                            position:GLKVector2Make(0, 0)];
     
 }
@@ -67,7 +67,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
 
     // Update the walker size according to the slider.
     float walkerSize = self.sliderPixelSize.value;
-    _walker.size = CGSizeMake(walkerSize, walkerSize);
+    _walker.size = GLKVector2Make(walkerSize, walkerSize);
 
     // Step w/in the bounds
     CGSize sizeView = self.view.frame.size;

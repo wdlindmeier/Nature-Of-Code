@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NOCParticle.h"
+#import "NOCParticle2D.h"
 #import "NOCPositionedMass.h"
 
-@interface NOCMover : NOCParticle <NOCPositionedMass>
+@interface NOCMover2D : NOCParticle2D <NOCPositionedMass2D>
 
 @property (nonatomic, assign) GLKVector2 velocity;
 @property (nonatomic, assign) GLKVector2 acceleration;
 @property (nonatomic, assign) float mass;
 @property (nonatomic, assign) float maxVelocity;
 
-- (id)initWithSize:(CGSize)size position:(GLKVector2)position mass:(float)mass;
+- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position mass:(float)mass;
 - (void)stepInRect:(CGRect)rect shouldWrap:(BOOL)shouldWrap;
 - (void)applyForce:(GLKVector2)vecForce;
 

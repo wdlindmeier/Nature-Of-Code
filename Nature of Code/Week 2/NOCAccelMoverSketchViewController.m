@@ -8,13 +8,13 @@
 
 #import "NOCAccelMoverSketchViewController.h"
 #import "NOCShaderProgram.h"
-#import "NOCMover.h"
+#import "NOCMover2D.h"
 #import "NOCGeometryHelpers.h"
 
 @implementation NOCAccelMoverSketchViewController
 {
     NOCShaderProgram *_shader;
-    NOCMover *_mover;
+    NOCMover2D *_mover;
     GLKTextureInfo *_moverTexture;
 }
 
@@ -75,9 +75,9 @@ static NSString * UniformMoverTexture = @"texture";
     self.shaders = @{ NOCShaderNameAccelMover : _shader };
     
     // Setup the Mover
-    _mover = [[NOCMover alloc] initWithSize:CGSizeMake(0.1, 0.1)
-                                   position:GLKVector2Zero
-                                       mass:1.0f];
+    _mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(0.1, 0.1)
+                                     position:GLKVector2Zero
+                                         mass:1.0f];
     
 }
 

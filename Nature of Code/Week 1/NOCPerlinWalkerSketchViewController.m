@@ -66,7 +66,7 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
     self.shaders = @{ NOCShaderNamePerlinWalker : _shader };
     
     // Setup the Walker
-    _walker = [[NOCPerlinWalker alloc] initWithSize:CGSizeMake(0.01, 0.01)
+    _walker = [[NOCPerlinWalker alloc] initWithSize:GLKVector2Make(0.01, 0.01)
                                            position:GLKVector2Make(0,0)];
 
     // Clear out the values so it takes on the slider values

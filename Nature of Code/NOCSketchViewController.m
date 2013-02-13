@@ -264,7 +264,6 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (void)setupGL
 {
-    NSLog(@"setupGL");
     [EAGLContext setCurrentContext:self.context];
     [self setup];
     [self loadShaders];
@@ -272,7 +271,6 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (void)tearDownGL
 {
-    NSLog(@"tearDownGL");
     [self teardown];
     for(NSString *shaderName in self.shaders){
         NOCShaderProgram *shader = self.shaders[shaderName];

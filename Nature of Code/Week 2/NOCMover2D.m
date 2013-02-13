@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 wdlindmeier. All rights reserved.
 //
 
-#import "NOCMover.h"
+#import "NOCMover2D.h"
 #import "NOCGeometryHelpers.h"
 
 // Mover Shape
@@ -31,9 +31,9 @@ GLfloat moverTexCoords[8] =
     1.f, 0.f    
 };
 
-@implementation NOCMover
+@implementation NOCMover2D
 
-- (id)initWithSize:(CGSize)size position:(GLKVector2)position mass:(float)mass
+- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position mass:(float)mass
 {
     self = [super initWithSize:size position:position];
     if(self){
@@ -52,7 +52,7 @@ GLfloat moverTexCoords[8] =
     self.acceleration = GLKVector2Add(self.acceleration, vecForce);
 }
 
-- (GLKVector2)forceOnPositionedMass:(id<NOCPositionedMass>)positionedMass
+- (GLKVector2)forceOnPositionedMass:(id<NOCPositionedMass2D>)positionedMass
 {
     GLKVector2 vecDir = GLKVector2Subtract(positionedMass.position, self.position);
     float magnitude = GLKVector2Length(vecDir);

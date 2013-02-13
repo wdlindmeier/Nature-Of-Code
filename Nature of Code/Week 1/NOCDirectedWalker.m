@@ -11,7 +11,7 @@
 
 @implementation NOCDirectedWalker
 
-- (id)initWithSize:(CGSize)size position:(GLKVector2)position
+- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position
 {
     self = [super initWithSize:size position:position];
     if(self){
@@ -56,8 +56,8 @@
     }
     
     // Move on pixel units
-    float x = self.position.x + (round(vecFollow.x) * self.size.width);
-    float y = self.position.y + (round(vecFollow.y) * self.size.height);
+    float x = self.position.x + (round(vecFollow.x) * self.size.x);
+    float y = self.position.y + (round(vecFollow.y) * self.size.y);
 
     // Dont let the walker move outside of the rect.
     float minX = rect.origin.x;

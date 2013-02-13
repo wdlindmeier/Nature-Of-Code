@@ -18,11 +18,11 @@
 		A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */; };
 		A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */; };
 		A95A5A5016C2D8970001D07D /* NOCAccelMoverSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */; };
-		A95A5A5416C2D8A80001D07D /* NOCMover.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5316C2D8A80001D07D /* NOCMover.m */; };
+		A95A5A5416C2D8A80001D07D /* NOCMover2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5316C2D8A80001D07D /* NOCMover2D.m */; };
 		A95A5A5616C2D8C60001D07D /* NOCGuiAccelMover.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */; };
 		A95A5A5816C2D9320001D07D /* Mover.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5716C2D9320001D07D /* Mover.fsh */; };
 		A95A5A5A16C2D9410001D07D /* Mover.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5916C2D9410001D07D /* Mover.vsh */; };
-		A95A5A5D16C2DABC0001D07D /* NOCParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5C16C2DABC0001D07D /* NOCParticle.m */; };
+		A95A5A5D16C2DABC0001D07D /* NOCParticle2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5C16C2DABC0001D07D /* NOCParticle2D.m */; };
 		A95A5A6016C2E7AC0001D07D /* mover.png in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5F16C2E7AC0001D07D /* mover.png */; };
 		A95C8FEC16BD6E11003C8F5B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */; };
 		A95C8FED16BD6E11003C8F5B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A95C8FEA16BD6E11003C8F5B /* Default.png */; };
@@ -58,6 +58,7 @@
 		A99889BB16C1FADB002C924F /* RandomWalker.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A99889AE16C1FADB002C924F /* RandomWalker.vsh */; };
 		A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */; };
 		A99889C016C2AA88002C924F /* NOCSketchDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */; };
+		A9BC922A16CBE54A009AD45C /* NOCParticle3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC922916CBE54A009AD45C /* NOCParticle3D.m */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -102,13 +103,13 @@
 		A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_RandomWalker@2x.png"; sourceTree = "<group>"; };
 		A95A5A4E16C2D8970001D07D /* NOCAccelMoverSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCAccelMoverSketchViewController.h; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.h"; sourceTree = SOURCE_ROOT; };
 		A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCAccelMoverSketchViewController.m; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.m"; sourceTree = SOURCE_ROOT; };
-		A95A5A5216C2D8A80001D07D /* NOCMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMover.h; path = "Nature of Code/Week 2/NOCMover.h"; sourceTree = SOURCE_ROOT; };
-		A95A5A5316C2D8A80001D07D /* NOCMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCMover.m; path = "Nature of Code/Week 2/NOCMover.m"; sourceTree = SOURCE_ROOT; };
+		A95A5A5216C2D8A80001D07D /* NOCMover2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMover2D.h; path = "Nature of Code/Week 2/NOCMover2D.h"; sourceTree = SOURCE_ROOT; };
+		A95A5A5316C2D8A80001D07D /* NOCMover2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCMover2D.m; path = "Nature of Code/Week 2/NOCMover2D.m"; sourceTree = SOURCE_ROOT; };
 		A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiAccelMover.xib; path = "Nature of Code/Week 2/NOCGuiAccelMover.xib"; sourceTree = SOURCE_ROOT; };
 		A95A5A5716C2D9320001D07D /* Mover.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Mover.fsh; path = "Nature of Code/Week 2/Mover.fsh"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95A5A5916C2D9410001D07D /* Mover.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Mover.vsh; path = "Nature of Code/Week 2/Mover.vsh"; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		A95A5A5B16C2DABC0001D07D /* NOCParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCParticle.h; sourceTree = "<group>"; };
-		A95A5A5C16C2DABC0001D07D /* NOCParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticle.m; sourceTree = "<group>"; };
+		A95A5A5B16C2DABC0001D07D /* NOCParticle2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCParticle2D.h; sourceTree = "<group>"; };
+		A95A5A5C16C2DABC0001D07D /* NOCParticle2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticle2D.m; sourceTree = "<group>"; };
 		A95A5A5F16C2E7AC0001D07D /* mover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mover.png; sourceTree = "<group>"; };
 		A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A95C8FEA16BD6E11003C8F5B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -163,6 +164,8 @@
 		A99889BC16C1FB09002C924F /* NOC2DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOC2DSketchViewController.h; path = Shared/NOC2DSketchViewController.h; sourceTree = "<group>"; };
 		A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOC2DSketchViewController.m; path = Shared/NOC2DSketchViewController.m; sourceTree = "<group>"; };
 		A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCSketchDescriptionView.xib; sourceTree = "<group>"; };
+		A9BC922816CBE54A009AD45C /* NOCParticle3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCParticle3D.h; sourceTree = "<group>"; };
+		A9BC922916CBE54A009AD45C /* NOCParticle3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticle3D.m; sourceTree = "<group>"; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -292,8 +295,8 @@
 				A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */,
 				A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */,
 				A975327416C42CCE004CFE43 /* NOCGuiMultiMover.xib */,
-				A95A5A5216C2D8A80001D07D /* NOCMover.h */,
-				A95A5A5316C2D8A80001D07D /* NOCMover.m */,
+				A95A5A5216C2D8A80001D07D /* NOCMover2D.h */,
+				A95A5A5316C2D8A80001D07D /* NOCMover2D.m */,
 				A975327016C42044004CFE43 /* NOCMultiMoverSketchViewController.h */,
 				A975327116C42044004CFE43 /* NOCMultiMoverSketchViewController.m */,
 			);
@@ -318,8 +321,10 @@
 			children = (
 				A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */,
 				A95C901F16BD81FA003C8F5B /* NOCOpenGLTypes.m */,
-				A95A5A5B16C2DABC0001D07D /* NOCParticle.h */,
-				A95A5A5C16C2DABC0001D07D /* NOCParticle.m */,
+				A95A5A5B16C2DABC0001D07D /* NOCParticle2D.h */,
+				A95A5A5C16C2DABC0001D07D /* NOCParticle2D.m */,
+				A9BC922816CBE54A009AD45C /* NOCParticle3D.h */,
+				A9BC922916CBE54A009AD45C /* NOCParticle3D.m */,
 				A9077A3716CB26C2008032C7 /* NOCPositionedMass.h */,
 				A95C900916BD7351003C8F5B /* NOCShaderProgram.h */,
 				A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */,
@@ -616,9 +621,10 @@
 				A99889B916C1FADB002C924F /* NOCWalker.m in Sources */,
 				A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */,
 				A95A5A5016C2D8970001D07D /* NOCAccelMoverSketchViewController.m in Sources */,
-				A95A5A5416C2D8A80001D07D /* NOCMover.m in Sources */,
-				A95A5A5D16C2DABC0001D07D /* NOCParticle.m in Sources */,
+				A95A5A5416C2D8A80001D07D /* NOCMover2D.m in Sources */,
+				A95A5A5D16C2DABC0001D07D /* NOCParticle2D.m in Sources */,
 				A975327216C42044004CFE43 /* NOCMultiMoverSketchViewController.m in Sources */,
+				A9BC922A16CBE54A009AD45C /* NOCParticle3D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
-@protocol NOCPositionedMass <NSObject>
+@protocol NOCMassiveObject <NSObject>
 
 @property (nonatomic, assign) float mass;
+
+@end
+
+@protocol NOCPositionedMass2D <NOCMassiveObject>
+
 @property (nonatomic, assign) GLKVector2 position;
 
-- (GLKVector2)forceOnPositionedMass:(id<NOCPositionedMass>)positionedMass;
+- (GLKVector2)forceOnPositionedMass:(id<NOCPositionedMass2D>)positionedMass;
+
+@end
+
+@protocol NOCPositionedMass3D <NOCMassiveObject>
+
+@property (nonatomic, assign) GLKVector3 position;
+
+- (GLKVector3)forceOnPositionedMass:(id<NOCPositionedMass3D>)positionedMass;
 
 @end

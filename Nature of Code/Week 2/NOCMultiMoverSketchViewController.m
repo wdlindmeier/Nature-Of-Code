@@ -7,7 +7,7 @@
 //
 
 #import "NOCMultiMoverSketchViewController.h"
-#import "NOCMover.h"
+#import "NOCMover2D.h"
 #import "NOCGeometryHelpers.h"
 
 @interface NOCMultiMoverSketchViewController ()
@@ -83,9 +83,9 @@ static NSString * UniformMoverTexture = @"texture";
         float randY = ((RAND_SCALAR * 2.0) - 1.0f) / aspect;
         float randMass = 0.3 + RAND_SCALAR * 1.5;
         float dimension = 0.1 * randMass;
-        NOCMover *mover = [[NOCMover alloc] initWithSize:CGSizeMake(dimension, dimension)
-                                                position:GLKVector2Make(randX, randY)
-                                                    mass:randMass];
+        NOCMover2D *mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(dimension, dimension)
+                                                    position:GLKVector2Make(randX, randY)
+                                                        mass:randMass];
         [movers addObject:mover];
     }
     _movers = [NSArray arrayWithArray:movers];
@@ -114,7 +114,7 @@ static NSString * UniformMoverTexture = @"texture";
     CGRect moverBounds = CGRectMake(-1, -1 / aspect,
                                      sceneWidth, sceneHeight);
 
-    for(NOCMover *mover in _movers){
+    for(NOCMover2D *mover in _movers){
         GLKVector2 force = [self worldForceOnMover:mover];
         [mover applyForce:force];
         [mover stepInRect:moverBounds shouldWrap:NO];
@@ -153,7 +153,7 @@ static NSString * UniformMoverTexture = @"texture";
     NSNumber *projMatLoc = _shader.uniformLocations[UniformMVProjectionMatrix];
 
     // Render each mover
-    for(NOCMover *mover in _movers){        
+    for(NOCMover2D *mover in _movers){        
         // Get the model matrix
         GLKMatrix4 modelMat = [mover modelMatrix];
         // Multiply by the projection matrix
@@ -176,7 +176,7 @@ static NSString * UniformMoverTexture = @"texture";
 
 #pragma mark - Mover Behavior
 
-- (GLKVector2)worldForceOnMover:(NOCMover *)mover
+- (GLKVector2)worldForceOnMover:(NOCMover2D *)mover
 {
     
     // This iterates over every mover and gives us a cumulative
@@ -188,7 +188,7 @@ static NSString * UniformMoverTexture = @"texture";
         // There is no gesture.
         // Make them react to each other.
 
-        for(NOCMover *moverOther in _movers){
+        for(NOCMover2D *moverOther in _movers){
             
             if(moverOther != mover){
                 

@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
-@interface NOCParticle : NSObject
+@interface NOCParticle2D : NSObject
 
 @property (nonatomic, assign) GLKVector2 position;
-@property (nonatomic, assign) CGSize size;
+@property (nonatomic, assign) GLKVector2 size;
 
-- (id)initWithSize:(CGSize)size position:(GLKVector2)position;
+- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position;
 - (GLKMatrix4)modelMatrix;
 - (void)render;
 

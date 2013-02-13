@@ -17,7 +17,7 @@
     float _curTimeY;
 }
 
-- (id)initWithSize:(CGSize)size position:(GLKVector2)position
+- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position
 {
     self = [super initWithSize:size position:position];
     if(self){
@@ -60,8 +60,8 @@
     GLKVector2 normalRandXY = GLKVector2Normalize(GLKVector2Make(randX, randY));
 
     // Scaling the position to the size of the model unit
-    float addX = normalRandXY.x * self.size.width;
-    float addY = normalRandXY.y * self.size.height;
+    float addX = normalRandXY.x * self.size.x;
+    float addY = normalRandXY.y * self.size.y;
     
     float x = self.position.x + addX;
     float y = self.position.y + addY;

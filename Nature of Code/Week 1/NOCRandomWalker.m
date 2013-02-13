@@ -16,8 +16,8 @@
     int moveY = (arc4random() % 3) - 1;
     
     // Move on pixel units
-    float x = self.position.x + (moveX * self.size.width);
-    float y = self.position.y + (moveY * self.size.height);
+    float x = self.position.x + (moveX * self.size.x);
+    float y = self.position.y + (moveY * self.size.y);
     
     // Dont let the walker move outside of the rect.
     float minX = rect.origin.x;

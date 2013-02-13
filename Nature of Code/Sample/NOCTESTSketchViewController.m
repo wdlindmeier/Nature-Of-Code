@@ -55,7 +55,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     self.shaders = @{ BackgroundShaderName : texShader,
                       WalkerShaderName : walkerShader };
     
-    _walker = [[NOCRandomWalker alloc] initWithSize:CGSizeMake(10, 10)
+    _walker = [[NOCRandomWalker alloc] initWithSize:GLKVector2Make(10, 10)
                                            position:GLKVector2Make(0, 0)];
 
 }

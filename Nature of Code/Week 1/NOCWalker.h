@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NOCParticle.h"
+#import "NOCParticle2D.h"
 
-@interface NOCWalker : NOCParticle
+@interface NOCWalker : NOCParticle2D
 
 @end
