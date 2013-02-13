@@ -11,7 +11,7 @@
 
 // Mover Shape
 // A simple square
-GLfloat moverVertexData[12] =
+GLfloat mover2DVertexData[12] =
 {
     // positionX, positionY, positionZ
     -0.5f, -0.5f, 0.0f,
@@ -23,7 +23,7 @@ GLfloat moverVertexData[12] =
 
 // Mover Texture coords
 // A square texture
-GLfloat moverTexCoords[8] =
+GLfloat mover2DTexCoords[8] =
 {
     0.f, 1.f,
     1.f, 1.f,
@@ -111,8 +111,8 @@ GLfloat moverTexCoords[8] =
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &moverVertexData);
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &moverTexCoords);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &mover2DVertexData);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &mover2DTexCoords);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);   
 }

@@ -12,13 +12,6 @@
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 typedef struct {
-    CGPoint geometryVertex;
-    CGPoint textureVertex;
-} GLTexturedVertex;
-
-typedef struct {
-    GLTexturedVertex bl;
-    GLTexturedVertex br;
-    GLTexturedVertex tl;
-    GLTexturedVertex tr;
-} GLTexturedQuad;
+    GLKVector3 size;
+    GLKVector3 origin;
+} NOCBox3D;

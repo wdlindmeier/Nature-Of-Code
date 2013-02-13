@@ -54,6 +54,14 @@
 				<key>Controller</key>
 				<string>MultiMover</string>
 			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Mover 3D Swarm</string>
+				<key>Description</key>
+				<string>A Mover swarm in 3D. Does not react to touch.</string>
+				<key>Controller</key>
+				<string>Movers3D</string>
+			</dict>
 		</array>
 	</dict>
 	<dict>

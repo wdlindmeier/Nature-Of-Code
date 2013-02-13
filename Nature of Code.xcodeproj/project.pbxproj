@@ -59,6 +59,13 @@
 		A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */; };
 		A99889C016C2AA88002C924F /* NOCSketchDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */; };
 		A9BC922A16CBE54A009AD45C /* NOCParticle3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC922916CBE54A009AD45C /* NOCParticle3D.m */; };
+		A9BC922D16CBE781009AD45C /* NOCMovers3DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC922C16CBE781009AD45C /* NOCMovers3DSketchViewController.m */; };
+		A9BC923016CBE7C6009AD45C /* NOCMover3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC922F16CBE7C5009AD45C /* NOCMover3D.m */; };
+		A9BC923316CBEE36009AD45C /* NOC3DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC923216CBEE36009AD45C /* NOC3DSketchViewController.m */; };
+		A9BC923516CBF481009AD45C /* NOCGuiMover3D.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */; };
+		A9BC923816CBF899009AD45C /* SceneBox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923616CBF898009AD45C /* SceneBox.fsh */; };
+		A9BC923916CBF899009AD45C /* SceneBox.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923716CBF899009AD45C /* SceneBox.vsh */; };
+		A9BC923C16CC04E8009AD45C /* NOCSceneBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC923B16CC04E7009AD45C /* NOCSceneBox.m */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -166,6 +173,17 @@
 		A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCSketchDescriptionView.xib; sourceTree = "<group>"; };
 		A9BC922816CBE54A009AD45C /* NOCParticle3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCParticle3D.h; sourceTree = "<group>"; };
 		A9BC922916CBE54A009AD45C /* NOCParticle3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticle3D.m; sourceTree = "<group>"; };
+		A9BC922B16CBE780009AD45C /* NOCMovers3DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMovers3DSketchViewController.h; path = "Nature of Code/Week 2/NOCMovers3DSketchViewController.h"; sourceTree = SOURCE_ROOT; };
+		A9BC922C16CBE781009AD45C /* NOCMovers3DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCMovers3DSketchViewController.m; path = "Nature of Code/Week 2/NOCMovers3DSketchViewController.m"; sourceTree = SOURCE_ROOT; };
+		A9BC922E16CBE7C5009AD45C /* NOCMover3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMover3D.h; path = "Nature of Code/Week 2/NOCMover3D.h"; sourceTree = SOURCE_ROOT; };
+		A9BC922F16CBE7C5009AD45C /* NOCMover3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCMover3D.m; path = "Nature of Code/Week 2/NOCMover3D.m"; sourceTree = SOURCE_ROOT; };
+		A9BC923116CBEE36009AD45C /* NOC3DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOC3DSketchViewController.h; path = Shared/NOC3DSketchViewController.h; sourceTree = "<group>"; };
+		A9BC923216CBEE36009AD45C /* NOC3DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOC3DSketchViewController.m; path = Shared/NOC3DSketchViewController.m; sourceTree = "<group>"; };
+		A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiMover3D.xib; path = "Nature of Code/Week 2/NOCGuiMover3D.xib"; sourceTree = SOURCE_ROOT; };
+		A9BC923616CBF898009AD45C /* SceneBox.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SceneBox.fsh; path = "Nature of Code/Week 2/SceneBox.fsh"; sourceTree = SOURCE_ROOT; };
+		A9BC923716CBF899009AD45C /* SceneBox.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = SceneBox.vsh; path = "Nature of Code/Week 2/SceneBox.vsh"; sourceTree = SOURCE_ROOT; };
+		A9BC923A16CC04E6009AD45C /* NOCSceneBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCSceneBox.h; path = "Nature of Code/Week 2/NOCSceneBox.h"; sourceTree = SOURCE_ROOT; };
+		A9BC923B16CC04E7009AD45C /* NOCSceneBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCSceneBox.m; path = "Nature of Code/Week 2/NOCSceneBox.m"; sourceTree = SOURCE_ROOT; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -294,11 +312,20 @@
 				A95A5A4E16C2D8970001D07D /* NOCAccelMoverSketchViewController.h */,
 				A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */,
 				A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */,
+				A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */,
 				A975327416C42CCE004CFE43 /* NOCGuiMultiMover.xib */,
 				A95A5A5216C2D8A80001D07D /* NOCMover2D.h */,
 				A95A5A5316C2D8A80001D07D /* NOCMover2D.m */,
+				A9BC922E16CBE7C5009AD45C /* NOCMover3D.h */,
+				A9BC922F16CBE7C5009AD45C /* NOCMover3D.m */,
+				A9BC922B16CBE780009AD45C /* NOCMovers3DSketchViewController.h */,
+				A9BC922C16CBE781009AD45C /* NOCMovers3DSketchViewController.m */,
 				A975327016C42044004CFE43 /* NOCMultiMoverSketchViewController.h */,
 				A975327116C42044004CFE43 /* NOCMultiMoverSketchViewController.m */,
+				A9BC923A16CC04E6009AD45C /* NOCSceneBox.h */,
+				A9BC923B16CC04E7009AD45C /* NOCSceneBox.m */,
+				A9BC923616CBF898009AD45C /* SceneBox.fsh */,
+				A9BC923716CBF899009AD45C /* SceneBox.vsh */,
 			);
 			name = "Week 2";
 			path = "Chapter 2";
@@ -458,6 +485,8 @@
 			children = (
 				A99889BC16C1FB09002C924F /* NOC2DSketchViewController.h */,
 				A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */,
+				A9BC923116CBEE36009AD45C /* NOC3DSketchViewController.h */,
+				A9BC923216CBEE36009AD45C /* NOC3DSketchViewController.m */,
 				A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */,
 				A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */,
 				A9D1AEA316B99A78000BE623 /* NOCSketchViewController~ipad.xib */,
@@ -542,6 +571,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BC923816CBF899009AD45C /* SceneBox.fsh in Resources */,
+				A9BC923916CBF899009AD45C /* SceneBox.vsh in Resources */,
 				A95A5A5816C2D9320001D07D /* Mover.fsh in Resources */,
 				A95A5A5A16C2D9410001D07D /* Mover.vsh in Resources */,
 				A99889BA16C1FADB002C924F /* RandomWalker.fsh in Resources */,
@@ -586,6 +617,7 @@
 				A9077A3D16CB4ECF008032C7 /* thumb_AccelMover@2x.png in Resources */,
 				A9077A3E16CB4ECF008032C7 /* thumb_MultiMover.png in Resources */,
 				A9077A3F16CB4ECF008032C7 /* thumb_MultiMover@2x.png in Resources */,
+				A9BC923516CBF481009AD45C /* NOCGuiMover3D.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +657,10 @@
 				A95A5A5D16C2DABC0001D07D /* NOCParticle2D.m in Sources */,
 				A975327216C42044004CFE43 /* NOCMultiMoverSketchViewController.m in Sources */,
 				A9BC922A16CBE54A009AD45C /* NOCParticle3D.m in Sources */,
+				A9BC922D16CBE781009AD45C /* NOCMovers3DSketchViewController.m in Sources */,
+				A9BC923016CBE7C6009AD45C /* NOCMover3D.m in Sources */,
+				A9BC923316CBEE36009AD45C /* NOC3DSketchViewController.m in Sources */,
+				A9BC923C16CC04E8009AD45C /* NOCSceneBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
