@@ -64,20 +64,29 @@ GLfloat mover3DTexCoords[8] =
 
 #pragma mark - Update
 
-- (void)stepInBox:(NOCBox3D)box shouldWrap:(BOOL)shouldWrap
+- (void)step
 {
     // Add accel to velocity
     self.velocity = GLKVector3Add(self.velocity, self.acceleration);
     
-    // Add velocity to location
-    GLKVector3 projectedPosition = GLKVector3Add(self.position, self.velocity);
-    float x = projectedPosition.x;
-    float y = projectedPosition.y;
-    float z = projectedPosition.z;
-    
     // Limit the velocity
     self.velocity = GLKVector3Limit(self.velocity, self.maxVelocity);
+
+    // Add velocity to location
+    self.position = GLKVector3Add(self.position, self.velocity);    
+
+    // Reset the acceleration
+    self.acceleration = GLKVector3Zero;
+}
+
+- (void)stepInBox:(NOCBox3D)box shouldWrap:(BOOL)shouldWrap
+{
+    [self step];
     
+    float x = self.position.x;
+    float y = self.position.y;
+    float z = self.position.z;
+
     float minX = box.origin.x;
     float maxX = (box.origin.x + box.size.x);
     float minY = box.origin.y;
@@ -104,9 +113,6 @@ GLfloat mover3DTexCoords[8] =
     }
     
     self.position = GLKVector3Make(x, y, z);
-    
-    // Reset the acceleration
-    self.acceleration = GLKVector3Zero;
 }
 
 #pragma mark - Draw

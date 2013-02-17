@@ -19,6 +19,7 @@
 
 - (id)initWithSize:(GLKVector3)size position:(GLKVector3)position mass:(float)mass;
 - (void)stepInBox:(NOCBox3D)box shouldWrap:(BOOL)shouldWrap;
+- (void)step;
 - (void)applyForce:(GLKVector3)vecForce;
 
 @end

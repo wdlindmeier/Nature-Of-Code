@@ -66,6 +66,45 @@
 	</dict>
 	<dict>
 		<key>Name</key>
+		<string>Week 3: Oscillation</string>
+		<key>Sketches</key>
+		<array>
+			<dict>
+				<key>Name</key>
+				<string>Wave Oscillation</string>
+				<key>Description</key>
+				<string>An oscillating wave of Movers. Dragging your finger changes the amplitude and frequency.</string>
+				<key>Controller</key>
+				<string>WaveOscillation</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Wave Addition</string>
+				<key>Description</key>
+				<string>2 oscillating waves combined. Drag your finger to change the amplitude and frequency of wave 2. </string>
+				<key>Controller</key>
+				<string>WaveAddition</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Wave Tap</string>
+				<key>Description</key>
+				<string>Tapping the screen generates additive waves. Position of the tap determines the amplitude and frequency.</string>
+				<key>Controller</key>
+				<string>WaveTap</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Wave Matrix</string>
+				<key>Description</key>
+				<string></string>
+				<key>Controller</key>
+				<string>WaveMatrix</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Name</key>
 		<string>Scratchpad</string>
 		<key>Sketches</key>
 		<array>
