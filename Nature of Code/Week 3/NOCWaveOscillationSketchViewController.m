@@ -30,15 +30,6 @@ static NSString * UniformMoverTexture = @"texture";
 static const int NumMovers = 100;
 static const float MaxFrequency = 1.f;
 
-#pragma mark - GUI
-
-/*
-- (NSString *)nibNameForControlGUI
-{
-    return @"NOCGuiWaveOscillation";
-}
-*/
-
 #pragma mark - Draw Loop
 
 - (void)clear
@@ -111,9 +102,7 @@ static const float MaxFrequency = 1.f;
 - (void)resize
 {
     [super resize];
-    glClearColor(0.2, 0.2, 0.2, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
+    [self clear];    
 }
 
 - (void)draw

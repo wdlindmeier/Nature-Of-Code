@@ -12,6 +12,15 @@
 #import "NOCTapWave.h"
 #import "NOCSpring3D.h"
 
+// Change USE_TEXTURE to 1 if you want the Movers to render as metal balls
+#define USE_TEXTURE 0
+
+#if !USE_TEXTURE
+
+#import "NOCCubeMover.h"
+
+#endif
+
 static const float MaxFrequency = 100.f;
 // How long it takes for a wave to cross the screen.
 // This is arbitrary.
@@ -22,50 +31,83 @@ static const NSTimeInterval UnitTimeInterval = 1.0f;
 {
     NSArray *_movers;
     NSArray *_springs;
-    GLKTextureInfo *_moverTexture;
     NOCSceneBox *_sceneBox;
     NSMutableArray *_tapWaves;
+    
+#if USE_TEXTURE
+    
+    GLKTextureInfo *_moverTexture;
+    
+#endif
+    
 }
 
 @end
 
-static const int NumMoversWide = 10; //20;
+#if USE_TEXTURE
+    static NSString * NOCShaderNameWaveMatrixMover = @"MoverDepthShading";
+    static NSString * UniformMoverTexture = @"texture";
+#else
+    static NSString * NOCShaderNameWaveMatrixMover = @"MoverTapMatrix";
+    static NSString * UniformNormalMatrix = @"normalMatrix";
+#endif
 
-static NSString * NOCShaderNameWaveMatrixMover = @"Mover";
 static NSString * NOCShaderNameSceneBox = @"SceneBox";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
-static NSString * UniformMoverTexture = @"texture";
 
 @implementation NOCWaveMatrixSketchViewController
+
+#pragma mark - Interface Orientation
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return toInterfaceOrientation == UIInterfaceOrientationPortrait;
+}
 
 #pragma mark - Draw Loop
 
 - (void)clear
 {
-    glClearColor(0.2, 0.2, 0.2, 1.0);
+    glClearColor(0.25, 0.25, 0.25, 1.0);
+
+#if USE_TEXTURE
     glClear(GL_COLOR_BUFFER_BIT);
+#else
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+#endif
+    
 }
 
 - (void)setup
 {
     
     _tapWaves = [NSMutableArray arrayWithCapacity:100];
-    
-    // Load the mover texture.
-    UIImage *moverTexImage = [UIImage imageNamed:@"brushed_sphere"];
-    NSError *texError = nil;
-    _moverTexture = [GLKTextureLoader textureWithCGImage:moverTexImage.CGImage
-                                                 options:nil
-                                                   error:&texError];
-    if(texError){
-        NSLog(@"ERROR: Could not load the texture: %@", texError);
-    }
-    
+
+
     // Setup the shaders
     NOCShaderProgram *shaderMovers = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveMatrixMover];
+    
+#if USE_TEXTURE
+    
     shaderMovers.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                 @"texCoord" : @(GLKVertexAttribTexCoord0)};
+
     shaderMovers.uniformNames = @[ UniformMVProjectionMatrix, UniformMoverTexture ];
+
+#else
+    
+    shaderMovers.attributes = @{@"position" : @(GLKVertexAttribPosition),
+                                   @"color" : @(GLKVertexAttribColor),
+                                  @"normal" : @(GLKVertexAttribNormal)};
+
+    shaderMovers.uniformNames = @[ UniformMVProjectionMatrix, UniformNormalMatrix ];
+    
+#endif
     
     NOCShaderProgram *shaderScene = [[NOCShaderProgram alloc] initWithName:NOCShaderNameSceneBox];
     shaderScene.attributes = @{ @"position" : @(GLKVertexAttribPosition) };
@@ -81,21 +123,25 @@ static NSString * UniformMoverTexture = @"texture";
     
     // Add the movers.
     // Just a flat 2D grid for now.
-    int numMoversHigh = round((NumMoversWide / aspect));
-    int numMoversDeep = NumMoversWide;
-    int numMovers = NumMoversWide * numMoversHigh * numMoversDeep;
+    int numMoversWide = floor(sizeView.width / 75.0);
+    int numMoversHigh = round((numMoversWide / aspect));
+    int numMoversDeep = numMoversWide;
+    int numMovers = numMoversWide * numMoversHigh * numMoversDeep;
     
     // Setup the Movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:numMovers];
     NSMutableArray *springs = [NSMutableArray arrayWithCapacity:numMovers];
     
-    float plotWidth = 2.0f / NumMoversWide;
+    float plotWidth = 2.0f / numMoversWide;
     float plotHeight = (2.0f / aspect) / numMoversHigh;
     float plotDepth = plotWidth;
     
-    for(int plotX=0;plotX<NumMoversWide;plotX++){
-        for(int plotY=0;plotY<numMoversHigh;plotY++){
-            for(int plotZ=0;plotZ<numMoversDeep;plotZ++){
+    // NOTE: Adding movers from front-to-back so we don't
+    // have to do any depth sorting
+    
+    for(int plotZ=0;plotZ<numMoversDeep;plotZ++){
+        for(int plotX=0;plotX<numMoversWide;plotX++){
+            for(int plotY=0;plotY<numMoversHigh;plotY++){
 
                 float x = ((plotWidth * 0.5) + (plotWidth * plotX)) - 1.0f;
                 float y = (plotHeight * 0.5) + (plotHeight * plotY) - (1.0f / aspect);
@@ -104,13 +150,38 @@ static NSString * UniformMoverTexture = @"texture";
                 GLKVector3 anchor = GLKVector3Make(x, y, z);
                         
                 float mass = 1.0f;
-                float dimension = (2.0f / NumMoversWide) * 0.3;
+                float dimension = (2.0f / numMoversWide) * 0.3;
                 
-                NOCMover3D *mover = [[NOCMover3D alloc] initWithSize:GLKVector3Make(dimension,
+                Class MoverClass;
+#if USE_TEXTURE
+                MoverClass = [NOCMover3D class];
+#else 
+                MoverClass = [NOCCubeMover class];
+#endif
+                NOCMover3D *mover = [[MoverClass alloc] initWithSize:GLKVector3Make(dimension,
                                                                                     dimension,
                                                                                     dimension)
                                                             position:anchor
                                                                 mass:mass];
+#if !USE_TEXTURE
+                // Set the color based on the x, y, z
+
+                float scalarX = (float)plotX / numMoversWide;
+                float scalarY = (float)plotY / numMoversHigh;
+                float scalarZ = (float)plotZ / numMoversDeep;
+
+                float red = scalarY;
+                float green = scalarX;
+                float blue = 1.0 - scalarZ;
+
+                UIColor *colorCube = [UIColor colorWithRed:red
+                                                     green:green
+                                                      blue:blue
+                                                     alpha:1.0f];
+                
+                [(NOCCubeMover *)mover setColor:colorCube];
+#endif
+
                 [movers addObject:mover];
                 
                 // NOTE:
@@ -120,7 +191,7 @@ static NSString * UniformMoverTexture = @"texture";
                 // act on any mover.
                 NOCSpring3D *spring = [[NOCSpring3D alloc] initWithAnchor:anchor
                                                                restLength:0];
-                spring.maxLength = 0.2;
+                spring.maxLength = 0.5;
                 spring.dampening = -0.05;
                 [springs addObject:spring];
                 
@@ -131,14 +202,28 @@ static NSString * UniformMoverTexture = @"texture";
     _movers = [NSArray arrayWithArray:movers];
     _springs = [NSArray arrayWithArray:springs];
     
+#if USE_TEXTURE
+    
+    // Load the mover texture.
+    UIImage *moverTexImage = [UIImage imageNamed:@"brushed_sphere"];
+    NSError *texError = nil;
+    _moverTexture = [GLKTextureLoader textureWithCGImage:moverTexImage.CGImage
+                                                 options:nil
+                                                   error:&texError];
+    if(texError){
+        NSLog(@"ERROR: Could not load the texture: %@", texError);
+    }
+    
+#endif
+    
+    
 }
 
 - (void)resize
 {
     [super resize];
     
-    glClearColor(0.2, 0.2, 0.2, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
+    [self clear];
     
     // Create the box vertecies
     CGSize sizeView = self.view.frame.size;
@@ -153,7 +238,6 @@ static NSString * UniformMoverTexture = @"texture";
     
     NSTimeInterval ti = [NSDate timeIntervalSinceReferenceDate];
     
-    //for(NOCMover3D *mover in _movers){
     for(int i=0;i<_movers.count;i++){
         
         NOCMover3D *mover = _movers[i];
@@ -161,7 +245,6 @@ static NSString * UniformMoverTexture = @"texture";
         
         GLKVector3 moverForce = GLKVector3Zero;
      
-        //for(int i=0;i<numWaves;i++){
         for(NOCTapWave *wave in _tapWaves){
 
             GLKVector3 vecDir = GLKVector3Subtract(mover.position, wave.position); // Which is first?
@@ -236,7 +319,8 @@ static NSString * UniformMoverTexture = @"texture";
     projMatLoc = shaderScene.uniformLocations[UniformMVProjectionMatrix];
     // Pass mvp into shader
     glUniformMatrix4fv([projMatLoc intValue], 1, 0, matScene.m);
-    [_sceneBox render];
+    
+//    [_sceneBox render];
     
     // We'll use the same shader and matrix to draw the springs.
     // A simple white line.
@@ -250,6 +334,11 @@ static NSString * UniformMoverTexture = @"texture";
     
     NOCShaderProgram *shaderMovers = self.shaders[NOCShaderNameWaveMatrixMover];
     [shaderMovers use];
+
+    // Create the Model View Projection matrix for the shader
+    projMatLoc = shaderMovers.uniformLocations[UniformMVProjectionMatrix];
+    
+#if USE_TEXTURE
     
     // Enable alpha blending for the transparent png
     glEnable(GL_BLEND);
@@ -263,29 +352,58 @@ static NSString * UniformMoverTexture = @"texture";
     // Attach the texture to the shader
     NSNumber *samplerLoc = shaderMovers.uniformLocations[UniformMoverTexture];
     glUniform1i([samplerLoc intValue], 0);
+
+#else
+    
+    glEnable(GL_DEPTH_TEST);
     
     // Create the Model View Projection matrix for the shader
-    projMatLoc = shaderMovers.uniformLocations[UniformMVProjectionMatrix];
+    NSNumber *normalMatLoc = shaderMovers.uniformLocations[UniformNormalMatrix];
+    
+#endif
     
     // Render each mover
     for(NOCMover3D *mover in _movers){
         
         // Get the model matrix
         GLKMatrix4 modelMat = [mover modelMatrix];
-        
+
         // Multiply by the projection matrix
         GLKMatrix4 mvProjMat = GLKMatrix4Multiply(matScene, modelMat);
         
         // Pass mvp into shader
         glUniformMatrix4fv([projMatLoc intValue], 1, 0, mvProjMat.m);
         
+#if USE_TEXTURE
+        
         [mover render];
         
+#else
+        
+        // Generate a normal matrix
+        GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);
+        
+        // Pass in the normal matrix
+        glUniformMatrix3fv([normalMatLoc intValue], 1, 0, normalMatrix.m);
+        
+        [mover render];
+        
+#endif
+        
     }
+
+    
+#if USE_TEXTURE
     
     glBindTexture(GL_TEXTURE_2D, 0);
     glDisable(GL_BLEND);
     glDisable(GL_TEXTURE_2D);
+
+#else
+    
+    glDisable(GL_DEPTH_TEST);
+    
+#endif
     
 }
 
@@ -301,26 +419,32 @@ static NSString * UniformMoverTexture = @"texture";
 {
     for(UITouch *t in touches){
         
-        CGPoint posTouch = [t locationInView:self.view];
-        CGSize sizeView = self.view.frame.size;
-        float aspect = sizeView.width / sizeView.height;
+        if(t.tapCount > 0){
         
-        float scalarX = posTouch.x / sizeView.width;
-        float scalarY = posTouch.y / sizeView.height;
-        
-        float glX = (scalarX * 2.0f) - 1.0f;
-        float glY = (scalarY * (-2.0f / aspect)) + (1.0f / aspect);
-        float glZ = 1.0f; // Start the waves at the front of the cube
-        
-        GLKVector3 tapPosition = GLKVector3Make(glX, glY, glZ);
-        
-        NSTimeInterval tiNow = [NSDate timeIntervalSinceReferenceDate];
-        
-        NOCTapWave *wave = [[NOCTapWave alloc] initWithAmplitude:0.02 // TMP
-                                                       frequency:MaxFrequency * 0.04 // TMP
-                                                   timeTriggered:tiNow
-                                                        position:tapPosition];
-        [_tapWaves addObject:wave];
+            CGPoint posTouch = [t locationInView:self.view];
+            CGSize sizeView = self.view.frame.size;
+            float aspect = sizeView.width / sizeView.height;
+            
+            float scalarX = posTouch.x / sizeView.width;
+            float scalarY = posTouch.y / sizeView.height;
+            
+            float glX = (scalarX * 2.0f) - 1.0f;
+            float glY = (scalarY * (-2.0f / aspect)) + (1.0f / aspect);
+            float glZ = 1.0f; // Start the waves at the front of the cube
+            
+            GLKVector3 tapPosition = GLKVector3Make(glX, glY, glZ);
+            
+            // NOTE: There's a slign perceptual lag as the wave ramps up,
+            // so we'll pretend like the wave was triggered .15 seconds earlier.
+            NSTimeInterval tiNow = [NSDate timeIntervalSinceReferenceDate] - 0.15;
+            
+            NOCTapWave *wave = [[NOCTapWave alloc] initWithAmplitude:0.02
+                                                           frequency:MaxFrequency * 0.04
+                                                       timeTriggered:tiNow
+                                                            position:tapPosition];
+            [_tapWaves addObject:wave];
+            
+        }
     }
 }
 

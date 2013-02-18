@@ -8,12 +8,9 @@
 
 #import "NOCMover3D.h"
 
-// Mover Shape
 // A flat square.
-// We'll keep it 2D for now.
-GLfloat mover3DVertexData[12] =
+GLfloat mover3DBillboardVertexData[12] =
 {
-    // positionX, positionY, positionZ
     -0.5f, -0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
     -0.5f, 0.5f, 0.0f,
@@ -21,8 +18,7 @@ GLfloat mover3DVertexData[12] =
     
 };
 
-// Mover Texture coords
-// A square texture
+// 2D Texture coords for billboard rendering.
 GLfloat mover3DTexCoords[8] =
 {
     0.f, 1.f,
@@ -118,16 +114,15 @@ GLfloat mover3DTexCoords[8] =
 #pragma mark - Draw
 
 - (void)render
-{
-    
+{    
     // Draw a colored square
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-    
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &mover3DVertexData);
+
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &mover3DBillboardVertexData);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &mover3DTexCoords);
-    
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
 }
 
 @end

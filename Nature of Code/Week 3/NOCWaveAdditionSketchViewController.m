@@ -32,15 +32,6 @@ static NSString * NOCShaderNameWaveAddition = @"Mover";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 
-#pragma mark - GUI
-
-/*
- - (NSString *)nibNameForControlGUI
- {
- return @"NOCGuiWaveOscillation";
- }
- */
-
 #pragma mark - Draw Loop
 
 - (void)clear
@@ -134,9 +125,7 @@ static NSString * UniformMoverTexture = @"texture";
 - (void)resize
 {
     [super resize];
-    glClearColor(0.2, 0.2, 0.2, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
+    [self clear];    
 }
 
 - (void)draw

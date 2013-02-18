@@ -23,7 +23,7 @@
     
 #if DEBUG
     
-    self.viewController = [[NOCWaveMatrixSketchViewController alloc] init];
+    // self.viewController = [[NOCWaveMatrixSketchViewController alloc] init];
     
 #endif
     
