@@ -13,10 +13,10 @@
 // when the context isn't cleared
 
 @implementation CAEAGLLayer (Retained)
-/*
+
 - (NSDictionary*) drawableProperties
 {
     return @{kEAGLDrawablePropertyRetainedBacking : @(YES)};
 }
-*/
+
 @end
