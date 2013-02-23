@@ -95,5 +95,20 @@
 			</dict>
 		</array>
 	</dict>
+	<dict>
+		<key>Name</key>
+		<string>Week 4: Particle Systems</string>
+		<key>Sketches</key>
+		<array>
+			<dict>
+				<key>Name</key>
+				<string>Particle System</string>
+				<key>Description</key>
+				<string></string>
+				<key>Controller</key>
+				<string>ParticleSystem</string>
+			</dict>
+		</array>
+	</dict>
 </array>
 </plist>

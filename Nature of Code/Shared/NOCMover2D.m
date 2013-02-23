@@ -9,29 +9,9 @@
 #import "NOCMover2D.h"
 #import "NOCGeometryHelpers.h"
 
-// Mover Shape
-// A simple square
-GLfloat mover2DVertexData[12] =
-{
-    // positionX, positionY, positionZ
-    -0.5f, -0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    -0.5f, 0.5f, 0.0f,
-    0.5f, 0.5f, 0.0f,
-    
-};
-
-// Mover Texture coords
-// A square texture
-GLfloat mover2DTexCoords[8] =
-{
-    0.f, 1.f,
-    1.f, 1.f,
-    0.f, 0.f,
-    1.f, 0.f    
-};
-
 @implementation NOCMover2D
+
+#pragma mark - Init
 
 - (id)initWithSize:(GLKVector2)size position:(GLKVector2)position mass:(float)mass
 {
@@ -45,12 +25,7 @@ GLfloat mover2DTexCoords[8] =
     return self;
 }
 
-#pragma mark - Force
-
-- (void)applyForce:(GLKVector2)vecForce
-{
-    self.acceleration = GLKVector2Add(self.acceleration, vecForce);
-}
+#pragma mark - Accessors
 
 - (GLKVector2)forceOnPositionedMass:(id<NOCPositionedMass2D>)positionedMass
 {
@@ -62,21 +37,15 @@ GLfloat mover2DTexCoords[8] =
     return vecForce;
 }
 
-#pragma mark - Update
+#pragma mark - Movement / Update
 
 - (void)stepInRect:(CGRect)rect shouldWrap:(BOOL)shouldWrap
-{    
-    // Add accel to velocity
-    self.velocity = GLKVector2Add(self.velocity, self.acceleration);
+{
+    [self step];
     
-    // Add velocity to location
-    GLKVector2 projectedPosition = GLKVector2Add(self.position, self.velocity);
-    float x = projectedPosition.x;
-    float y = projectedPosition.y;
-    
-    // Limit the velocity
-    self.velocity = GLKVector2Limit(self.velocity, self.maxVelocity);
-    
+    float x = self.position.x;
+    float y = self.position.y;
+
     float minX = rect.origin.x;
     float maxX = (rect.origin.x + rect.size.width);
     float minY = rect.origin.y;
@@ -97,24 +66,7 @@ GLfloat mover2DTexCoords[8] =
     }
     
     self.position = GLKVector2Make(x, y);
-    
-    // Reset the acceleration
-    self.acceleration = GLKVector2Zero;
-}
 
-#pragma mark - Draw
-
-- (void)render
-{
-    
-    // Draw a colored square
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-    
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &mover2DVertexData);
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &mover2DTexCoords);
-    
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);   
 }
 
 @end

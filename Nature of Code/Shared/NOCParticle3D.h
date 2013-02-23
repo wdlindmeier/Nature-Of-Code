@@ -7,14 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NOCParticle.h"
 
-@interface NOCParticle3D : NSObject
+@interface NOCParticle3D : NOCParticle
 
 @property (nonatomic, assign) GLKVector3 position;
+@property (nonatomic, assign) GLKVector3 velocity;
+@property (nonatomic, assign) GLKVector3 acceleration;
 @property (nonatomic, assign) GLKVector3 size;
+@property (nonatomic, assign) float maxVelocity;
 
 - (id)initWithSize:(GLKVector3)size position:(GLKVector3)position;
-- (GLKMatrix4)modelMatrix;
-- (void)render;
+- (void)applyForce:(GLKVector3)vecForce;
 
 @end

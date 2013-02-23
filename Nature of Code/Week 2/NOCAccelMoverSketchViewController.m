@@ -15,7 +15,7 @@
 {
     NOCShaderProgram *_shader;
     NOCMover2D *_mover;
-    GLKTextureInfo *_moverTexture;
+    GLKTextureInfo *_textureMover;
 }
 
 static NSString * NOCShaderNameAccelMover = @"Mover";
@@ -49,16 +49,8 @@ static NSString * UniformMoverTexture = @"texture";
     // Trigger the correct view state
     [self switchRandomChanged:nil];
     
-    // Load the mover texture.
-    UIImage *moverTexImage = [UIImage imageNamed:@"mover"];
-    NSError *texError = nil;
-    _moverTexture = [GLKTextureLoader textureWithCGImage:moverTexImage.CGImage
-                                                 options:nil
-                                                   error:&texError];
-    if(texError){
-        NSLog(@"ERROR: Could not load the texture: %@", texError);
-    }
-    
+    _textureMover = [self loadTextureWithName:@"mover"];
+        
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameAccelMover];
     
@@ -130,7 +122,7 @@ static NSString * UniformMoverTexture = @"texture";
     // Bind the texture
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(0);
-    glBindTexture(GL_TEXTURE_2D, _moverTexture.name);
+    glBindTexture(GL_TEXTURE_2D, _textureMover.name);
     
     // Attach the texture to the shader
     NSNumber *samplerLoc = _shader.uniformLocations[UniformMoverTexture];

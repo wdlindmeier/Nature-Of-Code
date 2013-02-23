@@ -15,7 +15,9 @@
 
 #define CONSTRAIN(n,min,max)    MIN(MAX(n,min),max)
 
-static float Gravity = 0.4f;
+// NOTE: What's the right way of defining this variable
+// so I don't get "Unused" compiler warnings?
+static float __unused Gravity = 0.4f;
 
 // A cube for 3D rendering.
 // This is geometry and normals.
@@ -62,6 +64,92 @@ static const GLfloat CubeVertexData[216] =
     0.5f, 0.5f, -0.5f,         0.0f, 0.0f, -1.0f,
     -0.5f, -0.5f, -0.5f,       0.0f, 0.0f, -1.0f,
     -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
+};
+
+// A flat square.
+static const GLfloat Square3DBillboardVertexData[12] =
+{
+    -0.5f, -0.5f, 0.0f,
+    0.5f, -0.5f, 0.0f,
+    -0.5f, 0.5f, 0.0f,
+    0.5f, 0.5f, 0.0f,
+    
+};
+
+// 2D Texture coords for billboard rendering.
+static const GLfloat Square3DTexCoords[8] =
+{
+    0.f, 1.f,
+    1.f, 1.f,
+    0.f, 0.f,
+    1.f, 0.f
+};
+
+// Same as CubeVertexData w/out normals
+static const GLfloat CubeFilledVertexData[108] =
+{
+    0.5f, -0.5f, -0.5f,
+    0.5f, 0.5f, -0.5f,
+    0.5f, -0.5f, 0.5f,
+    0.5f, -0.5f, 0.5f,
+    0.5f, 0.5f, -0.5f,
+    0.5f, 0.5f, 0.5f,
+    
+    0.5f, 0.5f, -0.5f,
+    -0.5f, 0.5f, -0.5f,
+    0.5f, 0.5f, 0.5f,
+    0.5f, 0.5f, 0.5f,
+    -0.5f, 0.5f, -0.5f,
+    -0.5f, 0.5f, 0.5f,
+    
+    -0.5f, 0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,
+    -0.5f, 0.5f, 0.5f,
+    -0.5f, 0.5f, 0.5f,
+    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, 0.5f,
+    
+    -0.5f, -0.5f, -0.5f,
+    0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, 0.5f,
+    -0.5f, -0.5f, 0.5f,
+    0.5f, -0.5f, -0.5f,
+    0.5f, -0.5f, 0.5f,
+    
+    0.5f, 0.5f, 0.5f,
+    -0.5f, 0.5f, 0.5f,
+    0.5f, -0.5f, 0.5f,
+    0.5f, -0.5f, 0.5f,
+    -0.5f, 0.5f, 0.5f,
+    -0.5f, -0.5f, 0.5f,
+    
+    0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,
+    0.5f, 0.5f, -0.5f,
+    0.5f, 0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,
+    -0.5f, 0.5f, -0.5f,
+};
+
+// Cube geometry for stroked lines, not triangle fill
+static const GLfloat CubeStrokedVertexData[48] =
+{
+    -0.5, 0.5, -0.5,
+    0.5, 0.5, -0.5,
+    0.5, -0.5, -0.5,
+    -0.5, -0.5, -0.5,
+    -0.5, 0.5, -0.5,
+    -0.5, 0.5, 0.5,
+    0.5, 0.5, 0.5,
+    0.5, -0.5, 0.5,
+    -0.5, -0.5, 0.5,
+    -0.5, 0.5, 0.5,
+    -0.5, -0.5, 0.5,
+    -0.5, -0.5, -0.5,
+    0.5, -0.5, -0.5,
+    0.5, -0.5, 0.5,
+    0.5, 0.5, 0.5,
+    0.5, 0.5, -0.5
 };
 
 

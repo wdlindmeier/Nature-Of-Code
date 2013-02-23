@@ -36,7 +36,7 @@ static const NSTimeInterval UnitTimeInterval = 1.0f;
     
 #if USE_TEXTURE
     
-    GLKTextureInfo *_moverTexture;
+    GLKTextureInfo *_textureMover;
     
 #endif
     
@@ -204,15 +204,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     
 #if USE_TEXTURE
     
-    // Load the mover texture.
-    UIImage *moverTexImage = [UIImage imageNamed:@"brushed_sphere"];
-    NSError *texError = nil;
-    _moverTexture = [GLKTextureLoader textureWithCGImage:moverTexImage.CGImage
-                                                 options:nil
-                                                   error:&texError];
-    if(texError){
-        NSLog(@"ERROR: Could not load the texture: %@", texError);
-    }
+    // Texture
+    _textureMover = [self loadTextureWithName:@"brushed_sphere"];
     
 #endif
     
@@ -347,7 +340,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     // Bind the texture
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(0);
-    glBindTexture(GL_TEXTURE_2D, _moverTexture.name);
+    glBindTexture(GL_TEXTURE_2D, _textureMover.name);
     
     // Attach the texture to the shader
     NSNumber *samplerLoc = shaderMovers.uniformLocations[UniformMoverTexture];

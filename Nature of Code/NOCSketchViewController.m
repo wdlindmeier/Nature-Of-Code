@@ -286,6 +286,22 @@ static const float DrawerRevealHeight = 20.0f;
     [self draw];
 }
 
+#pragma mark - GL Textures
+
+- (GLKTextureInfo *)loadTextureWithName:(NSString *)texName
+{
+    UIImage *texImage = [UIImage imageNamed:texName];
+    NSError *texError = nil;
+    GLKTextureInfo *tex = [GLKTextureLoader textureWithCGImage:texImage.CGImage
+                                                       options:nil
+                                                         error:&texError];
+    if(texError){
+        NSLog(@"ERROR: Could not load the texture: %@", texError);
+        return nil;
+    }
+    return tex;
+}
+
 #pragma mark -  OpenGL ES 2 shader compilation
 
 - (BOOL)loadShaders

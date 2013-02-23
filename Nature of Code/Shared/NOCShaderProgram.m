@@ -192,4 +192,25 @@
     glUseProgram(self.glPointer);
 }
 
+#pragma mark - Helpers
+
+- (void)setFloat:(GLfloat)f forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    glUniform1f([uniLoc intValue], f);
+}
+
+- (void)setInt:(GLint)i forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    glUniform1i([uniLoc intValue], i);
+}
+
+- (void)setMatrix:(GLKMatrix4)mat forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    // default values for count and transpose
+    glUniformMatrix4fv([uniLoc intValue], 1, 0, mat.m);
+}
+
 @end

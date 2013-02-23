@@ -1,5 +1,5 @@
 //
-//  NOCParticle.m
+//  NOCParticle2D.m
 //  Nature of Code
 //
 //  Created by William Lindmeier on 2/6/13.
@@ -10,16 +10,20 @@
 
 @implementation NOCParticle2D
 
+#pragma mark - Init
+
 - (id)initWithSize:(GLKVector2)size position:(GLKVector2)position
 {
     self = [super init];
     if(self){
         self.size = size;
         self.position = position;
+        self.maxVelocity = 0;
     }
     return self;
 }
 
+#pragma mark - Accessors
 
 - (GLKMatrix4)modelMatrix
 {
@@ -44,9 +48,31 @@
     return modelMat;
 }
 
-- (void)render
+#pragma mark - Movement / Update
+
+- (void)applyForce:(GLKVector2)vecForce
 {
-    // Override in subclass
+    self.acceleration = GLKVector2Add(self.acceleration, vecForce);
 }
+
+- (void)step
+{
+    [super step];
+    
+    // Add accel to velocity
+    self.velocity = GLKVector2Add(self.velocity, self.acceleration);
+    
+    // Limit the velocity
+    if(self.maxVelocity > 0){
+        self.velocity = GLKVector2Limit(self.velocity, self.maxVelocity);
+    }
+
+    // Add velocity to location
+    self.position = GLKVector2Add(self.position, self.velocity);
+
+    // Reset the acceleration
+    self.acceleration = GLKVector2Zero;    
+}
+
 
 @end

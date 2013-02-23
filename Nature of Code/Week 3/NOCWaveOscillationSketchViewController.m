@@ -13,7 +13,7 @@
 {
     NOCShaderProgram *_shader;
     NSArray *_movers;
-    GLKTextureInfo *_moverTexture;
+    GLKTextureInfo *_textureMover;
     
     float _waveMagnitude;
     float _waveFrequency;
@@ -43,15 +43,8 @@ static const float MaxFrequency = 1.f;
     
     _timeStep = 0;
     
-    // Load the mover texture.
-    UIImage *moverTexImage = [UIImage imageNamed:@"brushed_sphere"];
-    NSError *texError = nil;
-    _moverTexture = [GLKTextureLoader textureWithCGImage:moverTexImage.CGImage
-                                                 options:nil
-                                                   error:&texError];
-    if(texError){
-        NSLog(@"ERROR: Could not load the texture: %@", texError);
-    }
+    // Texture
+    _textureMover = [self loadTextureWithName:@"brushed_sphere"];
     
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveOscillation];
@@ -119,7 +112,7 @@ static const float MaxFrequency = 1.f;
     // Bind the texture
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(0);
-    glBindTexture(GL_TEXTURE_2D, _moverTexture.name);
+    glBindTexture(GL_TEXTURE_2D, _textureMover.name);
     
     // Attach the texture to the shader
     NSNumber *samplerLoc = _shader.uniformLocations[UniformMoverTexture];

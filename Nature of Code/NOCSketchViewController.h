@@ -37,4 +37,7 @@
 - (void)draw;
 - (void)teardown;
 
+// Misc GL
+- (GLKTextureInfo *)loadTextureWithName:(NSString *)texName;
+
 @end

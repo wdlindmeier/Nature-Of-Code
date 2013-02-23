@@ -10,16 +10,20 @@
 
 @implementation NOCParticle3D
 
+#pragma mark - Init
+
 - (id)initWithSize:(GLKVector3)size position:(GLKVector3)position
 {
     self = [super init];
     if(self){
         self.size = size;
         self.position = position;
+        self.maxVelocity = 0;
     }
     return self;
 }
 
+#pragma mark - Accessors
 
 - (GLKMatrix4)modelMatrix
 {
@@ -45,9 +49,30 @@
     return modelMat;
 }
 
-- (void)render
+#pragma mark - Movement / Update
+
+- (void)applyForce:(GLKVector3)vecForce
 {
-    // Override in subclass
+    self.acceleration = GLKVector3Add(self.acceleration, vecForce);
+}
+
+- (void)step
+{
+    [super step];
+    
+    // Add accel to velocity
+    self.velocity = GLKVector3Add(self.velocity, self.acceleration);
+    
+    // Limit the velocity
+    if(self.maxVelocity > 0){
+        self.velocity = GLKVector3Limit(self.velocity, self.maxVelocity);
+    }
+    
+    // Add velocity to location
+    self.position = GLKVector3Add(self.position, self.velocity);
+    
+    // Reset the acceleration
+    self.acceleration = GLKVector3Zero;
 }
 
 @end

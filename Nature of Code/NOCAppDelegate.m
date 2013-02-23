@@ -10,7 +10,9 @@
 #import "NOCTableOfContentsViewController.h"
 
 #if DEBUG
-#import "NOCWaveMatrixSketchViewController.h"
+
+ #import "NOCParticleSystemSketchViewController.h"
+
 #endif
 
 @implementation NOCAppDelegate
@@ -22,8 +24,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
 #if DEBUG
-    
-    // self.viewController = [[NOCWaveMatrixSketchViewController alloc] init];
+    // A shortcut to jump directly to the sketch I'm working on
+    //self.viewController = [[NOCParticleSystemSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+    //                                                                              bundle:nil];
     
 #endif
     

@@ -22,4 +22,9 @@
 - (void)unload;
 - (void)use;
 
+// Helpers
+- (void)setFloat:(GLfloat)f forUniform:(NSString *)uniformName;
+- (void)setInt:(GLint)i forUniform:(NSString *)uniformName;
+- (void)setMatrix:(GLKMatrix4)mat forUniform:(NSString *)uniformName;
+
 @end

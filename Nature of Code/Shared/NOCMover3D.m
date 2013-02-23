@@ -8,25 +8,6 @@
 
 #import "NOCMover3D.h"
 
-// A flat square.
-GLfloat mover3DBillboardVertexData[12] =
-{
-    -0.5f, -0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    -0.5f, 0.5f, 0.0f,
-    0.5f, 0.5f, 0.0f,
-    
-};
-
-// 2D Texture coords for billboard rendering.
-GLfloat mover3DTexCoords[8] =
-{
-    0.f, 1.f,
-    1.f, 1.f,
-    0.f, 0.f,
-    1.f, 0.f
-};
-
 @implementation NOCMover3D
 
 - (id)initWithSize:(GLKVector3)size position:(GLKVector3)position mass:(float)mass
@@ -41,12 +22,7 @@ GLfloat mover3DTexCoords[8] =
     return self;
 }
 
-#pragma mark - Force
-
-- (void)applyForce:(GLKVector3)vecForce
-{
-    self.acceleration = GLKVector3Add(self.acceleration, vecForce);
-}
+#pragma mark - Accessors
 
 - (GLKVector3)forceOnPositionedMass:(id<NOCPositionedMass3D>)positionedMass
 {
@@ -58,22 +34,7 @@ GLfloat mover3DTexCoords[8] =
     return vecForce;
 }
 
-#pragma mark - Update
-
-- (void)step
-{
-    // Add accel to velocity
-    self.velocity = GLKVector3Add(self.velocity, self.acceleration);
-    
-    // Limit the velocity
-    self.velocity = GLKVector3Limit(self.velocity, self.maxVelocity);
-
-    // Add velocity to location
-    self.position = GLKVector3Add(self.position, self.velocity);    
-
-    // Reset the acceleration
-    self.acceleration = GLKVector3Zero;
-}
+#pragma mark - Movement / Update
 
 - (void)stepInBox:(NOCBox3D)box shouldWrap:(BOOL)shouldWrap
 {
@@ -109,20 +70,6 @@ GLfloat mover3DTexCoords[8] =
     }
     
     self.position = GLKVector3Make(x, y, z);
-}
-
-#pragma mark - Draw
-
-- (void)render
-{    
-    // Draw a colored square
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &mover3DBillboardVertexData);
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &mover3DTexCoords);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
 }
 
 @end
