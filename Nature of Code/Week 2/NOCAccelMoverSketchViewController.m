@@ -49,7 +49,7 @@ static NSString * UniformMoverTexture = @"texture";
     // Trigger the correct view state
     [self switchRandomChanged:nil];
     
-    _textureMover = [self loadTextureWithName:@"mover"];
+    _textureMover = NOCLoadGLTextureWithName(@"mover");
         
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameAccelMover];

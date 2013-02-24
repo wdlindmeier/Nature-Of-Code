@@ -8,7 +8,7 @@
 
 #import "NOCParticle3D.h"
 #import "NOCPositionedMass.h"
-#import "NOCOpenGLTypes.h"
+#import "NOCOpenGLHelpers.h"
 
 @interface NOCMover3D : NOCParticle3D <NOCPositionedMass3D>
 

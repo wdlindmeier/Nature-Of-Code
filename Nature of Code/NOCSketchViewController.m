@@ -8,6 +8,7 @@
 
 #import "NOCSketchViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <CoreMotion/CoreMotion.h>
 
 @interface NOCSketchViewController ()
 {
@@ -16,6 +17,7 @@
     CGPoint _posDrawerOpen;
     BOOL _isDrawerOpen;
     UIPanGestureRecognizer *_gestureRecognizerDrawer;
+    long _frameCount;
 }
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
@@ -28,6 +30,8 @@
 static const float DrawerRevealHeight = 20.0f;
 
 @implementation NOCSketchViewController
+
+@synthesize frameCount = _frameCount;
 
 #pragma mark Memory
 
@@ -63,6 +67,8 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _frameCount = 0;
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     
@@ -193,6 +199,46 @@ static const float DrawerRevealHeight = 20.0f;
     }
 }
 
+#pragma mark - Motion
+
+- (GLKVector2)motionVectorFromManager:(CMMotionManager *)motionManager
+{    
+    CGSize sizeView = self.view.frame.size;
+    float aspect = sizeView.width / sizeView.height;
+    
+    CMDeviceMotion *motion = [motionManager deviceMotion];
+    CMAcceleration gravity = motion.gravity;
+    
+    float halfWidth = 1;
+    float halfHeight = 1 / aspect;
+    
+    // Calibrate for the amount of tilt by eyeballing
+    const static float GravityMultiplier = 2.0f;
+    
+    float x = gravity.x * halfWidth * GravityMultiplier;
+    float y = gravity.y * halfHeight * GravityMultiplier;
+    float swap = x;
+    
+    switch (self.interfaceOrientation) {
+        case UIInterfaceOrientationLandscapeLeft:
+            x = y;
+            y = swap * -1;
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            x = y * -1;
+            y = swap;
+            break;
+        case UIInterfaceOrientationPortrait:
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            x = x * -1;
+            y = y * -1;
+            break;
+    }
+    
+    return GLKVector2Make(x, y);
+}
+
 #pragma mark - View States
 
 - (void)repositionDrawer:(BOOL)setViewCenter
@@ -284,22 +330,7 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     [self draw];
-}
-
-#pragma mark - GL Textures
-
-- (GLKTextureInfo *)loadTextureWithName:(NSString *)texName
-{
-    UIImage *texImage = [UIImage imageNamed:texName];
-    NSError *texError = nil;
-    GLKTextureInfo *tex = [GLKTextureLoader textureWithCGImage:texImage.CGImage
-                                                       options:nil
-                                                         error:&texError];
-    if(texError){
-        NSLog(@"ERROR: Could not load the texture: %@", texError);
-        return nil;
-    }
-    return tex;
+    _frameCount++;
 }
 
 #pragma mark -  OpenGL ES 2 shader compilation

@@ -104,9 +104,17 @@
 				<key>Name</key>
 				<string>Particle System</string>
 				<key>Description</key>
-				<string></string>
+				<string>A simple particle emitter that reacts to touch movement. The options panel allows you to choose blend mode parameters, which are passed into glBlendFunc().</string>
 				<key>Controller</key>
 				<string>ParticleSystem</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Paper Burn</string>
+				<key>Description</key>
+				<string></string>
+				<key>Controller</key>
+				<string>PaperBurn</string>
 			</dict>
 		</array>
 	</dict>

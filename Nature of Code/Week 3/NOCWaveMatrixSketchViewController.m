@@ -205,7 +205,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 #if USE_TEXTURE
     
     // Texture
-    _textureMover = [self loadTextureWithName:@"brushed_sphere"];
+    _textureMover = NOCLoadGLTextureWithName(@"brushed_sphere");
     
 #endif
     

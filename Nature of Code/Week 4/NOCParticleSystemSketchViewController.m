@@ -12,7 +12,6 @@
 
 @interface NOCParticleSystemSketchViewController ()
 {
-    //GLKTextureInfo *_textureParticle;
     NSArray *_textures;
     NOCParticleSystem *_particleSystem;
     GLKVector2 _vecWind;
@@ -103,7 +102,7 @@ static NSString * UniformParticleAge = @"scalarAge";
     NSArray *texNames = @[@"flame_red", @"flame_green", @"flame_magenta", @"flame_blue"];
     NSMutableArray *textures = [NSMutableArray arrayWithCapacity:texNames.count];
     for(NSString *texName in texNames){
-        [textures addObject:[self loadTextureWithName:texName]];
+        [textures addObject:NOCLoadGLTextureWithName(texName)];
     }
     _textures = [NSArray arrayWithArray:textures];
     

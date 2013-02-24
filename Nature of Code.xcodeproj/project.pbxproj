@@ -30,8 +30,8 @@
 		A95C703016D031C40058D8BA /* RandomWalker.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C702A16D031C40058D8BA /* RandomWalker.vsh */; };
 		A95C703116D031C40058D8BA /* SceneBox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C702B16D031C40058D8BA /* SceneBox.fsh */; };
 		A95C703216D031C40058D8BA /* SceneBox.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C702C16D031C40058D8BA /* SceneBox.vsh */; };
-		A95C703716D032460058D8BA /* BackgroundTexture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C703316D032460058D8BA /* BackgroundTexture.fsh */; };
-		A95C703816D032460058D8BA /* BackgroundTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C703416D032460058D8BA /* BackgroundTexture.vsh */; };
+		A95C703716D032460058D8BA /* Texture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C703316D032460058D8BA /* Texture.fsh */; };
+		A95C703816D032460058D8BA /* Texture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C703416D032460058D8BA /* Texture.vsh */; };
 		A95C703916D032460058D8BA /* SampleShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C703516D032460058D8BA /* SampleShader.fsh */; };
 		A95C703A16D032460058D8BA /* SampleShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C703616D032460058D8BA /* SampleShader.vsh */; };
 		A95C703E16D032F90058D8BA /* NOCWaveOscillationSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C703D16D032F90058D8BA /* NOCWaveOscillationSketchViewController.m */; };
@@ -47,7 +47,6 @@
 		A95C705716D181380058D8BA /* MoverDepthShading.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C705616D181380058D8BA /* MoverDepthShading.vsh */; };
 		A95C705916D189C00058D8BA /* MoverTapMatrix.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C705816D189C00058D8BA /* MoverTapMatrix.fsh */; };
 		A95C705B16D189C90058D8BA /* MoverTapMatrix.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C705A16D189C90058D8BA /* MoverTapMatrix.vsh */; };
-		A95C705E16D196460058D8BA /* NOCCubeMover.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C705D16D196450058D8BA /* NOCCubeMover.m */; };
 		A95C8FEC16BD6E11003C8F5B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */; };
 		A95C8FED16BD6E11003C8F5B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A95C8FEA16BD6E11003C8F5B /* Default.png */; };
 		A95C8FEE16BD6E11003C8F5B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A95C8FEB16BD6E11003C8F5B /* Default@2x.png */; };
@@ -124,7 +123,13 @@
 		A9F78AE016D9203C00073D16 /* NOCGuiParticleSystem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F78ADF16D9203B00073D16 /* NOCGuiParticleSystem.xib */; };
 		A9F78AE316D9237C00073D16 /* NOCParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AE216D9237B00073D16 /* NOCParticleSystem.m */; };
 		A9F78AE716D926DF00073D16 /* NOCParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AE616D926DE00073D16 /* NOCParticle.m */; };
-		A9F78AEA16D937D900073D16 /* NOCFlameParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AE916D937D900073D16 /* NOCFlameParticle.m */; };
+		A9F78AED16D949F500073D16 /* NOCPaperBurnSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AEC16D949F500073D16 /* NOCPaperBurnSketchViewController.m */; };
+		A9F78AF016D94C8300073D16 /* NOCCubeMover.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AEF16D94C8300073D16 /* NOCCubeMover.m */; };
+		A9F78AF316D94C9700073D16 /* NOCFlameParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AF216D94C9700073D16 /* NOCFlameParticle.m */; };
+		A9F78AF616D9522D00073D16 /* NOCFlame.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AF516D9522D00073D16 /* NOCFlame.m */; };
+		A9F78AF916D9780900073D16 /* NOCFrameBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F78AF816D9780800073D16 /* NOCFrameBuffer.m */; };
+		A9F78AFC16D97F9C00073D16 /* Paper.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9F78AFA16D97F9B00073D16 /* Paper.fsh */; };
+		A9F78AFD16D97F9C00073D16 /* Paper.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9F78AFB16D97F9C00073D16 /* Paper.vsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,8 +162,8 @@
 		A95C702A16D031C40058D8BA /* RandomWalker.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RandomWalker.vsh; sourceTree = "<group>"; };
 		A95C702B16D031C40058D8BA /* SceneBox.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SceneBox.fsh; sourceTree = "<group>"; };
 		A95C702C16D031C40058D8BA /* SceneBox.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SceneBox.vsh; sourceTree = "<group>"; };
-		A95C703316D032460058D8BA /* BackgroundTexture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundTexture.fsh; sourceTree = "<group>"; };
-		A95C703416D032460058D8BA /* BackgroundTexture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BackgroundTexture.vsh; sourceTree = "<group>"; };
+		A95C703316D032460058D8BA /* Texture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Texture.fsh; sourceTree = "<group>"; };
+		A95C703416D032460058D8BA /* Texture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Texture.vsh; sourceTree = "<group>"; };
 		A95C703516D032460058D8BA /* SampleShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SampleShader.fsh; sourceTree = "<group>"; };
 		A95C703616D032460058D8BA /* SampleShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SampleShader.vsh; sourceTree = "<group>"; };
 		A95C703C16D032F90058D8BA /* NOCWaveOscillationSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCWaveOscillationSketchViewController.h; sourceTree = "<group>"; };
@@ -180,8 +185,6 @@
 		A95C705616D181380058D8BA /* MoverDepthShading.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MoverDepthShading.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C705816D189C00058D8BA /* MoverTapMatrix.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MoverTapMatrix.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C705A16D189C90058D8BA /* MoverTapMatrix.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MoverTapMatrix.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
-		A95C705C16D196450058D8BA /* NOCCubeMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCCubeMover.h; sourceTree = "<group>"; };
-		A95C705D16D196450058D8BA /* NOCCubeMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCCubeMover.m; sourceTree = "<group>"; };
 		A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A95C8FEA16BD6E11003C8F5B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A95C8FEB16BD6E11003C8F5B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -191,7 +194,7 @@
 		A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShaderProgram.m; sourceTree = "<group>"; };
 		A95C901616BD7EBB003C8F5B /* NOCTemplateSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTemplateSketchViewController.h; sourceTree = "<group>"; };
 		A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTemplateSketchViewController.m; sourceTree = "<group>"; };
-		A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCOpenGLTypes.h; sourceTree = "<group>"; };
+		A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCOpenGLHelpers.h; path = Shared/NOCOpenGLHelpers.h; sourceTree = "<group>"; };
 		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NOCGeometryHelpers.h; path = Shared/NOCGeometryHelpers.h; sourceTree = "<group>"; };
 		A975327016C42044004CFE43 /* NOCMultiMoverSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMultiMoverSketchViewController.h; path = "Nature of Code/Week 2/NOCMultiMoverSketchViewController.h"; sourceTree = SOURCE_ROOT; };
 		A975327116C42044004CFE43 /* NOCMultiMoverSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCMultiMoverSketchViewController.m; path = "Nature of Code/Week 2/NOCMultiMoverSketchViewController.m"; sourceTree = SOURCE_ROOT; };
@@ -292,8 +295,18 @@
 		A9F78AE216D9237B00073D16 /* NOCParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticleSystem.m; sourceTree = "<group>"; };
 		A9F78AE416D9243C00073D16 /* NOCParticle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCParticle.h; sourceTree = "<group>"; };
 		A9F78AE616D926DE00073D16 /* NOCParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticle.m; sourceTree = "<group>"; };
-		A9F78AE816D937D800073D16 /* NOCFlameParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFlameParticle.h; sourceTree = "<group>"; };
-		A9F78AE916D937D900073D16 /* NOCFlameParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFlameParticle.m; sourceTree = "<group>"; };
+		A9F78AEB16D949F500073D16 /* NOCPaperBurnSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCPaperBurnSketchViewController.h; path = "Week 4/NOCPaperBurnSketchViewController.h"; sourceTree = "<group>"; };
+		A9F78AEC16D949F500073D16 /* NOCPaperBurnSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCPaperBurnSketchViewController.m; path = "Week 4/NOCPaperBurnSketchViewController.m"; sourceTree = "<group>"; };
+		A9F78AEE16D94C8300073D16 /* NOCCubeMover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCCubeMover.h; sourceTree = "<group>"; };
+		A9F78AEF16D94C8300073D16 /* NOCCubeMover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCCubeMover.m; sourceTree = "<group>"; };
+		A9F78AF116D94C9600073D16 /* NOCFlameParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCFlameParticle.h; path = "Week 4/NOCFlameParticle.h"; sourceTree = "<group>"; };
+		A9F78AF216D94C9700073D16 /* NOCFlameParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCFlameParticle.m; path = "Week 4/NOCFlameParticle.m"; sourceTree = "<group>"; };
+		A9F78AF416D9522D00073D16 /* NOCFlame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCFlame.h; path = "Week 4/NOCFlame.h"; sourceTree = "<group>"; };
+		A9F78AF516D9522D00073D16 /* NOCFlame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCFlame.m; path = "Week 4/NOCFlame.m"; sourceTree = "<group>"; };
+		A9F78AF716D9780800073D16 /* NOCFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFrameBuffer.h; sourceTree = "<group>"; };
+		A9F78AF816D9780800073D16 /* NOCFrameBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFrameBuffer.m; sourceTree = "<group>"; };
+		A9F78AFA16D97F9B00073D16 /* Paper.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Paper.fsh; sourceTree = "<group>"; };
+		A9F78AFB16D97F9C00073D16 /* Paper.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Paper.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,16 +370,18 @@
 		A95C702616D031C40058D8BA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				A95C703316D032460058D8BA /* BackgroundTexture.fsh */,
-				A95C703416D032460058D8BA /* BackgroundTexture.vsh */,
+				A95C703316D032460058D8BA /* Texture.fsh */,
+				A95C703416D032460058D8BA /* Texture.vsh */,
+				A9F78AD316D913F200073D16 /* FlameParticle.fsh */,
+				A9F78AD416D913F200073D16 /* FlameParticle.vsh */,
 				A95C702716D031C40058D8BA /* Mover.fsh */,
 				A95C702816D031C40058D8BA /* Mover.vsh */,
 				A95C705416D1812D0058D8BA /* MoverDepthShading.fsh */,
 				A95C705616D181380058D8BA /* MoverDepthShading.vsh */,
 				A95C705816D189C00058D8BA /* MoverTapMatrix.fsh */,
 				A95C705A16D189C90058D8BA /* MoverTapMatrix.vsh */,
-				A9F78AD316D913F200073D16 /* FlameParticle.fsh */,
-				A9F78AD416D913F200073D16 /* FlameParticle.vsh */,
+				A9F78AFA16D97F9B00073D16 /* Paper.fsh */,
+				A9F78AFB16D97F9C00073D16 /* Paper.vsh */,
 				A95C702916D031C40058D8BA /* RandomWalker.fsh */,
 				A95C702A16D031C40058D8BA /* RandomWalker.vsh */,
 				A95C703516D032460058D8BA /* SampleShader.fsh */,
@@ -380,6 +395,8 @@
 		A95C703B16D032DC0058D8BA /* Week 3 */ = {
 			isa = PBXGroup;
 			children = (
+				A9F78AEE16D94C8300073D16 /* NOCCubeMover.h */,
+				A9F78AEF16D94C8300073D16 /* NOCCubeMover.m */,
 				A95C704B16D05F500058D8BA /* NOCTapWave.h */,
 				A95C704C16D05F500058D8BA /* NOCTapWave.m */,
 				A95C704516D047760058D8BA /* NOCWaveAdditionSketchViewController.h */,
@@ -461,15 +478,12 @@
 		A95C900816BD7351003C8F5B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A95C705C16D196450058D8BA /* NOCCubeMover.h */,
-				A95C705D16D196450058D8BA /* NOCCubeMover.m */,
-				A9F78AE816D937D800073D16 /* NOCFlameParticle.h */,
-				A9F78AE916D937D900073D16 /* NOCFlameParticle.m */,
+				A9F78AF716D9780800073D16 /* NOCFrameBuffer.h */,
+				A9F78AF816D9780800073D16 /* NOCFrameBuffer.m */,
 				A95C701D16D0318E0058D8BA /* NOCMover2D.h */,
 				A95C701E16D0318E0058D8BA /* NOCMover2D.m */,
 				A95C701F16D0318E0058D8BA /* NOCMover3D.h */,
 				A95C702016D0318E0058D8BA /* NOCMover3D.m */,
-				A95C901E16BD81FA003C8F5B /* NOCOpenGLTypes.h */,
 				A9F78AE416D9243C00073D16 /* NOCParticle.h */,
 				A9F78AE616D926DE00073D16 /* NOCParticle.m */,
 				A95A5A5B16C2DABC0001D07D /* NOCParticle2D.h */,
@@ -492,6 +506,7 @@
 		A987361616BE04FD001D74E8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */,
 				A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */,
 				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
 				A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */,
@@ -649,7 +664,13 @@
 		A9F78ACF16D9138600073D16 /* Week 4 */ = {
 			isa = PBXGroup;
 			children = (
+				A9F78AF416D9522D00073D16 /* NOCFlame.h */,
+				A9F78AF516D9522D00073D16 /* NOCFlame.m */,
+				A9F78AF116D94C9600073D16 /* NOCFlameParticle.h */,
+				A9F78AF216D94C9700073D16 /* NOCFlameParticle.m */,
 				A9F78ADF16D9203B00073D16 /* NOCGuiParticleSystem.xib */,
+				A9F78AEB16D949F500073D16 /* NOCPaperBurnSketchViewController.h */,
+				A9F78AEC16D949F500073D16 /* NOCPaperBurnSketchViewController.m */,
 				A9F78AD016D913A900073D16 /* NOCParticleSystemSketchViewController.h */,
 				A9F78AD116D913A900073D16 /* NOCParticleSystemSketchViewController.m */,
 			);
@@ -708,12 +729,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9F78AFC16D97F9C00073D16 /* Paper.fsh in Resources */,
+				A9F78AFD16D97F9C00073D16 /* Paper.vsh in Resources */,
 				A9F78AD516D913F200073D16 /* FlameParticle.fsh in Resources */,
 				A9F78AD616D913F200073D16 /* FlameParticle.vsh in Resources */,
 				A95C705516D1812D0058D8BA /* MoverDepthShading.fsh in Resources */,
 				A95C705716D181380058D8BA /* MoverDepthShading.vsh in Resources */,
-				A95C703716D032460058D8BA /* BackgroundTexture.fsh in Resources */,
-				A95C703816D032460058D8BA /* BackgroundTexture.vsh in Resources */,
+				A95C703716D032460058D8BA /* Texture.fsh in Resources */,
+				A95C703816D032460058D8BA /* Texture.vsh in Resources */,
 				A95C703916D032460058D8BA /* SampleShader.fsh in Resources */,
 				A95C703A16D032460058D8BA /* SampleShader.vsh in Resources */,
 				A95C702D16D031C40058D8BA /* Mover.fsh in Resources */,
@@ -824,11 +847,14 @@
 				A95C704D16D05F500058D8BA /* NOCTapWave.m in Sources */,
 				A95C705016D139220058D8BA /* NOCWaveMatrixSketchViewController.m in Sources */,
 				A95C705316D141B80058D8BA /* NOCSpring3D.m in Sources */,
-				A95C705E16D196460058D8BA /* NOCCubeMover.m in Sources */,
 				A9F78AD216D913A900073D16 /* NOCParticleSystemSketchViewController.m in Sources */,
 				A9F78AE316D9237C00073D16 /* NOCParticleSystem.m in Sources */,
 				A9F78AE716D926DF00073D16 /* NOCParticle.m in Sources */,
-				A9F78AEA16D937D900073D16 /* NOCFlameParticle.m in Sources */,
+				A9F78AED16D949F500073D16 /* NOCPaperBurnSketchViewController.m in Sources */,
+				A9F78AF016D94C8300073D16 /* NOCCubeMover.m in Sources */,
+				A9F78AF316D94C9700073D16 /* NOCFlameParticle.m in Sources */,
+				A9F78AF616D9522D00073D16 /* NOCFlame.m in Sources */,
+				A9F78AF916D9780900073D16 /* NOCFrameBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

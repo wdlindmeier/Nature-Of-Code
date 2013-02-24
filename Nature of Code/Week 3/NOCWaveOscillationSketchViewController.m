@@ -44,7 +44,7 @@ static const float MaxFrequency = 1.f;
     _timeStep = 0;
     
     // Texture
-    _textureMover = [self loadTextureWithName:@"brushed_sphere"];
+    _textureMover = NOCLoadGLTextureWithName(@"brushed_sphere");
     
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveOscillation];

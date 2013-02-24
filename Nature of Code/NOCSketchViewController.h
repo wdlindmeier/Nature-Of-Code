@@ -9,15 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "NOCShaderProgram.h"
-#import "NOCOpenGLTypes.h"
+#import "NOCOpenGLHelpers.h"
 #import "CAEAGLLayer+Retained.h"
+
+@class CMMotionManager;
 
 @interface NOCSketchViewController : GLKViewController
 {
+    
 }
 
 // Properties
 @property (nonatomic, strong) NSDictionary *shaders;
+@property (nonatomic, readonly) long frameCount;
 
 // Outlets
 @property (nonatomic, strong) IBOutlet UIView *viewControls;
@@ -30,14 +34,14 @@
 // GUI
 - (NSString *)nibNameForControlGUI;
 
+// Motion
+- (GLKVector2)motionVectorFromManager:(CMMotionManager *)motionManager;
+
 // Loop
 - (void)setup;
 - (void)update;
 - (void)resize;
 - (void)draw;
 - (void)teardown;
-
-// Misc GL
-- (GLKTextureInfo *)loadTextureWithName:(NSString *)texName;
 
 @end

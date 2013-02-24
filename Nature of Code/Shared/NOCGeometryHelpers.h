@@ -8,7 +8,7 @@
 
 #import <GLKit/GLKit.h>
 #import "CGGeometry.h"
-#import "NOCOpenGLTypes.h"
+#import "NOCOpenGLHelpers.h"
 
 #ifndef Nature_of_Code_NOCOpenGLHelpers_h
 #define Nature_of_Code_NOCOpenGLHelpers_h
@@ -73,7 +73,16 @@ static const GLfloat Square3DBillboardVertexData[12] =
     0.5f, -0.5f, 0.0f,
     -0.5f, 0.5f, 0.0f,
     0.5f, 0.5f, 0.0f,
-    
+};
+
+static const float ScreenAspect = 768.0f/1024.0f;
+
+static const GLfloat Screen3DBillboardVertexData[12] =
+{
+    -1.0f, -1.0f/ScreenAspect, 0.0f,
+    1.0f, -1.0f/ScreenAspect, 0.0f,
+    -1.0f, 1.0f/ScreenAspect, 0.0f,
+    1.0f, 1.0f/ScreenAspect, 0.0f,
 };
 
 // 2D Texture coords for billboard rendering.

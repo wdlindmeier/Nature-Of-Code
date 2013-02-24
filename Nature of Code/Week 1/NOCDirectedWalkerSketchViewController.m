@@ -180,41 +180,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
 
 - (void)getFollowPointFromGravity
 {
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-
-    CMDeviceMotion *motion = [_motionManager deviceMotion];
-    CMAcceleration gravity = motion.gravity;
-    
-    float halfWidth = 1;
-    float halfHeight = 1 / aspect;
-
-    // Calibrate for the amount of tily by eyeballing 
-    const static float GravityMultiplier = 2.0f;
-    
-    float x = gravity.x * halfWidth * GravityMultiplier;
-    float y = gravity.y * halfHeight * GravityMultiplier;
-    float swap = x;
-    
-    switch (self.interfaceOrientation) {
-        case UIInterfaceOrientationLandscapeLeft:
-            x = y;
-            y = swap * -1;
-            break;
-        case UIInterfaceOrientationLandscapeRight:
-            x = y * -1;
-            y = swap;
-            break;
-        case UIInterfaceOrientationPortrait:
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            x = x * -1;
-            y = y * -1;
-            break;
-    }
-    
-    _positionFollow = GLKVector2Make(x, y);
-
+    _positionFollow = [self motionVectorFromManager:_motionManager];
 }
 
 #pragma mark - Touch

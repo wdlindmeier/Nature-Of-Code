@@ -21,6 +21,7 @@
 {
     self = [super init];
     if(self){
+        self.position = position;
         _particles = [NSMutableArray arrayWithCapacity:capacity];
     }
     return self;

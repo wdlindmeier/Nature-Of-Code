@@ -49,7 +49,7 @@ static NSString * UniformMoverTexture = @"texture";
 {
     
     // Texture
-    _textureMover = [self loadTextureWithName:@"mover"];
+    _textureMover = NOCLoadGLTextureWithName(@"mover");
     
     // Setup the shaders
     NOCShaderProgram *shaderMovers = [[NOCShaderProgram alloc] initWithName:NOCShaderNameMovers3DMover];
