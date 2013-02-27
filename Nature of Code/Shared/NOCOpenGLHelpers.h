@@ -71,5 +71,29 @@ static inline void NOCPrintGLError()
             NSLog(@"GL_STACK_OVERFLOW");
             break;
     }
+};
+
+static inline GLKVector2 NOCGLPositionInWorldFrameFromCGPointInRect(CGRect worldFrame, CGPoint screenPoint, CGRect viewRect);
+
+// Assumes that the GL world coords are -1..1 1..-1 / aspect
+static inline GLKVector2 NOCGLPositionFromCGPointInRect(CGPoint screenPoint, CGRect viewRect)
+{
+    float aspect = viewRect.size.width / viewRect.size.height;
+    // NOTE: The GL Y axis is opposite from the screen Y axis
+    return NOCGLPositionInWorldFrameFromCGPointInRect(CGRectMake(-1, 1/aspect,
+                                                                 2, (2/aspect*-1)),
+                                                                 screenPoint,
+                                                                 viewRect);
 }
 
+static inline GLKVector2 NOCGLPositionInWorldFrameFromCGPointInRect(CGRect worldFrame, CGPoint screenPoint, CGRect viewRect)
+{
+    CGSize sizeView = viewRect.size;
+    float scalarX = (screenPoint.x - viewRect.origin.x) / sizeView.width;
+    float scalarY = 1.0 - ((screenPoint.y - viewRect.origin.y) / sizeView.height);
+    float widthWorld = worldFrame.size.width;
+    float heightWorld = worldFrame.size.height;
+    float glX = worldFrame.origin.x + (scalarX * widthWorld);
+    float glY = worldFrame.origin.y + (scalarY * heightWorld);
+    return GLKVector2Make(glX, glY);
+}

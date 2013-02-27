@@ -68,12 +68,9 @@ static NSString * UniformMoverTexture = @"texture";
     // Setup the Movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
 
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-
     for(int i=0;i<NumMovers;i++){
         float randX = (RAND_SCALAR * 2.0) - 1.0f;
-        float randY = ((RAND_SCALAR * 2.0) - 1.0f) / aspect;
+        float randY = (RAND_SCALAR * 2.0) - 1.0f;
         float randMass = 0.3 + RAND_SCALAR * 1.5;
         float dimension = 0.1 * randMass;
         NOCMover2D *mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(dimension, dimension)
@@ -89,22 +86,18 @@ static NSString * UniformMoverTexture = @"texture";
 {
     [super update];
     
-    // Step w/in the bounds
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-
     // Update the world variables based on the sliders
     Gravity = self.sliderGravity.value;
     _repulsion = self.sliderRepulsion.value * 2; // (0..2)
     
     float sceneWidth = 2.0f;
-    float sceneHeight = 2.0f/aspect;
+    float sceneHeight = 2.0f/_viewAspect;
     
     // We'll use the size of the screen as the max
     float maxDistance = sqrt((sceneWidth * sceneWidth) + (sceneHeight * sceneHeight));
     _distThreshold = self.sliderDistThreshold.value * maxDistance;
 
-    CGRect moverBounds = CGRectMake(-1, -1 / aspect,
+    CGRect moverBounds = CGRectMake(-1, -1 / _viewAspect,
                                      sceneWidth, sceneHeight);
 
     for(NOCMover2D *mover in _movers){

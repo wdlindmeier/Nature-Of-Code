@@ -17,11 +17,9 @@
 
 - (void)resize
 {
-    [super resize];
-    
+    [super resize];    
     // Setup the 3D projection matrix that fits the screen.
-    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
-    _projectionMatrix3D = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
+    _projectionMatrix3D = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), _viewAspect, 0.1f, 100.0f);
     
 }
 

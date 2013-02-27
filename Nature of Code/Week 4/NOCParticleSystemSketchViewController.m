@@ -208,14 +208,12 @@ static NSString * UniformParticleAge = @"scalarAge";
     for(UITouch *t in touches){
 
         CGPoint posTouch = [t locationInView:self.view];
-        CGSize sizeView = self.view.frame.size;
-        float aspect = sizeView.width / sizeView.height;
-        
-        float scalarX = posTouch.x / sizeView.width;
-        float scalarY = posTouch.y / sizeView.height;
+
+        float scalarX = posTouch.x / _sizeView.width;
+        float scalarY = posTouch.y / _sizeView.height;
         
         float glX = (scalarX * 2.0f) - 1.0f;
-        float glY = (scalarY * (2.0f / aspect)) - (1.0 / aspect);
+        float glY = (scalarY * (2.0f / _viewAspect)) - (1.0 / _viewAspect);
         
         _vecWind = GLKVector2Make(_particleSystem.position.x - glX,
                                   glY - _particleSystem.position.y);

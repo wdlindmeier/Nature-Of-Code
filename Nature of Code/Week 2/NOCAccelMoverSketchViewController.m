@@ -91,11 +91,8 @@ static NSString * UniformMoverTexture = @"texture";
                                              self.sliderAccelY.value);
     }
     
-    // Step w/in the bounds
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-    CGRect moverBounds = CGRectMake(-1, -1 / aspect,
-                                    2, 2 / aspect);
+    CGRect moverBounds = CGRectMake(-1, -1 / _viewAspect,
+                                    2, 2 / _viewAspect);
 
     [_mover stepInRect:moverBounds shouldWrap:YES];
     

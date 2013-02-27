@@ -11,7 +11,7 @@
 
 #if DEBUG
 
- #import "NOCPaperBurnSketchViewController.h"
+ #import "NOCTriangulationSketchViewController.h"
 
 #endif
 
@@ -25,8 +25,8 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-    // self.viewController = [[NOCPaperBurnSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-     //                                                                        bundle:nil];
+    self.viewController = [[NOCTriangulationSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                                 bundle:nil];
     
 #endif
     

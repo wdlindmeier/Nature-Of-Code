@@ -24,7 +24,6 @@
     UIImageView *_imageViewSample;
     UIView *_viewVecPointer;
     GLfloat screen3DBillboardVertexData[12];
-    CGSize _sizeView;
     BOOL _hasRenderedTexture;
 }
 
@@ -126,14 +125,12 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     [super resize];
     
     // NOTE: It's not until now that we have the final view size.
-    _sizeView = self.view.frame.size;
     
     // Creating the background geometry.
     // This will only be created once since we're not allowing rotation.
-    float aspect = _sizeView.width / _sizeView.height;
     for(int i=0;i<4;i++){
         screen3DBillboardVertexData[i*3+0] = Square3DBillboardVertexData[i*3+0] * 2;
-        screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / aspect;
+        screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / _viewAspect;
         screen3DBillboardVertexData[i*3+2] = Square3DBillboardVertexData[i*3+2] * 2;
     }
     _fbo = [[NOCFrameBuffer alloc] initWithPixelWidth:_sizeView.width
@@ -154,8 +151,6 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     
     [self seekFuelForFlames];
     
-    float aspect = _sizeView.width / _sizeView.height;
-    
     NSMutableArray *deadFlames = [NSMutableArray arrayWithCapacity:_flames.count];
     for(NOCFlame *flame in _flames){
 
@@ -167,8 +162,8 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
             float newY = flame.position.y;
             if(newX < -1 ||
                newX > 1 ||
-               newY < -1.0/aspect ||
-               newY > 1.0/aspect ){
+               newY < -1.0/_viewAspect ||
+               newY > 1.0/_viewAspect ){
                 isDead = YES;
             };
         }
@@ -192,7 +187,6 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     // Get the image while it's still bound
     [_fbo bind];
     
-    float aspect = _sizeView.width / _sizeView.height;
     float halfWidth = (_sizeView.width * 0.5);
     float halfHeight = (_sizeView.height * 0.5);
     
@@ -216,7 +210,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
         
         // Convert flame loc to screen coords
         float pxX = halfWidth + (posFlame.x * halfWidth);
-        float pxY = halfHeight + ((posFlame.y * -1 * aspect) * halfHeight);
+        float pxY = halfHeight + ((posFlame.y * -1 * _viewAspect) * halfHeight);
         
         float x = MIN(MAX(0, pxX - (sampleWidth*0.5)), _sizeView.width - (sampleWidth*0.5));
         float y = MIN(MAX(0, pxY - (sampleHeight*0.5)), _sizeView.height - (sampleHeight*0.5));
@@ -389,14 +383,12 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
         if(t.tapCount > 0 && _flames.count < MaxNumFlames){
 
             CGPoint posTouch = [t locationInView:self.view];
-            CGSize sizeView = self.view.frame.size;
-            float aspect = sizeView.width / sizeView.height;
-            
-            float scalarX = posTouch.x / sizeView.width;
-            float scalarY = 1.0 - (posTouch.y / sizeView.height);
+
+            float scalarX = posTouch.x / _sizeView.width;
+            float scalarY = 1.0 - (posTouch.y / _sizeView.height);
             
             float glX = (scalarX * 2.0f) - 1.0f;
-            float glY = (scalarY * (2.0f / aspect)) - (1.0 / aspect);
+            float glY = (scalarY * (2.0f / _viewAspect)) - (1.0 / _viewAspect);
             
             // Add a new flame
             NOCFlame *flame = [[NOCFlame alloc] initWithPosition:GLKVector3Make(glX, glY, 0)

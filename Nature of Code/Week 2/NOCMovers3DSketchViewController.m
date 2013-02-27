@@ -67,14 +67,9 @@ static NSString * UniformMoverTexture = @"texture";
     // Setup the Movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
     
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-    
-    _sceneBox = [[NOCSceneBox alloc] initWithAspect:aspect];
-    
     for(int i=0;i<NumMovers;i++){
         float randX = (RAND_SCALAR * 2.0) - 1.0f;
-        float randY = ((RAND_SCALAR * 2.0) - 1.0f) / aspect;
+        float randY = (RAND_SCALAR * 2.0) - 1.0f;
         float randZ = (RAND_SCALAR * 2.0) - 1.0f;
         // Make them the same size so depth is more apparent
         float randMass = 1.0f;//0.3 + RAND_SCALAR * 1.5;
@@ -95,10 +90,7 @@ static NSString * UniformMoverTexture = @"texture";
     glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Create the box vertecies
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-    [_sceneBox resizeWithAspect:aspect];
+    [_sceneBox resizeWithAspect:_viewAspect];
     
 }
 
@@ -107,22 +99,20 @@ static NSString * UniformMoverTexture = @"texture";
     [super update];
     
     // Step w/in the bounds
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-    
+
     // Update the world variables based on the sliders
     Gravity = self.sliderGravity.value;
     _repulsion = self.sliderRepulsion.value * 2; // (0..2)
     
     float sceneWidth = 2.0f;
-    float sceneHeight = 2.0f/aspect;
+    float sceneHeight = 2.0f/_viewAspect;
     float sceneDepth = 2.0f;
     
     // We'll use the size of the screen as the max
     float maxDistance = sqrt((sceneWidth * sceneWidth) + (sceneHeight * sceneHeight));
     _distThreshold = self.sliderDistThreshold.value * maxDistance;
     
-    NOCBox3D moverBounds = NOCBox3DMake(-1, -1 / aspect, -1,
+    NOCBox3D moverBounds = NOCBox3DMake(-1, -1 / _viewAspect, -1,
                                         sceneWidth, sceneHeight, sceneDepth);
     
     for(NOCMover3D *mover in _movers){

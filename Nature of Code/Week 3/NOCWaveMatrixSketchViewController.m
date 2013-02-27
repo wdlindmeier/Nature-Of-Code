@@ -116,15 +116,12 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     self.shaders = @{ShaderNameWaveMatrixMover : shaderMovers,
                      ShaderNameSceneBox : shaderScene};
     
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-
-    _sceneBox = [[NOCSceneBox alloc] initWithAspect:aspect];
+    _sceneBox = [[NOCSceneBox alloc] initWithAspect:_viewAspect];
     
     // Add the movers.
     // Just a flat 2D grid for now.
-    int numMoversWide = floor(sizeView.width / 75.0);
-    int numMoversHigh = round((numMoversWide / aspect));
+    int numMoversWide = floor(_sizeView.width / 75.0);
+    int numMoversHigh = round((numMoversWide / _viewAspect));
     int numMoversDeep = numMoversWide;
     int numMovers = numMoversWide * numMoversHigh * numMoversDeep;
     
@@ -133,7 +130,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     NSMutableArray *springs = [NSMutableArray arrayWithCapacity:numMovers];
     
     float plotWidth = 2.0f / numMoversWide;
-    float plotHeight = (2.0f / aspect) / numMoversHigh;
+    float plotHeight = (2.0f / _viewAspect) / numMoversHigh;
     float plotDepth = plotWidth;
     
     // NOTE: Adding movers from front-to-back so we don't
@@ -144,7 +141,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
             for(int plotY=0;plotY<numMoversHigh;plotY++){
 
                 float x = ((plotWidth * 0.5) + (plotWidth * plotX)) - 1.0f;
-                float y = (plotHeight * 0.5) + (plotHeight * plotY) - (1.0f / aspect);
+                float y = (plotHeight * 0.5) + (plotHeight * plotY) - (1.0f / _viewAspect);
                 float z = ((plotDepth * 0.5) + (plotDepth * plotZ)) - 1.0f;
                 
                 GLKVector3 anchor = GLKVector3Make(x, y, z);
@@ -217,11 +214,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     [super resize];
     
     [self clear];
-    
-    // Create the box vertecies
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-    [_sceneBox resizeWithAspect:aspect];
+
+    [_sceneBox resizeWithAspect:_viewAspect];
     
 }
 
@@ -415,14 +409,12 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         if(t.tapCount > 0){
         
             CGPoint posTouch = [t locationInView:self.view];
-            CGSize sizeView = self.view.frame.size;
-            float aspect = sizeView.width / sizeView.height;
             
-            float scalarX = posTouch.x / sizeView.width;
-            float scalarY = posTouch.y / sizeView.height;
+            float scalarX = posTouch.x / _sizeView.width;
+            float scalarY = posTouch.y / _sizeView.height;
             
             float glX = (scalarX * 2.0f) - 1.0f;
-            float glY = (scalarY * (-2.0f / aspect)) + (1.0f / aspect);
+            float glY = (scalarY * (-2.0f / _viewAspect)) + (1.0f / _viewAspect);
             float glZ = 1.0f; // Start the waves at the front of the cube
             
             GLKVector3 tapPosition = GLKVector3Make(glX, glY, glZ);

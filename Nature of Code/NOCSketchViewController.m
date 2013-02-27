@@ -203,14 +203,11 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (GLKVector2)motionVectorFromManager:(CMMotionManager *)motionManager
 {    
-    CGSize sizeView = self.view.frame.size;
-    float aspect = sizeView.width / sizeView.height;
-    
     CMDeviceMotion *motion = [motionManager deviceMotion];
     CMAcceleration gravity = motion.gravity;
     
     float halfWidth = 1;
-    float halfHeight = 1 / aspect;
+    float halfHeight = 1 / _viewAspect;
     
     // Calibrate for the amount of tilt by eyeballing
     const static float GravityMultiplier = 2.0f;
@@ -364,7 +361,8 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (void)resize
 {
-    //...
+    _sizeView = self.view.frame.size;
+    _viewAspect = _sizeView.width / _sizeView.height;
 }
 
 - (void)draw

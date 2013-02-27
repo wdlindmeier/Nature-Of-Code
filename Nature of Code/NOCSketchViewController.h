@@ -16,7 +16,8 @@
 
 @interface NOCSketchViewController : GLKViewController
 {
-    
+    CGSize _sizeView;
+    float _viewAspect;
 }
 
 // Properties

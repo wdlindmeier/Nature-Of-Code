@@ -21,6 +21,15 @@
 		A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */; };
 		A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */; };
 		A936F0AE16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0AA16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png */; };
+		A936F0B216DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */; };
+		A936F0C016DE802E00A6EBD8 /* DelaunayEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0B616DE802E00A6EBD8 /* DelaunayEdge.m */; };
+		A936F0C116DE802E00A6EBD8 /* DelaunayPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0B816DE802E00A6EBD8 /* DelaunayPoint.m */; };
+		A936F0C216DE802E00A6EBD8 /* DelaunayTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0BA16DE802E00A6EBD8 /* DelaunayTriangle.m */; };
+		A936F0C316DE802E00A6EBD8 /* DelaunayTriangulation.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0BC16DE802E00A6EBD8 /* DelaunayTriangulation.m */; };
+		A936F0C416DE802E00A6EBD8 /* VoronoiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0BF16DE802E00A6EBD8 /* VoronoiCell.m */; };
+		A936F0C816DE9D1200A6EBD8 /* Triangulation.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */; };
+		A936F0C916DE9D1200A6EBD8 /* Triangulation.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */; };
+		A936F0CC16DEA02E00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0CB16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m */; };
 		A95A5A5016C2D8970001D07D /* NOCAccelMoverSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */; };
 		A95A5A5616C2D8C60001D07D /* NOCGuiAccelMover.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */; };
 		A95A5A5D16C2DABC0001D07D /* NOCParticle2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5C16C2DABC0001D07D /* NOCParticle2D.m */; };
@@ -152,6 +161,23 @@
 		A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PaperBurn@2x.png"; sourceTree = "<group>"; };
 		A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_ParticleSystem.png; sourceTree = "<group>"; };
 		A936F0AA16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_ParticleSystem@2x.png"; sourceTree = "<group>"; };
+		A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTriangulationSketchViewController.h; sourceTree = "<group>"; };
+		A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTriangulationSketchViewController.m; sourceTree = "<group>"; };
+		A936F0B516DE802E00A6EBD8 /* DelaunayEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelaunayEdge.h; sourceTree = "<group>"; };
+		A936F0B616DE802E00A6EBD8 /* DelaunayEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelaunayEdge.m; sourceTree = "<group>"; };
+		A936F0B716DE802E00A6EBD8 /* DelaunayPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelaunayPoint.h; sourceTree = "<group>"; };
+		A936F0B816DE802E00A6EBD8 /* DelaunayPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelaunayPoint.m; sourceTree = "<group>"; };
+		A936F0B916DE802E00A6EBD8 /* DelaunayTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelaunayTriangle.h; sourceTree = "<group>"; };
+		A936F0BA16DE802E00A6EBD8 /* DelaunayTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelaunayTriangle.m; sourceTree = "<group>"; };
+		A936F0BB16DE802E00A6EBD8 /* DelaunayTriangulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelaunayTriangulation.h; sourceTree = "<group>"; };
+		A936F0BC16DE802E00A6EBD8 /* DelaunayTriangulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelaunayTriangulation.m; sourceTree = "<group>"; };
+		A936F0BE16DE802E00A6EBD8 /* VoronoiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoronoiCell.h; sourceTree = "<group>"; };
+		A936F0BF16DE802E00A6EBD8 /* VoronoiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoronoiCell.m; sourceTree = "<group>"; };
+		A936F0C516DE872D00A6EBD8 /* Edgy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Edgy.h; sourceTree = "<group>"; };
+		A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Triangulation.fsh; sourceTree = "<group>"; };
+		A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Triangulation.vsh; sourceTree = "<group>"; };
+		A936F0CA16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DelaunayTriangulation+NOCHelpers.h"; sourceTree = "<group>"; };
+		A936F0CB16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DelaunayTriangulation+NOCHelpers.m"; sourceTree = "<group>"; };
 		A95A5A4E16C2D8970001D07D /* NOCAccelMoverSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCAccelMoverSketchViewController.h; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.h"; sourceTree = SOURCE_ROOT; };
 		A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCAccelMoverSketchViewController.m; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.m"; sourceTree = SOURCE_ROOT; };
 		A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiAccelMover.xib; path = "Nature of Code/Week 2/NOCGuiAccelMover.xib"; sourceTree = SOURCE_ROOT; };
@@ -364,6 +390,41 @@
 			path = thumbnails;
 			sourceTree = "<group>";
 		};
+		A936F0AF16DE7FBA00A6EBD8 /* Week 5 */ = {
+			isa = PBXGroup;
+			children = (
+				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
+				A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */,
+			);
+			path = "Week 5";
+			sourceTree = "<group>";
+		};
+		A936F0B316DE801900A6EBD8 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				A936F0B416DE802E00A6EBD8 /* Edgy */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A936F0B416DE802E00A6EBD8 /* Edgy */ = {
+			isa = PBXGroup;
+			children = (
+				A936F0B516DE802E00A6EBD8 /* DelaunayEdge.h */,
+				A936F0B616DE802E00A6EBD8 /* DelaunayEdge.m */,
+				A936F0B716DE802E00A6EBD8 /* DelaunayPoint.h */,
+				A936F0B816DE802E00A6EBD8 /* DelaunayPoint.m */,
+				A936F0B916DE802E00A6EBD8 /* DelaunayTriangle.h */,
+				A936F0BA16DE802E00A6EBD8 /* DelaunayTriangle.m */,
+				A936F0BB16DE802E00A6EBD8 /* DelaunayTriangulation.h */,
+				A936F0BC16DE802E00A6EBD8 /* DelaunayTriangulation.m */,
+				A936F0BE16DE802E00A6EBD8 /* VoronoiCell.h */,
+				A936F0BF16DE802E00A6EBD8 /* VoronoiCell.m */,
+				A936F0C516DE872D00A6EBD8 /* Edgy.h */,
+			);
+			path = Edgy;
+			sourceTree = "<group>";
+		};
 		A95A5A5E16C2E7AC0001D07D /* sketches */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,8 +443,6 @@
 		A95C702616D031C40058D8BA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				A95C703316D032460058D8BA /* Texture.fsh */,
-				A95C703416D032460058D8BA /* Texture.vsh */,
 				A9F78AD316D913F200073D16 /* FlameParticle.fsh */,
 				A9F78AD416D913F200073D16 /* FlameParticle.vsh */,
 				A95C702716D031C40058D8BA /* Mover.fsh */,
@@ -400,6 +459,10 @@
 				A95C703616D032460058D8BA /* SampleShader.vsh */,
 				A95C702B16D031C40058D8BA /* SceneBox.fsh */,
 				A95C702C16D031C40058D8BA /* SceneBox.vsh */,
+				A95C703316D032460058D8BA /* Texture.fsh */,
+				A95C703416D032460058D8BA /* Texture.vsh */,
+				A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */,
+				A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -431,6 +494,7 @@
 				A95C900116BD7351003C8F5B /* Week 2 */,
 				A95C703B16D032DC0058D8BA /* Week 3 */,
 				A9F78ACF16D9138600073D16 /* Week 4 */,
+				A936F0AF16DE7FBA00A6EBD8 /* Week 5 */,
 			);
 			name = "Chapters / Weeks";
 			sourceTree = "<group>";
@@ -523,6 +587,8 @@
 				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
 				A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */,
 				A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */,
+				A936F0CA16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.h */,
+				A936F0CB16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -551,6 +617,7 @@
 		A9D1AE6E16B99A77000BE623 = {
 			isa = PBXGroup;
 			children = (
+				A936F0B316DE801900A6EBD8 /* Libraries */,
 				A9D1AEC016B9A275000BE623 /* Data */,
 				A9D1AEAB16B99E68000BE623 /* Assets */,
 				A9D1AE8716B99A77000BE623 /* Nature of Code */,
@@ -741,6 +808,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A936F0C816DE9D1200A6EBD8 /* Triangulation.fsh in Resources */,
+				A936F0C916DE9D1200A6EBD8 /* Triangulation.vsh in Resources */,
 				A9F78AFC16D97F9C00073D16 /* Paper.fsh in Resources */,
 				A9F78AFD16D97F9C00073D16 /* Paper.vsh in Resources */,
 				A9F78AD516D913F200073D16 /* FlameParticle.fsh in Resources */,
@@ -871,6 +940,13 @@
 				A9F78AF316D94C9700073D16 /* NOCFlameParticle.m in Sources */,
 				A9F78AF616D9522D00073D16 /* NOCFlame.m in Sources */,
 				A9F78AF916D9780900073D16 /* NOCFrameBuffer.m in Sources */,
+				A936F0B216DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m in Sources */,
+				A936F0C016DE802E00A6EBD8 /* DelaunayEdge.m in Sources */,
+				A936F0C116DE802E00A6EBD8 /* DelaunayPoint.m in Sources */,
+				A936F0C216DE802E00A6EBD8 /* DelaunayTriangle.m in Sources */,
+				A936F0C316DE802E00A6EBD8 /* DelaunayTriangulation.m in Sources */,
+				A936F0C416DE802E00A6EBD8 /* VoronoiCell.m in Sources */,
+				A936F0CC16DEA02E00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +1037,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nature of Code/Nature of Code-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Edgy\"";
 				INFOPLIST_FILE = "Nature of Code/Nature of Code-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -972,6 +1049,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nature of Code/Nature of Code-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Edgy\"";
 				INFOPLIST_FILE = "Nature of Code/Nature of Code-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
