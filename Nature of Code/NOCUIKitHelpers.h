@@ -10,3 +10,17 @@
 
 @interface UINavigationController (Interface)
 @end
+
+@interface UIImage (NOCHelpers)
+
++ (UIImage *)perlinMapOfSize:(CGSize)imgSize
+                       alpha:(double)a
+                        beta:(double)b
+                     octaves:(int)octs
+                      minVal:(int)minBrightness
+                      maxVal:(int)maxBrightness;
+
++ (UIImage *)imageWithBuffer:(GLubyte *)buffer
+                      ofSize:(CGSize)size;
+
+@end

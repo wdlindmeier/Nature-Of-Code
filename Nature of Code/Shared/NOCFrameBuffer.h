@@ -19,5 +19,7 @@
 
 - (void)bind;
 - (void)bindTexture:(int)textureNum;
+- (UIImage *)imageAtRect:(CGRect)cropRect;
+- (void)pixelValuesInRect:(CGRect)cropRect buffer:(GLubyte *)pixelBuffer;
 
 @end

@@ -25,7 +25,7 @@
 
 static const int NumMovers = 20;
 
-static NSString * NOCShaderNameMultiMover = @"Mover";
+static NSString * ShaderNameMultiMover = @"Mover";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 
@@ -51,7 +51,7 @@ static NSString * UniformMoverTexture = @"texture";
     _textureMover = NOCLoadGLTextureWithName(@"mover");
     
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameMultiMover];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameMultiMover];
     
     _shader.attributes = @{
         @"position" : @(GLKVertexAttribPosition),
@@ -63,7 +63,7 @@ static NSString * UniformMoverTexture = @"texture";
                              UniformMoverTexture
     ];
     
-    self.shaders = @{ NOCShaderNameMultiMover : _shader };
+    self.shaders = @{ ShaderNameMultiMover : _shader };
     
     // Setup the Movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];

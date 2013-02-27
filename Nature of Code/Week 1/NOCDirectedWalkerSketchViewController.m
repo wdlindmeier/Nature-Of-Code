@@ -26,7 +26,7 @@ enum {
 @end
 
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
-static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use the same shader
+static NSString * ShaderNameDirectedWalker = @"RandomWalker"; // We'll use the same shader
 
 @implementation NOCDirectedWalkerSketchViewController
 
@@ -89,7 +89,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
 {
      
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameDirectedWalker];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameDirectedWalker];
     
     _shader.attributes = @{
         @"position" : @(GLKVertexAttribPosition),
@@ -100,7 +100,7 @@ static NSString * NOCShaderNameDirectedWalker = @"RandomWalker"; // We'll use th
         UniformMVProjectionMatrix,
     ];
     
-    self.shaders = @{ NOCShaderNameDirectedWalker : _shader };
+    self.shaders = @{ ShaderNameDirectedWalker : _shader };
     
     // Setup the Walker
     _positionFollow = GLKVector2Make(0, 0);

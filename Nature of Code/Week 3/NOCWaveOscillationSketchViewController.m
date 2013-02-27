@@ -24,7 +24,7 @@
 
 @implementation NOCWaveOscillationSketchViewController
 
-static NSString * NOCShaderNameWaveOscillation = @"Mover";
+static NSString * ShaderNameWaveOscillation = @"Mover";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 static const int NumMovers = 100;
@@ -47,7 +47,7 @@ static const float MaxFrequency = 1.f;
     _textureMover = NOCLoadGLTextureWithName(@"brushed_sphere");
     
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveOscillation];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveOscillation];
     
     _shader.attributes = @{
                            @"position" : @(GLKVertexAttribPosition),
@@ -59,7 +59,7 @@ static const float MaxFrequency = 1.f;
                              UniformMoverTexture
                              ];
     
-    self.shaders = @{ NOCShaderNameWaveOscillation : _shader };
+    self.shaders = @{ ShaderNameWaveOscillation : _shader };
     
     // Create a line of little movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];

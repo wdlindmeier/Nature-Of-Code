@@ -10,8 +10,12 @@
 
 @interface NOCFlame : NOCParticleSystem
 
+@property (nonatomic, assign) GLKVector3 velocity;
+
 - (id)initWithPosition:(GLKVector3)position flameTexture:(GLKTextureInfo *)texture;
 - (void)stepWithLift:(GLKVector2)vecUp;
 - (void)renderInMatrix:(GLKMatrix4)projectionMatrix;
+- (BOOL)isDead;
+- (void)kill;
 
 @end

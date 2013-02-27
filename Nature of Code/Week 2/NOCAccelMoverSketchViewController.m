@@ -18,7 +18,7 @@
     GLKTextureInfo *_textureMover;
 }
 
-static NSString * NOCShaderNameAccelMover = @"Mover";
+static NSString * ShaderNameAccelMover = @"Mover";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 
@@ -52,7 +52,7 @@ static NSString * UniformMoverTexture = @"texture";
     _textureMover = NOCLoadGLTextureWithName(@"mover");
         
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameAccelMover];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameAccelMover];
     
     _shader.attributes = @{
         @"position" : @(GLKVertexAttribPosition),
@@ -64,7 +64,7 @@ static NSString * UniformMoverTexture = @"texture";
         UniformMoverTexture
     ];
     
-    self.shaders = @{ NOCShaderNameAccelMover : _shader };
+    self.shaders = @{ ShaderNameAccelMover : _shader };
     
     // Setup the Mover
     _mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(0.1, 0.1)

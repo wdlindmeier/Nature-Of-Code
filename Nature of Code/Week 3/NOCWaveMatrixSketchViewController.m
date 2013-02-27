@@ -45,14 +45,14 @@ static const NSTimeInterval UnitTimeInterval = 1.0f;
 @end
 
 #if USE_TEXTURE
-    static NSString * NOCShaderNameWaveMatrixMover = @"MoverDepthShading";
+    static NSString * ShaderNameWaveMatrixMover = @"MoverDepthShading";
     static NSString * UniformMoverTexture = @"texture";
 #else
-    static NSString * NOCShaderNameWaveMatrixMover = @"MoverTapMatrix";
+    static NSString * ShaderNameWaveMatrixMover = @"MoverTapMatrix";
     static NSString * UniformNormalMatrix = @"normalMatrix";
 #endif
 
-static NSString * NOCShaderNameSceneBox = @"SceneBox";
+static NSString * ShaderNameSceneBox = @"SceneBox";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
 @implementation NOCWaveMatrixSketchViewController
@@ -90,7 +90,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
 
     // Setup the shaders
-    NOCShaderProgram *shaderMovers = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveMatrixMover];
+    NOCShaderProgram *shaderMovers = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveMatrixMover];
     
 #if USE_TEXTURE
     
@@ -109,12 +109,12 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     
 #endif
     
-    NOCShaderProgram *shaderScene = [[NOCShaderProgram alloc] initWithName:NOCShaderNameSceneBox];
+    NOCShaderProgram *shaderScene = [[NOCShaderProgram alloc] initWithName:ShaderNameSceneBox];
     shaderScene.attributes = @{ @"position" : @(GLKVertexAttribPosition) };
     shaderScene.uniformNames = @[ UniformMVProjectionMatrix ];
     
-    self.shaders = @{NOCShaderNameWaveMatrixMover : shaderMovers,
-                     NOCShaderNameSceneBox : shaderScene};
+    self.shaders = @{ShaderNameWaveMatrixMover : shaderMovers,
+                     ShaderNameSceneBox : shaderScene};
     
     CGSize sizeView = self.view.frame.size;
     float aspect = sizeView.width / sizeView.height;
@@ -306,7 +306,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     NSNumber *projMatLoc = nil;
     
     // Draw the scene box
-    NOCShaderProgram *shaderScene = self.shaders[NOCShaderNameSceneBox];
+    NOCShaderProgram *shaderScene = self.shaders[ShaderNameSceneBox];
     [shaderScene use];
     // Create the Model View Projection matrix for the shader
     projMatLoc = shaderScene.uniformLocations[UniformMVProjectionMatrix];
@@ -325,7 +325,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     
     // Draw the movers
     
-    NOCShaderProgram *shaderMovers = self.shaders[NOCShaderNameWaveMatrixMover];
+    NOCShaderProgram *shaderMovers = self.shaders[ShaderNameWaveMatrixMover];
     [shaderMovers use];
 
     // Create the Model View Projection matrix for the shader

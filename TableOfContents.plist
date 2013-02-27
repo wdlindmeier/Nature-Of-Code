@@ -102,9 +102,9 @@
 		<array>
 			<dict>
 				<key>Name</key>
-				<string>Particle System</string>
+				<string>Particle Emitter</string>
 				<key>Description</key>
-				<string>A simple particle emitter that reacts to touch movement. The options panel allows you to choose blend mode parameters, which are passed into glBlendFunc().</string>
+				<string>A simple particle emitter that reacts to touch dragging. The options panel allows you to choose blend mode parameters, which are passed into glBlendFunc().</string>
 				<key>Controller</key>
 				<string>ParticleSystem</string>
 			</dict>
@@ -112,7 +112,7 @@
 				<key>Name</key>
 				<string>Paper Burn</string>
 				<key>Description</key>
-				<string></string>
+				<string>Touch the screen to spawn flames that will consume the paper. Flames are attracted to the whitest parts of the paper. The direction of the flame trails respond to device orientation.</string>
 				<key>Controller</key>
 				<string>PaperBurn</string>
 			</dict>

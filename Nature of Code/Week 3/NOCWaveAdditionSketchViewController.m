@@ -28,7 +28,7 @@ static const int NumWaves = 2;
 
 @implementation NOCWaveAdditionSketchViewController
 
-static NSString * NOCShaderNameWaveAddition = @"Mover";
+static NSString * ShaderNameWaveAddition = @"Mover";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 
@@ -55,19 +55,15 @@ static NSString * UniformMoverTexture = @"texture";
     _textureMover = NOCLoadGLTextureWithName(@"brushed_sphere");
 
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveAddition];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveAddition];
     
-    _shader.attributes = @{
-                           @"position" : @(GLKVertexAttribPosition),
-                           @"texCoord" : @(GLKVertexAttribTexCoord0)
-                           };
+    _shader.attributes = @{@"position" : @(GLKVertexAttribPosition),
+                           @"texCoord" : @(GLKVertexAttribTexCoord0)};
     
-    _shader.uniformNames = @[
-                             UniformMVProjectionMatrix,
-                             UniformMoverTexture
-                             ];
+    _shader.uniformNames = @[UniformMVProjectionMatrix,
+                             UniformMoverTexture];
     
-    self.shaders = @{ NOCShaderNameWaveAddition : _shader };
+    self.shaders = @{ ShaderNameWaveAddition : _shader };
     
     // Create a line of little movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];

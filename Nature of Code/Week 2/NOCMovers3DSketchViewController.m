@@ -25,8 +25,8 @@
 
 static const int NumMovers = 20;
 
-static NSString * NOCShaderNameMovers3DMover = @"Mover";
-static NSString * NOCShaderNameSceneBox = @"SceneBox";
+static NSString * ShaderNameMovers3DMover = @"Mover";
+static NSString * ShaderNameSceneBox = @"SceneBox";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 
@@ -52,17 +52,17 @@ static NSString * UniformMoverTexture = @"texture";
     _textureMover = NOCLoadGLTextureWithName(@"mover");
     
     // Setup the shaders
-    NOCShaderProgram *shaderMovers = [[NOCShaderProgram alloc] initWithName:NOCShaderNameMovers3DMover];
+    NOCShaderProgram *shaderMovers = [[NOCShaderProgram alloc] initWithName:ShaderNameMovers3DMover];
     shaderMovers.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                 @"texCoord" : @(GLKVertexAttribTexCoord0)};
     shaderMovers.uniformNames = @[ UniformMVProjectionMatrix, UniformMoverTexture ];
 
-    NOCShaderProgram *shaderScene = [[NOCShaderProgram alloc] initWithName:NOCShaderNameSceneBox];
+    NOCShaderProgram *shaderScene = [[NOCShaderProgram alloc] initWithName:ShaderNameSceneBox];
     shaderScene.attributes = @{ @"position" : @(GLKVertexAttribPosition) };
     shaderScene.uniformNames = @[ UniformMVProjectionMatrix ];
 
-    self.shaders = @{NOCShaderNameMovers3DMover : shaderMovers,
-                     NOCShaderNameSceneBox : shaderScene};
+    self.shaders = @{ShaderNameMovers3DMover : shaderMovers,
+                     ShaderNameSceneBox : shaderScene};
     
     // Setup the Movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
@@ -147,7 +147,7 @@ static NSString * UniformMoverTexture = @"texture";
     NSNumber *projMatLoc = nil;
     
     // Draw the scene box
-    NOCShaderProgram *shaderScene = self.shaders[NOCShaderNameSceneBox];
+    NOCShaderProgram *shaderScene = self.shaders[ShaderNameSceneBox];
     [shaderScene use];
     // Create the Model View Projection matrix for the shader
     projMatLoc = shaderScene.uniformLocations[UniformMVProjectionMatrix];
@@ -157,7 +157,7 @@ static NSString * UniformMoverTexture = @"texture";
     
     // Draw the movers
     
-    NOCShaderProgram *shaderMovers = self.shaders[NOCShaderNameMovers3DMover];
+    NOCShaderProgram *shaderMovers = self.shaders[ShaderNameMovers3DMover];
     [shaderMovers use];
     
     // Enable alpha blending for the transparent png

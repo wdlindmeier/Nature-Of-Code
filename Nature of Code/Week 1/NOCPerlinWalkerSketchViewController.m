@@ -18,7 +18,7 @@
 @end
 
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
-static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the same shader
+static NSString * ShaderNamePerlinWalker = @"RandomWalker"; // We'll use the same shader
 
 @implementation NOCPerlinWalkerSketchViewController
 
@@ -52,7 +52,7 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
 {
     
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNamePerlinWalker];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNamePerlinWalker];
     
     _shader.attributes = @{
         @"position" : @(GLKVertexAttribPosition),
@@ -63,7 +63,7 @@ static NSString * NOCShaderNamePerlinWalker = @"RandomWalker"; // We'll use the 
         UniformMVProjectionMatrix,
     ];
     
-    self.shaders = @{ NOCShaderNamePerlinWalker : _shader };
+    self.shaders = @{ ShaderNamePerlinWalker : _shader };
     
     // Setup the Walker
     _walker = [[NOCPerlinWalker alloc] initWithSize:GLKVector2Make(0.01, 0.01)

@@ -17,6 +17,10 @@
 		A920CEBE16C0373D00284EAF /* thumb_PerlinWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */; };
 		A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */; };
 		A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */; };
+		A936F0AB16DDA73B00A6EBD8 /* thumb_PaperBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */; };
+		A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */; };
+		A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */; };
+		A936F0AE16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0AA16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png */; };
 		A95A5A5016C2D8970001D07D /* NOCAccelMoverSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */; };
 		A95A5A5616C2D8C60001D07D /* NOCGuiAccelMover.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */; };
 		A95A5A5D16C2DABC0001D07D /* NOCParticle2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5C16C2DABC0001D07D /* NOCParticle2D.m */; };
@@ -144,6 +148,10 @@
 		A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PerlinWalker@2x.png"; sourceTree = "<group>"; };
 		A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_RandomWalker.png; sourceTree = "<group>"; };
 		A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_RandomWalker@2x.png"; sourceTree = "<group>"; };
+		A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PaperBurn.png; sourceTree = "<group>"; };
+		A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PaperBurn@2x.png"; sourceTree = "<group>"; };
+		A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_ParticleSystem.png; sourceTree = "<group>"; };
+		A936F0AA16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_ParticleSystem@2x.png"; sourceTree = "<group>"; };
 		A95A5A4E16C2D8970001D07D /* NOCAccelMoverSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCAccelMoverSketchViewController.h; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.h"; sourceTree = SOURCE_ROOT; };
 		A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCAccelMoverSketchViewController.m; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.m"; sourceTree = SOURCE_ROOT; };
 		A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiAccelMover.xib; path = "Nature of Code/Week 2/NOCGuiAccelMover.xib"; sourceTree = SOURCE_ROOT; };
@@ -305,7 +313,7 @@
 		A9F78AF516D9522D00073D16 /* NOCFlame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCFlame.m; path = "Week 4/NOCFlame.m"; sourceTree = "<group>"; };
 		A9F78AF716D9780800073D16 /* NOCFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFrameBuffer.h; sourceTree = "<group>"; };
 		A9F78AF816D9780800073D16 /* NOCFrameBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFrameBuffer.m; sourceTree = "<group>"; };
-		A9F78AFA16D97F9B00073D16 /* Paper.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Paper.fsh; sourceTree = "<group>"; };
+		A9F78AFA16D97F9B00073D16 /* Paper.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Paper.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A9F78AFB16D97F9C00073D16 /* Paper.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Paper.vsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,6 +346,10 @@
 				A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */,
 				A9077A3A16CB4ECF008032C7 /* thumb_MultiMover.png */,
 				A9077A3B16CB4ECF008032C7 /* thumb_MultiMover@2x.png */,
+				A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */,
+				A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */,
+				A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */,
+				A936F0AA16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png */,
 				A920CEB716C0373D00284EAF /* thumb_PerlinWalker.png */,
 				A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */,
 				A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */,
@@ -800,6 +812,10 @@
 				A9F78ADD16D9180400073D16 /* flame_magenta.png in Resources */,
 				A9F78ADE16D9180400073D16 /* flame_red.png in Resources */,
 				A9F78AE016D9203C00073D16 /* NOCGuiParticleSystem.xib in Resources */,
+				A936F0AB16DDA73B00A6EBD8 /* thumb_PaperBurn.png in Resources */,
+				A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */,
+				A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */,
+				A936F0AE16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,16 +75,6 @@ static const GLfloat Square3DBillboardVertexData[12] =
     0.5f, 0.5f, 0.0f,
 };
 
-static const float ScreenAspect = 768.0f/1024.0f;
-
-static const GLfloat Screen3DBillboardVertexData[12] =
-{
-    -1.0f, -1.0f/ScreenAspect, 0.0f,
-    1.0f, -1.0f/ScreenAspect, 0.0f,
-    -1.0f, 1.0f/ScreenAspect, 0.0f,
-    1.0f, 1.0f/ScreenAspect, 0.0f,
-};
-
 // 2D Texture coords for billboard rendering.
 static const GLfloat Square3DTexCoords[8] =
 {

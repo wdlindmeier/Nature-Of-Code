@@ -7,6 +7,7 @@
 //
 
 #import "NOCFrameBuffer.h"
+#import "NOCUIKitHelpers.h"
 
 @implementation NOCFrameBuffer
 {
@@ -19,6 +20,8 @@
 @synthesize locFramebuffer = _locFramebuffer;
 @synthesize locRenderbuffer = _locRenderbuffer;
 @synthesize locRenderTexture = _locRenderTexture;
+
+#pragma mark - Init
 
 - (id)initWithPixelWidth:(int)width pixelHeight:(int)height
 {
@@ -53,6 +56,7 @@
         // Always check that our framebuffer is ok
         if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE){
             NSLog(@"ERROR: Could not create framebuffer");
+            NOCPrintGLError();
         }
         
     }
@@ -60,6 +64,8 @@
     return self;
     
 }
+
+#pragma mark - Binding
 
 - (void)bind
 {
@@ -73,6 +79,32 @@
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(textureNum);
     glBindTexture(GL_TEXTURE_2D, self.locRenderTexture);
+}
+
+#pragma mark - Accessing Data
+
+- (void)pixelValuesInRect:(CGRect)cropRect buffer:(GLubyte *)pixelBuffer
+{
+    GLint width = cropRect.size.width;
+    GLint height = cropRect.size.height;
+    glReadPixels(cropRect.origin.x, cropRect.origin.y,
+                 width, height,
+                 GL_RGBA, GL_UNSIGNED_BYTE, pixelBuffer);
+}
+
+- (UIImage *)imageAtRect:(CGRect)cropRect
+{
+    GLint width = cropRect.size.width;
+    GLint height = cropRect.size.height;
+
+    NSInteger myDataLength = width * height * 4;
+    
+    // allocate array and read pixels into it.
+    GLubyte *buffer = (GLubyte *) malloc(myDataLength);
+    
+    [self pixelValuesInRect:cropRect buffer:buffer];
+    
+    return [UIImage imageWithBuffer:buffer ofSize:cropRect.size];
 }
 
 @end

@@ -18,7 +18,7 @@
 @end
 
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
-static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
+static NSString * ShaderNameRandomWalker = @"RandomWalker";
 
 @implementation NOCRandomWalkerSketchViewController
 
@@ -35,7 +35,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
 {
      
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameRandomWalker];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameRandomWalker];
     
     _shader.attributes = @{
         @"position" : @(GLKVertexAttribPosition),
@@ -46,7 +46,7 @@ static NSString * NOCShaderNameRandomWalker = @"RandomWalker";
         UniformMVProjectionMatrix,
     ];
     
-    self.shaders = @{ NOCShaderNameRandomWalker : _shader };
+    self.shaders = @{ ShaderNameRandomWalker : _shader };
     
     // Setup the Walker    
     _walker = [[NOCRandomWalker alloc] initWithSize:GLKVector2Make(0.01, 0.01)

@@ -22,7 +22,7 @@
 
 @implementation NOCParticleSystemSketchViewController
 
-static NSString * NOCParticleShaderName = @"FlameParticle";
+static NSString * ParticleShaderName = @"FlameParticle";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformParticleTexture = @"texture";
 static NSString * UniformParticleAge = @"scalarAge";
@@ -87,7 +87,7 @@ static NSString * UniformParticleAge = @"scalarAge";
 - (void)setup
 {
     // Shaders
-    NOCShaderProgram *particleShader = [[NOCShaderProgram alloc] initWithName:NOCParticleShaderName];
+    NOCShaderProgram *particleShader = [[NOCShaderProgram alloc] initWithName:ParticleShaderName];
 
     particleShader.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                   @"texCoord" : @(GLKVertexAttribTexCoord0)};
@@ -96,7 +96,7 @@ static NSString * UniformParticleAge = @"scalarAge";
                                      UniformParticleTexture,
                                      UniformParticleAge];
 
-    self.shaders = @{ NOCParticleShaderName : particleShader };
+    self.shaders = @{ ParticleShaderName : particleShader };
     
     // Textures
     NSArray *texNames = @[@"flame_red", @"flame_green", @"flame_magenta", @"flame_blue"];
@@ -146,7 +146,7 @@ static NSString * UniformParticleAge = @"scalarAge";
     glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    NOCShaderProgram *particleShader = self.shaders[NOCParticleShaderName];
+    NOCShaderProgram *particleShader = self.shaders[ParticleShaderName];
     [particleShader use];
     
     // Enable alpha blending for the transparent png

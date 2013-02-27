@@ -11,13 +11,21 @@
 #import "NOCFlameParticle.h"
 #import "NOCFrameBuffer.h"
 #import <CoreMotion/CoreMotion.h>
+#import "NOCUIKitHelpers.h"
+#import "NOCOpenGLHelpers.h"
 
 @interface NOCPaperBurnSketchViewController ()
 {
     NSMutableArray *_flames;
     CMMotionManager *_motionManager;
-    GLKTextureInfo *_flameTexture;
+    GLKTextureInfo *_textureFlame;
+    GLKTextureInfo *_texturePaper;
     NOCFrameBuffer *_fbo;
+    UIImageView *_imageViewSample;
+    UIView *_viewVecPointer;
+    GLfloat screen3DBillboardVertexData[12];
+    CGSize _sizeView;
+    BOOL _hasRenderedTexture;
 }
 
 @end
@@ -29,8 +37,13 @@ static const int MaxNumFlames = 10;
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
 static NSString * UniformFlamePositions = @"flamePositions";
-static NSString * NOCPaperShaderName = @"Paper";
-static NSString * NOCTextureShaderName = @"Texture";
+static NSString * PaperShaderName = @"Paper";
+static NSString * TextureShaderName = @"Texture";
+
+// World constants
+static const float FlameSpeed = 0.01;
+static const float MotionLiftMultiplier = -0.0001;
+static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier * -1;
 
 #pragma mark - Accessors
 
@@ -49,57 +62,122 @@ static NSString * NOCTextureShaderName = @"Texture";
 
 - (void)setup
 {
-    CGSize sizeView = self.view.frame.size;
+    _hasRenderedTexture = NO;
+
+    // This shows us what the FBO sample sees
+    _imageViewSample = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, 100, 100)];
+    [self.view addSubview:_imageViewSample];
     
-    _fbo = [[NOCFrameBuffer alloc] initWithPixelWidth:sizeView.width
-                                          pixelHeight:sizeView.height];
+    _viewVecPointer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 6, 6)];
+    _viewVecPointer.backgroundColor = [UIColor redColor];
+    _viewVecPointer.center = CGPointMake(60, 60);
+    [self.view addSubview:_viewVecPointer];
     
     // Motion
     _motionManager = [[CMMotionManager alloc] init];
     [_motionManager startDeviceMotionUpdates];
     
-    _flameTexture = NOCLoadGLTextureWithName(@"flame_red");;
+    _textureFlame = NOCLoadGLTextureWithName(@"flame_red");;
     
     // Flames
     _flames = [NSMutableArray arrayWithCapacity:MaxNumFlames];
     
     // Shaders
-    NOCShaderProgram *paperShader = [[NOCShaderProgram alloc] initWithName:NOCPaperShaderName];
+    NOCShaderProgram *paperShader = [[NOCShaderProgram alloc] initWithName:PaperShaderName];
     paperShader.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                @"texCoord" : @(GLKVertexAttribTexCoord0)};
     paperShader.uniformNames = @[ UniformMVProjectionMatrix, UniformFlamePositions, UniformTexture ];
 
-    NOCShaderProgram *textureShader = [[NOCShaderProgram alloc] initWithName:NOCTextureShaderName];
+    NOCShaderProgram *textureShader = [[NOCShaderProgram alloc] initWithName:TextureShaderName];
     textureShader.attributes = @{@"position" : @(GLKVertexAttribPosition),
-                                @"texCoord" : @(GLKVertexAttribTexCoord0)};
+                                 @"texCoord" : @(GLKVertexAttribTexCoord0)};
     textureShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
     
-    self.shaders = @{ NOCPaperShaderName : paperShader, NOCTextureShaderName : textureShader };
+    self.shaders = @{ PaperShaderName : paperShader, TextureShaderName : textureShader };
     
+}
+
+- (void)createPaperTexture
+{
+    // Create a perlin map which is the paper
+    
+    // float scalarX = 0.5 + (RAND_SCALAR * 0.5);
+    // float scalarY = RAND_SCALAR * 0.5;
+    float alpha = 1.0f; //map(scalarX, 0.0, 1.0, 0.5, 2.0);
+    float beta = 0.02; //map(scalarY, 0.0, 1.0, 0.0, 0.25);
+    int numOctaves = 4; //4 + (arc4random() % 3);
+    UIImage *perlinMap = [UIImage perlinMapOfSize:CGSizeMake(_sizeView.width * 0.5, _sizeView.height * 0.5)
+                                            alpha:alpha
+                                             beta:beta
+                                          octaves:numOctaves
+                                           minVal:0
+                                           maxVal:255];
+    
+    // NOTE: The default image format doesn't work as a GL texture
+    // so I have to convert it first, otherwise I get:
+    // GLKTextureLoaderErrorDomain error 12, "Image decoding failed"
+    UIImage *img = [UIImage imageWithData:UIImagePNGRepresentation(perlinMap)];
+    _texturePaper = NOCLoadGLTextureWithImage(img);
+    
+}
+
+- (void)resize
+{
+    [super resize];
+    
+    // NOTE: It's not until now that we have the final view size.
+    _sizeView = self.view.frame.size;
+    
+    // Creating the background geometry.
+    // This will only be created once since we're not allowing rotation.
+    float aspect = _sizeView.width / _sizeView.height;
+    for(int i=0;i<4;i++){
+        screen3DBillboardVertexData[i*3+0] = Square3DBillboardVertexData[i*3+0] * 2;
+        screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / aspect;
+        screen3DBillboardVertexData[i*3+2] = Square3DBillboardVertexData[i*3+2] * 2;
+    }
+    _fbo = [[NOCFrameBuffer alloc] initWithPixelWidth:_sizeView.width
+                                          pixelHeight:_sizeView.height];
+    
+    [self createPaperTexture];
     
 }
 
 - (void)update
 {
     GLKVector2 motionVector = [self motionVectorFromManager:_motionManager];
-    motionVector = GLKVector2MultiplyScalar(motionVector, -0.0001); // Eyeball the desired lift
+    motionVector = GLKVector2MultiplyScalar(motionVector, MotionLiftMultiplier); // Eyeball the desired lift
+    
+#if TARGET_IPHONE_SIMULATOR
+    motionVector = GLKVector2Make(-0.0, 0.001);
+#endif
+    
+    [self seekFuelForFlames];
+    
+    float aspect = _sizeView.width / _sizeView.height;
     
     NSMutableArray *deadFlames = [NSMutableArray arrayWithCapacity:_flames.count];
     for(NOCFlame *flame in _flames){
+
+        BOOL isDead = [flame isDead];
         
-        // TMP
-        float newX = flame.position.x + motionVector.x * 20;
-        float newY = flame.position.y + motionVector.y * 20;
-        if(newX < -1.5 ||
-           newX > 1.5 ||
-           newY < -1.5 ||
-           newY > 1.5 ){
+        if(!isDead){
+            // Prune flames that are no longer in the scene
+            float newX = flame.position.x;
+            float newY = flame.position.y;
+            if(newX < -1 ||
+               newX > 1 ||
+               newY < -1.0/aspect ||
+               newY > 1.0/aspect ){
+                isDead = YES;
+            };
+        }
+
+        if(isDead){
             [deadFlames addObject:flame];
         }else{
-            flame.position = GLKVector3Make(newX, newY, 0);
+            [flame stepWithLift:motionVector];
         }
-        
-        [flame stepWithLift:motionVector];
         
     }
     
@@ -109,20 +187,119 @@ static NSString * NOCTextureShaderName = @"Texture";
     
 }
 
-- (void)renderPaperToFBO
+- (void)seekFuelForFlames
 {
-    // Draw a red square w/ the paper shader
+    // Get the image while it's still bound
     [_fbo bind];
     
+    float aspect = _sizeView.width / _sizeView.height;
+    float halfWidth = (_sizeView.width * 0.5);
+    float halfHeight = (_sizeView.height * 0.5);
+    
+    // Look around the center point and find the brightest spot
+    const static float RangeOfInspection = 0.125;
+    int pxSampleSize = ceil(_sizeView.width * (RangeOfInspection * 0.5));
+    // NOTE: Keep these dimensions an odd number so there is a "middle" pixel
+    if(pxSampleSize % 2 == 0) pxSampleSize -= 1;
+    
+    float sampleWidth = pxSampleSize;
+    float sampleHeight = pxSampleSize;
+    float halfSampleWidth = (sampleWidth / 2);
+    float halfSampleHeight = (sampleHeight / 2);
+    int flameSampleX = halfSampleWidth + 1;
+    int flameSampleY = halfSampleHeight + 1;
+    NSInteger samplePixelCount = sampleWidth * sampleHeight;
+
+    for(NOCFlame *f in _flames){
+        
+        GLKVector3 posFlame = f.position;
+        
+        // Convert flame loc to screen coords
+        float pxX = halfWidth + (posFlame.x * halfWidth);
+        float pxY = halfHeight + ((posFlame.y * -1 * aspect) * halfHeight);
+        
+        float x = MIN(MAX(0, pxX - (sampleWidth*0.5)), _sizeView.width - (sampleWidth*0.5));
+        float y = MIN(MAX(0, pxY - (sampleHeight*0.5)), _sizeView.height - (sampleHeight*0.5));
+        
+        CGRect sampleRect = CGRectMake(x, y, sampleWidth, sampleHeight);
+        
+        GLubyte buffer[samplePixelCount * 4];
+        [_fbo pixelValuesInRect:sampleRect buffer:buffer];
+        
+        int degreesIncrement = 6; // Granularity of sweep. 628 is M_PI * 2 * 100: a full circle
+        GLubyte brightestValue = 0;
+        GLKVector3 vecBrightest = GLKVector3Zero;
+        int numSamples=0;
+        for(int i=0;i<628;i+=degreesIncrement){
+            float rads = i*0.01;
+            GLKVector2 vecSample = GLKVector2Make(cos(rads),
+                                                  sin(rads));
+            int lookAtX = flameSampleX + (vecSample.x * (halfSampleWidth-1));
+            int lookAtY = flameSampleY + (vecSample.y * (halfSampleHeight-1));
+            
+            float pxIndex = lookAtY * sampleWidth + lookAtX;
+            int rIdx = pxIndex*4+0;
+            GLubyte r = buffer[rIdx];
+            if(r > brightestValue){
+                brightestValue = r;
+                vecBrightest = GLKVector3Make(vecSample.x, // faster towards brighter
+                                              vecSample.y,
+                                              0);
+            }
+            numSamples++;
+        }
+        
+        if(vecBrightest.x == 0 && vecBrightest.y == 0){
+            [f kill];
+            continue;
+        }
+        
+        // How bright was the brightest point
+        float scalarBrightestValue = (int)brightestValue / 255.0f;
+        
+        // The flame should move faster towards brighter paper
+        GLKVector3 vectorBurn = GLKVector3Make(vecBrightest.x * (0.35 + scalarBrightestValue * 0.65),
+                                               vecBrightest.y * (0.35 + scalarBrightestValue * 0.65) * -1,
+                                               0);
+        
+        vectorBurn = GLKVector3MultiplyScalar(vectorBurn, FlameSpeed);
+        f.velocity = vectorBurn;
+        
+        // If this is the most recent flame, we'll track its searching progress
+        // on screen. It appears in the upper left corner.
+        if(f == [_flames lastObject]){
+            
+            CGPoint sampleCenter = _imageViewSample.center;
+            CGPoint pointerCenter = CGPointMake(sampleCenter.x + (vecBrightest.x*halfSampleWidth),
+                                                sampleCenter.y + (vecBrightest.y*halfSampleHeight));
+            
+            _viewVecPointer.center = pointerCenter;
+            
+            UIImage *sampleImage = [_fbo imageAtRect:CGRectMake(x, y, sampleWidth, sampleHeight)];
+
+            _imageViewSample.frame = CGRectMake(sampleCenter.x - halfSampleWidth,
+                                                sampleCenter.y - halfSampleHeight,
+                                                sampleWidth, sampleHeight);
+            
+            _imageViewSample.image = sampleImage;
+
+        }
+    }
+}
+
+- (void)renderPaperToFBO
+{
+    [_fbo bind];
+
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    NOCShaderProgram *paperShader = self.shaders[NOCPaperShaderName];
+    NOCShaderProgram *paperShader = self.shaders[PaperShaderName];
     [paperShader use];
     // Binding the fbo as a texture so we can access the previous pixel color
     [_fbo bindTexture:0];
     [paperShader setInt:0 forUniform:UniformTexture];
-
+    
     NSNumber *uniLoc = paperShader.uniformLocations[UniformFlamePositions];
     GLfloat flameLocs[MaxNumFlames*3];
     for(int i=0;i<MaxNumFlames;i++){
@@ -142,32 +319,52 @@ static NSString * NOCTextureShaderName = @"Texture";
 
     [paperShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &Screen3DBillboardVertexData);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &screen3DBillboardVertexData);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     
-    // unbind
-    [(GLKView*)self.view bindDrawable];   
+    if(_texturePaper && !_hasRenderedTexture){
+        
+        NOCShaderProgram *texShader = self.shaders[TextureShaderName];
+        [texShader use];
+        [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
+
+        glEnable(GL_TEXTURE_2D);
+        glActiveTexture(0);
+        glBindTexture(GL_TEXTURE_2D, _texturePaper.name);
+        [texShader setInt:0 forUniform:UniformTexture];
+
+        glEnableVertexAttribArray(GLKVertexAttribPosition);
+        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &screen3DBillboardVertexData);
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glBindTexture(GL_TEXTURE_2D, 0);
+
+        _hasRenderedTexture = YES;
+    }
+
 }
 
 - (void)draw
 {
     [self renderPaperToFBO];
-    
+
+    [(GLKView*)self.view bindDrawable];
+
     glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw the FBO as a texture
-    NOCShaderProgram *texShader = self.shaders[NOCTextureShaderName];
+    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
     [texShader use];
     [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     [_fbo bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
 
-    // This should draw a distorted box, since we're drawing the whole FBO in a square
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &Screen3DBillboardVertexData);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &screen3DBillboardVertexData);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);    
@@ -190,8 +387,7 @@ static NSString * NOCTextureShaderName = @"Texture";
     for(UITouch *t in touches){
         
         if(t.tapCount > 0 && _flames.count < MaxNumFlames){
-            
-            // Add a new flame
+
             CGPoint posTouch = [t locationInView:self.view];
             CGSize sizeView = self.view.frame.size;
             float aspect = sizeView.width / sizeView.height;
@@ -202,8 +398,10 @@ static NSString * NOCTextureShaderName = @"Texture";
             float glX = (scalarX * 2.0f) - 1.0f;
             float glY = (scalarY * (2.0f / aspect)) - (1.0 / aspect);
             
+            // Add a new flame
             NOCFlame *flame = [[NOCFlame alloc] initWithPosition:GLKVector3Make(glX, glY, 0)
-                                                    flameTexture:_flameTexture];
+                                                    flameTexture:_textureFlame];
+            flame.velocity = GLKVector3Zero;
             [_flames addObject:flame];
 
         }

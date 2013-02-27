@@ -28,7 +28,7 @@ static const NSTimeInterval UnitTimeInterval = 1.0f;
 
 @implementation NOCWaveTapSketchViewController
 
-static NSString * NOCShaderNameWaveTap = @"Mover";
+static NSString * ShaderNameWaveTap = @"Mover";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformMoverTexture = @"texture";
 
@@ -51,7 +51,7 @@ static NSString * UniformMoverTexture = @"texture";
     _textureMover = NOCLoadGLTextureWithName(@"brushed_sphere");
     
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:NOCShaderNameWaveTap];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveTap];
     
     _shader.attributes = @{
                            @"position" : @(GLKVertexAttribPosition),
@@ -63,7 +63,7 @@ static NSString * UniformMoverTexture = @"texture";
                              UniformMoverTexture
                              ];
     
-    self.shaders = @{ NOCShaderNameWaveTap : _shader };
+    self.shaders = @{ ShaderNameWaveTap : _shader };
     
     // Create a line of little movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
