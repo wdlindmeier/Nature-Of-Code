@@ -30,6 +30,7 @@
 		A936F0C816DE9D1200A6EBD8 /* Triangulation.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */; };
 		A936F0C916DE9D1200A6EBD8 /* Triangulation.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */; };
 		A936F0CC16DEA02E00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A936F0CB16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m */; };
+		A936F0CE16DEA58700A6EBD8 /* face.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0CD16DEA58700A6EBD8 /* face.png */; };
 		A95A5A5016C2D8970001D07D /* NOCAccelMoverSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */; };
 		A95A5A5616C2D8C60001D07D /* NOCGuiAccelMover.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */; };
 		A95A5A5D16C2DABC0001D07D /* NOCParticle2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A95A5A5C16C2DABC0001D07D /* NOCParticle2D.m */; };
@@ -174,10 +175,11 @@
 		A936F0BE16DE802E00A6EBD8 /* VoronoiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoronoiCell.h; sourceTree = "<group>"; };
 		A936F0BF16DE802E00A6EBD8 /* VoronoiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoronoiCell.m; sourceTree = "<group>"; };
 		A936F0C516DE872D00A6EBD8 /* Edgy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Edgy.h; sourceTree = "<group>"; };
-		A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Triangulation.fsh; sourceTree = "<group>"; };
+		A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Triangulation.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Triangulation.vsh; sourceTree = "<group>"; };
 		A936F0CA16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DelaunayTriangulation+NOCHelpers.h"; sourceTree = "<group>"; };
 		A936F0CB16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DelaunayTriangulation+NOCHelpers.m"; sourceTree = "<group>"; };
+		A936F0CD16DEA58700A6EBD8 /* face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = face.png; sourceTree = "<group>"; };
 		A95A5A4E16C2D8970001D07D /* NOCAccelMoverSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCAccelMoverSketchViewController.h; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.h"; sourceTree = SOURCE_ROOT; };
 		A95A5A4F16C2D8970001D07D /* NOCAccelMoverSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCAccelMoverSketchViewController.m; path = "Nature of Code/Week 2/NOCAccelMoverSketchViewController.m"; sourceTree = SOURCE_ROOT; };
 		A95A5A5516C2D8C60001D07D /* NOCGuiAccelMover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiAccelMover.xib; path = "Nature of Code/Week 2/NOCGuiAccelMover.xib"; sourceTree = SOURCE_ROOT; };
@@ -430,6 +432,7 @@
 			children = (
 				A95C703F16D034660058D8BA /* brushed_sphere.png */,
 				A95C704016D034660058D8BA /* dark_sphere.png */,
+				A936F0CD16DEA58700A6EBD8 /* face.png */,
 				A9F78AD716D9180400073D16 /* flame_blue.png */,
 				A9F78AD816D9180400073D16 /* flame_green.png */,
 				A9F78AD916D9180400073D16 /* flame_magenta.png */,
@@ -885,6 +888,7 @@
 				A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */,
 				A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */,
 				A936F0AE16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png in Resources */,
+				A936F0CE16DEA58700A6EBD8 /* face.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,7 +23,6 @@
     NOCFrameBuffer *_fbo;
     UIImageView *_imageViewSample;
     UIView *_viewVecPointer;
-    GLfloat screen3DBillboardVertexData[12];
     BOOL _hasRenderedTexture;
 }
 
@@ -125,14 +124,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     [super resize];
     
     // NOTE: It's not until now that we have the final view size.
-    
-    // Creating the background geometry.
-    // This will only be created once since we're not allowing rotation.
-    for(int i=0;i<4;i++){
-        screen3DBillboardVertexData[i*3+0] = Square3DBillboardVertexData[i*3+0] * 2;
-        screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / _viewAspect;
-        screen3DBillboardVertexData[i*3+2] = Square3DBillboardVertexData[i*3+2] * 2;
-    }
+
     _fbo = [[NOCFrameBuffer alloc] initWithPixelWidth:_sizeView.width
                                           pixelHeight:_sizeView.height];
     
@@ -313,7 +305,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
 
     [paperShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &screen3DBillboardVertexData);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_screen3DBillboardVertexData);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -330,7 +322,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
         [texShader setInt:0 forUniform:UniformTexture];
 
         glEnableVertexAttribArray(GLKVertexAttribPosition);
-        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &screen3DBillboardVertexData);
+        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_screen3DBillboardVertexData);
         glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
         glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -358,7 +350,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     [texShader setInt:0 forUniform:UniformTexture];
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &screen3DBillboardVertexData);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_screen3DBillboardVertexData);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);    

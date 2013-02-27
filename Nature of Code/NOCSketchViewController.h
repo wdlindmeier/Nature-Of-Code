@@ -18,6 +18,7 @@
 {
     CGSize _sizeView;
     float _viewAspect;
+    GLfloat _screen3DBillboardVertexData[12];
 }
 
 // Properties

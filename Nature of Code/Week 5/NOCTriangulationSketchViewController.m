@@ -14,13 +14,34 @@
 @interface NOCTriangulationSketchViewController ()
 {
     DelaunayTriangulation *_triangulation;
+    GLKTextureInfo *_textureFace;
 }
 @end
 
 static NSString * TriangulationShaderName = @"Triangulation";
+static NSString * TextureShaderName = @"Texture";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
+static NSString * UniformTexture = @"texture";
 
 @implementation NOCTriangulationSketchViewController
+
+- (void)randomizeMeshWithNumPoints:(int)numPoints
+{
+    _triangulation = [DelaunayTriangulation triangulationWithGLSize:CGSizeMake(2.0, 2.0/_viewAspect)];
+    for(int i=0;i<numPoints;i++){
+        [self addRandomPoint];
+    }
+}
+
+- (void)addRandomPoint
+{
+    float glX = (2.0 * RAND_SCALAR) - 1.0;
+    float glY = ((2.0 * RAND_SCALAR) - 1.0) / _viewAspect;
+    DelaunayPoint *newPoint = [DelaunayPoint pointAtX:glX
+                                                 andY:glY];
+    
+    [_triangulation addPoint:newPoint withColor:nil];
+}
 
 #pragma mark - OpenGL Loop
 
@@ -37,109 +58,124 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     // Setup the shader
     NOCShaderProgram *shaderTriangles = [[NOCShaderProgram alloc] initWithName:TriangulationShaderName];
      
-    shaderTriangles.attributes = @{@"position" : @(GLKVertexAttribPosition)};
+    shaderTriangles.attributes = @{@"position" : @(GLKVertexAttribPosition),
+                                   @"texCoord" : @(GLKVertexAttribTexCoord0)};
     
-    shaderTriangles.uniformNames = @[UniformMVProjectionMatrix];
-     
-    self.shaders = @{ TriangulationShaderName : shaderTriangles };
+    shaderTriangles.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
+    
+    // TMP
+    NOCShaderProgram *shaderTexture = [[NOCShaderProgram alloc] initWithName:TextureShaderName];
+    shaderTexture.attributes = @{@"position" : @(GLKVertexAttribPosition),
+                                   @"texCoord" : @(GLKVertexAttribTexCoord0)};
+    shaderTexture.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
+
+    
+    self.shaders = @{ TriangulationShaderName : shaderTriangles, TextureShaderName : shaderTexture };
+    
+    _textureFace = NOCLoadGLTextureWithName(@"face");
 
 }
 
 - (void)resize
 {
     [super resize];
-    
-    _triangulation = [DelaunayTriangulation triangulationWithGLSize:CGSizeMake(2.0, 2.0/_viewAspect)];
-    /*
-    _triangulation = [[DelaunayTriangulation alloc] init];
-    
-    DelaunayPoint *p0 = [DelaunayPoint pointAtX:0 andY:1.0/_viewAspect*3];
-    DelaunayPoint *p3 = [DelaunayPoint pointAtX:-3.0f andY:-1.0/_viewAspect*3];
-    DelaunayPoint *p5 = [DelaunayPoint pointAtX:3.0f andY:-1.0/_viewAspect*3];
-    
-    DelaunayPoint *pf0 = [DelaunayPoint pointAtX:-1.0f andY:1.0f/_viewAspect];
-    DelaunayPoint *pf1 = [DelaunayPoint pointAtX:1.0f andY:1.0f/_viewAspect];
-    DelaunayPoint *pf2 = [DelaunayPoint pointAtX:1.0f andY:-1.0f/_viewAspect];
-    DelaunayPoint *pf3 = [DelaunayPoint pointAtX:-1.0f andY:-1.0f/_viewAspect];
-    
-    DelaunayEdge *e1 = [DelaunayEdge edgeWithPoints:@[p0, p5]];
-    DelaunayEdge *e2 = [DelaunayEdge edgeWithPoints:@[p5, p3]];
-    DelaunayEdge *e3 = [DelaunayEdge edgeWithPoints:@[p3, p0]];
-
-    DelaunayTriangle *triangle = [DelaunayTriangle triangleWithEdges:@[e1, e2, e3]
-                                                        andStartPoint:p0
-                                                             andColor:nil];
-
-    _triangulation.frameTrianglePoints = [NSSet setWithObjects:p0, p5, p3, nil];
-    
-    // How much of this is actually needed?
-    _triangulation.triangles = [NSMutableSet setWithObjects:triangle, nil];
-    _triangulation.edges = [NSMutableSet setWithObjects:e1, e2, e3, nil];
-    _triangulation.points = [NSMutableSet setWithObjects:p0, p5, p3, nil];
-
-    // Now lets add a couple of points to create the view squre
-    [_triangulation addPoint:pf0
-                   withColor:nil];
-    [_triangulation addPoint:pf1
-                   withColor:nil];
-    [_triangulation addPoint:pf2
-                   withColor:nil];
-    [_triangulation addPoint:pf3
-                   withColor:nil];
-    */
+    [self randomizeMeshWithNumPoints:10];
 }
 
 - (void)update
 {
-    //...
+    if(_triangulation.points.count < 2000){
+        [self addRandomPoint];
+    }else{
+        [self randomizeMeshWithNumPoints:10];
+    }
 }
 
 - (void)draw
 {
     [self clear];
-    
-    NOCShaderProgram *shader = self.shaders[TriangulationShaderName];
-    [shader use];
-    
+        
     // Step back
-    //GLKMatrix4 matView = GLKMatrix4MakeScale(0.25, 0.25, 1.0);
-    //matView = GLKMatrix4Multiply(_projectionMatrix2D, matView);
-    
     GLKMatrix4 matView = _projectionMatrix2D;
-    
+//    GLKMatrix4 matView = GLKMatrix4MakeScale(0.25, 0.25, 1.0);
+//    matView = GLKMatrix4Multiply(_projectionMatrix2D, matView);
+
+    NOCShaderProgram *shader = self.shaders[TriangulationShaderName];
+
+    [shader use];
+
     [shader setMatrix:matView forUniform:UniformMVProjectionMatrix];
+    
+    glEnable(GL_TEXTURE_2D);
+    glActiveTexture(0);
+    glBindTexture(GL_TEXTURE_2D, _textureFace.name);
+    [shader setInt:0 forUniform:UniformTexture];
 
     for (DelaunayTriangle *triangle in _triangulation.triangles)
     {
         int edgeCount = triangle.edges.count;
-        int numPoints = 3 * (edgeCount + 1);
-        GLfloat trianglePoints[numPoints];
-
+        int numPoints = edgeCount + 1;
+        GLfloat trianglePoints[numPoints*3];
+        GLfloat triangleTexCoords[numPoints*2];
+        
+        GLKVector2 vecTextCoordAvg = GLKVector2Zero;
+        
         DelaunayPoint *prevPoint = triangle.startPoint;
-        //for (DelaunayEdge *edge in triangle.edges)
+
         for(int i=0;i<edgeCount;i++)
         {
             DelaunayEdge *edge = triangle.edges[i];
             DelaunayPoint *p2 = [edge otherPoint:prevPoint];
             trianglePoints[i*3+0] = p2.x;
+            
+            float texCoordX = 0.5 + (p2.x * 0.5);
+            //triangleTexCoords[i*2+0] = texCoordX;
+            vecTextCoordAvg.x += texCoordX;
+            
             trianglePoints[i*3+1] = p2.y;
+            
+            float texCoordY = 0.5 + (p2.y * -0.5);
+            //triangleTexCoords[i*2+1] = texCoordY;
+            vecTextCoordAvg.y += texCoordY;
+            
             trianglePoints[i*3+2] = 0;
             prevPoint = p2;
         }
         
         // Close
         trianglePoints[edgeCount*3+0] = prevPoint.x;
+        float texCoordX =  0.5 + (prevPoint.x * 0.5);
+        //triangleTexCoords[edgeCount*2+0] = texCoordX;
+        vecTextCoordAvg.x += texCoordX;
+        
         trianglePoints[edgeCount*3+1] = prevPoint.y;
+        float texCoordY = 0.5 + (prevPoint.y * -0.5);
+        //triangleTexCoords[edgeCount*2+1] = texCoordY;
+        vecTextCoordAvg.y += texCoordY;
+        
         trianglePoints[edgeCount*3+2] = 0;
 
-        // TODO: Pass in triangle.color;
-        // TODO: Draw solid trangles w/ same geometry
+        // Average the text coords.
+        vecTextCoordAvg = GLKVector2DivideScalar(vecTextCoordAvg, edgeCount+1);
+        
+        // Poor mans triangle color average.
+        for(int i=0;i<edgeCount+1;i++){
+            triangleTexCoords[i*2+0] = vecTextCoordAvg.x;
+            triangleTexCoords[i*2+1] = vecTextCoordAvg.y;
+        }
+
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &trianglePoints);
+        
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &triangleTexCoords);
+
         int numCoords = sizeof(trianglePoints) / sizeof(GLfloat) / 3;
-        glDrawArrays(GL_LINE_LOOP, 0, numCoords);
+        
+        glDrawArrays(GL_TRIANGLES, 0, numCoords);
 
     }
+    
 }
 
 - (void)teardown

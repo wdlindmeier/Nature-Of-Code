@@ -18,6 +18,7 @@
     BOOL _isDrawerOpen;
     UIPanGestureRecognizer *_gestureRecognizerDrawer;
     long _frameCount;
+
 }
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
@@ -308,6 +309,7 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
+    [self resize];
     [self setup];
     [self loadShaders];
 }
@@ -363,6 +365,13 @@ static const float DrawerRevealHeight = 20.0f;
 {
     _sizeView = self.view.frame.size;
     _viewAspect = _sizeView.width / _sizeView.height;
+    
+    for(int i=0;i<4;i++){
+        _screen3DBillboardVertexData[i*3+0] = Square3DBillboardVertexData[i*3+0] * 2;
+        _screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / _viewAspect;
+        _screen3DBillboardVertexData[i*3+2] = Square3DBillboardVertexData[i*3+2] * 2;
+    }
+
 }
 
 - (void)draw

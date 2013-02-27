@@ -1,10 +1,10 @@
 attribute vec3 position;
 attribute vec2 texCoord;
 
-varying vec2 textureCoordinate;
-
 uniform mat4 modelViewProjectionMatrix;
 uniform sampler2D texture;
+
+varying vec2 textureCoordinate;
 
 void main()
 {
