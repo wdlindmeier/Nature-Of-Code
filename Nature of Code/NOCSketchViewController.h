@@ -16,6 +16,7 @@
 
 @interface NOCSketchViewController : GLKViewController
 {
+    // Geometry
     CGSize _sizeView;
     float _viewAspect;
     GLfloat _screen3DBillboardVertexData[12];

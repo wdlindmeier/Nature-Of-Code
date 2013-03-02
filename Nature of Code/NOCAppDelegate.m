@@ -11,7 +11,7 @@
 
 #if DEBUG
 
- #import "NOCTriangulationSketchViewController.h"
+ #import "NOCFaceCapSketchViewController.h"
 
 #endif
 
@@ -25,8 +25,8 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-    //self.viewController = [[NOCTriangulationSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-    //                                                                             bundle:nil];
+    self.viewController = [[NOCFaceCapSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                           bundle:nil];
     
 #endif
     

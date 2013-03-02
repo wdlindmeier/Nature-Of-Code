@@ -20,15 +20,10 @@
     /*
      NOCShaderProgram *shader = [[NOCShaderProgram alloc] initWithName:@"SampleShader"];
      
-     shader.attributes = @{
-        @"position" : @(GLKVertexAttribPosition),
-        @"normal" : @(GLKVertexAttribNormal)
-     };
+     shader.attributes = @{ @"position" : @(GLKVertexAttribPosition),
+                            @"normal" : @(GLKVertexAttribNormal) };
      
-     shader.uniformNames = @[
-        UniformMVProjectionMatrix,
-        UniformNormalMatrix
-     ];
+     shader.uniformNames = @[ UniformMVProjectionMatrix, UniformNormalMatrix ];
      
      self.shaders = @{ SampleShaderName : shader };
      */

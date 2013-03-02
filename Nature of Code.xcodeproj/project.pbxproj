@@ -93,6 +93,12 @@
 		A9BC923516CBF481009AD45C /* NOCGuiMover3D.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */; };
 		A9BC923F16CC10DE009AD45C /* thumb_Movers3D.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */; };
 		A9BC924016CC10DE009AD45C /* thumb_Movers3D@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */; };
+		A9CB7E7116E2598500CEF634 /* NOCFaceCapSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */; };
+		A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */; };
+		A9CB7E7916E269B600CEF634 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7816E269B500CEF634 /* AVFoundation.framework */; };
+		A9CB7E7B16E269BD00CEF634 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7A16E269BC00CEF634 /* CoreVideo.framework */; };
+		A9CB7E7D16E269D000CEF634 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7C16E269D000CEF634 /* CoreImage.framework */; };
+		A9CB7E7F16E269F000CEF634 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7E16E269F000CEF634 /* CoreMedia.framework */; };
 		A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7D16B99A77000BE623 /* UIKit.framework */; };
 		A9D1AE8016B99A77000BE623 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE7F16B99A77000BE623 /* Foundation.framework */; };
 		A9D1AE8216B99A77000BE623 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */; };
@@ -274,6 +280,14 @@
 		A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiMover3D.xib; path = "Nature of Code/Week 2/NOCGuiMover3D.xib"; sourceTree = SOURCE_ROOT; };
 		A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Movers3D.png; sourceTree = "<group>"; };
 		A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Movers3D@2x.png"; sourceTree = "<group>"; };
+		A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFaceCapSketchViewController.h; sourceTree = "<group>"; };
+		A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFaceCapSketchViewController.m; sourceTree = "<group>"; };
+		A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCVideoSession.h; sourceTree = "<group>"; };
+		A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCVideoSession.m; sourceTree = "<group>"; };
+		A9CB7E7816E269B500CEF634 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A9CB7E7A16E269BC00CEF634 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		A9CB7E7C16E269D000CEF634 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		A9CB7E7E16E269F000CEF634 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A9D1AE7916B99A77000BE623 /* Nature of Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nature of Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9D1AE7D16B99A77000BE623 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A9D1AE7F16B99A77000BE623 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -350,6 +364,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9CB7E7F16E269F000CEF634 /* CoreMedia.framework in Frameworks */,
+				A9CB7E7D16E269D000CEF634 /* CoreImage.framework in Frameworks */,
+				A9CB7E7B16E269BD00CEF634 /* CoreVideo.framework in Frameworks */,
+				A9CB7E7916E269B600CEF634 /* AVFoundation.framework in Frameworks */,
 				A987362316BF443D001D74E8 /* QuartzCore.framework in Frameworks */,
 				A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */,
 				A9D1AE7E16B99A77000BE623 /* UIKit.framework in Frameworks */,
@@ -395,6 +413,8 @@
 		A936F0AF16DE7FBA00A6EBD8 /* Week 5 */ = {
 			isa = PBXGroup;
 			children = (
+				A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */,
+				A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */,
 				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
 				A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */,
 			);
@@ -578,6 +598,8 @@
 				A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */,
 				A95C705116D141B80058D8BA /* NOCSpring3D.h */,
 				A95C705216D141B80058D8BA /* NOCSpring3D.m */,
+				A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */,
+				A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -585,13 +607,13 @@
 		A987361616BE04FD001D74E8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */,
-				A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */,
-				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
 				A987362416BF511A001D74E8 /* CAEAGLLayer+Retained.h */,
 				A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */,
 				A936F0CA16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.h */,
 				A936F0CB16DEA02D00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m */,
+				A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */,
+				A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */,
+				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -640,13 +662,17 @@
 		A9D1AE7C16B99A77000BE623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A987362216BF443D001D74E8 /* QuartzCore.framework */,
-				A987360F16BDF37E001D74E8 /* CoreMotion.framework */,
-				A9D1AE7D16B99A77000BE623 /* UIKit.framework */,
-				A9D1AE7F16B99A77000BE623 /* Foundation.framework */,
+				A9CB7E7E16E269F000CEF634 /* CoreMedia.framework */,
+				A9CB7E7816E269B500CEF634 /* AVFoundation.framework */,
 				A9D1AE8116B99A77000BE623 /* CoreGraphics.framework */,
+				A9CB7E7C16E269D000CEF634 /* CoreImage.framework */,
+				A987360F16BDF37E001D74E8 /* CoreMotion.framework */,
+				A9CB7E7A16E269BC00CEF634 /* CoreVideo.framework */,
+				A9D1AE7F16B99A77000BE623 /* Foundation.framework */,
 				A9D1AE8316B99A77000BE623 /* GLKit.framework */,
 				A9D1AE8516B99A77000BE623 /* OpenGLES.framework */,
+				A987362216BF443D001D74E8 /* QuartzCore.framework */,
+				A9D1AE7D16B99A77000BE623 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -951,6 +977,8 @@
 				A936F0C316DE802E00A6EBD8 /* DelaunayTriangulation.m in Sources */,
 				A936F0C416DE802E00A6EBD8 /* VoronoiCell.m in Sources */,
 				A936F0CC16DEA02E00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m in Sources */,
+				A9CB7E7116E2598500CEF634 /* NOCFaceCapSketchViewController.m in Sources */,
+				A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

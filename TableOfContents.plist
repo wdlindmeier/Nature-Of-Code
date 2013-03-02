@@ -127,9 +127,25 @@
 				<key>Name</key>
 				<string>Triangulation</string>
 				<key>Description</key>
-				<string></string>
+				<string>A basic example of Delaunay  Triangulation. Nodes are randomly added to an image which are incorporated into the triangle mesh.</string>
 				<key>Controller</key>
 				<string>Triangulation</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Face Cap</string>
+				<key>Description</key>
+				<string>Simple face recognition video capture.</string>
+				<key>Controller</key>
+				<string>FaceCap</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Face Cap GL</string>
+				<key>Description</key>
+				<string>Simple face recognition video capture.</string>
+				<key>Controller</key>
+				<string>FaceCapGL</string>
 			</dict>
 		</array>
 	</dict>
