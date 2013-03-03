@@ -139,14 +139,6 @@
 				<key>Controller</key>
 				<string>FaceCap</string>
 			</dict>
-			<dict>
-				<key>Name</key>
-				<string>Face Cap GL</string>
-				<key>Description</key>
-				<string>Simple face recognition video capture.</string>
-				<key>Controller</key>
-				<string>FaceCapGL</string>
-			</dict>
 		</array>
 	</dict>
 </array>
