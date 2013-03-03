@@ -199,6 +199,7 @@ enum {
     // CVPixelBufferRef seems to be the same as CVImageBufferRef
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    
     if(_isUsingGLOutput){
         
         [self bindCameraImageToGLTexture:pixelBuffer];
@@ -211,6 +212,7 @@ enum {
                                         pixels:pixelBuffer];
         
     }
+    
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
 }
 
@@ -325,19 +327,8 @@ enum {
         if(_isUsingGLOutput){
             
             gravity = AVLayerVideoGravityResizeAspect;
-            
-            if(self.faceDelegate &&
-               [self.faceDelegate respondsToSelector:@selector(sizeVideoFrameInGLSpaceForSession:)]){
-                
-                parentFrameSize = [self.faceDelegate sizeVideoFrameInGLSpaceForSession:self];
-                
-            }else{
-                
-                // A square
-                parentFrameSize = CGSizeMake(2, 2);
-                
-            }
-            
+            parentFrameSize = [self.faceDelegate sizeVideoFrameForSession:self];
+
         }else{
             
             gravity = [_previewLayer videoGravity];
@@ -360,7 +351,6 @@ enum {
                                     inFrame:previewRect
                                 orientation:orientation
                                       scale:sizeScale];
-            
         }
     }
 }

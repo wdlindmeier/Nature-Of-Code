@@ -16,7 +16,7 @@
 @end
 
 static NSString * TextureShaderName = @"Texture";
-static NSString * FaceShaderName = @"SceneBox";
+static NSString * FaceShaderName = @"Triangulation";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
 
@@ -46,10 +46,11 @@ static NSString * UniformTexture = @"texture";
     texShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
     
     NOCShaderProgram *shaderFace = [[NOCShaderProgram alloc] initWithName:FaceShaderName];
-    shaderFace.attributes = @{ @"position" : @(GLKVertexAttribPosition) };
-    shaderFace.uniformNames = @[ UniformMVProjectionMatrix ];
+    shaderFace.attributes = @{@"position" : @(GLKVertexAttribPosition),
+                             @"texCoord" : @(GLKVertexAttribTexCoord0)};
+    shaderFace.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
 
-    self.shaders = @{ TextureShaderName : texShader };
+    self.shaders = @{ TextureShaderName : texShader, FaceShaderName : shaderFace };
 
     _videoSession = [[NOCVideoSession alloc] initWithFaceDelegate:self];
     
@@ -92,17 +93,17 @@ static NSString * UniformTexture = @"texture";
 {
     [self clear];
     
-    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
-    [texShader use];
-    
     // Account for camera texture orientation
     float scaleX = [_videoSession isMirrored] ? -1 : 1;
     GLKMatrix4 matTexture = GLKMatrix4MakeScale(scaleX, -1, 1);
     matTexture = GLKMatrix4RotateZ(matTexture, M_PI * 0.5);
     matTexture = GLKMatrix4Multiply(matTexture, _projectionMatrix2D);
     
+
+    // Draw the video background
+    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
+    [texShader use];
     [texShader setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
-    
     [_videoSession bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
 
@@ -113,26 +114,111 @@ static NSString * UniformTexture = @"texture";
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     glBindTexture(GL_TEXTURE_2D, 0);
     
+
     // Draw faces
-    
-    // Draw the scene box
     NOCShaderProgram *shaderFace = self.shaders[FaceShaderName];
     [shaderFace use];
     [shaderFace setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
+    [_videoSession bindTexture:0];
+    [shaderFace setInt:0 forUniform:UniformTexture];
 
     // Draw a stroked cube
     for(NSValue *rectValue in _faceRects){
+        
         CGRect rect = [rectValue CGRectValue];
+        
+        // Generate the average tex coords
+        int vxPerTri = 3;
+        int numTri = 2;
+        int numTexIdx = vxPerTri * numTri * 2;
+        int numVertIdx = numTri * vxPerTri * 3;
+        
         GLfloat verts[] = {
+            
+            // Tri UL
+            rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, 0,
             rect.origin.x, rect.origin.y + rect.size.height, 0,
+            rect.origin.x, rect.origin.y, 0,
+
+            // Tri LR
             rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, 0,
             rect.origin.x + rect.size.width, rect.origin.y, 0,
             rect.origin.x, rect.origin.y, 0,
         };
+        
+        GLfloat texCoords[numTexIdx];
+        
+        for(int i=0;i<numTri;i++){
+            float avgX = 0;
+            float avgY = 0;
+
+            for(int j=0;j<vxPerTri;j++){
+                avgX += verts[(i*vxPerTri*3)+(j*3)+0];
+                avgY += verts[(i*vxPerTri*3)+(j*3)+1];
+            }
+            avgX = avgX / vxPerTri;
+            avgY = avgY / vxPerTri;
+
+            for(int j=0;j<vxPerTri;j++){
+                texCoords[(i*vxPerTri*2)+(j*2)+0] = 0.5 + (avgX * 0.5);
+                texCoords[(i*vxPerTri*2)+(j*2)+1] = 0.5 + (avgY * -0.5);
+            }
+        }
+        
+        /*
+        float avgX1 = (verts[0] + verts[3] + verts[6]) / 3.0f;
+        avgX1 = 0.5 + (avgX1 * 0.5);
+        float avgY1 = (verts[1] + verts[4] + verts[7]) / 3.0f;
+        avgY1 = 0.5 + (avgY1 * -0.5);
+
+        float avgX2 = (verts[9] + verts[12] + verts[15]) / 3.0f;
+        avgX2 = 0.5 + (avgX2 * 0.5);
+        float avgY2 = (verts[10] + verts[13] + verts[16]) / 3.0f;
+        avgY2 = 0.5 + (avgY2 * -0.5);
+
+        GLfloat texCoords[] = {
+            avgX1,avgY1,
+            avgX1,avgY1,
+            avgX1,avgY1,
+            
+            avgX2,avgY2,
+            avgX2,avgY2,
+            avgX2,avgY2,
+        };
+        */
+        
+        /*
+        GLfloat texCoords[numTexIdx];
+
+        for(int i=0;i<numTri;i++){
+            float sumX = 0;
+            float sumY = 0;
+            for(int j=0;j<vxPerTri;j++){
+                float vX = verts[(i*vxPerTri)+(j*3)+0];
+                float vY = verts[(i*vxPerTri)+(j*3)+1];
+                float texCoordX = 0.5 + (vX * 0.5);
+                float texCoordY = 0.5 + (vY * -0.5);
+                sumX += texCoordX;
+                sumY += texCoordY;
+            }
+            float avgX = sumX / (float)vxPerTri;
+            float avgY = sumY / (float)vxPerTri;
+            for(int j=0;j<vxPerTri;j++){
+                texCoords[(i*vxPerTri)+(j*2)+0] = avgX;
+                texCoords[(i*vxPerTri)+(j*2)+1] = avgY;
+            }
+        }
+        */
+        
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &verts);
+        
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &texCoords);
+
         int numCoords = sizeof(verts) / sizeof(GLfloat) / 3;
-        glDrawArrays(GL_LINE_LOOP, 0, numCoords);
+        glDrawArrays(GL_TRIANGLES, 0, numCoords);
+        
     }
 
 }
@@ -146,12 +232,9 @@ static NSString * UniformTexture = @"texture";
 
 #pragma mark - Video 
 
-- (CGSize)sizeVideoFrameInGLSpaceForSession:(NOCVideoSession *)session
+- (CGSize)sizeVideoFrameForSession:(NOCVideoSession *)session
 {
-    //return CGSizeMake(2.0, 2.0 / _viewAspect);
-    // TMP
-    // For the moment lets return the size of the view
-    return self.view.frame.size;
+    return _sizeView;
 }
 
 - (void)videoSession:(NOCVideoSession *)videoSession

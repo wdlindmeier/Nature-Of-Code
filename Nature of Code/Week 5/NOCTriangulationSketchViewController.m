@@ -117,13 +117,11 @@ static NSString * UniformTexture = @"texture";
             trianglePoints[i*3+0] = p2.x;
             
             float texCoordX = 0.5 + (p2.x * 0.5);
-            //triangleTexCoords[i*2+0] = texCoordX;
             vecTextCoordAvg.x += texCoordX;
             
             trianglePoints[i*3+1] = p2.y;
             
             float texCoordY = 0.5 + (p2.y * -0.5);
-            //triangleTexCoords[i*2+1] = texCoordY;
             vecTextCoordAvg.y += texCoordY;
             
             trianglePoints[i*3+2] = 0;
@@ -132,13 +130,11 @@ static NSString * UniformTexture = @"texture";
         
         // Close
         trianglePoints[edgeCount*3+0] = prevPoint.x;
-        float texCoordX =  0.5 + (prevPoint.x * 0.5);
-        //triangleTexCoords[edgeCount*2+0] = texCoordX;
+        float texCoordX = 0.5 + (prevPoint.x * 0.5);
         vecTextCoordAvg.x += texCoordX;
         
         trianglePoints[edgeCount*3+1] = prevPoint.y;
         float texCoordY = 0.5 + (prevPoint.y * -0.5);
-        //triangleTexCoords[edgeCount*2+1] = texCoordY;
         vecTextCoordAvg.y += texCoordY;
         
         trianglePoints[edgeCount*3+2] = 0;

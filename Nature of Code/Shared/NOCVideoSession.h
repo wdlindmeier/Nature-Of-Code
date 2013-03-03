@@ -42,6 +42,6 @@
          orientation:(UIDeviceOrientation)orientation
                scale:(CGSize)videoScale;
 
-- (CGSize)sizeVideoFrameInGLSpaceForSession:(NOCVideoSession *)session;
+- (CGSize)sizeVideoFrameForSession:(NOCVideoSession *)session;
 
 @end
