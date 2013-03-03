@@ -194,23 +194,47 @@
 
 #pragma mark - Helpers
 
-- (void)setFloat:(GLfloat)f forUniform:(NSString *)uniformName
+- (void)setFloat:(const GLfloat)f forUniform:(NSString *)uniformName
 {
     NSNumber *uniLoc = self.uniformLocations[uniformName];
     glUniform1f([uniLoc intValue], f);
 }
 
-- (void)setInt:(GLint)i forUniform:(NSString *)uniformName
+- (void)setInt:(const GLint)i forUniform:(NSString *)uniformName
 {
     NSNumber *uniLoc = self.uniformLocations[uniformName];
     glUniform1i([uniLoc intValue], i);
 }
 
-- (void)setMatrix:(GLKMatrix4)mat forUniform:(NSString *)uniformName
+- (void)setMatrix:(const GLKMatrix4)mat forUniform:(NSString *)uniformName
 {
     NSNumber *uniLoc = self.uniformLocations[uniformName];
     // default values for count and transpose
     glUniformMatrix4fv([uniLoc intValue], 1, 0, mat.m);
+}
+
+- (void)set1DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    glUniform1fv([uniLoc intValue], num, array);
+}
+
+- (void)set2DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    glUniform2fv([uniLoc intValue], num, array);
+}
+
+- (void)set3DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    glUniform3fv([uniLoc intValue], num, array);
+}
+
+- (void)set4DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    glUniform4fv([uniLoc intValue], num, array);
 }
 
 @end

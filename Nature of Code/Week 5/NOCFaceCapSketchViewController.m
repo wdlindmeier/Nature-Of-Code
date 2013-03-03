@@ -16,7 +16,7 @@
 @end
 
 static NSString * TextureShaderName = @"Texture";
-static NSString * FaceShaderName = @"Triangulation";
+static NSString * FaceShaderName = @"ColoredVerts";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
 
@@ -47,8 +47,8 @@ static NSString * UniformTexture = @"texture";
     
     NOCShaderProgram *shaderFace = [[NOCShaderProgram alloc] initWithName:FaceShaderName];
     shaderFace.attributes = @{@"position" : @(GLKVertexAttribPosition),
-                             @"texCoord" : @(GLKVertexAttribTexCoord0)};
-    shaderFace.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
+                              @"color" : @(GLKVertexAttribColor)};
+    shaderFace.uniformNames = @[UniformMVProjectionMatrix];
 
     self.shaders = @{ TextureShaderName : texShader, FaceShaderName : shaderFace };
 
@@ -99,7 +99,6 @@ static NSString * UniformTexture = @"texture";
     matTexture = GLKMatrix4RotateZ(matTexture, M_PI * 0.5);
     matTexture = GLKMatrix4Multiply(matTexture, _projectionMatrix2D);
     
-
     // Draw the video background
     NOCShaderProgram *texShader = self.shaders[TextureShaderName];
     [texShader use];
@@ -114,110 +113,36 @@ static NSString * UniformTexture = @"texture";
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     glBindTexture(GL_TEXTURE_2D, 0);
     
-
     // Draw faces
     NOCShaderProgram *shaderFace = self.shaders[FaceShaderName];
     [shaderFace use];
     [shaderFace setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
-    [_videoSession bindTexture:0];
-    [shaderFace setInt:0 forUniform:UniformTexture];
 
     // Draw a stroked cube
     for(NSValue *rectValue in _faceRects){
         
         CGRect rect = [rectValue CGRectValue];
-        
-        // Generate the average tex coords
-        int vxPerTri = 3;
-        int numTri = 2;
-        int numTexIdx = vxPerTri * numTri * 2;
-        int numVertIdx = numTri * vxPerTri * 3;
-        
-        GLfloat verts[] = {
-            
-            // Tri UL
-            rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, 0,
-            rect.origin.x, rect.origin.y + rect.size.height, 0,
-            rect.origin.x, rect.origin.y, 0,
 
-            // Tri LR
+        GLfloat verts[] = {
+            rect.origin.x, rect.origin.y + rect.size.height, 0,
             rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, 0,
             rect.origin.x + rect.size.width, rect.origin.y, 0,
             rect.origin.x, rect.origin.y, 0,
         };
-        
-        GLfloat texCoords[numTexIdx];
-        
-        for(int i=0;i<numTri;i++){
-            float avgX = 0;
-            float avgY = 0;
 
-            for(int j=0;j<vxPerTri;j++){
-                avgX += verts[(i*vxPerTri*3)+(j*3)+0];
-                avgY += verts[(i*vxPerTri*3)+(j*3)+1];
-            }
-            avgX = avgX / vxPerTri;
-            avgY = avgY / vxPerTri;
-
-            for(int j=0;j<vxPerTri;j++){
-                texCoords[(i*vxPerTri*2)+(j*2)+0] = 0.5 + (avgX * 0.5);
-                texCoords[(i*vxPerTri*2)+(j*2)+1] = 0.5 + (avgY * -0.5);
-            }
-        }
-        
-        /*
-        float avgX1 = (verts[0] + verts[3] + verts[6]) / 3.0f;
-        avgX1 = 0.5 + (avgX1 * 0.5);
-        float avgY1 = (verts[1] + verts[4] + verts[7]) / 3.0f;
-        avgY1 = 0.5 + (avgY1 * -0.5);
-
-        float avgX2 = (verts[9] + verts[12] + verts[15]) / 3.0f;
-        avgX2 = 0.5 + (avgX2 * 0.5);
-        float avgY2 = (verts[10] + verts[13] + verts[16]) / 3.0f;
-        avgY2 = 0.5 + (avgY2 * -0.5);
-
-        GLfloat texCoords[] = {
-            avgX1,avgY1,
-            avgX1,avgY1,
-            avgX1,avgY1,
-            
-            avgX2,avgY2,
-            avgX2,avgY2,
-            avgX2,avgY2,
+        const static GLfloat colors[] = {
+            1.0,0.0,0.0,1.0,
+            1.0,0.0,0.0,1.0,
+            1.0,0.0,0.0,1.0,
+            1.0,0.0,0.0,1.0,
         };
-        */
-        
-        /*
-        GLfloat texCoords[numTexIdx];
 
-        for(int i=0;i<numTri;i++){
-            float sumX = 0;
-            float sumY = 0;
-            for(int j=0;j<vxPerTri;j++){
-                float vX = verts[(i*vxPerTri)+(j*3)+0];
-                float vY = verts[(i*vxPerTri)+(j*3)+1];
-                float texCoordX = 0.5 + (vX * 0.5);
-                float texCoordY = 0.5 + (vY * -0.5);
-                sumX += texCoordX;
-                sumY += texCoordY;
-            }
-            float avgX = sumX / (float)vxPerTri;
-            float avgY = sumY / (float)vxPerTri;
-            for(int j=0;j<vxPerTri;j++){
-                texCoords[(i*vxPerTri)+(j*2)+0] = avgX;
-                texCoords[(i*vxPerTri)+(j*2)+1] = avgY;
-            }
-        }
-        */
-        
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &verts);
-        
-        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &texCoords);
+        glEnableVertexAttribArray(GLKVertexAttribColor);
+        glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &colors);
 
-        int numCoords = sizeof(verts) / sizeof(GLfloat) / 3;
-        glDrawArrays(GL_TRIANGLES, 0, numCoords);
+        glDrawArrays(GL_LINE_LOOP, 0, 4);
         
     }
 

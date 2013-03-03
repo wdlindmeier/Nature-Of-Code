@@ -133,11 +133,19 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>Face Cap</string>
+				<string>Triangle Spirals</string>
 				<key>Description</key>
-				<string>Simple face recognition video capture.</string>
+				<string>Generate a triangulated mesh that connects a spiral. Tapping the screen in various locations adjusts the spiral configuration.</string>
 				<key>Controller</key>
-				<string>FaceCap</string>
+				<string>TriangleSpiral</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Face Mesh</string>
+				<key>Description</key>
+				<string></string>
+				<key>Controller</key>
+				<string>FaceMesh</string>
 			</dict>
 		</array>
 	</dict>

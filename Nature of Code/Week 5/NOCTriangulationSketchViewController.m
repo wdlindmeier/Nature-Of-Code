@@ -21,6 +21,8 @@
 static NSString * TriangulationShaderName = @"Triangulation";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
+static NSString * UniformTranslation = @"translation";
+static NSString * UniformScale = @"scale";
 
 @implementation NOCTriangulationSketchViewController
 
@@ -59,7 +61,7 @@ static NSString * UniformTexture = @"texture";
     shaderTriangles.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                    @"texCoord" : @(GLKVertexAttribTexCoord0)};
     
-    shaderTriangles.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
+    shaderTriangles.uniformNames = @[UniformMVProjectionMatrix, UniformTexture, UniformTranslation, UniformScale];
 
     self.shaders = @{ TriangulationShaderName : shaderTriangles };
     
@@ -89,10 +91,18 @@ static NSString * UniformTexture = @"texture";
     GLKMatrix4 matView = _projectionMatrix2D;
     
     NOCShaderProgram *shader = self.shaders[TriangulationShaderName];
-
+    
     [shader use];
-
     [shader setMatrix:matView forUniform:UniformMVProjectionMatrix];
+
+    // NOTE: Translate and scale are not used in this sketch.
+    // Just pass in Identity values.
+    [shader setFloat:1.0 forUniform:UniformScale];
+    GLfloat translate[] = {0,0,0};
+    [shader set3DFloatArray:translate
+            withNumElements:1
+                 forUniform:UniformTranslation];
+    
     
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(0);

@@ -87,6 +87,12 @@
 		A99889B916C1FADB002C924F /* NOCWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889AC16C1FADB002C924F /* NOCWalker.m */; };
 		A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */; };
 		A99889C016C2AA88002C924F /* NOCSketchDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */; };
+		A9A60DB716E39C2C00F0E5B9 /* ColoredPoints.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9A60DB616E39C2C00F0E5B9 /* ColoredPoints.vsh */; };
+		A9A60DB916E39C3100F0E5B9 /* ColoredPoints.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9A60DB816E39C3100F0E5B9 /* ColoredPoints.fsh */; };
+		A9A60DBF16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A60DBE16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m */; };
+		A9A60DC216E3A95C00F0E5B9 /* ColoredVerts.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9A60DC016E3A95C00F0E5B9 /* ColoredVerts.fsh */; };
+		A9A60DC316E3A95C00F0E5B9 /* ColoredVerts.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9A60DC116E3A95C00F0E5B9 /* ColoredVerts.vsh */; };
+		A9A60DC616E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A60DC516E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m */; };
 		A9BC922A16CBE54A009AD45C /* NOCParticle3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC922916CBE54A009AD45C /* NOCParticle3D.m */; };
 		A9BC922D16CBE781009AD45C /* NOCMovers3DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC922C16CBE781009AD45C /* NOCMovers3DSketchViewController.m */; };
 		A9BC923316CBEE36009AD45C /* NOC3DSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BC923216CBEE36009AD45C /* NOC3DSketchViewController.m */; };
@@ -271,6 +277,14 @@
 		A99889BC16C1FB09002C924F /* NOC2DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOC2DSketchViewController.h; path = Shared/NOC2DSketchViewController.h; sourceTree = "<group>"; };
 		A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOC2DSketchViewController.m; path = Shared/NOC2DSketchViewController.m; sourceTree = "<group>"; };
 		A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCSketchDescriptionView.xib; sourceTree = "<group>"; };
+		A9A60DB616E39C2C00F0E5B9 /* ColoredPoints.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColoredPoints.vsh; sourceTree = "<group>"; };
+		A9A60DB816E39C3100F0E5B9 /* ColoredPoints.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColoredPoints.fsh; sourceTree = "<group>"; };
+		A9A60DBD16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTriangleSpiralSketchViewController.h; sourceTree = "<group>"; };
+		A9A60DBE16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTriangleSpiralSketchViewController.m; sourceTree = "<group>"; };
+		A9A60DC016E3A95C00F0E5B9 /* ColoredVerts.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColoredVerts.fsh; sourceTree = "<group>"; };
+		A9A60DC116E3A95C00F0E5B9 /* ColoredVerts.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColoredVerts.vsh; sourceTree = "<group>"; };
+		A9A60DC416E3C12600F0E5B9 /* NOCFaceMeshSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFaceMeshSketchViewController.h; sourceTree = "<group>"; };
+		A9A60DC516E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFaceMeshSketchViewController.m; sourceTree = "<group>"; };
 		A9BC922816CBE54A009AD45C /* NOCParticle3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCParticle3D.h; sourceTree = "<group>"; };
 		A9BC922916CBE54A009AD45C /* NOCParticle3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCParticle3D.m; sourceTree = "<group>"; };
 		A9BC922B16CBE780009AD45C /* NOCMovers3DSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMovers3DSketchViewController.h; path = "Nature of Code/Week 2/NOCMovers3DSketchViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -415,6 +429,10 @@
 			children = (
 				A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */,
 				A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */,
+				A9A60DC416E3C12600F0E5B9 /* NOCFaceMeshSketchViewController.h */,
+				A9A60DC516E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m */,
+				A9A60DBD16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.h */,
+				A9A60DBE16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m */,
 				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
 				A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */,
 			);
@@ -466,6 +484,10 @@
 		A95C702616D031C40058D8BA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				A9A60DC016E3A95C00F0E5B9 /* ColoredVerts.fsh */,
+				A9A60DC116E3A95C00F0E5B9 /* ColoredVerts.vsh */,
+				A9A60DB816E39C3100F0E5B9 /* ColoredPoints.fsh */,
+				A9A60DB616E39C2C00F0E5B9 /* ColoredPoints.vsh */,
 				A9F78AD316D913F200073D16 /* FlameParticle.fsh */,
 				A9F78AD416D913F200073D16 /* FlameParticle.vsh */,
 				A95C702716D031C40058D8BA /* Mover.fsh */,
@@ -837,6 +859,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9A60DC216E3A95C00F0E5B9 /* ColoredVerts.fsh in Resources */,
+				A9A60DC316E3A95C00F0E5B9 /* ColoredVerts.vsh in Resources */,
+				A9A60DB716E39C2C00F0E5B9 /* ColoredPoints.vsh in Resources */,
+				A9A60DB916E39C3100F0E5B9 /* ColoredPoints.fsh in Resources */,
 				A936F0C816DE9D1200A6EBD8 /* Triangulation.fsh in Resources */,
 				A936F0C916DE9D1200A6EBD8 /* Triangulation.vsh in Resources */,
 				A9F78AFC16D97F9C00073D16 /* Paper.fsh in Resources */,
@@ -979,6 +1005,8 @@
 				A936F0CC16DEA02E00A6EBD8 /* DelaunayTriangulation+NOCHelpers.m in Sources */,
 				A9CB7E7116E2598500CEF634 /* NOCFaceCapSketchViewController.m in Sources */,
 				A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */,
+				A9A60DBF16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m in Sources */,
+				A9A60DC616E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

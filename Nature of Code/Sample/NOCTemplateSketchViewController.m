@@ -14,18 +14,25 @@
 
 @implementation NOCTemplateSketchViewController
 
+// Some sample variables
+/*
+static NSString * ShaderName = @"SampleShader";
+static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
+static NSString * UniformTexture = @"texture";
+*/
+
 - (void)setup
 {
-    // Setup the sample shader
+    // Setup the shader
     /*
-     NOCShaderProgram *shader = [[NOCShaderProgram alloc] initWithName:@"SampleShader"];
+     NOCShaderProgram *shader = [[NOCShaderProgram alloc] initWithName:ShaderName];
      
      shader.attributes = @{ @"position" : @(GLKVertexAttribPosition),
                             @"normal" : @(GLKVertexAttribNormal) };
      
      shader.uniformNames = @[ UniformMVProjectionMatrix, UniformNormalMatrix ];
      
-     self.shaders = @{ SampleShaderName : shader };
+     self.shaders = @{ ShaderName : shader };
      */
 }
 

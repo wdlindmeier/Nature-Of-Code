@@ -14,5 +14,6 @@
 #import "DelaunayPoint.h"
 #import "DelaunayEdge.h"
 #import "VoronoiCell.h"
+#import "DelaunayTriangulation+NOCHelpers.h"
 
 #endif

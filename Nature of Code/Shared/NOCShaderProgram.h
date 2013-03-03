@@ -23,8 +23,12 @@
 - (void)use;
 
 // Helpers
-- (void)setFloat:(GLfloat)f forUniform:(NSString *)uniformName;
-- (void)setInt:(GLint)i forUniform:(NSString *)uniformName;
-- (void)setMatrix:(GLKMatrix4)mat forUniform:(NSString *)uniformName;
+- (void)setFloat:(const GLfloat)f forUniform:(NSString *)uniformName;
+- (void)setInt:(const GLint)i forUniform:(NSString *)uniformName;
+- (void)setMatrix:(const GLKMatrix4)mat forUniform:(NSString *)uniformName;
+- (void)set1DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName;
+- (void)set2DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName;
+- (void)set3DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName;
+- (void)set4DFloatArray:(const GLfloat[])array withNumElements:(int)num forUniform:(NSString *)uniformName;
 
 @end
