@@ -56,6 +56,20 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
+#pragma mark - View
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if(!_fbo){
+        _fbo = [[NOCFrameBuffer alloc] initWithPixelWidth:_sizeView.width
+                                              pixelHeight:_sizeView.height];
+        
+        [self createPaperTexture];
+    }
+}
+
 #pragma mark - Sketch
 
 - (void)setup
@@ -75,7 +89,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     _motionManager = [[CMMotionManager alloc] init];
     [_motionManager startDeviceMotionUpdates];
     
-    _textureFlame = NOCLoadGLTextureWithName(@"flame_red");;
+    _textureFlame = NOCLoadGLTextureWithName(@"flame_red");
     
     // Flames
     _flames = [NSMutableArray arrayWithCapacity:MaxNumFlames];
@@ -97,6 +111,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
 
 - (void)createPaperTexture
 {
+    
     // Create a perlin map which is the paper
     
     // float scalarX = 0.5 + (RAND_SCALAR * 0.5);
@@ -116,19 +131,6 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     // GLKTextureLoaderErrorDomain error 12, "Image decoding failed"
     UIImage *img = [UIImage imageWithData:UIImagePNGRepresentation(perlinMap)];
     _texturePaper = NOCLoadGLTextureWithImage(img);
-    
-}
-
-- (void)resize
-{
-    [super resize];
-    
-    // NOTE: It's not until now that we have the final view size.
-
-    _fbo = [[NOCFrameBuffer alloc] initWithPixelWidth:_sizeView.width
-                                          pixelHeight:_sizeView.height];
-    
-    [self createPaperTexture];
     
 }
 

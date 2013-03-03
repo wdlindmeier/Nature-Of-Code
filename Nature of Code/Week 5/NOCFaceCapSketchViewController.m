@@ -11,11 +11,12 @@
 @interface NOCFaceCapSketchViewController ()
 {
     UIView *_viewVideoPreview;
-    GLKTextureInfo *_textureVideo;
+    NSArray *_faceRects;
 }
 @end
 
 static NSString * TextureShaderName = @"Texture";
+static NSString * FaceShaderName = @"SceneBox";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
 
@@ -43,12 +44,14 @@ static NSString * UniformTexture = @"texture";
                               @"texCoord" : @(GLKVertexAttribTexCoord0) };
 
     texShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
+    
+    NOCShaderProgram *shaderFace = [[NOCShaderProgram alloc] initWithName:FaceShaderName];
+    shaderFace.attributes = @{ @"position" : @(GLKVertexAttribPosition) };
+    shaderFace.uniformNames = @[ UniformMVProjectionMatrix ];
 
     self.shaders = @{ TextureShaderName : texShader };
 
-    // Ignoring faces for the moment
-    _videoSession = [[NOCVideoSession alloc] initWithDelegate:nil]; //self];
-    _videoSession.shouldOutlineFaces = NO;
+    _videoSession = [[NOCVideoSession alloc] initWithFaceDelegate:self];
     
     const static BOOL USE_CA_PREVIEW = NO;
     
@@ -71,9 +74,7 @@ static NSString * UniformTexture = @"texture";
         [rootLayer addSublayer:videoPreview];
         
     }
-    
-    _textureVideo = NOCLoadGLTextureWithName(@"face");
-    
+
 }
 
 - (void)update
@@ -93,7 +94,14 @@ static NSString * UniformTexture = @"texture";
     
     NOCShaderProgram *texShader = self.shaders[TextureShaderName];
     [texShader use];
-    [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
+    
+    // Account for camera texture orientation
+    float scaleX = [_videoSession isMirrored] ? -1 : 1;
+    GLKMatrix4 matTexture = GLKMatrix4MakeScale(scaleX, -1, 1);
+    matTexture = GLKMatrix4RotateZ(matTexture, M_PI * 0.5);
+    matTexture = GLKMatrix4Multiply(matTexture, _projectionMatrix2D);
+    
+    [texShader setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
     
     [_videoSession bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
@@ -104,6 +112,28 @@ static NSString * UniformTexture = @"texture";
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     glBindTexture(GL_TEXTURE_2D, 0);
+    
+    // Draw faces
+    
+    // Draw the scene box
+    NOCShaderProgram *shaderFace = self.shaders[FaceShaderName];
+    [shaderFace use];
+    [shaderFace setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
+
+    // Draw a stroked cube
+    for(NSValue *rectValue in _faceRects){
+        CGRect rect = [rectValue CGRectValue];
+        GLfloat verts[] = {
+            rect.origin.x, rect.origin.y + rect.size.height, 0,
+            rect.origin.x + rect.size.width, rect.origin.y + rect.size.height, 0,
+            rect.origin.x + rect.size.width, rect.origin.y, 0,
+            rect.origin.x, rect.origin.y, 0,
+        };
+        glEnableVertexAttribArray(GLKVertexAttribPosition);
+        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &verts);
+        int numCoords = sizeof(verts) / sizeof(GLfloat) / 3;
+        glDrawArrays(GL_LINE_LOOP, 0, numCoords);
+    }
 
 }
 
@@ -116,13 +146,50 @@ static NSString * UniformTexture = @"texture";
 
 #pragma mark - Video 
 
+- (CGSize)sizeVideoFrameInGLSpaceForSession:(NOCVideoSession *)session
+{
+    //return CGSizeMake(2.0, 2.0 / _viewAspect);
+    // TMP
+    // For the moment lets return the size of the view
+    return self.view.frame.size;
+}
+
 - (void)videoSession:(NOCVideoSession *)videoSession
        detectedFaces:(NSArray *)faceFeatures
              inFrame:(CGRect)previewFrame
          orientation:(UIDeviceOrientation)orientation
                scale:(CGSize)videoScale
 {
-    // Do something
+
+    NSMutableArray *rects = [NSMutableArray arrayWithCapacity:faceFeatures.count];
+
+    for ( CIFaceFeature *ff in faceFeatures ) {
+
+        CGRect faceRect = [ff bounds];
+        
+        // Scale up from image size to view size
+        faceRect = CGRectApplyAffineTransform(faceRect, CGAffineTransformMakeScale(videoScale.width, videoScale.height));
+
+        // Mirror if source is mirrored
+        if ([_videoSession isMirrored])
+            faceRect = CGRectApplyAffineTransform(faceRect, CGAffineTransformMakeScale(-1, 1));
+        
+        // Translate the rect origin
+        faceRect = CGRectApplyAffineTransform(faceRect, CGAffineTransformMakeTranslation(previewFrame.origin.x, previewFrame.origin.y));
+
+        // Convert to GL space
+        GLKVector2 glPos = NOCGLPositionFromCGPointInRect(faceRect.origin, previewFrame);
+        float scale = 2.0f / previewFrame.size.width;
+        GLKVector2 glSize = GLKVector2Make(faceRect.size.width * scale,
+                                           faceRect.size.height * scale);
+        
+        [rects addObject:[NSValue valueWithCGRect:CGRectMake(glPos.x, glPos.y,
+                                                             glSize.x, glSize.y)]];
+
+    }
+
+    _faceRects = [NSArray arrayWithArray:rects];
+
 }
 
 @end

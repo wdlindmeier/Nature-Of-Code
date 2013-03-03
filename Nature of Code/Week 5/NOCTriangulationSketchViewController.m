@@ -19,7 +19,6 @@
 @end
 
 static NSString * TriangulationShaderName = @"Triangulation";
-static NSString * TextureShaderName = @"Texture";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
 
@@ -55,22 +54,14 @@ static NSString * UniformTexture = @"texture";
 {
     [super setup];
     
-    // Setup the shader
     NOCShaderProgram *shaderTriangles = [[NOCShaderProgram alloc] initWithName:TriangulationShaderName];
      
     shaderTriangles.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                    @"texCoord" : @(GLKVertexAttribTexCoord0)};
     
     shaderTriangles.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
-    
-    // TMP
-    NOCShaderProgram *shaderTexture = [[NOCShaderProgram alloc] initWithName:TextureShaderName];
-    shaderTexture.attributes = @{@"position" : @(GLKVertexAttribPosition),
-                                   @"texCoord" : @(GLKVertexAttribTexCoord0)};
-    shaderTexture.uniformNames = @[UniformMVProjectionMatrix, UniformTexture];
 
-    
-    self.shaders = @{ TriangulationShaderName : shaderTriangles, TextureShaderName : shaderTexture };
+    self.shaders = @{ TriangulationShaderName : shaderTriangles };
     
     _textureFace = NOCLoadGLTextureWithName(@"face");
 
@@ -95,11 +86,8 @@ static NSString * UniformTexture = @"texture";
 {
     [self clear];
         
-    // Step back
     GLKMatrix4 matView = _projectionMatrix2D;
-//    GLKMatrix4 matView = GLKMatrix4MakeScale(0.25, 0.25, 1.0);
-//    matView = GLKMatrix4Multiply(_projectionMatrix2D, matView);
-
+    
     NOCShaderProgram *shader = self.shaders[TriangulationShaderName];
 
     [shader use];

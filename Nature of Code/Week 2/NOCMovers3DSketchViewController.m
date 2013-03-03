@@ -81,6 +81,8 @@ static NSString * UniformMoverTexture = @"texture";
     }
     _movers = [NSArray arrayWithArray:movers];
     
+    _sceneBox = [[NOCSceneBox alloc] initWithAspect:_viewAspect];
+    
 }
 
 - (void)resize
@@ -139,14 +141,11 @@ static NSString * UniformMoverTexture = @"texture";
     // Draw the scene box
     NOCShaderProgram *shaderScene = self.shaders[ShaderNameSceneBox];
     [shaderScene use];
-    // Create the Model View Projection matrix for the shader
-    projMatLoc = shaderScene.uniformLocations[UniformMVProjectionMatrix];
-    // Pass mvp into shader
-    glUniformMatrix4fv([projMatLoc intValue], 1, 0, matScene.m);
+    [shaderScene setMatrix:matScene
+                forUniform:UniformMVProjectionMatrix];
     [_sceneBox render];
     
-    // Draw the movers
-    
+    // Draw the movers    
     NOCShaderProgram *shaderMovers = self.shaders[ShaderNameMovers3DMover];
     [shaderMovers use];
     

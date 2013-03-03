@@ -371,7 +371,6 @@ static const float DrawerRevealHeight = 20.0f;
         _screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / _viewAspect;
         _screen3DBillboardVertexData[i*3+2] = Square3DBillboardVertexData[i*3+2] * 2;
     }
-
 }
 
 - (void)draw

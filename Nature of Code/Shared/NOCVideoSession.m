@@ -40,23 +40,24 @@ enum {
     CVOpenGLESTextureRef _videoTexture;
     CVOpenGLESTextureCacheRef _videoTextureCache;
     BOOL _isUsingGLOutput;
+    BOOL _isMirrored;
 }
 
 @synthesize previewLayer = _previewLayer;
 
 #pragma mark - Init
 
-- (id)initWithDelegate:(id<NOCVideoSessionFaceDelegate>)faceDelegate
+- (id)initWithFaceDelegate:(id<NOCVideoSessionFaceDelegate>)faceDelegate
 {
     self = [super init];
     if(self){
         self.faceDelegate = faceDelegate;
-        self.shouldOutlineFaces = YES;
         
-        NSDictionary *detectorOptions = [[NSDictionary alloc] initWithObjectsAndKeys:CIDetectorAccuracyLow, CIDetectorAccuracy, nil];
         _faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace
                                            context:nil
-                                           options:detectorOptions];
+                                           options:@{ CIDetectorAccuracy : CIDetectorAccuracyLow,
+                                                      CIDetectorTracking : @(YES) } ];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(avSessionError:)
                                                      name:AVCaptureSessionRuntimeErrorNotification
@@ -180,7 +181,7 @@ enum {
 
 - (BOOL)isMirrored
 {
-    return [_previewLayer.connection isVideoMirrored];
+    return _isMirrored;
 }
 
 #pragma mark - Video Processing
@@ -192,9 +193,12 @@ enum {
 */
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
+    
+    _isMirrored = [connection isVideoMirrored];
+    
     // CVPixelBufferRef seems to be the same as CVImageBufferRef
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    
+    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
     if(_isUsingGLOutput){
         
         [self bindCameraImageToGLTexture:pixelBuffer];
@@ -203,9 +207,11 @@ enum {
     
     if(self.faceDelegate){
         
-        [self performFacialDetectionWithSample:sampleBuffer pixels:pixelBuffer];
+        [self performFacialDetectionWithSample:sampleBuffer
+                                        pixels:pixelBuffer];
         
     }
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
 }
 
 - (void)bindCameraImageToGLTexture:(CVImageBufferRef)pixelBuffer
@@ -304,135 +310,59 @@ enum {
     CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
     CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false);
 
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        [self handleFaceFeatures:features
-                     forVideoBox:clap
-                     orientation:curDeviceOrientation];
-    });
-    
+    [self handleFaceFeatures:features
+                 forVideoBox:clap
+                 orientation:curDeviceOrientation];
 }
 
 - (void)handleFaceFeatures:(NSArray *)features forVideoBox:(CGRect)clap orientation:(UIDeviceOrientation)orientation
 {
     if(self.faceDelegate){
-        if(_previewLayer.superlayer){
+        
+        CGSize parentFrameSize;
+        NSString *gravity;
+        
+        if(_isUsingGLOutput){
             
-            CGSize parentFrameSize = _previewLayer.superlayer.bounds.size;
-            NSString *gravity = [_previewLayer videoGravity];
-            CGRect previewRect = [NOCVideoSession videoPreviewBoxForGravity:gravity
-                                                                  frameSize:parentFrameSize
-                                                               apertureSize:clap.size];
+            gravity = AVLayerVideoGravityResizeAspect;
             
-            CGFloat widthScaleBy = previewRect.size.width / clap.size.height;
-            CGFloat heightScaleBy = previewRect.size.height / clap.size.width;
-            CGSize sizeScale = CGSizeMake(widthScaleBy, heightScaleBy);
-            
-            if(self.shouldOutlineFaces){
-                if(!_isUsingGLOutput){
-                    [self drawFaces:features inFrame:previewRect orientation:orientation scale:sizeScale];
-                }else{
-                    // OpenGL frame drawing not supported yet
-                }
+            if(self.faceDelegate &&
+               [self.faceDelegate respondsToSelector:@selector(sizeVideoFrameInGLSpaceForSession:)]){
+                
+                parentFrameSize = [self.faceDelegate sizeVideoFrameInGLSpaceForSession:self];
+                
+            }else{
+                
+                // A square
+                parentFrameSize = CGSizeMake(2, 2);
+                
             }
-            if(self.faceDelegate){
-                [self.faceDelegate videoSession:self detectedFaces:features inFrame:previewRect orientation:orientation scale:sizeScale];
-            }
+            
+        }else{
+            
+            gravity = [_previewLayer videoGravity];
+            parentFrameSize = _previewLayer.superlayer.bounds.size;
+            
+        }
+
+        CGRect previewRect = [NOCVideoSession videoPreviewBoxForGravity:gravity
+                                                              frameSize:parentFrameSize
+                                                           apertureSize:clap.size];
+        
+        CGFloat widthScaleBy = previewRect.size.width / clap.size.width;
+        CGFloat heightScaleBy = previewRect.size.height / clap.size.height;
+        CGSize sizeScale = CGSizeMake(widthScaleBy, heightScaleBy);
+        
+        if(self.faceDelegate){
+            
+            [self.faceDelegate videoSession:self
+                              detectedFaces:features
+                                    inFrame:previewRect
+                                orientation:orientation
+                                      scale:sizeScale];
             
         }
     }
-}
-
-- (void)drawFaces:(NSArray *)faceFeatures
-          inFrame:(CGRect)previewFrame
-      orientation:(UIDeviceOrientation)orientation
-            scale:(CGSize)videoScale
-{
-    
-    NSArray *previewSublayers = [NSArray arrayWithArray:[_previewLayer sublayers]];
-	NSInteger sublayersCount = [previewSublayers count], currentSublayer = 0;
-	
-	[CATransaction begin];
-	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-	
-	// Initially hide all the face layers
-	for ( CALayer *layer in previewSublayers ) {
-		if ( [[layer name] isEqualToString:@"FaceLayer"] )
-			[layer setHidden:YES];
-	}
-    
-    for ( CIFaceFeature *ff in faceFeatures ) {
-        // find the correct position for the square layer within the previewLayer
-        // the feature box originates in the bottom left of the video frame.
-        // (Bottom right if mirroring is turned on)
-        CGRect faceRect = [ff bounds];
-        
-        // flip preview width and height
-        CGFloat temp = faceRect.size.width;
-        faceRect.size.width = faceRect.size.height;
-        faceRect.size.height = temp;
-        temp = faceRect.origin.x;
-        faceRect.origin.x = faceRect.origin.y;
-        faceRect.origin.y = temp;
-        
-        // scale coordinates so they fit in the preview box, which may be scaled
-        faceRect.size.width *= videoScale.width;
-        faceRect.size.height *= videoScale.height;
-        faceRect.origin.x *= videoScale.width;
-        faceRect.origin.y *= videoScale.height;
-        
-        if ([self isMirrored])
-            faceRect = CGRectOffset(faceRect,
-                                    previewFrame.origin.x + previewFrame.size.width - faceRect.size.width - (faceRect.origin.x * 2),
-                                    previewFrame.origin.y);
-        else
-            faceRect = CGRectOffset(faceRect,
-                                    previewFrame.origin.x,
-                                    previewFrame.origin.y);
-        
-        CALayer *featureLayer = nil;
-        
-        // re-use an existing layer if possible
-        while ( !featureLayer && (currentSublayer < sublayersCount) ) {
-            CALayer *currentLayer = [previewSublayers objectAtIndex:currentSublayer++];
-            if ( [[currentLayer name] isEqualToString:@"FaceLayer"] ) {
-                featureLayer = currentLayer;
-                [currentLayer setHidden:NO];
-            }
-        }
-        
-        // create a new one if necessary
-        if ( !featureLayer ) {
-            featureLayer = [CALayer new];
-            featureLayer.borderColor = [UIColor redColor].CGColor;
-            featureLayer.borderWidth = 2.0f;
-            [featureLayer setName:@"FaceLayer"];
-            [_previewLayer addSublayer:featureLayer];
-        }
-        [featureLayer setFrame:faceRect];
-        
-        switch (orientation) {
-            case UIDeviceOrientationPortrait:
-                [featureLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(0.))];
-                break;
-            case UIDeviceOrientationPortraitUpsideDown:
-                [featureLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(180.))];
-                break;
-            case UIDeviceOrientationLandscapeLeft:
-                [featureLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(90.))];
-                break;
-            case UIDeviceOrientationLandscapeRight:
-                [featureLayer setAffineTransform:CGAffineTransformMakeRotation(DegreesToRadians(-90.))];
-                break;
-            case UIDeviceOrientationFaceUp:
-            case UIDeviceOrientationFaceDown:
-            default:
-                break; // leave the layer in its last known orientation
-        }
-
-    }
-    
-	[CATransaction commit];
-    
 }
 
 #pragma mark - Class Methods

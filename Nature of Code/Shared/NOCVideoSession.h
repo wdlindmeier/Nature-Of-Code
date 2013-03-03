@@ -17,12 +17,11 @@
 }
 
 @property (nonatomic, weak) id<NOCVideoSessionFaceDelegate> faceDelegate;
-@property (nonatomic, assign) BOOL shouldOutlineFaces;
 @property (nonatomic, readonly) AVCaptureVideoPreviewLayer *previewLayer;
 
 
 - (BOOL)isMirrored;
-- (id)initWithDelegate:(id<NOCVideoSessionFaceDelegate>)faceDelegate;
+- (id)initWithFaceDelegate:(id<NOCVideoSessionFaceDelegate>)faceDelegate;
 
 - (AVCaptureVideoPreviewLayer *)setupForPreviewWithDevice:(AVCaptureDevice *)device;
 - (void)setupWithDevice:(AVCaptureDevice *)device inContext:(EAGLContext *)context;
@@ -42,5 +41,7 @@
              inFrame:(CGRect)previewFrame
          orientation:(UIDeviceOrientation)orientation
                scale:(CGSize)videoScale;
+
+- (CGSize)sizeVideoFrameInGLSpaceForSession:(NOCVideoSession *)session;
 
 @end
