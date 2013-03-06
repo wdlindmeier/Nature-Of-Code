@@ -29,7 +29,7 @@ const static int NumTriangulations = 5;
     // For the triangle mesh
     float _curveStep;
     float _distStep;
-    GLfloat* _meshVecs[NumTriangulations];
+    GLfloat* _meshVerts[NumTriangulations];
     GLfloat* _meshTex[NumTriangulations];
     int _numMeshVerts[NumTriangulations];
     float _unitMesh;
@@ -106,7 +106,7 @@ static const int FBODimension = 128;
     _distStep  = 0.019092;
     
     for(int i=0;i<NumTriangulations;i++){
-        _meshVecs[i] = NULL;
+        _meshVerts[i] = NULL;
         _meshTex[i] = NULL;
     }
     
@@ -229,7 +229,7 @@ static const int FBODimension = 128;
     [texShader setInt:0 forUniform:UniformTexture];
     
     GLfloat faceVerts[12];
-    NOCSetGLVecCoordsForRect(faceVerts, faceRect);
+    NOCSetGLVertCoordsForRect(faceVerts, faceRect);
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &faceVerts);
@@ -278,16 +278,16 @@ static const int FBODimension = 128;
             
             // Loop over the triangulations
             int meshNum = (self.frameCount / NumTriangulations) % NumTriangulations; // slows it down a bit so each frame gets NumTriangulations frames
-            GLfloat *meshVecs = _meshVecs[meshNum];
+            GLfloat *meshVerts = _meshVerts[meshNum];
             GLfloat *meshTex = _meshTex[meshNum];
             int numVerts = _numMeshVerts[meshNum];
             
-            if(meshVecs){
+            if(meshVerts){
                 
                 [shaderFace setMatrix:matMesh forUniform:UniformMVProjectionMatrix];
                 
                 glEnableVertexAttribArray(GLKVertexAttribPosition);
-                glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, meshVecs);
+                glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, meshVerts);
                 
                 glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
                 glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, meshTex);
@@ -296,7 +296,7 @@ static const int FBODimension = 128;
                 
             }else{
                 
-                NSLog(@"NO MESH VECS");
+                NSLog(@"NO MESH VERTS");
                 
             }
             
@@ -310,8 +310,8 @@ static const int FBODimension = 128;
     [super teardown];
     
     for(int i=0;i<NumTriangulations;i++){
-        GLfloat *meshVecs = _meshVecs[i];
-        if(meshVecs) free(meshVecs);
+        GLfloat *meshVerts = _meshVerts[i];
+        if(meshVerts) free(meshVerts);
         GLfloat *meshTex = _meshTex[i];
         if(meshTex) free(meshTex);
     }
@@ -413,7 +413,7 @@ static const int FBODimension = 128;
     float minY = 0;
     float maxY = 0;
     
-    NSMutableArray *serializedVecs = [NSMutableArray arrayWithCapacity:500];
+    NSMutableArray *serializedVerts = [NSMutableArray arrayWithCapacity:500];
     NSMutableArray *serializedTex = [NSMutableArray arrayWithCapacity:500];
     
     for(int t=0;t<NumTriangulations;t++){
@@ -469,20 +469,20 @@ static const int FBODimension = 128;
         
         _numMeshVerts[t] = numVerts;
         
-        GLfloat *meshVecs = _meshVecs[t];
-        if(meshVecs) free(meshVecs);
-        meshVecs = malloc(sizeof(GLfloat) * numVerts * 3);
-        _meshVecs[t] = meshVecs;
+        GLfloat *meshVerts = _meshVerts[t];
+        if(meshVerts) free(meshVerts);
+        meshVerts = malloc(sizeof(GLfloat) * numVerts * 3);
+        _meshVerts[t] = meshVerts;
         
         GLfloat *meshTex = _meshTex[t];
         if(meshTex) free(meshTex);
         meshTex = malloc(sizeof(GLfloat) * numVerts * 2);
         _meshTex[t] = meshTex;
         
-        int idxVec = 0;
+        int idxVert = 0;
         int idxTex = 0;
         
-        [serializedVecs addObject:[NSString stringWithFormat:@"static float NOCDelaunayVecs%i[] = {", t]];
+        [serializedVerts addObject:[NSString stringWithFormat:@"static float NOCDelaunayVerts%i[] = {", t]];
         [serializedTex addObject:[NSString stringWithFormat:@"static float NOCDelaunayTex%i[] = {", t]];
         
         for (DelaunayTriangle *triangle in triangulation.triangles)
@@ -492,7 +492,7 @@ static const int FBODimension = 128;
                 int edgeCount = triangle.edges.count;
                 int numPoints = edgeCount;
                 
-                GLKVector2 vecTextCoordAvg = GLKVector2Zero;
+                GLKVector2 texCoordAvg = GLKVector2Zero;
                 
                 DelaunayPoint *prevPoint = triangle.startPoint;
                 
@@ -511,19 +511,19 @@ static const int FBODimension = 128;
                     if(y > maxY) maxY = y;
                     
                     // Verts
-                    meshVecs[idxVec+0] = x;
-                    meshVecs[idxVec+1] = y;
-                    meshVecs[idxVec+2] = z;
-                    idxVec+=3;
+                    meshVerts[idxVert+0] = x;
+                    meshVerts[idxVert+1] = y;
+                    meshVerts[idxVert+2] = z;
+                    idxVert+=3;
                     // Serialize the data
-                    [serializedVecs addObject:[NSString stringWithFormat:@"%f,%f,%f", x, y, z]];
+                    [serializedVerts addObject:[NSString stringWithFormat:@"%f,%f,%f", x, y, z]];
                     
                     // Text coords
                     float texCoordX = 0.5 + (x * 0.5);
-                    vecTextCoordAvg.x += texCoordX;
+                    vertTextCoordAvg.x += texCoordX;
                     
                     float texCoordY = 0.5 + (y * -0.5);
-                    vecTextCoordAvg.y += texCoordY;
+                    vertTextCoordAvg.y += texCoordY;
                     
                     prevPoint = p2;
                     
@@ -533,24 +533,24 @@ static const int FBODimension = 128;
                 // These are unevenly weighted when
                 // drawing triangle edges, but we're not using
                 // the texture in that case
-                vecTextCoordAvg = GLKVector2DivideScalar(vecTextCoordAvg, numPoints);
+                texCoordAvg = GLKVector2DivideScalar(texCoordAvg, numPoints);
                 
                 // Poor mans triangle color average.
                 for(int i=0;i<numPoints;i++){
-                    meshTex[idxTex+0] = vecTextCoordAvg.x;
-                    meshTex[idxTex+1] = vecTextCoordAvg.y;
+                    meshTex[idxTex+0] = texCoordAvg.x;
+                    meshTex[idxTex+1] = texCoordAvg.y;
                     idxTex+=2;
                     
-                    [serializedTex addObject:[NSString stringWithFormat:@"%f,%f", vecTextCoordAvg.x, vecTextCoordAvg.y]];
+                    [serializedTex addObject:[NSString stringWithFormat:@"%f,%f", texCoordAvg.x, texCoordAvg.y]];
                 }
             }
         }
-        [serializedVecs addObject:@"};"];
+        [serializedVerts addObject:@"};"];
         [serializedTex addObject:@"};"];
     }
     
     // NOTE: These have to be cleaned up a bit for consumption
-    NSLog(@"\n%@\n;", [serializedVecs componentsJoinedByString:@",\n"]);
+    NSLog(@"\n%@\n;", [serializedVerts componentsJoinedByString:@",\n"]);
     NSLog(@"\n%@\n", [serializedTex componentsJoinedByString:@",\n"]);
     
     _unitMesh = maxY - minY;
@@ -561,33 +561,33 @@ static const int FBODimension = 128;
         
         for(int t=0;t<NumTriangulations;t++){
 
-            float *vecCoords;
+            float *vertCoords;
             float *texCoords;
             int numVerts = 0;
             switch (t) {
                 case 0:
-                    vecCoords = NOCDelaunayVecs0;
-                    numVerts = sizeof(NOCDelaunayVecs0) / sizeof(float) / 3;
+                    vertCoords = NOCDelaunayVerts0;
+                    numVerts = sizeof(NOCDelaunayVerts0) / sizeof(float) / 3;
                     texCoords = NOCDelaunayTex0;
                     break;
                 case 1:
-                    vecCoords = NOCDelaunayVecs1;
-                    numVerts = sizeof(NOCDelaunayVecs1) / sizeof(float) / 3;
+                    vertCoords = NOCDelaunayVerts1;
+                    numVerts = sizeof(NOCDelaunayVerts1) / sizeof(float) / 3;
                     texCoords = NOCDelaunayTex1;
                     break;
                 case 2:
-                    vecCoords = NOCDelaunayVecs2;
-                    numVerts = sizeof(NOCDelaunayVecs2) / sizeof(float) / 3;
+                    vertCoords = NOCDelaunayVerts2;
+                    numVerts = sizeof(NOCDelaunayVerts2) / sizeof(float) / 3;
                     texCoords = NOCDelaunayTex2;
                     break;
                 case 3:
-                    vecCoords = NOCDelaunayVecs3;
-                    numVerts = sizeof(NOCDelaunayVecs3) / sizeof(float) / 3;
+                    vertCoords = NOCDelaunayVerts3;
+                    numVerts = sizeof(NOCDelaunayVerts3) / sizeof(float) / 3;
                     texCoords = NOCDelaunayTex3;
                     break;
                 case 4:
-                    vecCoords = NOCDelaunayVecs4;
-                    numVerts = sizeof(NOCDelaunayVecs4) / sizeof(float) / 3;
+                    vertCoords = NOCDelaunayVerts4;
+                    numVerts = sizeof(NOCDelaunayVerts4) / sizeof(float) / 3;
                     texCoords = NOCDelaunayTex4;
                     break;
                 default:
@@ -600,13 +600,13 @@ static const int FBODimension = 128;
             float maxY = 0;
             float minY = 0;
             for(int i=0;i<numVerts;i++){
-                float y = vecCoords[i*3+1];
+                float y = vertCoords[i*3+1];
                 if(y < minY) minY = y;
                 if(y > maxY) maxY = y;
             }
             
             _unitMesh = maxY - minY;
-            _meshVecs[t] = vecCoords;
+            _meshVerts[t] = vertCoords;
             _meshTex[t] = texCoords;
 
         }

@@ -9,7 +9,7 @@
 #ifndef Nature_of_Code_NOCCannedTriangles_h
 #define Nature_of_Code_NOCCannedTriangles_h
 
-static float NOCDelaunayVecs0[] = {
+static float NOCDelaunayVerts0[] = {
     -0.043085,0.041743,0.000000,
     -0.002757,0.038698,0.000000,
     0.000000,0.000000,0.000000,
@@ -252,7 +252,7 @@ static float NOCDelaunayVecs0[] = {
     -0.644877,1.189663,0.000000,
 };
 
-static float NOCDelaunayVecs1[] = {
+static float NOCDelaunayVerts1[] = {
     -0.035376,0.034274,0.000000,
     -0.002940,0.041270,0.000000,
     0.000000,0.000000,0.000000,
@@ -510,7 +510,7 @@ static float NOCDelaunayVecs1[] = {
     -0.717965,0.124374,0.000000,
 };
 
-static float NOCDelaunayVecs2[] = {
+static float NOCDelaunayVerts2[] = {
     -0.040052,0.038804,0.000000,
     -0.003806,0.053425,0.000000,
     0.009875,0.013798,0.000000,
@@ -762,7 +762,7 @@ static float NOCDelaunayVecs2[] = {
     -0.501253,0.924706,0.000000,
 };
 
-static float NOCDelaunayVecs3[] = {
+static float NOCDelaunayVerts3[] = {
     -0.036471,0.035335,0.000000,
     -0.003794,0.053255,0.000000,
     0.009888,0.013816,0.000000,
@@ -1026,7 +1026,7 @@ static float NOCDelaunayVecs3[] = {
     -0.568243,1.048288,0.000000,
 };
 
-static float NOCDelaunayVecs4[] = {
+static float NOCDelaunayVerts4[] = {
     0.226011,1.256626,0.000000,
     0.090018,0.951206,0.000000,
     -0.606039,1.118014,0.000000,
