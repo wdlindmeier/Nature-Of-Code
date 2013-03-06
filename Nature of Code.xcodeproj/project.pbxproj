@@ -294,6 +294,7 @@
 		A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiMover3D.xib; path = "Nature of Code/Week 2/NOCGuiMover3D.xib"; sourceTree = SOURCE_ROOT; };
 		A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Movers3D.png; sourceTree = "<group>"; };
 		A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Movers3D@2x.png"; sourceTree = "<group>"; };
+		A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCCannedTriangles.h; sourceTree = "<group>"; };
 		A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFaceCapSketchViewController.h; sourceTree = "<group>"; };
 		A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFaceCapSketchViewController.m; sourceTree = "<group>"; };
 		A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCVideoSession.h; sourceTree = "<group>"; };
@@ -435,6 +436,7 @@
 				A9A60DBE16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m */,
 				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
 				A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */,
+				A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */,
 			);
 			path = "Week 5";
 			sourceTree = "<group>";

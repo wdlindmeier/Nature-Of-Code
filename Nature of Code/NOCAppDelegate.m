@@ -25,8 +25,8 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-    //self.viewController = [[NOCFaceMeshSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-    //                                                                        bundle:nil];
+    self.viewController = [[NOCFaceMeshSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                            bundle:nil];
     
 #endif
     

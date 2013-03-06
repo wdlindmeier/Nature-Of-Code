@@ -75,6 +75,15 @@ static const GLfloat Square3DBillboardVertexData[12] =
     0.5f, 0.5f, 0.0f,
 };
 
+// A flat square covering the screen minus the aspect
+static const GLfloat FullSquare3DBillboardVertexData[12] =
+{
+    -1.f, -1.f, 0.0f,
+    1.f, -1.f, 0.0f,
+    -1.f, 1.f, 0.0f,
+    1.f, 1.f, 0.0f,
+};
+
 // 2D Texture coords for billboard rendering.
 static const GLfloat Square3DTexCoords[8] =
 {
