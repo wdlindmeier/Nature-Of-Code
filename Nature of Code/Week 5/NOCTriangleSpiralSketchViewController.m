@@ -36,10 +36,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
     shader.attributes = @{ @"position" : @(GLKVertexAttribPosition),
                            @"color" : @(GLKVertexAttribColor) };
-
     shader.uniformNames = @[ UniformMVProjectionMatrix ];
-
-    self.shaders = @{ TriangleShader : shader };
+    [self addShader:shader named:TriangleShader];    
 
     _curveStep = 0.342448;
     _distStep = 0.02;
@@ -243,7 +241,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-    NOCShaderProgram *shader = self.shaders[TriangleShader];
+    NOCShaderProgram *shader = [self shaderNamed:TriangleShader];
     [shader use];
     
     GLKMatrix4 matScene = _projectionMatrix2D;

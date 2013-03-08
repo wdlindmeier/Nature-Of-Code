@@ -23,7 +23,6 @@
 }
 
 // Properties
-@property (nonatomic, strong) NSDictionary *shaders;
 @property (nonatomic, readonly) long frameCount;
 
 // Outlets
@@ -33,6 +32,10 @@
 
 // IBActions
 - (IBAction)buttonHideControlsPressed:(id)sender;
+
+// Shaders
+- (NOCShaderProgram *)shaderNamed:(NSString *)shaderName;
+- (void)addShader:(NOCShaderProgram *)shader named:(NSString *)shaderName;
 
 // GUI
 - (NSString *)nibNameForControlGUI;
@@ -45,6 +48,7 @@
 - (void)update;
 - (void)resize;
 - (void)draw;
+- (void)clear;
 - (void)teardown;
 
 @end

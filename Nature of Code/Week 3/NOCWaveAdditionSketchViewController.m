@@ -59,12 +59,10 @@ static NSString * UniformMoverTexture = @"texture";
     
     _shader.attributes = @{@"position" : @(GLKVertexAttribPosition),
                            @"texCoord" : @(GLKVertexAttribTexCoord0)};
-    
     _shader.uniformNames = @[UniformMVProjectionMatrix,
                              UniformMoverTexture];
-    
-    self.shaders = @{ ShaderNameWaveAddition : _shader };
-    
+    [self addShader:_shader named:ShaderNameWaveAddition];
+
     // Create a line of little movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
     float moverSize = 2.0f / (NumMovers-1) * 2;

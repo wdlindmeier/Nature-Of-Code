@@ -95,8 +95,7 @@ static NSString * UniformParticleAge = @"scalarAge";
     particleShader.uniformNames = @[ UniformMVProjectionMatrix,
                                      UniformParticleTexture,
                                      UniformParticleAge];
-
-    self.shaders = @{ ParticleShaderName : particleShader };
+    [self addShader:particleShader named:ParticleShaderName];    
     
     // Textures
     NSArray *texNames = @[@"flame_red", @"flame_green", @"flame_magenta", @"flame_blue"];
@@ -146,7 +145,7 @@ static NSString * UniformParticleAge = @"scalarAge";
     glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    NOCShaderProgram *particleShader = self.shaders[ParticleShaderName];
+    NOCShaderProgram *particleShader = [self shaderNamed:ParticleShaderName];
     [particleShader use];
     
     // Enable alpha blending for the transparent png

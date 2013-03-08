@@ -44,13 +44,13 @@ static NSString * UniformTexture = @"texture";
                               @"texCoord" : @(GLKVertexAttribTexCoord0) };
 
     texShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
+    [self addShader:texShader named:TextureShaderName];
     
     NOCShaderProgram *shaderFace = [[NOCShaderProgram alloc] initWithName:FaceShaderName];
     shaderFace.attributes = @{@"position" : @(GLKVertexAttribPosition),
                               @"color" : @(GLKVertexAttribColor)};
     shaderFace.uniformNames = @[UniformMVProjectionMatrix];
-
-    self.shaders = @{ TextureShaderName : texShader, FaceShaderName : shaderFace };
+    [self addShader:shaderFace named:FaceShaderName];
 
     _videoSession = [[NOCVideoSession alloc] initWithFaceDelegate:self];
     
@@ -100,7 +100,7 @@ static NSString * UniformTexture = @"texture";
     matTexture = GLKMatrix4Multiply(matTexture, _projectionMatrix2D);
     
     // Draw the video background
-    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
+    NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
     [texShader setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
     [_videoSession bindTexture:0];
@@ -114,7 +114,7 @@ static NSString * UniformTexture = @"texture";
     glBindTexture(GL_TEXTURE_2D, 0);
     
     // Draw faces
-    NOCShaderProgram *shaderFace = self.shaders[FaceShaderName];
+    NOCShaderProgram *shaderFace = [self shaderNamed:FaceShaderName];
     [shaderFace use];
     [shaderFace setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
 

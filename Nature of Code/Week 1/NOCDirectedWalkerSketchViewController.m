@@ -100,7 +100,7 @@ static NSString * ShaderNameDirectedWalker = @"RandomWalker"; // We'll use the s
         UniformMVProjectionMatrix,
     ];
     
-    self.shaders = @{ ShaderNameDirectedWalker : _shader };
+    [self addShader:_shader named:ShaderNameDirectedWalker];
     
     // Setup the Walker
     _positionFollow = GLKVector2Make(0, 0);

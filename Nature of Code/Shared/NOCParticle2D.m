@@ -52,23 +52,35 @@
 
 - (void)applyForce:(GLKVector2)vecForce
 {
-    self.acceleration = GLKVector2Add(self.acceleration, vecForce);
+    if(!self.isLocked){
+        self.acceleration = GLKVector2Add(self.acceleration, vecForce);
+    }else{
+        self.acceleration = GLKVector2Zero;
+    }
 }
 
 - (void)step
 {
     [super step];
     
-    // Add accel to velocity
-    self.velocity = GLKVector2Add(self.velocity, self.acceleration);
-    
-    // Limit the velocity
-    if(self.maxVelocity > 0){
-        self.velocity = GLKVector2Limit(self.velocity, self.maxVelocity);
-    }
+    if(!self.isLocked){
+        
+        // Add accel to velocity
+        self.velocity = GLKVector2Add(self.velocity, self.acceleration);
+        
+        // Limit the velocity
+        if(self.maxVelocity > 0){
+            self.velocity = GLKVector2Limit(self.velocity, self.maxVelocity);
+        }
 
-    // Add velocity to location
-    self.position = GLKVector2Add(self.position, self.velocity);
+        // Add velocity to location
+        self.position = GLKVector2Add(self.position, self.velocity);
+        
+    }else{
+        
+        self.velocity = GLKVector2Zero;
+        
+    }
 
     // Reset the acceleration
     self.acceleration = GLKVector2Zero;    

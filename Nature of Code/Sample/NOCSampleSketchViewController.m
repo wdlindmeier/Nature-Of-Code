@@ -26,9 +26,9 @@ enum
 };
 */
 
-static NSString const * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
-static NSString const * UniformNormalMatrix = @"normalMatrix";
-static NSString const * SampleShaderName = @"sample_shader";
+static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
+static NSString * UniformNormalMatrix = @"normalMatrix";
+static NSString * SampleShaderName = @"sample_shader";
 
 @interface NOCSampleSketchViewController ()
 {
@@ -77,18 +77,10 @@ static NSString const * SampleShaderName = @"sample_shader";
     // Setup the sample shader
     NOCShaderProgram *sampleShader = [[NOCShaderProgram alloc] initWithName:@"SampleShader"];
     
-    sampleShader.attributes = @{
-        @"position" : @(GLKVertexAttribPosition),
-        @"normal" : @(GLKVertexAttribNormal)
-    };
-    
-    sampleShader.uniformNames = @[
-        UniformMVProjectionMatrix,
-        UniformNormalMatrix
-    ];
-    
-    self.shaders = @{ SampleShaderName : sampleShader };
-    
+    sampleShader.attributes = @{ @"position" : @(GLKVertexAttribPosition), @"normal" : @(GLKVertexAttribNormal) };
+    sampleShader.uniformNames = @[ UniformMVProjectionMatrix, UniformNormalMatrix ];
+    [self addShader:sampleShader named:@"SampleShader"];
+
     self.effect = [[GLKBaseEffect alloc] init];
     self.effect.light0.enabled = GL_TRUE;
     self.effect.light0.diffuseColor = GLKVector4Make(1.0f, 0.4f, 0.4f, 1.0f);
@@ -163,7 +155,7 @@ static NSString const * SampleShaderName = @"sample_shader";
     glDrawArrays(GL_TRIANGLES, 0, 36);
     
     // Render the object again with ES2
-    NOCShaderProgram *sampleShader = self.shaders[SampleShaderName];
+    NOCShaderProgram *sampleShader = [self shaderNamed:SampleShaderName];
     [sampleShader use];
 
     NSNumber *mvProjMatLoc = sampleShader.uniformLocations[UniformMVProjectionMatrix];

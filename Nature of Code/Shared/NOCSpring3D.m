@@ -2,97 +2,139 @@
 //  NOCSpring3D.m
 //  Nature of Code
 //
-//  Created by William Lindmeier on 2/17/13.
+//  Created by William Lindmeier on 3/6/13.
 //  Copyright (c) 2013 wdlindmeier. All rights reserved.
 //
 
 #import "NOCSpring3D.h"
-#import "NOCMover3D.h"
+#import "NOCParticle3D.h"
 
 @implementation NOCSpring3D
-{
-    GLKVector3 _lastMoverPosition;
-}
 
-- (id)initWithAnchor:(GLKVector3)anchor restLength:(float)restLength
+- (id)initWithParicle:(NOCParticle *)p anchor:(GLKVector3)anchor restLength:(float)restLength
 {
-    self = [super init];
+    self = [super initWithParicleA:nil particleB:p restLength:restLength];
     if(self){
-        self.minLength = 0;
-        self.maxLength = MAXFLOAT;
-        self.springiness = 0.1f;
-        self.restLength = restLength;
         self.anchor = anchor;
-        self.dampening = 0.0f;
+        _hasAnchor = YES;
     }
     return self;
 }
 
-- (void)applySpringToMover:(NOCMover3D *)mover
+// A helper to deal w/ anchor vs particle
+- (void)getPosA:(GLKVector3 *)posA posB:(GLKVector3 *)posB
 {
+    NOCParticle3D*pA = (NOCParticle3D*)self.particleA;
+    NOCParticle3D*pB = (NOCParticle3D*)self.particleB;
+    
+    *posB = pB.position;
+    if([self hasAnchor]){
+        *posA = self.anchor;
+    }else{
+        *posA = pA.position;
+    }
+}
+
+- (void)applyForceToParticles
+{
+    [super applyForceToParticles];
+    
     // Vector pointing from anchor to bob location
-    GLKVector3 vecDir = GLKVector3Subtract(mover.position, self.anchor);
+    NOCParticle3D*pA = (NOCParticle3D*)self.particleA;
+    NOCParticle3D*pB = (NOCParticle3D*)self.particleB;
+    
+    GLKVector3 posA, posB;
+    [self getPosA:&posA posB:&posB];
+    
+    GLKVector3 vecDir = GLKVector3Subtract(posB, posA);
     float distance = GLKVector3Length(vecDir);
     
     GLKVector3 springForce = GLKVector3Zero;
     
     if(distance > 0){
-    
+        
         // Stretch is difference between current distance and rest length
         float stretch = distance - self.restLength;
         
         // Calculate force according to Hooke's Law
-        // F = k * stretch    
+        // F = k * stretch
         vecDir = GLKVector3Normalize(vecDir);
         
         springForce = GLKVector3MultiplyScalar(vecDir, -1 * self.springiness * stretch);
-
+        
         // Dampen
         if(self.dampening != 0){
-            GLKVector3 vecDampen = GLKVector3MultiplyScalar(mover.velocity, self.dampening);
-            springForce = GLKVector3Add(springForce, vecDampen);
+            
+            // This just applied forecs in the opposite direction of the vector
+            GLKVector3 vecDampenA = GLKVector3MultiplyScalar(pA.velocity, self.dampening);
+            GLKVector3 springForceA = GLKVector3Add(springForce, vecDampenA);
+            [pA applyForce:springForceA];
+            
+            GLKVector3 vecDampenB = GLKVector3MultiplyScalar(pB.velocity, self.dampening);
+            GLKVector3 springForceB = GLKVector3Add(springForce, vecDampenB);
+            [pB applyForce:springForceB];
+            
+        }else{
+            
+            [pA applyForce:springForce];
+            
+            [pB applyForce:springForce];
+            
         }
-
+        
     }
     
-    [mover applyForce:springForce];
     
 }
 
-- (void)constrainMover:(NOCMover3D *)mover
+- (void)constrainParticles
 {
-    GLKVector3 vecDir = GLKVector3Subtract(mover.position, self.anchor);
+    // Vector pointing from anchor to bob location
+    NOCParticle3D*pA = (NOCParticle3D*)self.particleA;
+    NOCParticle3D*pB = (NOCParticle3D*)self.particleB;
+    
+    GLKVector3 posA, posB;
+    [self getPosA:&posA posB:&posB];
+    
+    GLKVector3 vecDir = GLKVector3Subtract(posB, posA);
     float distance = GLKVector3Length(vecDir);
-
+    
     BOOL didConstrain = NO;
     
     if (distance < self.minLength) {
-
+        
         vecDir = GLKVector3Normalize(vecDir);
         vecDir = GLKVector3MultiplyScalar(vecDir, self.minLength);
         didConstrain = YES;
-
+        
     }else if (distance > self.maxLength) {
         
         vecDir = GLKVector3Normalize(vecDir);
         vecDir = GLKVector3MultiplyScalar(vecDir, self.maxLength);
         didConstrain = YES;
-        
     }
     
     if(didConstrain){
-        GLKVector3 posMover = GLKVector3Add(self.anchor, vecDir);
-        mover.position = posMover;
-        mover.velocity = GLKVector3Zero;
+        
+        // Take all of the constraint out on particleB
+        GLKVector3 posParticle = GLKVector3Add(posA, vecDir);
+        pB.position = posParticle;
+        
+        pB.velocity = GLKVector3Zero;
+        pA.velocity = GLKVector3Zero;
+        
     }
-
+    
 }
 
-- (void)renderToMover:(NOCMover3D *)mover
+- (void)render
 {
+    GLKVector3 posA, posB;
+    [self getPosA:&posA posB:&posB];
+    
     GLfloat line[6] = {
-        self.anchor.x, self.anchor.y, self.anchor.z,
-        mover.position.x, mover.position.y, mover.position.z
+        posA.x, posA.y, posA.z,
+        posB.x, posB.y, posB.z,
     };
     
     // Draw a stroked line
@@ -100,7 +142,7 @@
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &line);
     int numCoords = sizeof(line) / sizeof(GLfloat) / 3;
     glDrawArrays(GL_LINE_LOOP, 0, numCoords);
-
+    
 }
 
 @end

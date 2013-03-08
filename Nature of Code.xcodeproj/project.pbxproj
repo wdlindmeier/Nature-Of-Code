@@ -56,7 +56,6 @@
 		A95C704A16D05E560058D8BA /* NOCWaveTapSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C704916D05E560058D8BA /* NOCWaveTapSketchViewController.m */; };
 		A95C704D16D05F500058D8BA /* NOCTapWave.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C704C16D05F500058D8BA /* NOCTapWave.m */; };
 		A95C705016D139220058D8BA /* NOCWaveMatrixSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C704F16D139210058D8BA /* NOCWaveMatrixSketchViewController.m */; };
-		A95C705316D141B80058D8BA /* NOCSpring3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C705216D141B80058D8BA /* NOCSpring3D.m */; };
 		A95C705516D1812D0058D8BA /* MoverDepthShading.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C705416D1812D0058D8BA /* MoverDepthShading.fsh */; };
 		A95C705716D181380058D8BA /* MoverDepthShading.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C705616D181380058D8BA /* MoverDepthShading.vsh */; };
 		A95C705916D189C00058D8BA /* MoverTapMatrix.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A95C705816D189C00058D8BA /* MoverTapMatrix.fsh */; };
@@ -75,6 +74,7 @@
 		A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */; };
 		A987363E16C00885001D74E8 /* perlin.c in Sources */ = {isa = PBXBuildFile; fileRef = A987363D16C00885001D74E8 /* perlin.c */; };
 		A987364316C00C00001D74E8 /* CGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A987364216C00C00001D74E8 /* CGGeometry.m */; };
+		A995C1E616EA401B0074731C /* NOCHair.m in Sources */ = {isa = PBXBuildFile; fileRef = A995C1E516EA401B0074731C /* NOCHair.m */; };
 		A99889B016C1FADB002C924F /* NOCDirectedWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A998899D16C1FADB002C924F /* NOCDirectedWalker.m */; };
 		A99889B116C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A998899F16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m */; };
 		A99889B216C1FADB002C924F /* NOCGuiDirectedWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889A016C1FADB002C924F /* NOCGuiDirectedWalker.xib */; };
@@ -99,6 +99,18 @@
 		A9BC923516CBF481009AD45C /* NOCGuiMover3D.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */; };
 		A9BC923F16CC10DE009AD45C /* thumb_Movers3D.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */; };
 		A9BC924016CC10DE009AD45C /* thumb_Movers3D@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */; };
+		A9C05C7916E78D190009F8C8 /* thumb_FaceMesh.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7316E78D190009F8C8 /* thumb_FaceMesh.png */; };
+		A9C05C7A16E78D190009F8C8 /* thumb_FaceMesh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7416E78D190009F8C8 /* thumb_FaceMesh@2x.png */; };
+		A9C05C7B16E78D190009F8C8 /* thumb_TriangleSpiral.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7516E78D190009F8C8 /* thumb_TriangleSpiral.png */; };
+		A9C05C7C16E78D190009F8C8 /* thumb_TriangleSpiral@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7616E78D190009F8C8 /* thumb_TriangleSpiral@2x.png */; };
+		A9C05C7D16E78D190009F8C8 /* thumb_Triangulation.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7716E78D190009F8C8 /* thumb_Triangulation.png */; };
+		A9C05C7E16E78D190009F8C8 /* thumb_Triangulation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7816E78D190009F8C8 /* thumb_Triangulation@2x.png */; };
+		A9C05C8116E7BF7A0009F8C8 /* NOCHairSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */; };
+		A9C05C8416E7C93C0009F8C8 /* NOCSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8316E7C93B0009F8C8 /* NOCSpring.m */; };
+		A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */; };
+		A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */; };
+		A9C4FCDC16E6F40C00BB8809 /* TextureBlend.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */; };
+		A9C4FCDD16E6F40C00BB8809 /* TextureBlend.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */; };
 		A9CB7E7116E2598500CEF634 /* NOCFaceCapSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */; };
 		A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */; };
 		A9CB7E7916E269B600CEF634 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7816E269B500CEF634 /* AVFoundation.framework */; };
@@ -227,8 +239,6 @@
 		A95C704C16D05F500058D8BA /* NOCTapWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTapWave.m; sourceTree = "<group>"; };
 		A95C704E16D139210058D8BA /* NOCWaveMatrixSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCWaveMatrixSketchViewController.h; sourceTree = "<group>"; };
 		A95C704F16D139210058D8BA /* NOCWaveMatrixSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCWaveMatrixSketchViewController.m; sourceTree = "<group>"; };
-		A95C705116D141B80058D8BA /* NOCSpring3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring3D.h; sourceTree = "<group>"; };
-		A95C705216D141B80058D8BA /* NOCSpring3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring3D.m; sourceTree = "<group>"; };
 		A95C705416D1812D0058D8BA /* MoverDepthShading.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MoverDepthShading.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C705616D181380058D8BA /* MoverDepthShading.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MoverDepthShading.vsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
 		A95C705816D189C00058D8BA /* MoverTapMatrix.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MoverTapMatrix.fsh; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.glsl; };
@@ -257,6 +267,8 @@
 		A987364016C0093D001D74E8 /* perlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perlin.h; sourceTree = "<group>"; };
 		A987364116C00BFF001D74E8 /* CGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGGeometry.h; sourceTree = "<group>"; };
 		A987364216C00C00001D74E8 /* CGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGGeometry.m; sourceTree = "<group>"; };
+		A995C1E416EA401B0074731C /* NOCHair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCHair.h; sourceTree = "<group>"; };
+		A995C1E516EA401B0074731C /* NOCHair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCHair.m; sourceTree = "<group>"; };
 		A998899C16C1FADB002C924F /* NOCDirectedWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCDirectedWalker.h; path = "Nature of Code/Week 1/NOCDirectedWalker.h"; sourceTree = SOURCE_ROOT; };
 		A998899D16C1FADB002C924F /* NOCDirectedWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCDirectedWalker.m; path = "Nature of Code/Week 1/NOCDirectedWalker.m"; sourceTree = SOURCE_ROOT; };
 		A998899E16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCDirectedWalkerSketchViewController.h; path = "Nature of Code/Week 1/NOCDirectedWalkerSketchViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -294,7 +306,23 @@
 		A9BC923416CBF481009AD45C /* NOCGuiMover3D.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiMover3D.xib; path = "Nature of Code/Week 2/NOCGuiMover3D.xib"; sourceTree = SOURCE_ROOT; };
 		A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Movers3D.png; sourceTree = "<group>"; };
 		A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Movers3D@2x.png"; sourceTree = "<group>"; };
+		A9C05C7316E78D190009F8C8 /* thumb_FaceMesh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_FaceMesh.png; sourceTree = "<group>"; };
+		A9C05C7416E78D190009F8C8 /* thumb_FaceMesh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_FaceMesh@2x.png"; sourceTree = "<group>"; };
+		A9C05C7516E78D190009F8C8 /* thumb_TriangleSpiral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_TriangleSpiral.png; sourceTree = "<group>"; };
+		A9C05C7616E78D190009F8C8 /* thumb_TriangleSpiral@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_TriangleSpiral@2x.png"; sourceTree = "<group>"; };
+		A9C05C7716E78D190009F8C8 /* thumb_Triangulation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Triangulation.png; sourceTree = "<group>"; };
+		A9C05C7816E78D190009F8C8 /* thumb_Triangulation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Triangulation@2x.png"; sourceTree = "<group>"; };
+		A9C05C7F16E7BF7A0009F8C8 /* NOCHairSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCHairSketchViewController.h; sourceTree = "<group>"; };
+		A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCHairSketchViewController.m; sourceTree = "<group>"; };
+		A9C05C8216E7C93B0009F8C8 /* NOCSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring.h; sourceTree = "<group>"; };
+		A9C05C8316E7C93B0009F8C8 /* NOCSpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring.m; sourceTree = "<group>"; };
+		A9C05C8516E7C9570009F8C8 /* NOCSpring2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring2D.h; sourceTree = "<group>"; };
+		A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring2D.m; sourceTree = "<group>"; };
+		A9C05C8816E7CE5F0009F8C8 /* NOCSpring3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring3D.h; sourceTree = "<group>"; };
+		A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring3D.m; sourceTree = "<group>"; };
 		A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCCannedTriangles.h; sourceTree = "<group>"; };
+		A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TextureBlend.fsh; sourceTree = "<group>"; };
+		A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TextureBlend.vsh; sourceTree = "<group>"; };
 		A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFaceCapSketchViewController.h; sourceTree = "<group>"; };
 		A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFaceCapSketchViewController.m; sourceTree = "<group>"; };
 		A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCVideoSession.h; sourceTree = "<group>"; };
@@ -403,6 +431,8 @@
 				A9077A3916CB4ECF008032C7 /* thumb_AccelMover@2x.png */,
 				A920CEB516C0373D00284EAF /* thumb_DirectedWalker.png */,
 				A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */,
+				A9C05C7316E78D190009F8C8 /* thumb_FaceMesh.png */,
+				A9C05C7416E78D190009F8C8 /* thumb_FaceMesh@2x.png */,
 				A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */,
 				A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */,
 				A9077A3A16CB4ECF008032C7 /* thumb_MultiMover.png */,
@@ -415,6 +445,10 @@
 				A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */,
 				A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */,
 				A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */,
+				A9C05C7516E78D190009F8C8 /* thumb_TriangleSpiral.png */,
+				A9C05C7616E78D190009F8C8 /* thumb_TriangleSpiral@2x.png */,
+				A9C05C7716E78D190009F8C8 /* thumb_Triangulation.png */,
+				A9C05C7816E78D190009F8C8 /* thumb_Triangulation@2x.png */,
 				A9F6CB7116D1BD5D00F4BDF9 /* thumb_WaveAddition.png */,
 				A9F6CB7216D1BD5D00F4BDF9 /* thumb_WaveAddition@2x.png */,
 				A9F6CB7316D1BD5D00F4BDF9 /* thumb_WaveMatrix.png */,
@@ -437,6 +471,10 @@
 				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
 				A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */,
 				A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */,
+				A9C05C7F16E7BF7A0009F8C8 /* NOCHairSketchViewController.h */,
+				A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */,
+				A995C1E416EA401B0074731C /* NOCHair.h */,
+				A995C1E516EA401B0074731C /* NOCHair.m */,
 			);
 			path = "Week 5";
 			sourceTree = "<group>";
@@ -486,10 +524,10 @@
 		A95C702616D031C40058D8BA /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				A9A60DC016E3A95C00F0E5B9 /* ColoredVerts.fsh */,
-				A9A60DC116E3A95C00F0E5B9 /* ColoredVerts.vsh */,
 				A9A60DB816E39C3100F0E5B9 /* ColoredPoints.fsh */,
 				A9A60DB616E39C2C00F0E5B9 /* ColoredPoints.vsh */,
+				A9A60DC016E3A95C00F0E5B9 /* ColoredVerts.fsh */,
+				A9A60DC116E3A95C00F0E5B9 /* ColoredVerts.vsh */,
 				A9F78AD316D913F200073D16 /* FlameParticle.fsh */,
 				A9F78AD416D913F200073D16 /* FlameParticle.vsh */,
 				A95C702716D031C40058D8BA /* Mover.fsh */,
@@ -508,6 +546,8 @@
 				A95C702C16D031C40058D8BA /* SceneBox.vsh */,
 				A95C703316D032460058D8BA /* Texture.fsh */,
 				A95C703416D032460058D8BA /* Texture.vsh */,
+				A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */,
+				A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */,
 				A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */,
 				A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */,
 			);
@@ -620,8 +660,12 @@
 				A95C702216D0318E0058D8BA /* NOCSceneBox.m */,
 				A95C900916BD7351003C8F5B /* NOCShaderProgram.h */,
 				A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */,
-				A95C705116D141B80058D8BA /* NOCSpring3D.h */,
-				A95C705216D141B80058D8BA /* NOCSpring3D.m */,
+				A9C05C8216E7C93B0009F8C8 /* NOCSpring.h */,
+				A9C05C8316E7C93B0009F8C8 /* NOCSpring.m */,
+				A9C05C8516E7C9570009F8C8 /* NOCSpring2D.h */,
+				A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */,
+				A9C05C8816E7CE5F0009F8C8 /* NOCSpring3D.h */,
+				A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */,
 				A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */,
 				A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */,
 			);
@@ -861,6 +905,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C4FCDC16E6F40C00BB8809 /* TextureBlend.fsh in Resources */,
+				A9C4FCDD16E6F40C00BB8809 /* TextureBlend.vsh in Resources */,
 				A9A60DC216E3A95C00F0E5B9 /* ColoredVerts.fsh in Resources */,
 				A9A60DC316E3A95C00F0E5B9 /* ColoredVerts.vsh in Resources */,
 				A9A60DB716E39C2C00F0E5B9 /* ColoredPoints.vsh in Resources */,
@@ -943,6 +989,12 @@
 				A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */,
 				A936F0AE16DDA73B00A6EBD8 /* thumb_ParticleSystem@2x.png in Resources */,
 				A936F0CE16DEA58700A6EBD8 /* face.png in Resources */,
+				A9C05C7916E78D190009F8C8 /* thumb_FaceMesh.png in Resources */,
+				A9C05C7A16E78D190009F8C8 /* thumb_FaceMesh@2x.png in Resources */,
+				A9C05C7B16E78D190009F8C8 /* thumb_TriangleSpiral.png in Resources */,
+				A9C05C7C16E78D190009F8C8 /* thumb_TriangleSpiral@2x.png in Resources */,
+				A9C05C7D16E78D190009F8C8 /* thumb_Triangulation.png in Resources */,
+				A9C05C7E16E78D190009F8C8 /* thumb_Triangulation@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,7 +1041,6 @@
 				A95C704A16D05E560058D8BA /* NOCWaveTapSketchViewController.m in Sources */,
 				A95C704D16D05F500058D8BA /* NOCTapWave.m in Sources */,
 				A95C705016D139220058D8BA /* NOCWaveMatrixSketchViewController.m in Sources */,
-				A95C705316D141B80058D8BA /* NOCSpring3D.m in Sources */,
 				A9F78AD216D913A900073D16 /* NOCParticleSystemSketchViewController.m in Sources */,
 				A9F78AE316D9237C00073D16 /* NOCParticleSystem.m in Sources */,
 				A9F78AE716D926DF00073D16 /* NOCParticle.m in Sources */,
@@ -1009,6 +1060,11 @@
 				A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */,
 				A9A60DBF16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m in Sources */,
 				A9A60DC616E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m in Sources */,
+				A9C05C8116E7BF7A0009F8C8 /* NOCHairSketchViewController.m in Sources */,
+				A9C05C8416E7C93C0009F8C8 /* NOCSpring.m in Sources */,
+				A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */,
+				A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */,
+				A995C1E616EA401B0074731C /* NOCHair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

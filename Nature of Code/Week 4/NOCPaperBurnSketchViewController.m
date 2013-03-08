@@ -99,14 +99,14 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     paperShader.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                @"texCoord" : @(GLKVertexAttribTexCoord0)};
     paperShader.uniformNames = @[ UniformMVProjectionMatrix, UniformFlamePositions, UniformTexture ];
-
+    [self addShader:paperShader named:PaperShaderName];
+    
     NOCShaderProgram *textureShader = [[NOCShaderProgram alloc] initWithName:TextureShaderName];
     textureShader.attributes = @{@"position" : @(GLKVertexAttribPosition),
                                  @"texCoord" : @(GLKVertexAttribTexCoord0)};
     textureShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
-    
-    self.shaders = @{ PaperShaderName : paperShader, TextureShaderName : textureShader };
-    
+    [self addShader:textureShader named:TextureShaderName];
+
 }
 
 - (void)createPaperTexture
@@ -282,7 +282,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    NOCShaderProgram *paperShader = self.shaders[PaperShaderName];
+    NOCShaderProgram *paperShader = [self shaderNamed:PaperShaderName];
     [paperShader use];
     // Binding the fbo as a texture so we can access the previous pixel color
     [_fbo bindTexture:0];
@@ -314,7 +314,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     
     if(_texturePaper && !_hasRenderedTexture){
         
-        NOCShaderProgram *texShader = self.shaders[TextureShaderName];
+        NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
         [texShader use];
         [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
 
@@ -345,7 +345,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw the FBO as a texture
-    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
+    NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
     [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     [_fbo bindTexture:0];

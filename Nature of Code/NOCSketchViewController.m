@@ -18,6 +18,8 @@
     BOOL _isDrawerOpen;
     UIPanGestureRecognizer *_gestureRecognizerDrawer;
     long _frameCount;
+    NSMutableDictionary *_shaders;
+
 
 }
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -34,7 +36,32 @@ static const float DrawerRevealHeight = 20.0f;
 
 @synthesize frameCount = _frameCount;
 
-#pragma mark Memory
+#pragma mark - Init
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self){
+        [self initNOCSketchViewController];
+    }
+    return self;    
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        [self initNOCSketchViewController];
+    }
+    return self;
+}
+
+- (void)initNOCSketchViewController
+{
+    _shaders = [NSMutableDictionary dictionaryWithCapacity:10];
+}
+
+#pragma mark - Memory
 
 - (void)dealloc
 {    
@@ -61,6 +88,22 @@ static const float DrawerRevealHeight = 20.0f;
     }
 
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Accessors
+
+- (NOCShaderProgram *)shaderNamed:(NSString *)shaderName
+{
+    NOCShaderProgram *shader = [_shaders valueForKey:shaderName];
+    if(!shader){
+        NSLog(@"ERROR: Could not find shader with name %@", shaderName);
+    }
+    return shader;
+}
+
+- (void)addShader:(NOCShaderProgram *)shader named:(NSString *)shaderName
+{
+    [_shaders setValue:shader forKey:shaderName];
 }
 
 #pragma mark - View
@@ -317,8 +360,8 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)tearDownGL
 {
     [self teardown];
-    for(NSString *shaderName in self.shaders){
-        NOCShaderProgram *shader = self.shaders[shaderName];
+    for(NSString *shaderName in _shaders){
+        NOCShaderProgram *shader = [self shaderNamed:shaderName];
         [shader unload];
     }
     [EAGLContext setCurrentContext:self.context];
@@ -336,9 +379,9 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (BOOL)loadShaders
 {
-    for(NSString *shaderName in self.shaders){
+    for(NSString *shaderName in _shaders){
         
-        NOCShaderProgram *shader = self.shaders[shaderName];
+        NOCShaderProgram *shader = [self shaderNamed:shaderName];
         BOOL didLoad = [shader load];
         if(!didLoad){
             return NO;
@@ -376,6 +419,12 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)draw
 {
     //...
+}
+
+- (void)clear
+{
+    glClearColor(0,0,0,1);
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 - (void)teardown

@@ -102,9 +102,11 @@
         NOCSketch *sketch = self.chapter.sketches[i];
         UIButton *btnSketch = [[UIButton alloc] initWithFrame:CGRectZero];
         btnSketch.tag = i;
+        /*
         [btnSketch setTitle:sketch.name forState:UIControlStateNormal];
         [btnSketch setTitleColor:[UIColor colorWithWhite:0.8 alpha:1]
                         forState:UIControlStateNormal];
+        */
         float randBGWhite = (arc4random() % 50) * 0.01;
         btnSketch.backgroundColor = [UIColor colorWithWhite:randBGWhite
                                                       alpha:1.0];

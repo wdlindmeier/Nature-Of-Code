@@ -26,7 +26,7 @@
 - (AVCaptureVideoPreviewLayer *)setupForPreviewWithDevice:(AVCaptureDevice *)device;
 - (void)setupWithDevice:(AVCaptureDevice *)device inContext:(EAGLContext *)context;
 - (void)teardown;
-- (void)bindTexture:(int)texLoc;
+- (GLuint)bindTexture:(int)texLoc;
 + (AVCaptureDevice *)frontFacingCamera;
 + (AVCaptureDevice *)rearFacingCamera;
 + (CGRect)videoPreviewBoxForGravity:(NSString *)gravity frameSize:(CGSize)frameSize apertureSize:(CGSize)apertureSize;

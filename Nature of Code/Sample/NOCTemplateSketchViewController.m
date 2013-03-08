@@ -32,7 +32,7 @@ static NSString * UniformTexture = @"texture";
      
      shader.uniformNames = @[ UniformMVProjectionMatrix, UniformNormalMatrix ];
      
-     self.shaders = @{ ShaderName : shader };
+     [self addShader:shader named:ShaderName];
      */
 }
 

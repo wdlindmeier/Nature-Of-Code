@@ -15,6 +15,7 @@
     self = [super init];
     if(self){
         self.stepLimit = -1;
+        self.isLocked = NO;
     }
     return self;
 }

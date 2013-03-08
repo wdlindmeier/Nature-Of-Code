@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign) int stepCount;
 @property (nonatomic, assign) int stepLimit;
+@property (nonatomic, assign) BOOL isLocked;
 
 - (GLKMatrix4)modelMatrix;
 - (void)render;

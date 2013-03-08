@@ -53,18 +53,11 @@ static NSString * UniformMoverTexture = @"texture";
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameMultiMover];
     
-    _shader.attributes = @{
-        @"position" : @(GLKVertexAttribPosition),
-        @"texCoord" : @(GLKVertexAttribTexCoord0)
-    };
+    _shader.attributes = @{ @"position" : @(GLKVertexAttribPosition), @"texCoord" : @(GLKVertexAttribTexCoord0) };
     
-    _shader.uniformNames = @[
-                             UniformMVProjectionMatrix,
-                             UniformMoverTexture
-    ];
-    
-    self.shaders = @{ ShaderNameMultiMover : _shader };
-    
+    _shader.uniformNames = @[UniformMVProjectionMatrix, UniformMoverTexture ];
+    [self addShader:_shader named:ShaderNameMultiMover];
+
     // Setup the Movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
 

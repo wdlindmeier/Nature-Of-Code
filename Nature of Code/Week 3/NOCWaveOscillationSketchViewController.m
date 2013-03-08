@@ -48,18 +48,10 @@ static const float MaxFrequency = 1.f;
     
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveOscillation];
+    _shader.attributes = @{ @"position" : @(GLKVertexAttribPosition), @"texCoord" : @(GLKVertexAttribTexCoord0) };
+    _shader.uniformNames = @[UniformMVProjectionMatrix, UniformMoverTexture ];
     
-    _shader.attributes = @{
-                           @"position" : @(GLKVertexAttribPosition),
-                           @"texCoord" : @(GLKVertexAttribTexCoord0)
-                           };
-    
-    _shader.uniformNames = @[
-                             UniformMVProjectionMatrix,
-                             UniformMoverTexture
-                             ];
-    
-    self.shaders = @{ ShaderNameWaveOscillation : _shader };
+    [self addShader:_shader named:ShaderNameWaveOscillation];
     
     // Create a line of little movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];

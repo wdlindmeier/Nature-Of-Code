@@ -120,7 +120,7 @@
 	</dict>
 	<dict>
 		<key>Name</key>
-		<string>Week 5: Misc</string>
+		<string>Week 5/6: Midterm</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -143,9 +143,17 @@
 				<key>Name</key>
 				<string>Face Mesh</string>
 				<key>Description</key>
-				<string></string>
+				<string>Renders a triangulated mesh over your face.</string>
 				<key>Controller</key>
 				<string>FaceMesh</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Hair Sim</string>
+				<key>Description</key>
+				<string>Hair simulation by connecting a string of particles with springs. Touching the screen adds wind forces.</string>
+				<key>Controller</key>
+				<string>Hair</string>
 			</dict>
 		</array>
 	</dict>

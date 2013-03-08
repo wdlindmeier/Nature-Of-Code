@@ -7,7 +7,6 @@
 //
 
 #import "NOCWaveMatrixSketchViewController.h"
-#import "NOCSceneBox.h"
 #import "NOCMover3D.h"
 #import "NOCTapWave.h"
 #import "NOCSpring3D.h"
@@ -31,7 +30,6 @@ static const NSTimeInterval UnitTimeInterval = 1.0f;
 {
     NSArray *_movers;
     NSArray *_springs;
-    NOCSceneBox *_sceneBox;
     NSMutableArray *_tapWaves;
     
 #if USE_TEXTURE
@@ -108,16 +106,13 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     shaderMovers.uniformNames = @[ UniformMVProjectionMatrix, UniformNormalMatrix ];
     
 #endif
+    [self addShader:shaderMovers named:ShaderNameWaveMatrixMover];
     
     NOCShaderProgram *shaderScene = [[NOCShaderProgram alloc] initWithName:ShaderNameSceneBox];
     shaderScene.attributes = @{ @"position" : @(GLKVertexAttribPosition) };
     shaderScene.uniformNames = @[ UniformMVProjectionMatrix ];
-    
-    self.shaders = @{ShaderNameWaveMatrixMover : shaderMovers,
-                     ShaderNameSceneBox : shaderScene};
-    
-    _sceneBox = [[NOCSceneBox alloc] initWithAspect:_viewAspect];
-    
+    [self addShader:shaderScene named:ShaderNameSceneBox];
+
     // Add the movers.
     // Just a flat 2D grid for now.
     int numMoversWide = floor(_sizeView.width / 75.0);
@@ -180,13 +175,9 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 #endif
 
                 [movers addObject:mover];
-                
-                // NOTE:
-                // Maybe we should create a mover property in the spring
-                // so we're not assuming that the array order is correct.
-                // However, this limits the flexibility of the spring to
-                // act on any mover.
-                NOCSpring3D *spring = [[NOCSpring3D alloc] initWithAnchor:anchor
+
+                NOCSpring3D *spring = [[NOCSpring3D alloc] initWithParicle:mover
+                                                                    anchor:anchor
                                                                restLength:0];
                 spring.maxLength = 0.5;
                 spring.dampening = -0.05;
@@ -212,11 +203,6 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 - (void)resize
 {
     [super resize];
-    
-    [self clear];
-
-    [_sceneBox resizeWithAspect:_viewAspect];
-    
 }
 
 - (void)update
@@ -256,9 +242,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         }
         
         [mover applyForce:moverForce];
-        [spring applySpringToMover:mover];
-        [spring constrainMover:mover];
-        
+        [spring applyForceToParticles];
+        [spring constrainParticles];
         [mover step];
 
     }
@@ -300,26 +285,23 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     NSNumber *projMatLoc = nil;
     
     // Draw the scene box
-    NOCShaderProgram *shaderScene = self.shaders[ShaderNameSceneBox];
+    NOCShaderProgram *shaderScene = [self shaderNamed:ShaderNameSceneBox];
     [shaderScene use];
     // Create the Model View Projection matrix for the shader
     projMatLoc = shaderScene.uniformLocations[UniformMVProjectionMatrix];
     // Pass mvp into shader
     glUniformMatrix4fv([projMatLoc intValue], 1, 0, matScene.m);
     
-//    [_sceneBox render];
-    
     // We'll use the same shader and matrix to draw the springs.
     // A simple white line.
     for(int i=0;i<_springs.count;i++){
         NOCSpring3D *spring = _springs[i];
-        NOCMover3D *mover = _movers[i];
-        [spring renderToMover:mover];
+        [spring render];
     }
     
     // Draw the movers
     
-    NOCShaderProgram *shaderMovers = self.shaders[ShaderNameWaveMatrixMover];
+    NOCShaderProgram *shaderMovers = [self shaderNamed:ShaderNameWaveMatrixMover];
     [shaderMovers use];
 
     // Create the Model View Projection matrix for the shader

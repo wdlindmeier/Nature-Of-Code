@@ -64,8 +64,8 @@ static NSString * UniformMoverTexture = @"texture";
         UniformMoverTexture
     ];
     
-    self.shaders = @{ ShaderNameAccelMover : _shader };
-    
+    [self addShader:_shader named:ShaderNameAccelMover];
+
     // Setup the Mover
     _mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(0.1, 0.1)
                                      position:GLKVector2Zero

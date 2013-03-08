@@ -258,12 +258,15 @@ enum {
 
 }
 
-- (void)bindTexture:(int)texLoc
+- (GLuint)bindTexture:(int)texLoc
 {
+    glEnable(GL_TEXTURE_2D);
     glActiveTexture(texLoc);
-    glBindTexture(CVOpenGLESTextureGetTarget(_videoTexture), CVOpenGLESTextureGetName(_videoTexture));
+    GLuint texName = CVOpenGLESTextureGetName(_videoTexture);
+    glBindTexture(CVOpenGLESTextureGetTarget(_videoTexture), texName);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    return texName;
 }
 
 - (void)performFacialDetectionWithSample:(CMSampleBufferRef)sampleBuffer pixels:(CVPixelBufferRef)pixelBuffer

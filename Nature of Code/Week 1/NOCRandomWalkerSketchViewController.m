@@ -37,18 +37,11 @@ static NSString * ShaderNameRandomWalker = @"RandomWalker";
     // Setup the shader
     _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameRandomWalker];
     
-    _shader.attributes = @{
-        @"position" : @(GLKVertexAttribPosition),
-        @"color" : @(GLKVertexAttribColor)
-    };
-    
-    _shader.uniformNames = @[
-        UniformMVProjectionMatrix,
-    ];
-    
-    self.shaders = @{ ShaderNameRandomWalker : _shader };
-    
-    // Setup the Walker    
+    _shader.attributes = @{ @"position" : @(GLKVertexAttribPosition), @"color" : @(GLKVertexAttribColor) };
+    _shader.uniformNames = @[ UniformMVProjectionMatrix ];
+    [self addShader:_shader named:ShaderNameRandomWalker];
+
+    // Setup the Walker
     _walker = [[NOCRandomWalker alloc] initWithSize:GLKVector2Make(0.01, 0.01)
                                            position:GLKVector2Make(0, 0)];
     

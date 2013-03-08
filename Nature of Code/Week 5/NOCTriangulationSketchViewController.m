@@ -62,9 +62,8 @@ static NSString * UniformScale = @"scale";
                                    @"texCoord" : @(GLKVertexAttribTexCoord0)};
     
     shaderTriangles.uniformNames = @[UniformMVProjectionMatrix, UniformTexture, UniformTranslation, UniformScale];
+    [self addShader:shaderTriangles named:TriangulationShaderName];
 
-    self.shaders = @{ TriangulationShaderName : shaderTriangles };
-    
     _textureFace = NOCLoadGLTextureWithName(@"face");
 
 }
@@ -90,7 +89,7 @@ static NSString * UniformScale = @"scale";
         
     GLKMatrix4 matView = _projectionMatrix2D;
     
-    NOCShaderProgram *shader = self.shaders[TriangulationShaderName];
+    NOCShaderProgram *shader = [self shaderNamed:TriangulationShaderName];
     
     [shader use];
     [shader setMatrix:matView forUniform:UniformMVProjectionMatrix];

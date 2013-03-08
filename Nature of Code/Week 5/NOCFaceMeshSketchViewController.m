@@ -44,10 +44,14 @@ const static int NumTriangulations = 5;
 @end
 
 static NSString * TextureShaderName = @"Texture";
+static NSString * BlendShaderName = @"TextureBlend";
 static NSString * ColorShaderName = @"ColoredVerts";
 static NSString * FaceShaderName = @"Triangulation";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
+static NSString * UniformTextureA = @"textureA";
+static NSString * UniformTextureB = @"textureB";
+static NSString * UniformAlphaBlend = @"alphaB";
 static NSString * UniformTranslation = @"translation";
 static NSString * UniformScale = @"scale";
 
@@ -89,18 +93,26 @@ static const int FBODimension = 128;
     texShader.attributes = @{ @"position" : @(GLKVertexAttribPosition),
                               @"texCoord" : @(GLKVertexAttribTexCoord0) };
     texShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
+    [self addShader:texShader named:TextureShaderName];
+    
+    NOCShaderProgram *blendShader = [[NOCShaderProgram alloc] initWithName:BlendShaderName];
+    blendShader.attributes = @{ @"position" : @(GLKVertexAttribPosition),
+                                @"texCoordA" : @(GLKVertexAttribTexCoord0),
+                                @"texCoordB" : @(GLKVertexAttribTexCoord1)};
+    blendShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTextureA, UniformTextureB, UniformAlphaBlend ];
+    [self addShader:blendShader named:BlendShaderName];
     
     NOCShaderProgram *shaderFace = [[NOCShaderProgram alloc] initWithName:FaceShaderName];
     shaderFace.attributes = @{@"position" : @(GLKVertexAttribPosition), @"texCoord" : @(GLKVertexAttribTexCoord0)};
     shaderFace.uniformNames = @[UniformMVProjectionMatrix, UniformTexture, UniformTranslation, UniformScale];
+    [self addShader:shaderFace named:FaceShaderName];
     
     NOCShaderProgram *colorShader = [[NOCShaderProgram alloc] initWithName:ColorShaderName];
     colorShader.attributes = @{ @"position" : @(GLKVertexAttribPosition),
                                 @"color" : @(GLKVertexAttribColor) };
     colorShader.uniformNames = @[ UniformMVProjectionMatrix ];
+    [self addShader:colorShader named:ColorShaderName];
 
-    self.shaders = @{ FaceShaderName : shaderFace, TextureShaderName : texShader, ColorShaderName : colorShader };
-    
     // Triangles
     _curveStep = 0.415365;
     _distStep  = 0.019092;
@@ -149,7 +161,7 @@ static const int FBODimension = 128;
     
     // Draw the video background
     
-    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
+    NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
     [texShader setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
     [_videoSession bindTexture:0];
@@ -163,81 +175,7 @@ static const int FBODimension = 128;
     glBindTexture(GL_TEXTURE_2D, 0);
     
     [self renderFaceMeshInMat:matTexture];
-
-    GLKMatrix4 fboMat = GLKMatrix4Scale(_projectionMatrix2D, 1, -1, 1);
-    for(NSValue *faceRect in _faceRects){
-        // First render the face to the FBO.
-        [self renderFaceToFBO:[faceRect CGRectValue] inMatrix:fboMat];
-    }
     
-    [(GLKView*)self.view bindDrawable];
-
-    // Then render the FBO to the screen
-    for(NSValue *faceRect in _faceRects){
-        // Everybody gets the composite face
-        [self renderCompositeFaceInRect:[faceRect CGRectValue] inMatrix:matTexture];
-    }
-    
-}
-
-- (void)renderFaceToFBO:(CGRect)faceRect inMatrix:(GLKMatrix4)mat
-{
-    [_fboFace bind];
-    
-    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
-    [texShader use];
-    [texShader setMatrix:mat
-              forUniform:UniformMVProjectionMatrix];
-    [_videoSession bindTexture:0];
-    [texShader setInt:0 forUniform:UniformTexture];
-
-    GLfloat faceTex[8];
-
-    float x1 = faceRect.origin.x;
-    float x2 = faceRect.origin.x + faceRect.size.width;
-    float y1 = faceRect.origin.y;
-    float y2 = faceRect.origin.y + faceRect.size.height;
-
-    faceTex[0] = (0.5 + (x1 * 0.5));
-    faceTex[1] = 0.5 + (y1 * -0.5) * _viewAspect;
-    
-    faceTex[2] = (0.5 + (x2 * 0.5));
-    faceTex[3] = 0.5 + (y1 * -0.5) * _viewAspect;
-    
-    faceTex[4] = (0.5 + (x1 * 0.5));
-    faceTex[5] = 0.5 + (y2 * -0.5) * _viewAspect;
-    
-    faceTex[6] = (0.5 + (x2 * 0.5));
-    faceTex[7] = 0.5 + (y2 * -0.5) * _viewAspect;
-
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_screen3DBillboardVertexData);
-    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);    
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &faceTex);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    glBindTexture(GL_TEXTURE_2D, 0);
-    
-}
-
-- (void)renderCompositeFaceInRect:(CGRect)faceRect inMatrix:(GLKMatrix4)mat
-{
-    NOCShaderProgram *texShader = self.shaders[TextureShaderName];
-    [texShader use];
-    [texShader setMatrix:mat
-              forUniform:UniformMVProjectionMatrix];
-    [_fboFace bindTexture:0];
-    [texShader setInt:0 forUniform:UniformTexture];
-    
-    GLfloat faceVerts[12];
-    NOCSetGLVertCoordsForRect(faceVerts, faceRect);
-
-    glEnableVertexAttribArray(GLKVertexAttribPosition);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &faceVerts);
-    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &Square3DTexCoords);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-    glBindTexture(GL_TEXTURE_2D, 0);
-
 }
 
 - (void)renderFaceMeshInMat:(GLKMatrix4)mat
@@ -246,7 +184,7 @@ static const int FBODimension = 128;
     
     if(_faceRects.count > 0){
         
-        NOCShaderProgram *shaderFace = self.shaders[FaceShaderName];
+        NOCShaderProgram *shaderFace = [self shaderNamed:FaceShaderName];
         [shaderFace use];
         
         [_videoSession bindTexture:0];
@@ -309,13 +247,15 @@ static const int FBODimension = 128;
 {
     [super teardown];
     
+#if !USE_SERIALIZED_TRIANGLES
     for(int i=0;i<NumTriangulations;i++){
         GLfloat *meshVerts = _meshVerts[i];
         if(meshVerts) free(meshVerts);
         GLfloat *meshTex = _meshTex[i];
         if(meshTex) free(meshTex);
     }
-
+#endif
+    
     [_videoSession teardown];
     _videoSession = nil;
 }

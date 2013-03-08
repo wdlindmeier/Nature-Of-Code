@@ -73,12 +73,12 @@
     glViewport(0, 0, _size.width, _size.height);
 }
 
-- (void)bindTexture:(int)textureNum
+- (GLuint)bindTexture:(int)texLoc
 {
-    // NOTE: Maybe we should take a texture id
     glEnable(GL_TEXTURE_2D);
-    glActiveTexture(textureNum);
+    glActiveTexture(texLoc);
     glBindTexture(GL_TEXTURE_2D, self.locRenderTexture);
+    return self.locRenderTexture;
 }
 
 #pragma mark - Accessing Data

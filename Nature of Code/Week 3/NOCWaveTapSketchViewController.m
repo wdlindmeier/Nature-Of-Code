@@ -51,19 +51,13 @@ static NSString * UniformMoverTexture = @"texture";
     _textureMover = NOCLoadGLTextureWithName(@"brushed_sphere");
     
     // Setup the shader
-    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveTap];
+    _shader = [[NOCShaderProgram alloc] initWithName:ShaderNameWaveTap];    
+    _shader.attributes = @{@"position" : @(GLKVertexAttribPosition),
+                           @"texCoord" : @(GLKVertexAttribTexCoord0) };
+    _shader.uniformNames = @[UniformMVProjectionMatrix,
+                             UniformMoverTexture];
     
-    _shader.attributes = @{
-                           @"position" : @(GLKVertexAttribPosition),
-                           @"texCoord" : @(GLKVertexAttribTexCoord0)
-                           };
-    
-    _shader.uniformNames = @[
-                             UniformMVProjectionMatrix,
-                             UniformMoverTexture
-                             ];
-    
-    self.shaders = @{ ShaderNameWaveTap : _shader };
+    [self addShader:_shader named:ShaderNameWaveTap];
     
     // Create a line of little movers
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
