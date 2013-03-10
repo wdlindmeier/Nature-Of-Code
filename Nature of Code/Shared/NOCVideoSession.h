@@ -18,7 +18,7 @@
 
 @property (nonatomic, weak) id<NOCVideoSessionFaceDelegate> faceDelegate;
 @property (nonatomic, readonly) AVCaptureVideoPreviewLayer *previewLayer;
-
+@property (nonatomic, assign) BOOL shouldDetectFacesInBackground;
 
 - (BOOL)isMirrored;
 - (id)initWithFaceDelegate:(id<NOCVideoSessionFaceDelegate>)faceDelegate;

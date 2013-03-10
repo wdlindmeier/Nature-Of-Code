@@ -17,8 +17,10 @@
 		A920CEBE16C0373D00284EAF /* thumb_PerlinWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */; };
 		A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */; };
 		A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */; };
-		A9310E2216EC058D0099407C /* NOCBeardMatrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2116EC058D0099407C /* NOCBeardMatrixViewController.m */; };
+		A9310E2216EC058D0099407C /* NOCBeardlySketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2116EC058D0099407C /* NOCBeardlySketchViewController.m */; };
 		A9310E2416EC06F20099407C /* beard_mask_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9310E2316EC06F20099407C /* beard_mask_0.png */; };
+		A9310E2816EC2D700099407C /* NOCBeardMakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2716EC2D6E0099407C /* NOCBeardMakerViewController.m */; };
+		A9310E2B16ECD07A0099407C /* NOCBeard.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2A16ECD0780099407C /* NOCBeard.m */; };
 		A936F0AB16DDA73B00A6EBD8 /* thumb_PaperBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */; };
 		A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */; };
 		A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */; };
@@ -184,10 +186,14 @@
 		A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PerlinWalker@2x.png"; sourceTree = "<group>"; };
 		A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_RandomWalker.png; sourceTree = "<group>"; };
 		A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_RandomWalker@2x.png"; sourceTree = "<group>"; };
-		A9310E2016EC058D0099407C /* NOCBeardMatrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardMatrixViewController.h; sourceTree = "<group>"; };
-		A9310E2116EC058D0099407C /* NOCBeardMatrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardMatrixViewController.m; sourceTree = "<group>"; };
+		A9310E2016EC058D0099407C /* NOCBeardlySketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardlySketchViewController.h; sourceTree = "<group>"; };
+		A9310E2116EC058D0099407C /* NOCBeardlySketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardlySketchViewController.m; sourceTree = "<group>"; };
 		A9310E2316EC06F20099407C /* beard_mask_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_0.png; sourceTree = "<group>"; };
 		A9310E2516EC0FBE0099407C /* NOCBeardVerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardVerts.h; sourceTree = "<group>"; };
+		A9310E2616EC2D6C0099407C /* NOCBeardMakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardMakerViewController.h; sourceTree = "<group>"; };
+		A9310E2716EC2D6E0099407C /* NOCBeardMakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardMakerViewController.m; sourceTree = "<group>"; };
+		A9310E2916ECD0770099407C /* NOCBeard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeard.h; sourceTree = "<group>"; };
+		A9310E2A16ECD0780099407C /* NOCBeard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeard.m; sourceTree = "<group>"; };
 		A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PaperBurn.png; sourceTree = "<group>"; };
 		A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PaperBurn@2x.png"; sourceTree = "<group>"; };
 		A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_ParticleSystem.png; sourceTree = "<group>"; };
@@ -468,8 +474,12 @@
 		A936F0AF16DE7FBA00A6EBD8 /* Week 5 */ = {
 			isa = PBXGroup;
 			children = (
-				A9310E2016EC058D0099407C /* NOCBeardMatrixViewController.h */,
-				A9310E2116EC058D0099407C /* NOCBeardMatrixViewController.m */,
+				A9310E2916ECD0770099407C /* NOCBeard.h */,
+				A9310E2A16ECD0780099407C /* NOCBeard.m */,
+				A9310E2016EC058D0099407C /* NOCBeardlySketchViewController.h */,
+				A9310E2116EC058D0099407C /* NOCBeardlySketchViewController.m */,
+				A9310E2616EC2D6C0099407C /* NOCBeardMakerViewController.h */,
+				A9310E2716EC2D6E0099407C /* NOCBeardMakerViewController.m */,
 				A9310E2516EC0FBE0099407C /* NOCBeardVerts.h */,
 				A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */,
 				A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */,
@@ -1076,7 +1086,9 @@
 				A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */,
 				A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */,
 				A995C1E616EA401B0074731C /* NOCHair.m in Sources */,
-				A9310E2216EC058D0099407C /* NOCBeardMatrixViewController.m in Sources */,
+				A9310E2216EC058D0099407C /* NOCBeardlySketchViewController.m in Sources */,
+				A9310E2816EC2D700099407C /* NOCBeardMakerViewController.m in Sources */,
+				A9310E2B16ECD07A0099407C /* NOCBeard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

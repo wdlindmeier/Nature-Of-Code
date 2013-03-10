@@ -109,7 +109,8 @@
 - (void)addParticle
 {
     
-    if(self.numParticles < self.maxNumParticles){
+    if(self.maxNumParticles == 0 ||
+       self.numParticles < self.maxNumParticles){
         
         NOCParticle2D *previousP = [_particles lastObject];
 

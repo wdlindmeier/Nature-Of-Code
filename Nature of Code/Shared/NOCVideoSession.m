@@ -52,7 +52,7 @@ enum {
     self = [super init];
     if(self){
         self.faceDelegate = faceDelegate;
-        
+        self.shouldDetectFacesInBackground = NO;
         _faceDetector = [CIDetector detectorOfType:CIDetectorTypeFace
                                            context:nil
                                            options:@{ CIDetectorAccuracy : CIDetectorAccuracyLow,
@@ -207,7 +207,7 @@ enum {
     }
     
     if(self.faceDelegate){
-        
+
         [self performFacialDetectionWithSample:sampleBuffer
                                         pixels:pixelBuffer];
         
@@ -279,6 +279,7 @@ enum {
     CIImage *ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer options:(__bridge NSDictionary *)attachments];
     if (attachments)
         CFRelease(attachments);
+    
     NSDictionary *imageOptions = nil;
     UIDeviceOrientation curDeviceOrientation = [[UIDevice currentDevice] orientation];
     int exifOrientation;
@@ -307,7 +308,6 @@ enum {
     }
     
     imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:exifOrientation] forKey:CIDetectorImageOrientation];
-    NSArray *features = [_faceDetector featuresInImage:ciImage options:imageOptions];
     
     // get the clean aperture
     // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
@@ -315,9 +315,34 @@ enum {
     CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
     CGRect clap = CMVideoFormatDescriptionGetCleanAperture(fdesc, false);
 
-    [self handleFaceFeatures:features
-                 forVideoBox:clap
-                 orientation:curDeviceOrientation];
+    if(self.shouldDetectFacesInBackground){
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            assert(![NSThread isMainThread]);
+            
+            NSArray *features = [_faceDetector featuresInImage:ciImage options:imageOptions];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                assert([NSThread isMainThread]);
+                
+                [self handleFaceFeatures:features
+                             forVideoBox:clap
+                             orientation:curDeviceOrientation];
+            });
+            
+        });
+
+    }else{
+        
+        NSArray *features = [_faceDetector featuresInImage:ciImage options:imageOptions];
+
+        [self handleFaceFeatures:features
+                     forVideoBox:clap
+                     orientation:curDeviceOrientation];
+    }
+    
 }
 
 - (void)handleFaceFeatures:(NSArray *)features forVideoBox:(CGRect)clap orientation:(UIDeviceOrientation)orientation

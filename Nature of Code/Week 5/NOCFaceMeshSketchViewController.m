@@ -21,12 +21,7 @@ const static int NumTriangulations = 5;
 
 @interface NOCFaceMeshSketchViewController ()
 {
-    UIView *_viewVideoPreview;
     NSArray *_faceRects;
-    
-    NOCFrameBuffer *_fboFace;
-    
-    // For the triangle mesh
     float _curveStep;
     float _distStep;
     GLfloat* _meshVerts[NumTriangulations];
@@ -71,17 +66,6 @@ static const int FBODimension = 128;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
-}
-
-#pragma mark - View
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if(!_fboFace){
-        _fboFace = [[NOCFrameBuffer alloc] initWithPixelWidth:FBODimension
-                                                  pixelHeight:FBODimension];
-    }
 }
 
 #pragma mark - App Loop

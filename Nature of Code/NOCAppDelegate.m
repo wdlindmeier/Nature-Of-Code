@@ -11,7 +11,8 @@
 
 #if DEBUG
 
-#import "NOCBeardMatrixViewController.h"
+#import "NOCBeardlySketchViewController.h"
+#import "NOCBeardMakerViewController.h"
 
 #endif
 
@@ -25,8 +26,10 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-    //self.viewController = [[NOCBeardMatrixViewController alloc] initWithNibName:@"NOCSketchViewController"
-    //                                                                     bundle:nil];
+    self.viewController = [[NOCBeardlySketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                         bundle:nil];
+    //self.viewController = [[NOCBeardMakerViewController alloc] initWithNibName:@"NOCSketchViewController"
+    //                                                                    bundle:nil];
     
 #endif
     

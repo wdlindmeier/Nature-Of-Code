@@ -155,6 +155,14 @@
 				<key>Controller</key>
 				<string>Hair</string>
 			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Beard.ly</string>
+				<key>Description</key>
+				<string></string>
+				<key>Controller</key>
+				<string>Beardly</string>
+			</dict>
 		</array>
 	</dict>
 </array>
