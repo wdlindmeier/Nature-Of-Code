@@ -17,6 +17,8 @@
 		A920CEBE16C0373D00284EAF /* thumb_PerlinWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */; };
 		A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */; };
 		A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */; };
+		A9310E2216EC058D0099407C /* NOCBeardMatrixViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2116EC058D0099407C /* NOCBeardMatrixViewController.m */; };
+		A9310E2416EC06F20099407C /* beard_mask_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9310E2316EC06F20099407C /* beard_mask_0.png */; };
 		A936F0AB16DDA73B00A6EBD8 /* thumb_PaperBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */; };
 		A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */; };
 		A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */; };
@@ -182,6 +184,10 @@
 		A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PerlinWalker@2x.png"; sourceTree = "<group>"; };
 		A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_RandomWalker.png; sourceTree = "<group>"; };
 		A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_RandomWalker@2x.png"; sourceTree = "<group>"; };
+		A9310E2016EC058D0099407C /* NOCBeardMatrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardMatrixViewController.h; sourceTree = "<group>"; };
+		A9310E2116EC058D0099407C /* NOCBeardMatrixViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardMatrixViewController.m; sourceTree = "<group>"; };
+		A9310E2316EC06F20099407C /* beard_mask_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_0.png; sourceTree = "<group>"; };
+		A9310E2516EC0FBE0099407C /* NOCBeardVerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardVerts.h; sourceTree = "<group>"; };
 		A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PaperBurn.png; sourceTree = "<group>"; };
 		A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PaperBurn@2x.png"; sourceTree = "<group>"; };
 		A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_ParticleSystem.png; sourceTree = "<group>"; };
@@ -462,19 +468,22 @@
 		A936F0AF16DE7FBA00A6EBD8 /* Week 5 */ = {
 			isa = PBXGroup;
 			children = (
+				A9310E2016EC058D0099407C /* NOCBeardMatrixViewController.h */,
+				A9310E2116EC058D0099407C /* NOCBeardMatrixViewController.m */,
+				A9310E2516EC0FBE0099407C /* NOCBeardVerts.h */,
+				A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */,
 				A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */,
 				A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */,
 				A9A60DC416E3C12600F0E5B9 /* NOCFaceMeshSketchViewController.h */,
 				A9A60DC516E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m */,
+				A995C1E416EA401B0074731C /* NOCHair.h */,
+				A995C1E516EA401B0074731C /* NOCHair.m */,
+				A9C05C7F16E7BF7A0009F8C8 /* NOCHairSketchViewController.h */,
+				A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */,
 				A9A60DBD16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.h */,
 				A9A60DBE16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m */,
 				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
 				A936F0B116DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.m */,
-				A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */,
-				A9C05C7F16E7BF7A0009F8C8 /* NOCHairSketchViewController.h */,
-				A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */,
-				A995C1E416EA401B0074731C /* NOCHair.h */,
-				A995C1E516EA401B0074731C /* NOCHair.m */,
 			);
 			path = "Week 5";
 			sourceTree = "<group>";
@@ -508,6 +517,7 @@
 		A95A5A5E16C2E7AC0001D07D /* sketches */ = {
 			isa = PBXGroup;
 			children = (
+				A9310E2316EC06F20099407C /* beard_mask_0.png */,
 				A95C703F16D034660058D8BA /* brushed_sphere.png */,
 				A95C704016D034660058D8BA /* dark_sphere.png */,
 				A936F0CD16DEA58700A6EBD8 /* face.png */,
@@ -995,6 +1005,7 @@
 				A9C05C7C16E78D190009F8C8 /* thumb_TriangleSpiral@2x.png in Resources */,
 				A9C05C7D16E78D190009F8C8 /* thumb_Triangulation.png in Resources */,
 				A9C05C7E16E78D190009F8C8 /* thumb_Triangulation@2x.png in Resources */,
+				A9310E2416EC06F20099407C /* beard_mask_0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,6 +1076,7 @@
 				A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */,
 				A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */,
 				A995C1E616EA401B0074731C /* NOCHair.m in Sources */,
+				A9310E2216EC058D0099407C /* NOCBeardMatrixViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,49 +19,28 @@
     void *_kvoContextUpdateAnchor;
     void *_kvoContextUpdateParticles;
     void *_kvoContextUpdateSprings;
+    float _lastSegmentLength;
+    float _distBetweenParticles;
 }
 
-@synthesize numParticles = _numParticles;
+@synthesize lastSegmentLength = _lastSegmentLength;
 
 - (id)initWithAnchor:(GLKVector2)anchor numParticles:(int)numParticles ofLength:(float)distBetweenParticles
 {
     self = [super init];
     if(self){
-        _numParticles = numParticles;
+        
+        self.maxNumParticles = 0;
+        self.anchor = anchor;
         _particles = [NSMutableArray arrayWithCapacity:numParticles];
         _springs = [NSMutableArray arrayWithCapacity:numParticles];
-        
-        NOCParticle2D *previousP = nil;
-        
+        _growthRate = 0;
+        _distBetweenParticles = distBetweenParticles;
+        _lastSegmentLength = numParticles > 0 ? distBetweenParticles : 0.0f;
+
         for(int i=0;i<numParticles;i++){
             
-            float pY = anchor.y - (i*distBetweenParticles); // flows down atm.
-            GLKVector2 pStart = GLKVector2Make(anchor.x, pY);
-            
-            NOCParticle2D *p = [[NOCParticle2D alloc] initWithSize:GLKVector2Make(0.01, 0.01) // arbitrary
-                                                          position:pStart];
-            
-            [_particles addObject:p];
-            
-            NOCSpring2D *spring;
-            
-            if(previousP){
-                
-                spring = [[NOCSpring2D alloc] initWithParicleA:previousP
-                                                     particleB:p
-                                                    restLength:distBetweenParticles];
-                
-            }else{
-                
-                spring = [[NOCSpring2D alloc] initWithParicle:p
-                                                       anchor:anchor
-                                                   restLength:distBetweenParticles];
-                
-            }
-            
-            [_springs addObject:spring];
-            
-            previousP = p;
+            [self addParticle];
             
         }
         
@@ -95,7 +74,6 @@
         self.amtStretch = 2.0f;
         // Dont bother dampening. It doesnt give us much here, other than a little slow down
         // self.dampening = -0.1;
-        self.anchor = anchor;
         
     }
     return self;
@@ -119,12 +97,62 @@
     }
 }
 
+#pragma mark - Accessors
+
 // NOTE: For some reason observing KVO doesn't work w/ GLKVector2
 - (void)setAnchor:(GLKVector2)anchor
 {
     _anchor = anchor;
     [self updateAnchorSpring];
 }
+
+- (void)addParticle
+{
+    
+    if(self.numParticles < self.maxNumParticles){
+        
+        NOCParticle2D *previousP = [_particles lastObject];
+
+        GLKVector2 pStart;
+        if(previousP){
+            pStart = previousP.position;
+        }else{
+            pStart = self.anchor;
+        }
+        
+        NOCParticle2D *p = [[NOCParticle2D alloc] initWithSize:GLKVector2Make(0.01, 0.01) // size is arbitrary atm
+                                                      position:pStart];
+        
+        [_particles addObject:p];
+        
+        NOCSpring2D *spring;
+        
+        if(previousP){
+            
+            spring = [[NOCSpring2D alloc] initWithParicleA:previousP
+                                                 particleB:p
+                                                restLength:_lastSegmentLength];
+            
+        }else{
+            
+            spring = [[NOCSpring2D alloc] initWithParicle:p
+                                                   anchor:self.anchor
+                                               restLength:_lastSegmentLength];
+            
+        }
+        
+        [_springs addObject:spring];
+        
+    }    
+}
+
+
+- (int)numParticles
+{
+    return _particles.count;
+}
+
+#pragma mark - Update
 
 - (void)updateParticleParams
 {
@@ -143,9 +171,54 @@
 
 - (void)updateAnchorSpring
 {
-    NOCSpring2D *anchorSpring = _springs[0];
-    anchorSpring.anchor = GLKVector2Make(self.anchor.x, self.anchor.y);
+    if(_springs.count > 0){
+        NOCSpring2D *anchorSpring = _springs[0];
+        anchorSpring.anchor = GLKVector2Make(self.anchor.x, self.anchor.y);
+    }
 }
+
+- (void)update
+{
+    for(NOCParticle2D *p in _particles){
+        [p step];
+    }
+    
+    // Constrain after they've stepped
+    for(int i=0;i<_particles.count;i++){
+        NOCSpring2D *s = _springs[i];
+        [s constrainParticles];
+    }
+    
+    // Adding particles afterward so their spawn position isn't 1 frame behind
+    if(_growthRate > 0){
+        
+        float newSegmentLength = fmod((_lastSegmentLength + _growthRate), _distBetweenParticles);
+        BOOL didWrap = (newSegmentLength < _lastSegmentLength) || (_particles.count == 0);
+    
+        if(didWrap){
+            
+            if(self.numParticles < self.maxNumParticles){
+                // We've wrapped. Add a particle
+                [self addParticle];
+            }else{
+                // NOTE: Kill the growth if we've run out of particles
+                newSegmentLength = _lastSegmentLength;
+            }
+            
+        }
+        
+        _lastSegmentLength = newSegmentLength;
+        
+        // Extend the length of the last spring
+        NOCSpring2D *lastSpring = [_springs lastObject];
+        lastSpring.restLength = _lastSegmentLength;
+        // Constrain it to the truncated length
+        lastSpring.maxLength = _lastSegmentLength;
+        
+    }
+    
+}
+
 
 #pragma mark - Physics
 
@@ -172,7 +245,7 @@
 // This is good for gravity and general wind.
 - (void)applyForce:(GLKVector2)force
 {
-    for(int i=0;i<_numParticles;i++){
+    for(int i=0;i<_particles.count;i++){
         [self applyForce:force toParticleAtIndex:i];
     }
 }
@@ -182,7 +255,7 @@
 // using a distance multi, reverse, or whatever.
 - (void)applyPointForce:(GLKVector2)fPos withMagnitude:(float(^)(float distToParticle))forceBlock;
 {
-    for(int i=0;i<_numParticles;i++){
+    for(int i=0;i<_particles.count;i++){
         NOCParticle2D *p = _particles[i];
         GLKVector2 dir = GLKVector2Subtract(p.position, fPos);
         float distToParicle = GLKVector2Length(dir);
@@ -196,17 +269,7 @@
     }
 }
 
-- (void)update
-{
-    for(NOCParticle2D *p in _particles){
-        [p step];
-    }
-    // Constrain after they've stepped
-    for(int i=0;i<_numParticles;i++){
-        NOCSpring2D *s = _springs[i];
-        [s constrainParticles];
-    }
-}
+#pragma mark - Draw
 
 - (void)renderParticles:(void(^)(GLKMatrix4 particleMatrix, NOCParticle2D *p))pRenderBlock
              andSprings:(void(^)(GLKMatrix4 springMatrix, NOCSpring2D *s))sRenderBlock

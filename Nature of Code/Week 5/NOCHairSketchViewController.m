@@ -7,8 +7,6 @@
 //
 
 #import "NOCHairSketchViewController.h"
-//#import "NOCParticle2D.h"
-//#import "NOCSpring2D.h"
 #import "NOCHair.h"
 
 @interface NOCHairSketchViewController ()
