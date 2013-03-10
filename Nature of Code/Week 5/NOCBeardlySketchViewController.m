@@ -15,9 +15,11 @@
     NSArray *_faceRects;
     int _numFramesWithoutFace;
     int _numFramesWithFace;
-    GLKVector2 _posBeardOffset;
+    GLKVector2 _posBeard;
     GLKMatrix4 _matVideoTexture;
     NOCBeard *_beard;
+    float _beardScale;
+    float _beardScaleTo;
 }
 @end
 
@@ -71,15 +73,15 @@ static NSString * UniformTexture = @"texture";
     
     _numFramesWithoutFace = 0;
     _numFramesWithFace = 0;
-    _posBeardOffset = GLKVector2Zero;
+    _posBeard = GLKVector2Zero;
 
 }
 
 - (void)update
 {
-    GLKVector2 posBeardOffset = _posBeardOffset;
-    
+
     if(_faceRects.count > 0){
+
         NSValue *rectFaceVal = _faceRects[0];
         CGRect rectFace = [rectFaceVal CGRectValue];
 
@@ -87,24 +89,37 @@ static NSString * UniformTexture = @"texture";
         CGAffineTransform videoTransform = CGAffineTransformMakeRotation(M_PI * 0.5);
         videoTransform = CGAffineTransformScale(videoTransform, -1, 1);
         rectFace = CGRectApplyAffineTransform(rectFace, videoTransform);
-        posBeardOffset = GLKVector2Make(CGRectGetMidX(rectFace) * _viewAspect, // this is dialed in
-                                        CGRectGetMidY(rectFace) / _viewAspect);
-        
+
+        // Set the beard scale
         // The beard is 1 unit
         CGSize sizeFace = rectFace.size;
-        _beard.scale = sizeFace.width / 1.0f;
+        float newScale = sizeFace.width / 1.0f * 0.7; // eyeball to taste
+        
+        // Lerp
+        _beardScaleTo = newScale;
+        _beardScale = _beardScale + (_beardScaleTo - _beardScale) * 0.2;
+        
+        // No Lerp
+        //_beardScale = newScale;
+
+        // Account for scale in positioning because the whole matrix is scaled
+        // up, including the location of each hair
+        GLKVector2 newPosBeard = GLKVector2Make(CGRectGetMidX(rectFace) * _viewAspect / _beardScale,
+                                                CGRectGetMidY(rectFace) / _viewAspect / _beardScale);
         
         if(_numFramesWithFace == 1){
             // The first frame should just drop the beard on top of the face w/ out transition
-            _beard.position = posBeardOffset;
+            _beard.position = newPosBeard;
+            _posBeard = newPosBeard;
         }
     
+        GLKVector2 posBeardDelta = GLKVector2Subtract(newPosBeard, _posBeard);
+        _posBeard = newPosBeard;
+        
+        [_beard updateWithOffset:posBeardDelta];
+
     }
     
-    GLKVector2 posBeardDelta = GLKVector2Subtract(posBeardOffset, _posBeardOffset);
-    _posBeardOffset = posBeardOffset;
-    
-    [_beard updateWithOffset:posBeardDelta];
 }
 
 - (void)draw
@@ -121,7 +136,7 @@ static NSString * UniformTexture = @"texture";
     [self drawVideoTexture];
     
     // Draw a strokeded line
-    [self drawFaceTracking];
+    // [self drawFaceTracking];
     
     // Draw the beard
     [self drawBeard];
@@ -183,48 +198,8 @@ static NSString * UniformTexture = @"texture";
 
 - (void)drawBeard
 {
-    NOCShaderProgram *shaderHair = [self shaderNamed:HairShaderName];
-    [shaderHair use];
-    
-    const static GLfloat colorParticles[] = {
-        1.0,0,0,1.0,
-        1.0,0,0,1.0,
-        1.0,0,0,1.0,
-        1.0,0,0,1.0,
-    };
-    
-    const static GLfloat colorSprings[] = {
-        1.0,1,0,1.0,
-        1.0,1,0,1.0,
-        1.0,1,0,1.0,
-        1.0,1,0,1.0,
-    };
-    
-    GLKMatrix4 matBeard = _projectionMatrix2D;
-
-    // TODO: Should this be wrapped up a beard function
-    NSArray *hairs = [_beard hairs];
-    for(NOCHair *h in hairs){
-        
-        [h renderParticles:^(GLKMatrix4 particleMatrix, NOCParticle2D *p) {
-            
-            GLKMatrix4 mvProjMat = GLKMatrix4Multiply(matBeard, particleMatrix);
-            [shaderHair setMatrix:mvProjMat forUniform:UniformMVProjectionMatrix];
-            
-            glEnableVertexAttribArray(GLKVertexAttribColor);
-            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &colorParticles);
-            
-        } andSprings:^(GLKMatrix4 springMatrix, NOCSpring2D *s) {
-            
-            GLKMatrix4 mvProjMat = GLKMatrix4Multiply(matBeard, springMatrix);
-            [shaderHair setMatrix:mvProjMat forUniform:UniformMVProjectionMatrix];
-            
-            glEnableVertexAttribArray(GLKVertexAttribColor);
-            glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &colorSprings);
-            
-        }];
-        
-    }
+    GLKMatrix4 matBeard = GLKMatrix4Scale(_projectionMatrix2D, _beardScale, _beardScale, 1.0);
+    [_beard renderInMatrix:matBeard];    
 }
 
 - (void)teardown

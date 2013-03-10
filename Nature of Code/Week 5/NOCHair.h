@@ -17,6 +17,7 @@
 - (void)applyForce:(GLKVector2)force;
 - (void)applyPointForce:(GLKVector2)fPos withMagnitude:(float(^)(float distToParticle))forceBlock;
 - (void)update;
+- (NSArray *)particles;
 - (void)renderParticles:(void(^)(GLKMatrix4 particleMatrix, NOCParticle2D *p))pRenderBlock
              andSprings:(void(^)(GLKMatrix4 springMatrix, NOCSpring2D *s))sRenderBlock;
 

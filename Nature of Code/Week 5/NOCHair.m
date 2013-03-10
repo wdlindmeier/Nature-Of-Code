@@ -153,6 +153,11 @@
     return _particles.count;
 }
 
+- (NSArray *)particles
+{
+    return _particles;
+}
+
 #pragma mark - Update
 
 - (void)updateParticleParams

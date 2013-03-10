@@ -18,11 +18,11 @@ typedef enum NOCBeardTypes {
 @interface NOCBeard : NSObject
 
 @property (nonatomic, assign) GLKVector2 position;
-@property (nonatomic, assign) float scale;
 
 - (id)initWithBeardType:(NOCBeardType)type position:(GLKVector2)position;
 
 - (NSArray *)hairs;
 - (void)updateWithOffset:(GLKVector2)offset;
+- (void)renderInMatrix:(GLKMatrix4)matrix;
 
 @end
