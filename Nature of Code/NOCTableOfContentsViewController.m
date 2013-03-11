@@ -226,6 +226,8 @@
     
     [self.view addSubview:self.selectedSketchView];
     
+    self.tableView.scrollEnabled = NO;
+    
     [UIView animateWithDuration:0.35
                      animations:^{
                          self.selectedSketchView.alpha = 1;
@@ -235,6 +237,8 @@
 
 - (void)dismissSelectedSketch:(BOOL)animated
 {
+    self.tableView.scrollEnabled = YES;
+    
     if(animated){
         [UIView animateWithDuration:0.35
                          animations:^{

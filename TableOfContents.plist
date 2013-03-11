@@ -176,7 +176,7 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>Beard.ly</string>
+				<string>Beard Booth</string>
 				<key>Description</key>
 				<string>Uses face detection to map a beard onto you. Drag your finger to add wind forces. Double tap to reset the beard.</string>
 				<key>Controller</key>

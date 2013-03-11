@@ -17,6 +17,11 @@ Videos
 * Waves in 3D: http://www.youtube.com/watch?v=8HMC-c0yD1M
 * Particle Emitter: http://www.youtube.com/watch?v=8VlsKrlKgE8
 * Burning Paper: http://www.youtube.com/watch?v=OaZ_ioIe2lw
+* Delaunay Triangulation I: http://www.youtube.com/watch?v=DEPv94lgBNA
+* Delaunay Triangulation II: http://www.youtube.com/watch?v=G95FbolZiOU 
+* Triangulated Face Mesh: http://www.youtube.com/watch?v=O5cPGKUQlXg
+* Hair Simulation: http://www.youtube.com/watch?v=2DoK6I5ZTP0
+* The Beard Booth: http://www.youtube.com/watch?v=Cvme3jZMEmo
 
 ---
 
