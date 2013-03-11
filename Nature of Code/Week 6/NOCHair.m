@@ -24,6 +24,7 @@
 }
 
 @synthesize lastSegmentLength = _lastSegmentLength;
+@synthesize distBetweenParticles = _distBetweenParticles;
 
 - (id)initWithAnchor:(GLKVector2)anchor numParticles:(int)numParticles ofLength:(float)distBetweenParticles
 {

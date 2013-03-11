@@ -9,6 +9,7 @@
 #import "NOCBeardlySketchViewController.h"
 #import "NOCBeard.h"
 #import "NOCHair.h"
+#import "NOCSketchViewController+OpenGLScreenCapture.h"
 
 @interface NOCBeardlySketchViewController ()
 {
@@ -20,6 +21,9 @@
     NOCBeard *_beard;
     float _beardScale;
     float _beardScaleTo;
+    NSMutableSet *_touches;
+    BOOL _beardIsDirty;
+    GLKTextureInfo *_textureHair;
 }
 @end
 
@@ -30,6 +34,7 @@ static NSString * FaceTrackingShaderName = @"ColoredVerts";
 static NSString * HairShaderName = @"ColoredVerts";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformTexture = @"texture";
+static const int NumFramesWithoutFaceToResetBeard = 30;
 
 #pragma mark - Orientation
 
@@ -41,6 +46,45 @@ static NSString * UniformTexture = @"texture";
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     return toInterfaceOrientation == UIInterfaceOrientationPortrait;
+}
+
+#pragma mark - View
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UIButton *buttonCamera = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buttonCamera setImage:[UIImage imageNamed:@"camera"]
+                  forState:UIControlStateNormal];
+    [buttonCamera sizeToFit];
+    CGSize sizeCam = buttonCamera.frame.size;
+    [buttonCamera setBackgroundColor:[UIColor clearColor]];
+    [buttonCamera addTarget:self action:@selector(buttonCameraPressed:) forControlEvents:UIControlEventTouchUpInside];
+    buttonCamera.frame = CGRectMake(50, 50, sizeCam.width + 20, sizeCam.height + 16);
+    buttonCamera.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    [self.view addSubview:buttonCamera];
+}
+
+#pragma mark - Accessors
+
+- (NSString *)nibNameForControlGUI
+{
+    return @"NOCGuiBeardPicker";
+}
+
+- (void)setBeardType:(NOCBeardType)type
+{
+    _beard = [[NOCBeard alloc] initWithBeardType:type
+                                        position:GLKVector2Zero
+                                         texture:_textureHair];
+    
+    _faceRects = nil;
+    _numFramesWithoutFace = 1;
+    _numFramesWithFace = 0;
+    _posBeard = GLKVector2Zero;
+    _beardScale = 1;
+    _beardScaleTo = 1;
+    _beardIsDirty = YES;
 }
 
 #pragma mark - App Loop
@@ -63,8 +107,8 @@ static NSString * UniformTexture = @"texture";
     [self addShader:texShader named:TextureShaderName];
     
     // Create the beard
-    _beard = [[NOCBeard alloc] initWithBeardType:NOCBeardTypeStandard
-                                        position:GLKVector2Zero];
+    _textureHair = NOCLoadGLTextureWithName(@"beard_hair_cartoon");
+    [self setBeardType:NOCBeardTypeStandard];
     
     // Video
     _videoSession = [[NOCVideoSession alloc] initWithFaceDelegate:self];
@@ -74,52 +118,100 @@ static NSString * UniformTexture = @"texture";
     _numFramesWithoutFace = 0;
     _numFramesWithFace = 0;
     _posBeard = GLKVector2Zero;
+    
+    _beardIsDirty = NO;
 
+    _touches = [NSMutableSet setWithCapacity:5];
+    
+    self.view.multipleTouchEnabled = YES;
 }
 
 - (void)update
 {
 
     if(_faceRects.count > 0){
-
-        NSValue *rectFaceVal = _faceRects[0];
-        CGRect rectFace = [rectFaceVal CGRectValue];
-
-        // Account for video transform
-        CGAffineTransform videoTransform = CGAffineTransformMakeRotation(M_PI * 0.5);
-        videoTransform = CGAffineTransformScale(videoTransform, -1, 1);
-        rectFace = CGRectApplyAffineTransform(rectFace, videoTransform);
-
-        // Set the beard scale
-        // The beard is 1 unit
-        CGSize sizeFace = rectFace.size;
-        float newScale = sizeFace.width / 1.0f * 0.7; // eyeball to taste
         
-        // Lerp
-        _beardScaleTo = newScale;
-        _beardScale = _beardScale + (_beardScaleTo - _beardScale) * 0.2;
+        _beardIsDirty = YES;
         
-        // No Lerp
-        //_beardScale = newScale;
+        [self applyTouchesToBeard];
 
-        // Account for scale in positioning because the whole matrix is scaled
-        // up, including the location of each hair
-        GLKVector2 newPosBeard = GLKVector2Make(CGRectGetMidX(rectFace) * _viewAspect / _beardScale,
-                                                CGRectGetMidY(rectFace) / _viewAspect / _beardScale);
-        
-        if(_numFramesWithFace == 1){
-            // The first frame should just drop the beard on top of the face w/ out transition
-            _beard.position = newPosBeard;
-            _posBeard = newPosBeard;
-        }
-    
-        GLKVector2 posBeardDelta = GLKVector2Subtract(newPosBeard, _posBeard);
-        _posBeard = newPosBeard;
-        
-        [_beard updateWithOffset:posBeardDelta];
+        [self repositionBeard];
 
+    }else if(_beardIsDirty && _numFramesWithoutFace > NumFramesWithoutFaceToResetBeard){
+        
+        [_beard reset];
+        
+        // I love this variable name
+        _beardIsDirty = NO;
+        
     }
     
+}
+- (void)applyTouchesToBeard
+{
+    // Calculate the touch positions
+    int numTouches = _touches.count;
+    GLKVector2 touchPos[numTouches];
+    int i=0;
+    for(UITouch *t in _touches){
+        CGPoint posTouch = [t locationInView:self.view];
+        CGRect frame = self.view.frame;
+        GLKVector2 posWind = NOCGLPositionFromCGPointInRect(posTouch, frame);
+        posWind.y *= -1;
+        touchPos[i] = posWind;
+        i++;
+    }
+    
+    for(NOCHair *h in [_beard hairs])
+    {
+        for(int i=0;i<numTouches;i++){
+            GLKVector2 posWind = touchPos[i];
+            [h applyPointForce:posWind
+                 withMagnitude:^float(float distToParticle) {
+                     // This makes the wind diminish if the particle is further away.
+                     return 0.035 / distToParticle;
+                 }];
+        }
+    }    
+}
+
+- (void)repositionBeard
+{
+    NSValue *rectFaceVal = _faceRects[0];
+    CGRect rectFace = [rectFaceVal CGRectValue];
+    
+    // Account for video transform
+    CGAffineTransform videoTransform = CGAffineTransformMakeRotation(M_PI * 0.5);
+    videoTransform = CGAffineTransformScale(videoTransform, -1, 1);
+    rectFace = CGRectApplyAffineTransform(rectFace, videoTransform);
+    
+    // Set the beard scale
+    // The beard is 1 unit
+    CGSize sizeFace = rectFace.size;
+    float newScale = sizeFace.width / 1.0f * 0.7; // eyeball to taste
+    
+    // Lerp
+    _beardScaleTo = newScale;
+    _beardScale = _beardScale + (_beardScaleTo - _beardScale) * 0.2;
+    
+    // No Lerp
+    //_beardScale = newScale;
+    
+    // Account for scale in positioning because the whole matrix is scaled
+    // up, including the location of each hair
+    GLKVector2 newPosBeard = GLKVector2Make(CGRectGetMidX(rectFace) * _viewAspect / _beardScale,
+                                            CGRectGetMidY(rectFace) / _viewAspect / _beardScale);
+    
+    if(_numFramesWithFace == 1){
+        // The first frame should just drop the beard on top of the face w/ out transition
+        _beard.position = newPosBeard;
+        _posBeard = newPosBeard;
+    }
+    
+    GLKVector2 posBeardDelta = GLKVector2Subtract(newPosBeard, _posBeard);
+    _posBeard = newPosBeard;
+    
+    [_beard updateWithOffset:posBeardDelta];
 }
 
 - (void)draw
@@ -139,7 +231,9 @@ static NSString * UniformTexture = @"texture";
     // [self drawFaceTracking];
     
     // Draw the beard
-    [self drawBeard];
+    if(_faceRects.count > 0){
+        [self drawBeard];
+    }
 
 }
 
@@ -199,7 +293,7 @@ static NSString * UniformTexture = @"texture";
 - (void)drawBeard
 {
     GLKMatrix4 matBeard = GLKMatrix4Scale(_projectionMatrix2D, _beardScale, _beardScale, 1.0);
-    [_beard renderInMatrix:matBeard];    
+    [_beard renderInMatrix:matBeard];
 }
 
 - (void)teardown
@@ -275,5 +369,90 @@ static NSString * UniformTexture = @"texture";
     }
     
 }
+
+#pragma mark - IBActions
+
+- (IBAction)buttonCameraPressed:(id)sender
+{
+    UIView *viewFlash = [[UIView alloc] initWithFrame:self.view.bounds];
+    viewFlash.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:viewFlash];
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         viewFlash.alpha = 0.0;
+                     } completion:^(BOOL finished) {
+                         [viewFlash removeFromSuperview];
+                     }];
+    UIImage *screenshot = [self openGLSnapshot];
+    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, NULL);
+}
+
+- (IBAction)buttonResetPressed:(id)sender
+{
+    [_beard reset];
+}
+
+- (IBAction)buttonBeardStandardPressed:(id)sender
+{
+    [self setBeardType:NOCBeardTypeStandard];
+    [self buttonHideControlsPressed:nil];
+}
+
+- (IBAction)buttonBeardLincolnPressed:(id)sender
+{
+    [self setBeardType:NOCBeardTypeLincoln];
+    [self buttonHideControlsPressed:nil];
+}
+
+- (IBAction)buttonBeardHoganPressed:(id)sender
+{
+    [self setBeardType:NOCBeardTypeHogan];
+    [self buttonHideControlsPressed:nil];
+}
+
+- (IBAction)buttonBeardGoteePressed:(id)sender
+{
+    [self setBeardType:NOCBeardTypeGotee];
+    [self buttonHideControlsPressed:nil];
+}
+
+- (IBAction)buttonBeardWolverinePressed:(id)sender
+{
+    [self setBeardType:NOCBeardTypeWolverine];
+    [self buttonHideControlsPressed:nil];
+}
+
+- (IBAction)buttonBeardMuttonPressed:(id)sender
+{
+    [self setBeardType:NOCBeardTypeMutton];
+    [self buttonHideControlsPressed:nil];
+}
+
+#pragma mark - Touch
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for(UITouch *t in touches){
+        [_touches addObject:t];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for(UITouch *t in touches){
+        [_touches removeObject:t];
+        if(t.tapCount > 1){
+            [self buttonResetPressed:nil];
+        }
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for(UITouch *t in touches){
+        [_touches removeObject:t];
+    }
+}
+
 
 @end

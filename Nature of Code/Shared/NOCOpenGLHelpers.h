@@ -98,6 +98,12 @@ static inline GLKVector2 NOCGLPositionInWorldFrameFromCGPointInRect(CGRect world
     return GLKVector2Make(glX, glY);
 }
 
+static inline GLKVector2 NOCGLKVector2Normal(GLKVector2 vec)
+{
+    GLKVector2 nVec = GLKVector2Normalize(vec);
+    return GLKVector2Make(nVec.y * -1, nVec.x);
+}
+
 static inline void NOCSetGLVertCoordsForRect(GLfloat *glCoords, CGRect rect)
 {
     float x1 = rect.origin.x;

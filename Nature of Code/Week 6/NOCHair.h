@@ -27,6 +27,7 @@
 @property (nonatomic, assign) float dampening;
 @property (nonatomic, assign) float growthRate;
 @property (nonatomic, readonly) float lastSegmentLength;
+@property (nonatomic, readonly) float distBetweenParticles;
 @property (nonatomic, readonly) int numParticles;
 @property (nonatomic, assign) int maxNumParticles;
 

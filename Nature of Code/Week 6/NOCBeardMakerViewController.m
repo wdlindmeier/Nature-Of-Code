@@ -67,7 +67,7 @@
                 //UInt8 g = data[pixelIdx + 1];
                 //UInt8 b = data[pixelIdx + 2];
                 UInt8 a = data[pixelIdx + 3];
-                if(a > 50){
+                if(a > 200){
                     
                     float scalarX = pxX / sizeBeard.width;
                     float scalarY = pxY / sizeBeard.height;

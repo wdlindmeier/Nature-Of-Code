@@ -17,10 +17,7 @@
 		A920CEBE16C0373D00284EAF /* thumb_PerlinWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */; };
 		A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */; };
 		A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */; };
-		A9310E2216EC058D0099407C /* NOCBeardlySketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2116EC058D0099407C /* NOCBeardlySketchViewController.m */; };
-		A9310E2416EC06F20099407C /* beard_mask_0.png in Resources */ = {isa = PBXBuildFile; fileRef = A9310E2316EC06F20099407C /* beard_mask_0.png */; };
-		A9310E2816EC2D700099407C /* NOCBeardMakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2716EC2D6E0099407C /* NOCBeardMakerViewController.m */; };
-		A9310E2B16ECD07A0099407C /* NOCBeard.m in Sources */ = {isa = PBXBuildFile; fileRef = A9310E2A16ECD0780099407C /* NOCBeard.m */; };
+		A9310E2416EC06F20099407C /* beard_mask_standard.png in Resources */ = {isa = PBXBuildFile; fileRef = A9310E2316EC06F20099407C /* beard_mask_standard.png */; };
 		A936F0AB16DDA73B00A6EBD8 /* thumb_PaperBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */; };
 		A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */; };
 		A936F0AD16DDA73B00A6EBD8 /* thumb_ParticleSystem.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */; };
@@ -78,7 +75,6 @@
 		A987362616BF511A001D74E8 /* CAEAGLLayer+Retained.m in Sources */ = {isa = PBXBuildFile; fileRef = A987362516BF511A001D74E8 /* CAEAGLLayer+Retained.m */; };
 		A987363E16C00885001D74E8 /* perlin.c in Sources */ = {isa = PBXBuildFile; fileRef = A987363D16C00885001D74E8 /* perlin.c */; };
 		A987364316C00C00001D74E8 /* CGGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = A987364216C00C00001D74E8 /* CGGeometry.m */; };
-		A995C1E616EA401B0074731C /* NOCHair.m in Sources */ = {isa = PBXBuildFile; fileRef = A995C1E516EA401B0074731C /* NOCHair.m */; };
 		A99889B016C1FADB002C924F /* NOCDirectedWalker.m in Sources */ = {isa = PBXBuildFile; fileRef = A998899D16C1FADB002C924F /* NOCDirectedWalker.m */; };
 		A99889B116C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A998899F16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.m */; };
 		A99889B216C1FADB002C924F /* NOCGuiDirectedWalker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99889A016C1FADB002C924F /* NOCGuiDirectedWalker.xib */; };
@@ -109,7 +105,6 @@
 		A9C05C7C16E78D190009F8C8 /* thumb_TriangleSpiral@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7616E78D190009F8C8 /* thumb_TriangleSpiral@2x.png */; };
 		A9C05C7D16E78D190009F8C8 /* thumb_Triangulation.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7716E78D190009F8C8 /* thumb_Triangulation.png */; };
 		A9C05C7E16E78D190009F8C8 /* thumb_Triangulation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C05C7816E78D190009F8C8 /* thumb_Triangulation@2x.png */; };
-		A9C05C8116E7BF7A0009F8C8 /* NOCHairSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */; };
 		A9C05C8416E7C93C0009F8C8 /* NOCSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8316E7C93B0009F8C8 /* NOCSpring.m */; };
 		A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */; };
 		A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */; };
@@ -150,6 +145,22 @@
 		A9D7CB5A16C1E86E00BD5331 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */; };
 		A9D7CB5B16C1E86E00BD5331 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */; };
 		A9E2250416ED167C002DC1F3 /* beard_hair.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250316ED167C002DC1F3 /* beard_hair.png */; };
+		A9E2250916ED39EE002DC1F3 /* beard_mask_lincoln.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250816ED39EE002DC1F3 /* beard_mask_lincoln.png */; };
+		A9E2250B16ED3B75002DC1F3 /* beard_mask_wolverine.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250A16ED3B75002DC1F3 /* beard_mask_wolverine.png */; };
+		A9E2250D16ED3D10002DC1F3 /* beard_mask_hogan.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250C16ED3D10002DC1F3 /* beard_mask_hogan.png */; };
+		A9E2250F16ED55E7002DC1F3 /* beard_hair_cartoon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250E16ED55E7002DC1F3 /* beard_hair_cartoon.png */; };
+		A9E2251216ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2251116ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.m */; };
+		A9E2251516ED6365002DC1F3 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2251316ED6365002DC1F3 /* camera.png */; };
+		A9E2251616ED6365002DC1F3 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2251416ED6365002DC1F3 /* camera@2x.png */; };
+		A9E2251816ED67E0002DC1F3 /* beard_mask_gotee.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2251716ED67E0002DC1F3 /* beard_mask_gotee.png */; };
+		A9E2252716ED6A02002DC1F3 /* NOCBeard.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2251B16ED6A02002DC1F3 /* NOCBeard.m */; };
+		A9E2252816ED6A02002DC1F3 /* NOCBeardlySketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2251D16ED6A02002DC1F3 /* NOCBeardlySketchViewController.m */; };
+		A9E2252916ED6A02002DC1F3 /* NOCBeardMakerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2251F16ED6A02002DC1F3 /* NOCBeardMakerViewController.m */; };
+		A9E2252A16ED6A02002DC1F3 /* NOCBeardVertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2252116ED6A02002DC1F3 /* NOCBeardVertFactory.m */; };
+		A9E2252B16ED6A02002DC1F3 /* NOCGuiBeardPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E2252216ED6A02002DC1F3 /* NOCGuiBeardPicker.xib */; };
+		A9E2252C16ED6A02002DC1F3 /* NOCHair.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2252416ED6A02002DC1F3 /* NOCHair.m */; };
+		A9E2252D16ED6A02002DC1F3 /* NOCHairSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E2252616ED6A02002DC1F3 /* NOCHairSketchViewController.m */; };
+		A9E2252F16ED6BF6002DC1F3 /* beard_mask_mutton.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2252E16ED6BF6002DC1F3 /* beard_mask_mutton.png */; };
 		A9F6CB7716D1BD5D00F4BDF9 /* thumb_WaveAddition.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F6CB7116D1BD5D00F4BDF9 /* thumb_WaveAddition.png */; };
 		A9F6CB7816D1BD5D00F4BDF9 /* thumb_WaveAddition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F6CB7216D1BD5D00F4BDF9 /* thumb_WaveAddition@2x.png */; };
 		A9F6CB7916D1BD5D00F4BDF9 /* thumb_WaveMatrix.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F6CB7316D1BD5D00F4BDF9 /* thumb_WaveMatrix.png */; };
@@ -187,14 +198,7 @@
 		A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PerlinWalker@2x.png"; sourceTree = "<group>"; };
 		A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_RandomWalker.png; sourceTree = "<group>"; };
 		A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_RandomWalker@2x.png"; sourceTree = "<group>"; };
-		A9310E2016EC058D0099407C /* NOCBeardlySketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardlySketchViewController.h; sourceTree = "<group>"; };
-		A9310E2116EC058D0099407C /* NOCBeardlySketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardlySketchViewController.m; sourceTree = "<group>"; };
-		A9310E2316EC06F20099407C /* beard_mask_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_0.png; sourceTree = "<group>"; };
-		A9310E2516EC0FBE0099407C /* NOCBeardVerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardVerts.h; sourceTree = "<group>"; };
-		A9310E2616EC2D6C0099407C /* NOCBeardMakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardMakerViewController.h; sourceTree = "<group>"; };
-		A9310E2716EC2D6E0099407C /* NOCBeardMakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardMakerViewController.m; sourceTree = "<group>"; };
-		A9310E2916ECD0770099407C /* NOCBeard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeard.h; sourceTree = "<group>"; };
-		A9310E2A16ECD0780099407C /* NOCBeard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeard.m; sourceTree = "<group>"; };
+		A9310E2316EC06F20099407C /* beard_mask_standard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_standard.png; sourceTree = "<group>"; };
 		A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PaperBurn.png; sourceTree = "<group>"; };
 		A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PaperBurn@2x.png"; sourceTree = "<group>"; };
 		A936F0A916DDA73B00A6EBD8 /* thumb_ParticleSystem.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_ParticleSystem.png; sourceTree = "<group>"; };
@@ -280,8 +284,6 @@
 		A987364016C0093D001D74E8 /* perlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perlin.h; sourceTree = "<group>"; };
 		A987364116C00BFF001D74E8 /* CGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGGeometry.h; sourceTree = "<group>"; };
 		A987364216C00C00001D74E8 /* CGGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGGeometry.m; sourceTree = "<group>"; };
-		A995C1E416EA401B0074731C /* NOCHair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCHair.h; sourceTree = "<group>"; };
-		A995C1E516EA401B0074731C /* NOCHair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCHair.m; sourceTree = "<group>"; };
 		A998899C16C1FADB002C924F /* NOCDirectedWalker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCDirectedWalker.h; path = "Nature of Code/Week 1/NOCDirectedWalker.h"; sourceTree = SOURCE_ROOT; };
 		A998899D16C1FADB002C924F /* NOCDirectedWalker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCDirectedWalker.m; path = "Nature of Code/Week 1/NOCDirectedWalker.m"; sourceTree = SOURCE_ROOT; };
 		A998899E16C1FADB002C924F /* NOCDirectedWalkerSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCDirectedWalkerSketchViewController.h; path = "Nature of Code/Week 1/NOCDirectedWalkerSketchViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -325,8 +327,6 @@
 		A9C05C7616E78D190009F8C8 /* thumb_TriangleSpiral@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_TriangleSpiral@2x.png"; sourceTree = "<group>"; };
 		A9C05C7716E78D190009F8C8 /* thumb_Triangulation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Triangulation.png; sourceTree = "<group>"; };
 		A9C05C7816E78D190009F8C8 /* thumb_Triangulation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Triangulation@2x.png"; sourceTree = "<group>"; };
-		A9C05C7F16E7BF7A0009F8C8 /* NOCHairSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCHairSketchViewController.h; sourceTree = "<group>"; };
-		A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCHairSketchViewController.m; sourceTree = "<group>"; };
 		A9C05C8216E7C93B0009F8C8 /* NOCSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring.h; sourceTree = "<group>"; };
 		A9C05C8316E7C93B0009F8C8 /* NOCSpring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring.m; sourceTree = "<group>"; };
 		A9C05C8516E7C9570009F8C8 /* NOCSpring2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring2D.h; sourceTree = "<group>"; };
@@ -383,6 +383,29 @@
 		A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		A9E2250316ED167C002DC1F3 /* beard_hair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_hair.png; sourceTree = "<group>"; };
+		A9E2250816ED39EE002DC1F3 /* beard_mask_lincoln.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_lincoln.png; sourceTree = "<group>"; };
+		A9E2250A16ED3B75002DC1F3 /* beard_mask_wolverine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_wolverine.png; sourceTree = "<group>"; };
+		A9E2250C16ED3D10002DC1F3 /* beard_mask_hogan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_hogan.png; sourceTree = "<group>"; };
+		A9E2250E16ED55E7002DC1F3 /* beard_hair_cartoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_hair_cartoon.png; sourceTree = "<group>"; };
+		A9E2251016ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NOCSketchViewController+OpenGLScreenCapture.h"; path = "Shared/NOCSketchViewController+OpenGLScreenCapture.h"; sourceTree = "<group>"; };
+		A9E2251116ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NOCSketchViewController+OpenGLScreenCapture.m"; path = "Shared/NOCSketchViewController+OpenGLScreenCapture.m"; sourceTree = "<group>"; };
+		A9E2251316ED6365002DC1F3 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		A9E2251416ED6365002DC1F3 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		A9E2251716ED67E0002DC1F3 /* beard_mask_gotee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_gotee.png; sourceTree = "<group>"; };
+		A9E2251A16ED6A02002DC1F3 /* NOCBeard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeard.h; sourceTree = "<group>"; };
+		A9E2251B16ED6A02002DC1F3 /* NOCBeard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeard.m; sourceTree = "<group>"; };
+		A9E2251C16ED6A02002DC1F3 /* NOCBeardlySketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardlySketchViewController.h; sourceTree = "<group>"; };
+		A9E2251D16ED6A02002DC1F3 /* NOCBeardlySketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardlySketchViewController.m; sourceTree = "<group>"; };
+		A9E2251E16ED6A02002DC1F3 /* NOCBeardMakerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardMakerViewController.h; sourceTree = "<group>"; };
+		A9E2251F16ED6A02002DC1F3 /* NOCBeardMakerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardMakerViewController.m; sourceTree = "<group>"; };
+		A9E2252016ED6A02002DC1F3 /* NOCBeardVertFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeardVertFactory.h; sourceTree = "<group>"; };
+		A9E2252116ED6A02002DC1F3 /* NOCBeardVertFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeardVertFactory.m; sourceTree = "<group>"; };
+		A9E2252216ED6A02002DC1F3 /* NOCGuiBeardPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiBeardPicker.xib; sourceTree = "<group>"; };
+		A9E2252316ED6A02002DC1F3 /* NOCHair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCHair.h; sourceTree = "<group>"; };
+		A9E2252416ED6A02002DC1F3 /* NOCHair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCHair.m; sourceTree = "<group>"; };
+		A9E2252516ED6A02002DC1F3 /* NOCHairSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCHairSketchViewController.h; sourceTree = "<group>"; };
+		A9E2252616ED6A02002DC1F3 /* NOCHairSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCHairSketchViewController.m; sourceTree = "<group>"; };
+		A9E2252E16ED6BF6002DC1F3 /* beard_mask_mutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_mutton.png; sourceTree = "<group>"; };
 		A9F6CB7116D1BD5D00F4BDF9 /* thumb_WaveAddition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_WaveAddition.png; sourceTree = "<group>"; };
 		A9F6CB7216D1BD5D00F4BDF9 /* thumb_WaveAddition@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_WaveAddition@2x.png"; sourceTree = "<group>"; };
 		A9F6CB7316D1BD5D00F4BDF9 /* thumb_WaveMatrix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_WaveMatrix.png; sourceTree = "<group>"; };
@@ -476,22 +499,11 @@
 		A936F0AF16DE7FBA00A6EBD8 /* Week 5 */ = {
 			isa = PBXGroup;
 			children = (
-				A9310E2916ECD0770099407C /* NOCBeard.h */,
-				A9310E2A16ECD0780099407C /* NOCBeard.m */,
-				A9310E2016EC058D0099407C /* NOCBeardlySketchViewController.h */,
-				A9310E2116EC058D0099407C /* NOCBeardlySketchViewController.m */,
-				A9310E2616EC2D6C0099407C /* NOCBeardMakerViewController.h */,
-				A9310E2716EC2D6E0099407C /* NOCBeardMakerViewController.m */,
-				A9310E2516EC0FBE0099407C /* NOCBeardVerts.h */,
 				A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */,
 				A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */,
 				A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */,
 				A9A60DC416E3C12600F0E5B9 /* NOCFaceMeshSketchViewController.h */,
 				A9A60DC516E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m */,
-				A995C1E416EA401B0074731C /* NOCHair.h */,
-				A995C1E516EA401B0074731C /* NOCHair.m */,
-				A9C05C7F16E7BF7A0009F8C8 /* NOCHairSketchViewController.h */,
-				A9C05C8016E7BF7A0009F8C8 /* NOCHairSketchViewController.m */,
 				A9A60DBD16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.h */,
 				A9A60DBE16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m */,
 				A936F0B016DE7FD900A6EBD8 /* NOCTriangulationSketchViewController.h */,
@@ -530,7 +542,13 @@
 			isa = PBXGroup;
 			children = (
 				A9E2250316ED167C002DC1F3 /* beard_hair.png */,
-				A9310E2316EC06F20099407C /* beard_mask_0.png */,
+				A9E2250E16ED55E7002DC1F3 /* beard_hair_cartoon.png */,
+				A9E2251716ED67E0002DC1F3 /* beard_mask_gotee.png */,
+				A9E2250C16ED3D10002DC1F3 /* beard_mask_hogan.png */,
+				A9E2250816ED39EE002DC1F3 /* beard_mask_lincoln.png */,
+				A9E2252E16ED6BF6002DC1F3 /* beard_mask_mutton.png */,
+				A9310E2316EC06F20099407C /* beard_mask_standard.png */,
+				A9E2250A16ED3B75002DC1F3 /* beard_mask_wolverine.png */,
 				A95C703F16D034660058D8BA /* brushed_sphere.png */,
 				A95C704016D034660058D8BA /* dark_sphere.png */,
 				A936F0CD16DEA58700A6EBD8 /* face.png */,
@@ -605,6 +623,7 @@
 				A95C703B16D032DC0058D8BA /* Week 3 */,
 				A9F78ACF16D9138600073D16 /* Week 4 */,
 				A936F0AF16DE7FBA00A6EBD8 /* Week 5 */,
+				A9E2251916ED6A02002DC1F3 /* Week 6 */,
 			);
 			name = "Chapters / Weeks";
 			sourceTree = "<group>";
@@ -705,6 +724,8 @@
 				A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */,
 				A987361816BE052C001D74E8 /* NOCUIKitHelpers.h */,
 				A987361916BE052C001D74E8 /* NOCUIKitHelpers.m */,
+				A9E2251016ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.h */,
+				A9E2251116ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -800,6 +821,8 @@
 		A9D1AEAB16B99E68000BE623 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A9E2251316ED6365002DC1F3 /* camera.png */,
+				A9E2251416ED6365002DC1F3 /* camera@2x.png */,
 				A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */,
 				A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */,
 				A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */,
@@ -858,6 +881,26 @@
 				A9D1AEC116B9A288000BE623 /* TableOfContents.plist */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		A9E2251916ED6A02002DC1F3 /* Week 6 */ = {
+			isa = PBXGroup;
+			children = (
+				A9E2251A16ED6A02002DC1F3 /* NOCBeard.h */,
+				A9E2251B16ED6A02002DC1F3 /* NOCBeard.m */,
+				A9E2251C16ED6A02002DC1F3 /* NOCBeardlySketchViewController.h */,
+				A9E2251D16ED6A02002DC1F3 /* NOCBeardlySketchViewController.m */,
+				A9E2251E16ED6A02002DC1F3 /* NOCBeardMakerViewController.h */,
+				A9E2251F16ED6A02002DC1F3 /* NOCBeardMakerViewController.m */,
+				A9E2252016ED6A02002DC1F3 /* NOCBeardVertFactory.h */,
+				A9E2252116ED6A02002DC1F3 /* NOCBeardVertFactory.m */,
+				A9E2252216ED6A02002DC1F3 /* NOCGuiBeardPicker.xib */,
+				A9E2252316ED6A02002DC1F3 /* NOCHair.h */,
+				A9E2252416ED6A02002DC1F3 /* NOCHair.m */,
+				A9E2252516ED6A02002DC1F3 /* NOCHairSketchViewController.h */,
+				A9E2252616ED6A02002DC1F3 /* NOCHairSketchViewController.m */,
+			);
+			path = "Week 6";
 			sourceTree = "<group>";
 		};
 		A9F78ACF16D9138600073D16 /* Week 4 */ = {
@@ -1018,8 +1061,17 @@
 				A9C05C7C16E78D190009F8C8 /* thumb_TriangleSpiral@2x.png in Resources */,
 				A9C05C7D16E78D190009F8C8 /* thumb_Triangulation.png in Resources */,
 				A9C05C7E16E78D190009F8C8 /* thumb_Triangulation@2x.png in Resources */,
-				A9310E2416EC06F20099407C /* beard_mask_0.png in Resources */,
+				A9310E2416EC06F20099407C /* beard_mask_standard.png in Resources */,
 				A9E2250416ED167C002DC1F3 /* beard_hair.png in Resources */,
+				A9E2250916ED39EE002DC1F3 /* beard_mask_lincoln.png in Resources */,
+				A9E2250B16ED3B75002DC1F3 /* beard_mask_wolverine.png in Resources */,
+				A9E2250D16ED3D10002DC1F3 /* beard_mask_hogan.png in Resources */,
+				A9E2250F16ED55E7002DC1F3 /* beard_hair_cartoon.png in Resources */,
+				A9E2251516ED6365002DC1F3 /* camera.png in Resources */,
+				A9E2251616ED6365002DC1F3 /* camera@2x.png in Resources */,
+				A9E2251816ED67E0002DC1F3 /* beard_mask_gotee.png in Resources */,
+				A9E2252B16ED6A02002DC1F3 /* NOCGuiBeardPicker.xib in Resources */,
+				A9E2252F16ED6BF6002DC1F3 /* beard_mask_mutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1085,14 +1137,16 @@
 				A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */,
 				A9A60DBF16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m in Sources */,
 				A9A60DC616E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m in Sources */,
-				A9C05C8116E7BF7A0009F8C8 /* NOCHairSketchViewController.m in Sources */,
 				A9C05C8416E7C93C0009F8C8 /* NOCSpring.m in Sources */,
 				A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */,
 				A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */,
-				A995C1E616EA401B0074731C /* NOCHair.m in Sources */,
-				A9310E2216EC058D0099407C /* NOCBeardlySketchViewController.m in Sources */,
-				A9310E2816EC2D700099407C /* NOCBeardMakerViewController.m in Sources */,
-				A9310E2B16ECD07A0099407C /* NOCBeard.m in Sources */,
+				A9E2251216ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.m in Sources */,
+				A9E2252716ED6A02002DC1F3 /* NOCBeard.m in Sources */,
+				A9E2252816ED6A02002DC1F3 /* NOCBeardlySketchViewController.m in Sources */,
+				A9E2252916ED6A02002DC1F3 /* NOCBeardMakerViewController.m in Sources */,
+				A9E2252A16ED6A02002DC1F3 /* NOCBeardVertFactory.m in Sources */,
+				A9E2252C16ED6A02002DC1F3 /* NOCHair.m in Sources */,
+				A9E2252D16ED6A02002DC1F3 /* NOCHairSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

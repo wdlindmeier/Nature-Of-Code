@@ -7,10 +7,10 @@
 //
 
 #import "NOCBeard.h"
-#import "NOCBeardVerts.h"
 #import "NOCHair.h"
 #import "NOCShaderProgram.h"
 #import "NOCParticle2D.h"
+#import "NOCBeardVertFactory.h"
 
 #define RENDER_WIREFRAME    0
 
@@ -34,12 +34,16 @@ static NSString * UniformTexture = @"texture";
 
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
-- (id)initWithBeardType:(NOCBeardType)type position:(GLKVector2)position
+- (id)initWithBeardType:(NOCBeardType)type
+               position:(GLKVector2)position
+                texture:(GLKTextureInfo *)texture
 {
     self = [super init];
     if(self){
+        
         _beardType = type;
-        [self createHairs];
+
+        [self reset];
         
 #if RENDER_WIREFRAME
 
@@ -51,7 +55,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         _shader.uniformNames = @[ UniformMVProjectionMatrix ];
         
 #else
-        _textureHair = NOCLoadGLTextureWithName(@"beard_hair");
+
+        _textureHair = texture;
         
         _shader = [[NOCShaderProgram alloc] initWithName:NOCBeardShaderName];
         
@@ -69,20 +74,46 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     return self;
 }
 
+- (void)reset
+{
+    [self createHairs];
+    _position = GLKVector2Zero;
+    _positionTo = GLKVector2Zero;
+}
+
 - (void)createHairs
 {
-    int numHairs = 0;
-    float *hairVerts = NULL;
+    NSString *beardName = nil;
     
     switch (_beardType) {
         case NOCBeardTypeStandard:
-            numHairs = NumHairsBeard0;
-            hairVerts = HairVertsBeard0;
+            beardName = @"beard_mask_standard";
+            break;
+        case NOCBeardTypeLincoln:
+            beardName = @"beard_mask_lincoln";
+            break;
+        case NOCBeardTypeWolverine:
+            beardName = @"beard_mask_wolverine";
+            break;
+        case NOCBeardTypeHogan:
+            beardName = @"beard_mask_hogan";
+            break;
+        case NOCBeardTypeGotee:
+            beardName = @"beard_mask_gotee";
+            break;
+        case NOCBeardTypeMutton:
+            beardName = @"beard_mask_mutton";
             break;
         case NOCBeardTypeNone:
             break;
     }
-
+    
+    if(!beardName) return;
+    
+    NSArray *hairPositions = [NOCBeardVertFactory hairPositionsForBeardNamed:beardName];
+    
+    int numHairs = hairPositions.count;
+    
     _hairs = [NSMutableArray arrayWithCapacity:numHairs];
     
     CGRect frameBeard = CGRectMake(-0.48,
@@ -90,10 +121,11 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
                                    0.9,
                                    1.0);
     
-    for(int i=0;i<NumHairsBeard0;i++){
+    for(int i=0;i<numHairs;i++){
         
-        float x = hairVerts[i*2+0];
-        float y = hairVerts[i*2+1];
+        float x = [(NSNumber *)hairPositions[i][0] floatValue];
+        float y = [(NSNumber *)hairPositions[i][1] floatValue];
+        float z = [(NSNumber *)hairPositions[i][2] floatValue];
         
         x = frameBeard.origin.x + (x * frameBeard.size.width);
         y = frameBeard.origin.y - (y * frameBeard.size.height);
@@ -103,12 +135,17 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
                                            numParticles:0
                                                ofLength:0.05];
         
-        hair.growthRate = 0.0005;
-        hair.maxNumParticles = 8;
+        // NOTE: The brighter the z component is, the less it grows
+        const static float MaxGrowthRate = 0.001;
+        const static float MaxNumParticles = 10;
+        // NOTE: We want the dark areas to grow faster
+        float darkness = 1.0 - z;
+        hair.growthRate = darkness * MaxGrowthRate;
+        hair.maxNumParticles = ceil(darkness * MaxNumParticles);
         
         [_hairs addObject:hair];
     }
-    
+
     // Sort them so the higher hairs are rendered first.
     [_hairs sortUsingComparator:^NSComparisonResult(NOCHair *h1, NOCHair *h2) {
         if(h1.anchor.y < h2.anchor.y){
@@ -211,28 +248,41 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         }
 #else
         GLfloat texCoords[numVerts * 2];
+        
+        float amtLastSegment = h.lastSegmentLength / h.distBetweenParticles;
+
         for(int i=0;i<(numParticles+1);i++){
-            if(i ==0 || i == numParticles){
-                texCoords[i*4+0] = 0.5;
-                texCoords[i*4+1] = 1.0;
-                texCoords[i*4+2] = 0.5;
-                texCoords[i*4+3] = 1.0;
-            }else if(i%2==0){
-                texCoords[i*4+0] = 0.0;
-                texCoords[i*4+1] = 1.0;
-                texCoords[i*4+2] = 1.0;
-                texCoords[i*4+3] = 1.0;
+                       
+            if(i%2==0){
+                if(i == numParticles){
+                    texCoords[i*4+0] = 0.0;
+                    texCoords[i*4+1] = amtLastSegment;
+                    texCoords[i*4+2] = 1.0;
+                    texCoords[i*4+3] = amtLastSegment;
+                }else{
+                    texCoords[i*4+0] = 0.0;
+                    texCoords[i*4+1] = 1.0;
+                    texCoords[i*4+2] = 1.0;
+                    texCoords[i*4+3] = 1.0;
+                }
             }else{
-                texCoords[i*4+0] = 0.0;
-                texCoords[i*4+1] = 0.0;
-                texCoords[i*4+2] = 1.0;
-                texCoords[i*4+3] = 0.0;
+                if(i == numParticles){
+                    texCoords[i*4+0] = 0.0;
+                    texCoords[i*4+1] = 1.0-amtLastSegment;
+                    texCoords[i*4+2] = 1.0;
+                    texCoords[i*4+3] = 1.0-amtLastSegment;
+                }else{
+                    texCoords[i*4+0] = 0.0;
+                    texCoords[i*4+1] = 0.0;
+                    texCoords[i*4+2] = 1.0;
+                    texCoords[i*4+3] = 0.0;                    
+                }
             }
         }
 #endif
         
         // The max width should be smaller for smaller hairs
-        float minHairWidth = 0.01;
+        float minHairWidth = 0.005;
         float maxHairWidth = MIN(minHairWidth * numParticles, 0.025);
         
         hairVerts[0] = h.anchor.x - (minHairWidth*0.5);
@@ -249,19 +299,18 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
             NOCParticle2D *p = particles[i];
             GLKVector2 pPos = p.position;
             
-            // TODO:
-            // Account for the angle
-            // ...
-            // Then:
+            // Account for the segment angle
+            GLKVector2 perpVec = NOCGLKVector2Normal(GLKVector2Subtract(pPos, prevPoint));
             prevPoint = pPos;
             
             float scalarSegment = (float)(i+1) / (float)(numParticles);
-            float segmentWidth = MAX((1.0 - fabs((scalarSegment*2.0) - 1)) * maxHairWidth, minHairWidth);
+            float segmentWidth = MAX(MIN(1.0, scalarSegment * maxHairWidth * 3.0), minHairWidth);
+            //MAX((1.0 - fabs((scalarSegment*2.0) - 1)) * maxHairWidth, minHairWidth);
             
-            float pX1 = pPos.x - (segmentWidth * 0.5);
-            float pX2 = pPos.x + (segmentWidth * 0.5);
-            float pY1 = pPos.y;
-            float pY2 = pPos.y;
+            float pX1 = pPos.x - (perpVec.x * segmentWidth * 0.5);
+            float pX2 = pPos.x + (perpVec.x * segmentWidth * 0.5);
+            float pY1 = pPos.y - (perpVec.y * segmentWidth * 0.5);
+            float pY2 = pPos.y + (perpVec.y * segmentWidth * 0.5);
 
             hairVerts[(i+1)*6+0] = pX1;
             hairVerts[(i+1)*6+1] = pY1;
