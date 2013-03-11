@@ -14,7 +14,6 @@
 
 @interface NOCTableOfContentsCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *labelChapterName;
 @property (nonatomic, strong) NOCChapter *chapter;
 @property (nonatomic, assign) id <NOCTableOfContentsCellSelectionDelegate> delegate;
 

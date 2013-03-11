@@ -49,8 +49,10 @@
 {
     [super viewDidLoad];
     self.tableView.directionalLockEnabled = YES;
+    self.tableView.separatorColor = [UIColor blackColor];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     self.view.backgroundColor = [UIColor blackColor];
+    [self setupTableHeaderView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -64,11 +66,31 @@
     return YES;
 }
 
+- (void)setupTableHeaderView
+{
+    CGSize sizeView = self.view.frame.size;
+    CGRect rectLabel = CGRectMake(0, 0, sizeView.width, 0);
+    float headerHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 200.0f : 100.0f;
+    rectLabel.size.height = headerHeight;
+    UILabel *label = [[UILabel alloc] initWithFrame:rectLabel];
+    label.backgroundColor = [UIColor colorWithRed:0.91
+                                            green:0.1
+                                             blue:0.36
+                                            alpha:1.0];
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont boldSystemFontOfSize:24.0f];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.autoresizingMask =
+    UIViewAutoresizingFlexibleWidth;
+    label.text = NSLocalizedString(@"NATURE OF CODE", @"Table of Contents Header");
+    self.tableView.tableHeaderView = label;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return _tableOfContents.count;
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -81,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _tableOfContents.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,7 +114,7 @@
         cell = [[NOCTableOfContentsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NOCChapter *chapter = _tableOfContents[indexPath.row];
+    NOCChapter *chapter = _tableOfContents[indexPath.section];
     cell.chapter = chapter;
     cell.delegate = self;
     return cell;
@@ -100,33 +122,31 @@
 
 - (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    /*
-    CGSize sizeView = self.view.frame.size;
-    return sizeView.height * 0.2;
-    */
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
-        return 200.0f;
-    }
-    return 100.0f;
+    return 30.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CGSize sizeView = self.view.frame.size;
+    
     CGRect rectLabel = CGRectMake(0, 0, sizeView.width, 0);
     rectLabel.size.height = [self tableView:tableView heightForHeaderInSection:section];
+    UIView *viewHeader = [[UIView alloc] initWithFrame:rectLabel];
+    viewHeader.backgroundColor = [UIColor blackColor];
     
+    rectLabel.origin.x = 15.0f;
     UILabel *label = [[UILabel alloc] initWithFrame:rectLabel];
-    label.backgroundColor = [UIColor colorWithRed:0.91
-                                            green:0.1
-                                             blue:0.36
-                                            alpha:1.0];
+    label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:24.0f];
-    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:20.0f];
+    label.textAlignment = NSTextAlignmentLeft;
     label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    label.text = NSLocalizedString(@"NATURE OF CODE", @"Table of Contents Header");
-    return label;
+    NOCChapter *chapter = _tableOfContents[section];
+    label.text = chapter.name;
+    
+    [viewHeader addSubview:label];
+    
+    return viewHeader;
 }
 
 #pragma mark - Table view delegate

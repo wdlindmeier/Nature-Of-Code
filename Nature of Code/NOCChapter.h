@@ -13,6 +13,7 @@
 - (id)initWithDictionary:(NSDictionary *)chapterInfo;
 
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSNumber *weekNumber;
 @property (nonatomic, copy) NSArray *sketches;
 
 @end

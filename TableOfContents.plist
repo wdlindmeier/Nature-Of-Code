@@ -3,8 +3,10 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>Week Number</key>
+		<integer>1</integer>
 		<key>Name</key>
-		<string>Week 1: Introduction</string>
+		<string>Introduction</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -34,8 +36,10 @@
 		</array>
 	</dict>
 	<dict>
+		<key>Week Number</key>
+		<integer>2</integer>
 		<key>Name</key>
-		<string>Week 2: Vectors and Forces</string>
+		<string>Vectors and Forces</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -65,8 +69,10 @@
 		</array>
 	</dict>
 	<dict>
+		<key>Week Number</key>
+		<integer>3</integer>
 		<key>Name</key>
-		<string>Week 3: Oscillation</string>
+		<string>Oscillation</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -96,8 +102,10 @@
 		</array>
 	</dict>
 	<dict>
+		<key>Week Number</key>
+		<integer>4</integer>
 		<key>Name</key>
-		<string>Week 4: Particle Systems</string>
+		<string>Particle Systems</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -119,8 +127,10 @@
 		</array>
 	</dict>
 	<dict>
+		<key>Week Number</key>
+		<integer>5</integer>
 		<key>Name</key>
-		<string>Week 5/6: Midterm</string>
+		<string>Midterm Pt. I</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -147,11 +157,20 @@
 				<key>Controller</key>
 				<string>FaceMesh</string>
 			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Week Number</key>
+		<integer>6</integer>
+		<key>Name</key>
+		<string>Midterm Pt. II</string>
+		<key>Sketches</key>
+		<array>
 			<dict>
 				<key>Name</key>
-				<string>Hair Sim</string>
+				<string>Hair Simulation</string>
 				<key>Description</key>
-				<string>Hair simulation by connecting a string of particles with springs. Touching the screen adds wind forces.</string>
+				<string>Hair is simulated by connecting particles with springs. Touching the screen adds wind forces.</string>
 				<key>Controller</key>
 				<string>Hair</string>
 			</dict>
@@ -159,7 +178,7 @@
 				<key>Name</key>
 				<string>Beard.ly</string>
 				<key>Description</key>
-				<string></string>
+				<string>Uses face detection to map a beard onto you. Drag your finger to add wind forces. Double tap to reset the beard.</string>
 				<key>Controller</key>
 				<string>Beardly</string>
 			</dict>

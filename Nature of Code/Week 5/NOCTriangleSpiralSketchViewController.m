@@ -21,6 +21,7 @@ const static BOOL DrawTriangleEdges = YES;
     GLfloat *_meshColors;
     int _numVerts;
     DelaunayTriangulation *_triangulation;
+    UIView *_viewLoading;
 }
 
 @end
@@ -29,6 +30,27 @@ const static BOOL DrawTriangleEdges = YES;
 
 static NSString * TriangleShader = @"ColoredVerts";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
+
+#pragma mark - View
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    _viewLoading = [[UIView alloc] initWithFrame:self.view.bounds];
+    _viewLoading.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activityIndicator startAnimating];
+    activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
+                                         UIViewAutoresizingFlexibleTopMargin |
+                                         UIViewAutoresizingFlexibleRightMargin |
+                                         UIViewAutoresizingFlexibleBottomMargin;
+    activityIndicator.hidesWhenStopped = NO;
+    activityIndicator.center = CGPointMake(_sizeView.width * 0.5, _sizeView.height * 0.5);
+    [_viewLoading addSubview:activityIndicator];
+    
+}
+
+#pragma mark - App Loop
 
 - (void)setup
 {
@@ -78,8 +100,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         // If we're outside of the bounds, lets just quit.
         float maxBounds = 1.0 / _viewAspect;
         if(fabs(x) > maxBounds && fabs(y) > maxBounds){
-            
-            NSLog(@"quitting at %i points", i);
+
+            // That should be enough
             break;
             
         }else{
@@ -230,7 +252,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         }
         
     }
-    
+ 
+    [_viewLoading removeFromSuperview];
 }
 
 - (void)draw
@@ -278,9 +301,22 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
             float scalarY = posTouch.y / _sizeView.height;
             _curveStep = scalarX * 0.5;
             _distStep = scalarY * 0.1;
-            [self reTriangulate];
+            [self startTriangulation];
         }
     }
+}
+
+- (void)startTriangulation
+{
+    _viewLoading.alpha = 0;
+    _viewLoading.frame = self.view.bounds;
+    [self.view addSubview:_viewLoading];
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         _viewLoading.alpha = 1.0;
+                     } completion:^(BOOL finished) {
+                         [self reTriangulate];
+                     }];
 }
 
 @end

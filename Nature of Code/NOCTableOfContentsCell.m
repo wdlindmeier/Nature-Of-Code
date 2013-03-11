@@ -12,6 +12,7 @@
 {
     void *_kvoContextChapter;
     UIScrollView *_scrollView;
+    UIImageView *_imgViewSectionNum;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -46,12 +47,10 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:_scrollView];
     
-    _labelChapterName = [[UILabel alloc] initWithFrame:CGRectMake(20, 12, 300, 300)];
-    _labelChapterName.backgroundColor = [UIColor blackColor];
-    _labelChapterName.font = [UIFont systemFontOfSize:24.0f];
-    _labelChapterName.textColor = [UIColor whiteColor];
-    [self.contentView addSubview:_labelChapterName];
-    
+    _imgViewSectionNum = [[UIImageView alloc] initWithFrame:CGRectZero];
+    _imgViewSectionNum.userInteractionEnabled = NO;
+    [self addSubview:_imgViewSectionNum];
+
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [self addObserver:self
@@ -84,12 +83,13 @@
 - (void)updateViewWithCurrentChapter
 {
     
-    _labelChapterName.text = self.chapter.name;
-    CGRect labelFrame = _labelChapterName.frame;
-    labelFrame.size.width = 9999;
-    _labelChapterName.frame = labelFrame;
-    [_labelChapterName sizeToFit];
-    
+    UIImage *imgSectionNum = [UIImage imageNamed:[NSString stringWithFormat:@"%i",
+                                                  [self.chapter.weekNumber integerValue]]];
+    _imgViewSectionNum.image = imgSectionNum;
+    [_imgViewSectionNum sizeToFit];
+    _imgViewSectionNum.center = CGPointMake(15.0 + imgSectionNum.size.width * 0.5,
+                                            (imgSectionNum.size.height * 0.5) - 10.0f); 
+
     // Remove previous buttons
     for(UIView *v in _scrollView.subviews){
         if([v isKindOfClass:[UIButton class]]){
@@ -102,11 +102,7 @@
         NOCSketch *sketch = self.chapter.sketches[i];
         UIButton *btnSketch = [[UIButton alloc] initWithFrame:CGRectZero];
         btnSketch.tag = i;
-        /*
-        [btnSketch setTitle:sketch.name forState:UIControlStateNormal];
-        [btnSketch setTitleColor:[UIColor colorWithWhite:0.8 alpha:1]
-                        forState:UIControlStateNormal];
-        */
+
         float randBGWhite = (arc4random() % 50) * 0.01;
         btnSketch.backgroundColor = [UIColor colorWithWhite:randBGWhite
                                                       alpha:1.0];

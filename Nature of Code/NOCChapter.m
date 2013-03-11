@@ -16,6 +16,7 @@
     self = [super init];
     if(self){
         self.name = [chapterInfo valueForKey:NOCTOCKeyChapterName];
+        self.weekNumber = [chapterInfo valueForKey:NOCTOCKeyWeekNumber];
         NSArray *sketchInfos = [chapterInfo valueForKey:NOCTOCKeyChapterSketches];
         NSMutableArray *chSketches = [NSMutableArray arrayWithCapacity:5];
         for(NSDictionary *sketchInfo in sketchInfos){

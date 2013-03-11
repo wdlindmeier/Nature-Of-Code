@@ -136,7 +136,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
                                                ofLength:0.05];
         
         // NOTE: The brighter the z component is, the less it grows
-        const static float MaxGrowthRate = 0.001;
+        const static float MaxGrowthRate = 0.002;
         const static float MaxNumParticles = 10;
         // NOTE: We want the dark areas to grow faster
         float darkness = 1.0 - z;
