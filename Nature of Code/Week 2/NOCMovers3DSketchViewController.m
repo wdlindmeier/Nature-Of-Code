@@ -140,7 +140,7 @@ static NSString * UniformMoverTexture = @"texture";
     // Draw the scene box
     NOCShaderProgram *shaderScene = [self shaderNamed:ShaderNameSceneBox];
     [shaderScene use];
-    [shaderScene setMatrix:matScene
+    [shaderScene setMatrix4:matScene
                 forUniform:UniformMVProjectionMatrix];
     [_sceneBox render];
     

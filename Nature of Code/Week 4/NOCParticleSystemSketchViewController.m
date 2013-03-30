@@ -171,7 +171,7 @@ static NSString * UniformParticleAge = @"scalarAge";
         GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, particleMatrix);
         
         // Pass mvp into shader
-        [particleShader setMatrix:mvProjMat forUniform:UniformMVProjectionMatrix];
+        [particleShader setMatrix4:mvProjMat forUniform:UniformMVProjectionMatrix];
         
         // Pass the age into the shader.
         // Age will determine the alpha, but we don't want the

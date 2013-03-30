@@ -219,7 +219,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 - (void)renderInMatrix:(GLKMatrix4)matrix
 {
     [_shader use];
-    [_shader setMatrix:matrix forUniform:UniformMVProjectionMatrix];
+    [_shader setMatrix4:matrix forUniform:UniformMVProjectionMatrix];
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     

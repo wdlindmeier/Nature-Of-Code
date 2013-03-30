@@ -269,7 +269,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     
     GLKMatrix4 matScene = _projectionMatrix2D;
     
-    [shader setMatrix:matScene forUniform:UniformMVProjectionMatrix];
+    [shader setMatrix4:matScene forUniform:UniformMVProjectionMatrix];
 
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, _meshVecs);

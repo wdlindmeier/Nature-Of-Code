@@ -242,7 +242,7 @@ static const int NumFramesWithoutFaceToResetBeard = 30;
     // Draw the video background    
     NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
-    [texShader setMatrix:_matVideoTexture forUniform:UniformMVProjectionMatrix];
+    [texShader setMatrix4:_matVideoTexture forUniform:UniformMVProjectionMatrix];
     [_videoSession bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
     
@@ -259,7 +259,7 @@ static const int NumFramesWithoutFaceToResetBeard = 30;
     // Draw faces
     NOCShaderProgram *shaderFace = [self shaderNamed:FaceTrackingShaderName];
     [shaderFace use];
-    [shaderFace setMatrix:_matVideoTexture forUniform:UniformMVProjectionMatrix];
+    [shaderFace setMatrix4:_matVideoTexture forUniform:UniformMVProjectionMatrix];
     
     // Draw a stroked cube
     for(NSValue *rectValue in _faceRects){

@@ -102,7 +102,7 @@ static NSString * UniformTexture = @"texture";
     // Draw the video background
     NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
-    [texShader setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
+    [texShader setMatrix4:matTexture forUniform:UniformMVProjectionMatrix];
     [_videoSession bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
 
@@ -116,7 +116,7 @@ static NSString * UniformTexture = @"texture";
     // Draw faces
     NOCShaderProgram *shaderFace = [self shaderNamed:FaceShaderName];
     [shaderFace use];
-    [shaderFace setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
+    [shaderFace setMatrix4:matTexture forUniform:UniformMVProjectionMatrix];
 
     // Draw a stroked cube
     for(NSValue *rectValue in _faceRects){

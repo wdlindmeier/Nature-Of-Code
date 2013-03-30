@@ -206,7 +206,14 @@
     glUniform1i([uniLoc intValue], i);
 }
 
-- (void)setMatrix:(const GLKMatrix4)mat forUniform:(NSString *)uniformName
+- (void)setMatrix3:(const GLKMatrix3)mat forUniform:(NSString *)uniformName
+{
+    NSNumber *uniLoc = self.uniformLocations[uniformName];
+    // default values for count and transpose
+    glUniformMatrix3fv([uniLoc intValue], 1, 0, mat.m);
+}
+
+- (void)setMatrix4:(const GLKMatrix4)mat forUniform:(NSString *)uniformName
 {
     NSNumber *uniLoc = self.uniformLocations[uniformName];
     // default values for count and transpose

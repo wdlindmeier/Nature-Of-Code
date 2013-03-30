@@ -305,7 +305,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     }
     glUniform3fv([uniLoc intValue], MaxNumFlames, flameLocs);
 
-    [paperShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
+    [paperShader setMatrix4:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_screen3DBillboardVertexData);
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
@@ -316,7 +316,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
         
         NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
         [texShader use];
-        [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
+        [texShader setMatrix4:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
 
         glEnable(GL_TEXTURE_2D);
         glActiveTexture(0);
@@ -347,7 +347,7 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     // Draw the FBO as a texture
     NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
-    [texShader setMatrix:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
+    [texShader setMatrix4:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     [_fbo bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
 

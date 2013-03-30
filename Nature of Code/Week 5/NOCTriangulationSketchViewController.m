@@ -92,7 +92,7 @@ static NSString * UniformScale = @"scale";
     NOCShaderProgram *shader = [self shaderNamed:TriangulationShaderName];
     
     [shader use];
-    [shader setMatrix:matView forUniform:UniformMVProjectionMatrix];
+    [shader setMatrix4:matView forUniform:UniformMVProjectionMatrix];
 
     // NOTE: Translate and scale are not used in this sketch.
     // Just pass in Identity values.

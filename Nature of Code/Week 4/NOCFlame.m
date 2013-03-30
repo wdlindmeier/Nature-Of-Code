@@ -149,7 +149,7 @@ const static int NumDistHistory = 5;
         GLKMatrix4 mvProjMat = GLKMatrix4Multiply(projectionMatrix, particleMatrix);
         
         // Pass mvp into shader
-        [_shader setMatrix:mvProjMat forUniform:UniformMVProjectionMatrix];
+        [_shader setMatrix4:mvProjMat forUniform:UniformMVProjectionMatrix];
         
         float age = p.stepCount / (float)p.stepLimit;
         float maxBrightness = 0.1;

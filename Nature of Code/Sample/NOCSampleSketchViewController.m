@@ -28,7 +28,7 @@ enum
 
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformNormalMatrix = @"normalMatrix";
-static NSString * SampleShaderName = @"sample_shader";
+static NSString * SampleShaderName = @"SampleShader";
 
 @interface NOCSampleSketchViewController ()
 {

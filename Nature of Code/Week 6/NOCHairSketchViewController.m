@@ -139,7 +139,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         [h renderParticles:^(GLKMatrix4 particleMatrix, NOCParticle2D *p) {
 
             GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, particleMatrix);
-            [shaderHair setMatrix:mvProjMat forUniform:UniformMVProjectionMatrix];
+            [shaderHair setMatrix4:mvProjMat forUniform:UniformMVProjectionMatrix];
             
             glEnableVertexAttribArray(GLKVertexAttribColor);
             glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &colorParticles);
@@ -147,7 +147,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
         } andSprings:^(GLKMatrix4 springMatrix, NOCSpring2D *s) {
             
             GLKMatrix4 mvProjMat = GLKMatrix4Multiply(_projectionMatrix2D, springMatrix);
-            [shaderHair setMatrix:mvProjMat forUniform:UniformMVProjectionMatrix];
+            [shaderHair setMatrix4:mvProjMat forUniform:UniformMVProjectionMatrix];
 
             glEnableVertexAttribArray(GLKVertexAttribColor);
             glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &colorSprings);

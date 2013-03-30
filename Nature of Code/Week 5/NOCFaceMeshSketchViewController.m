@@ -147,7 +147,7 @@ static const int FBODimension = 128;
     
     NOCShaderProgram *texShader = [self shaderNamed:TextureShaderName];
     [texShader use];
-    [texShader setMatrix:matTexture forUniform:UniformMVProjectionMatrix];
+    [texShader setMatrix4:matTexture forUniform:UniformMVProjectionMatrix];
     [_videoSession bindTexture:0];
     [texShader setInt:0 forUniform:UniformTexture];
     
@@ -206,7 +206,7 @@ static const int FBODimension = 128;
             
             if(meshVerts){
                 
-                [shaderFace setMatrix:matMesh forUniform:UniformMVProjectionMatrix];
+                [shaderFace setMatrix4:matMesh forUniform:UniformMVProjectionMatrix];
                 
                 glEnableVertexAttribArray(GLKVertexAttribPosition);
                 glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, meshVerts);

@@ -18,6 +18,7 @@
 		A920CEBF16C0373D00284EAF /* thumb_RandomWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */; };
 		A920CEC016C0373D00284EAF /* thumb_RandomWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */; };
 		A92A94B8170734B600780256 /* NOCTankSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92A94B7170734B600780256 /* NOCTankSketchViewController.m */; };
+		A92A94BB170744F600780256 /* NOCBeing.m in Sources */ = {isa = PBXBuildFile; fileRef = A92A94BA170744F600780256 /* NOCBeing.m */; };
 		A9310E2416EC06F20099407C /* beard_mask_standard.png in Resources */ = {isa = PBXBuildFile; fileRef = A9310E2316EC06F20099407C /* beard_mask_standard.png */; };
 		A936F0AB16DDA73B00A6EBD8 /* thumb_PaperBurn.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */; };
 		A936F0AC16DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */; };
@@ -229,6 +230,8 @@
 		A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_RandomWalker@2x.png"; sourceTree = "<group>"; };
 		A92A94B6170734B600780256 /* NOCTankSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTankSketchViewController.h; sourceTree = "<group>"; };
 		A92A94B7170734B600780256 /* NOCTankSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTankSketchViewController.m; sourceTree = "<group>"; };
+		A92A94B9170744F600780256 /* NOCBeing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBeing.h; sourceTree = "<group>"; };
+		A92A94BA170744F600780256 /* NOCBeing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBeing.m; sourceTree = "<group>"; };
 		A9310E2316EC06F20099407C /* beard_mask_standard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_standard.png; sourceTree = "<group>"; };
 		A936F0A716DDA73B00A6EBD8 /* thumb_PaperBurn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PaperBurn.png; sourceTree = "<group>"; };
 		A936F0A816DDA73B00A6EBD8 /* thumb_PaperBurn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_PaperBurn@2x.png"; sourceTree = "<group>"; };
@@ -560,6 +563,8 @@
 			children = (
 				A92A94B6170734B600780256 /* NOCTankSketchViewController.h */,
 				A92A94B7170734B600780256 /* NOCTankSketchViewController.m */,
+				A92A94B9170744F600780256 /* NOCBeing.h */,
+				A92A94BA170744F600780256 /* NOCBeing.m */,
 			);
 			path = "Week 7";
 			sourceTree = "<group>";
@@ -1281,6 +1286,7 @@
 				A9E2252C16ED6A02002DC1F3 /* NOCHair.m in Sources */,
 				A9E2252D16ED6A02002DC1F3 /* NOCHairSketchViewController.m in Sources */,
 				A92A94B8170734B600780256 /* NOCTankSketchViewController.m in Sources */,
+				A92A94BB170744F600780256 /* NOCBeing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
