@@ -9,8 +9,15 @@
 #import "NOCSketchViewController.h"
 #import <GLKit/GLKit.h>
 
-@interface NOC3DSketchViewController : NOCSketchViewController
+@interface NOC3DSketchViewController : NOCSketchViewController <UIGestureRecognizerDelegate>
 {
     GLKMatrix4 _projectionMatrix3D;
 }
+
+@property (nonatomic, assign) BOOL isArcballEnabled;
+@property (nonatomic, assign) BOOL isGestureNavigationEnabled;
+@property (nonatomic, readonly) float cameraDepth;
+
+- (GLKMatrix4)rotateMatrixWithArcBall:(GLKMatrix4)matrix;
+
 @end

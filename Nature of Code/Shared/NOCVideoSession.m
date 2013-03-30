@@ -107,7 +107,6 @@ enum {
     [_videoDataOutput setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:format]
                                                                    forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
     
-    // Doh. This seems to kill the GLKit draw loop
 	[_videoDataOutput setSampleBufferDelegate:self
                                         queue:dispatch_get_main_queue()];
     if ([session canAddOutput:_videoDataOutput] ){

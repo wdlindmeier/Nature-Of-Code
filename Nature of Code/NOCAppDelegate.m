@@ -11,8 +11,7 @@
 
 #if DEBUG
 
-#import "NOCBeardlySketchViewController.h"
-#import "NOCBeardMakerViewController.h"
+#import "NOCTankSketchViewController.h"
 
 #endif
 
@@ -26,8 +25,8 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-    // self.viewController = [[NOCBeardlySketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-    //                                                                     bundle:nil];
+//    self.viewController = [[NOCTankSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+//                                                                        bundle:nil];
     
 #endif
     
