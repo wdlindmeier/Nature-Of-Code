@@ -25,6 +25,7 @@
 @implementation NOC3DSketchViewController
 
 @synthesize cameraDepth = _cameraDepth;
+@synthesize quatArcball = _quatArcball;
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

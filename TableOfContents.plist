@@ -188,16 +188,24 @@
 		<key>Week Number</key>
 		<integer>7</integer>
 		<key>Name</key>
-		<string>Final Sketches</string>
+		<string>Evolution</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
 				<key>Name</key>
-				<string>Tank</string>
+				<string>Procreation</string>
 				<key>Description</key>
-				<string></string>
+				<string>A tank full of &quot;Beings&quot; that procreate when they touch. Double tap to reset.</string>
 				<key>Controller</key>
 				<string>Tank</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Followers</string>
+				<key>Description</key>
+				<string>Double tap to reset.</string>
+				<key>Controller</key>
+				<string>Followers</string>
 			</dict>
 		</array>
 	</dict>

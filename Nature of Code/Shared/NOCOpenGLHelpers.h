@@ -128,3 +128,22 @@ static inline void NOCSetGLVertCoordsForRect(GLfloat *glCoords, CGRect rect)
     glCoords[11] = 0;
     
 }
+
+static inline GLKVector3 NOCSurfaceNormalForTriangle(GLKVector3 ptA, GLKVector3 ptB, GLKVector3 ptC)
+{
+    GLKVector3 vector1 = GLKVector3Subtract(ptB,ptA);
+    GLKVector3 vector2 = GLKVector3Subtract(ptC,ptA);
+    GLKVector3Normalize(GLKVector3CrossProduct(vector1, vector2));
+    return GLKVector3Normalize(GLKVector3CrossProduct(vector1, vector2));
+}
+
+typedef enum WallSides {
+    WallSideNone = 0,
+    WallSideBack,
+    WallSideFront,
+    WallSideLeft,
+    WallSideRight,
+    WallSideTop,
+    WallSideBottom
+} WallSide;
+

@@ -17,6 +17,7 @@
 @property (nonatomic, assign) BOOL isArcballEnabled;
 @property (nonatomic, assign) BOOL isGestureNavigationEnabled;
 @property (nonatomic, readonly) float cameraDepth;
+@property (nonatomic, readonly) GLKQuaternion quatArcball;
 
 - (GLKMatrix4)rotateMatrixWithArcBall:(GLKMatrix4)matrix;
 

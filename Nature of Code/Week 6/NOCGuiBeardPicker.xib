@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -40,7 +40,6 @@
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{5, 61}, {99, 95}}</string>
 						<reference key="NSSuperview" ref="210233865"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="205676634"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -78,7 +77,6 @@
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{5, 177}, {99, 95}}</string>
 						<reference key="NSSuperview" ref="210233865"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="120563897"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -103,7 +101,6 @@
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{111, 177}, {99, 95}}</string>
 						<reference key="NSSuperview" ref="210233865"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="744691498"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -128,7 +125,6 @@
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{111, 61}, {99, 95}}</string>
 						<reference key="NSSuperview" ref="210233865"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="875829288"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -153,7 +149,6 @@
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{216, 61}, {99, 95}}</string>
 						<reference key="NSSuperview" ref="210233865"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="386349323"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -178,7 +173,6 @@
 						<int key="NSvFlags">293</int>
 						<string key="NSFrame">{{216, 177}, {99, 95}}</string>
 						<reference key="NSSuperview" ref="210233865"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -200,7 +194,6 @@
 				</array>
 				<string key="NSFrameSize">{320, 272}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="4567029"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -356,103 +349,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">44</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NOC2DSketchViewController</string>
-					<string key="superclassName">NOCSketchViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NOC2DSketchViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NOCBeardlySketchViewController</string>
-					<string key="superclassName">NOC2DSketchViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="buttonBeardGoteePressed:">id</string>
-						<string key="buttonBeardHoganPressed:">id</string>
-						<string key="buttonBeardLincolnPressed:">id</string>
-						<string key="buttonBeardMuttonPressed:">id</string>
-						<string key="buttonBeardStandardPressed:">id</string>
-						<string key="buttonBeardWolverinePressed:">id</string>
-						<string key="buttonCameraPressed:">id</string>
-						<string key="buttonResetPressed:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="buttonBeardGoteePressed:">
-							<string key="name">buttonBeardGoteePressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonBeardHoganPressed:">
-							<string key="name">buttonBeardHoganPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonBeardLincolnPressed:">
-							<string key="name">buttonBeardLincolnPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonBeardMuttonPressed:">
-							<string key="name">buttonBeardMuttonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonBeardStandardPressed:">
-							<string key="name">buttonBeardStandardPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonBeardWolverinePressed:">
-							<string key="name">buttonBeardWolverinePressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonCameraPressed:">
-							<string key="name">buttonCameraPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttonResetPressed:">
-							<string key="name">buttonResetPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NOCBeardlySketchViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NOCSketchViewController</string>
-					<string key="superclassName">GLKViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">buttonHideControlsPressed:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">buttonHideControlsPressed:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">buttonHideControlsPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="buttonHideControls">UIButton</string>
-						<string key="viewControls">UIView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="buttonHideControls">
-							<string key="name">buttonHideControls</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewControls">
-							<string key="name">viewControls</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NOCSketchViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
