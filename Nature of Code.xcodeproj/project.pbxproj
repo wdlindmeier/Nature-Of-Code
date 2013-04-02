@@ -195,6 +195,8 @@
 		A9E2256616ED7C16002DC1F3 /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2254E16ED7C16002DC1F3 /* 8@2x.png */; };
 		A9E2256716ED7C16002DC1F3 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2254F16ED7C16002DC1F3 /* 9.png */; };
 		A9E2256816ED7C16002DC1F3 /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2255016ED7C16002DC1F3 /* 9@2x.png */; };
+		A9E77345170B12D0009897C7 /* NOCShapeFollower.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E77342170B12D0009897C7 /* NOCShapeFollower.m */; };
+		A9E77346170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */; };
 		A9F0F1671708D0F500B9A6F6 /* NOCSharedFollowerTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */; };
 		A9F0F1691708D88900B9A6F6 /* NOCGuiFollowers.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */; };
 		A9F6CB7716D1BD5D00F4BDF9 /* thumb_WaveAddition.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F6CB7116D1BD5D00F4BDF9 /* thumb_WaveAddition.png */; };
@@ -481,6 +483,10 @@
 		A9E2254E16ED7C16002DC1F3 /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
 		A9E2254F16ED7C16002DC1F3 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		A9E2255016ED7C16002DC1F3 /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
+		A9E77341170B12D0009897C7 /* NOCShapeFollower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCShapeFollower.h; sourceTree = "<group>"; };
+		A9E77342170B12D0009897C7 /* NOCShapeFollower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShapeFollower.m; sourceTree = "<group>"; };
+		A9E77343170B12D0009897C7 /* NOCShapeFollowersSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCShapeFollowersSketchViewController.h; sourceTree = "<group>"; };
+		A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShapeFollowersSketchViewController.m; sourceTree = "<group>"; };
 		A9F0F1651708D0F500B9A6F6 /* NOCSharedFollowerTrail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSharedFollowerTrail.h; sourceTree = "<group>"; };
 		A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSharedFollowerTrail.m; sourceTree = "<group>"; };
 		A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiFollowers.xib; sourceTree = "<group>"; };
@@ -584,6 +590,10 @@
 				A92A94C41708AFBC00780256 /* NOCFollowersSketchViewController.h */,
 				A92A94C51708AFBC00780256 /* NOCFollowersSketchViewController.m */,
 				A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */,
+				A9E77341170B12D0009897C7 /* NOCShapeFollower.h */,
+				A9E77342170B12D0009897C7 /* NOCShapeFollower.m */,
+				A9E77343170B12D0009897C7 /* NOCShapeFollowersSketchViewController.h */,
+				A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */,
 				A9F0F1651708D0F500B9A6F6 /* NOCSharedFollowerTrail.h */,
 				A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */,
 				A92A94B6170734B600780256 /* NOCTankSketchViewController.h */,
@@ -1319,6 +1329,8 @@
 				A92A94C31708AF9900780256 /* NOCFollower.m in Sources */,
 				A92A94C61708AFBC00780256 /* NOCFollowersSketchViewController.m in Sources */,
 				A9F0F1671708D0F500B9A6F6 /* NOCSharedFollowerTrail.m in Sources */,
+				A9E77345170B12D0009897C7 /* NOCShapeFollower.m in Sources */,
+				A9E77346170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

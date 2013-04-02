@@ -1,15 +1,14 @@
 //
-//  NOCFollowersSketchViewController.m
+//  NOCShapeFollowersSketchViewController.m
 //  Nature of Code
 //
 //  Created by William Lindmeier on 3/31/13.
 //  Copyright (c) 2013 wdlindmeier. All rights reserved.
 //
 
-#import "NOCFollowersSketchViewController.h"
+#import "NOCShapeFollowersSketchViewController.h"
 #import "NOCShaderProgram.h"
-#import "NOCFollower.h"
-#import "NOCSharedFollowerTrail.h"
+#import "NOCShapeFollower.h"
 
 @interface NOC3DSketchViewController(Private)
 
@@ -17,7 +16,7 @@
 
 @end
 
-@interface NOCFollowersSketchViewController ()
+@interface NOCShapeFollowersSketchViewController ()
 {
     
     NOCBox3D _moverBounds;
@@ -36,9 +35,10 @@
     GLKVector3 _surfFrontWall[4];
     GLKVector3 _surfRightWall[4];
     GLKVector3 _surfLeftWall[4];
-
-    NOCSharedFollowerTrail *_sharedTrail;    
     
+    // Circle shape
+    float _circleRadius;
+
 }
 
 @end
@@ -49,7 +49,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 static NSString * UniformNormalMatrix = @"normalMatrix";
 static NSString * UniformColor = @"color";
 
-@implementation NOCFollowersSketchViewController
+@implementation NOCShapeFollowersSketchViewController
 
 #pragma mark - GUI
 
@@ -67,9 +67,9 @@ static NSString * UniformColor = @"color";
     }
     
     float mutationRate = self.sliderMutationRate.value * 0.001;
-    if(mutationRate != [NOCFollower mutationRate]){
-        [NOCFollower setMutationRate:mutationRate];
-        NSLog(@"Mutation rate: %f", [NOCFollower mutationRate]);
+    if(mutationRate != [NOCShapeFollower mutationRate]){
+        [NOCShapeFollower setMutationRate:mutationRate];
+        NSLog(@"Mutation rate: %f", [NOCShapeFollower mutationRate]);
     }
     
 }
@@ -78,7 +78,7 @@ static NSString * UniformColor = @"color";
 
 - (void)setup
 {
-    _sharedTrail = [[NOCSharedFollowerTrail alloc] init];
+    _circleRadius = 0.45f;
     
     _updateSpeed = 1;
     _numBatchFollowers = 30;
@@ -111,8 +111,6 @@ static NSString * UniformColor = @"color";
 
 - (void)setupInitialFollowers
 {
-    [_sharedTrail reset];
-    
     _numUpdates = 0;
     _generationFrame = 0;
     
@@ -131,13 +129,12 @@ static NSString * UniformColor = @"color";
     GLKVector3 startingPoint = GLKVector3Make(randX, randY, randZ);
     float mass = 1.0f;
     float radius = 0.05;
-    NOCFollower *randFollower = [[NOCFollower alloc] initWithRadius:radius
+    NOCShapeFollower *randFollower = [[NOCShapeFollower alloc] initWithRadius:radius
                                                            position:startingPoint
                                                                mass:mass];
     [randFollower randomizeDNA];
     randFollower.generation = 0;
-    randFollower.sharedTrail = [[NOCSharedFollowerTrail alloc] init];
-    
+
     return randFollower;
     
 }
@@ -201,9 +198,9 @@ static NSString * UniformColor = @"color";
     _generationFrame = 0;
 
     // Find the max fitness so we can normalize
-    float maxFitness = ((NOCFollower *)_followers[0]).fitness;
+    float maxFitness = ((NOCShapeFollower *)_followers[0]).fitness;
     float minFitness = maxFitness;
-    for(NOCFollower *f in _followers){
+    for(NOCShapeFollower *f in _followers){
         if(f.fitness > maxFitness){
             maxFitness = f.fitness;
         }
@@ -213,10 +210,10 @@ static NSString * UniformColor = @"color";
     }
     float fitnessRange = maxFitness - minFitness;
     
-    int bucketSize = _numBatchFollowers * 5; // large number so small fish still have a chance
+    int bucketSize = MAX(_numBatchFollowers * 5, 2); // large number so small fish still have a chance
     NSMutableArray *genePool = [NSMutableArray arrayWithCapacity:bucketSize];
     
-    for(NOCFollower *f in _followers){
+    for(NOCShapeFollower *f in _followers){
         
         // Normalize all of the fitnesses between 0 and 1
         float normalFitness = (f.fitness-minFitness) / fitnessRange;
@@ -225,33 +222,24 @@ static NSString * UniformColor = @"color";
             [genePool addObject:f];
         }
     }
+    
+    if(genePool.count == 0){
+        // Reuse
+        genePool = [NSArray arrayWithArray:_followers];
+    }
 
     _followers = [NSMutableArray arrayWithCapacity:_numBatchFollowers];
-    
-    NSMutableDictionary *sharedTrails = [NSMutableDictionary dictionaryWithCapacity:_numBatchFollowers];
     
     for(int i=0;i<_numBatchFollowers;i++){
         
         int randIdxA = arc4random() % genePool.count;
         int randIdxB = arc4random() % genePool.count;
         
-        NOCFollower *parentA = genePool[randIdxA];
-        NOCFollower *parentB = genePool[randIdxB];
+        NOCShapeFollower *parentA = genePool[randIdxA];
+        NOCShapeFollower *parentB = genePool[randIdxB];
         
-        // How do we select which parent to link the trail on...?
-        // Maybe the one with the greater fitness to encourage greater
-        // variety.
-        NOCFollower *siblingParent = parentA.fitness > parentB.fitness ? parentA : parentB;
-        NSString *sharedTrailKey = [NSString stringWithFormat:@"%i", [siblingParent hash]];
-        NOCSharedFollowerTrail *sharedTrail = [sharedTrails valueForKey:sharedTrailKey];
-        if(!sharedTrail){
-            sharedTrail = [[NOCSharedFollowerTrail alloc] init];
-            [sharedTrails setValue:sharedTrail forKey:sharedTrailKey];
-        }
-        
-        NOCFollower *nextGen = (NOCFollower *)[parentA crossover:parentB];
-        nextGen.sharedTrail = sharedTrail;
-        
+        NOCShapeFollower *nextGen = (NOCShapeFollower *)[parentA crossover:parentB];
+
         if(!nextGen){
             NSLog(@"ERROR: Couldn't cross over next gen");
         }else{
@@ -281,14 +269,10 @@ static NSString * UniformColor = @"color";
         
     }
 
-    for(NOCFollower *follower in _followers){
+    for(NOCShapeFollower *follower in _followers){
         
+        BOOL ShouldConstrain = NO;
         
-        FollowerGridPosition fPos0 = follower.gridPosition;
-        
-        BOOL ShouldConstrain = YES;
-        
-        // NOTE: If it doesn't constrain, it can't test the trail
         if(ShouldConstrain){
             
             follower.wallContact = WallSideNone;
@@ -307,25 +291,13 @@ static NSString * UniformColor = @"color";
             
         }
         
-        FollowerGridPosition fPos1 = follower.gridPosition;
+        // A simple circle
+        float distFromCenter = GLKVector3Distance(follower.position, GLKVector3Zero);
+        float distFromClosestSurface = fabsf(_circleRadius - distFromCenter);
         
-        BOOL shouldUpdateFitnessOnlyWhenMovedPlot = YES;
+        // Update the fitness
+        [follower updateFitnessWithDistanceToShapeSurface:distFromClosestSurface];
         
-        // Check how many paths the follower overlaps
-        if(!shouldUpdateFitnessOnlyWhenMovedPlot ||
-           (fPos0.x != fPos1.x || fPos0.y != fPos1.y || fPos0.z != fPos1.z)){
-            
-            // The position has changed. Update the trail.
-            [_sharedTrail addToHistoryToGridPosition:fPos1];
-            
-            // NOTE: Do we do this every frame or only when the follower moves?
-            int curTrailValue = [_sharedTrail historyAtGridPosition:fPos1];
-            
-            // Update the fitness
-            [follower updateFitnessWithTrailValue:curTrailValue];
-            
-        }
-
     }
     
     // Either repeat or continue
@@ -337,7 +309,7 @@ static NSString * UniformColor = @"color";
     }
 }
 
-- (void)applyWallContact:(WallSide)wallSide onFollower:(NOCFollower *)follower
+- (void)applyWallContact:(WallSide)wallSide onFollower:(NOCShapeFollower *)follower
 {
     if(wallSide != WallSideNone){
         
@@ -364,7 +336,7 @@ static NSString * UniformColor = @"color";
     }
 }
 
-- (WallSide)detectCollisionWithWallsOnFollower:(NOCFollower *)follower
+- (WallSide)detectCollisionWithWallsOnFollower:(NOCShapeFollower *)follower
 {
     for(int i=0;i<6;i++){
         
@@ -411,7 +383,7 @@ static NSString * UniformColor = @"color";
     
 }
 
-- (GLKVector3)positionOfFollower:(NOCFollower *)follower onSurface:(GLKVector3[])surf numVerts:(int)numVerts
+- (GLKVector3)positionOfFollower:(NOCShapeFollower *)follower onSurface:(GLKVector3[])surf numVerts:(int)numVerts
 {
     GLKVector3 originSurf = GLKVector3Zero;
     for(int i=0;i<numVerts;i++){
@@ -453,14 +425,14 @@ static NSString * UniformColor = @"color";
                  forUniform:UniformMVProjectionMatrix];
     [self drawWalls];
 
-    for(NOCFollower *follower in _followers){
+    for(NOCShapeFollower *follower in _followers){
         [follower renderHistory];
     }
     
     NOCShaderProgram *shaderFollowers = [self shaderNamed:ShaderNameFollowers];
     [shaderFollowers use];
     
-    for(NOCFollower *follower in _followers){
+    for(NOCShapeFollower *follower in _followers){
         
         GLKMatrix4 modelMat = [follower modelMatrix];
         GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);

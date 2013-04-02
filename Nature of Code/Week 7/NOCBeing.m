@@ -211,14 +211,7 @@ static const float ForceDistMulti = 0.005;
     _framesAlive++;
     const float friction = -0.01;
     self.velocity = GLKVector3MultiplyScalar(self.velocity, 1.0 + friction);
-    
-    // Shrink a little each frame
-    /*
-    self.radius *= 0.99999;
-    float dimension = self.radius * 2;
-    self.size = GLKVector3Make(dimension, dimension, dimension);
-    */
-    
+
 }
 
 - (void)glColor:(GLfloat *)components

@@ -11,7 +11,7 @@
 
 #if DEBUG
 
-#import "NOCFollowersSketchViewController.h"
+#import "NOCShapeFollowersSketchViewController.h"
 
 #endif
 
@@ -25,8 +25,9 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-//    self.viewController = [[NOCFollowersSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-//                                                                             bundle:nil];
+     [UIApplication sharedApplication].idleTimerDisabled = YES;
+    self.viewController = [[NOCShapeFollowersSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                                  bundle:nil];
     
 #endif
     

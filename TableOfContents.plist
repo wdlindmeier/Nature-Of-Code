@@ -201,11 +201,11 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>Followers</string>
+				<string>ShapeFollowers</string>
 				<key>Description</key>
 				<string>Double tap to reset.</string>
 				<key>Controller</key>
-				<string>Followers</string>
+				<string>ShapeFollowers</string>
 			</dict>
 		</array>
 	</dict>
