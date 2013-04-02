@@ -21,6 +21,9 @@ static GLfloat __unused BeingBodyTexCoords[(BeingSphereSegments+1)*2*2*(BeingSph
 static GLfloat __unused BeingBodyDrawBuffer[BeingNumDataVerts];
 
 @interface NOCBeing : NOCMover3D
+{
+    GLKVector3 _startingPosition;
+}
 
 // NOTE: We'll treat beings as spheres, so "size" doesn't really apply
 - (id)initWithRadius:(float)radius
@@ -41,6 +44,7 @@ static GLfloat __unused BeingBodyDrawBuffer[BeingNumDataVerts];
 @property (nonatomic, assign) int generation;
 @property (nonatomic, assign) WallSide wallContact;
 
+- (void)mutate;
 - (BOOL)canProcreate;
 - (void)didProcreate;
 - (NOCBeing *)presentOpportunityToProcreateWithMate:(NOCBeing *)mate;

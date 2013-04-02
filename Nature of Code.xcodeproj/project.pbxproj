@@ -197,6 +197,7 @@
 		A9E2256816ED7C16002DC1F3 /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2255016ED7C16002DC1F3 /* 9@2x.png */; };
 		A9E77345170B12D0009897C7 /* NOCShapeFollower.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E77342170B12D0009897C7 /* NOCShapeFollower.m */; };
 		A9E77346170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */; };
+		A9E7734B170B4A7C009897C7 /* NOCGuiShapeFollowers.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E7734A170B4A7C009897C7 /* NOCGuiShapeFollowers.xib */; };
 		A9F0F1671708D0F500B9A6F6 /* NOCSharedFollowerTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */; };
 		A9F0F1691708D88900B9A6F6 /* NOCGuiFollowers.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */; };
 		A9F6CB7716D1BD5D00F4BDF9 /* thumb_WaveAddition.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F6CB7116D1BD5D00F4BDF9 /* thumb_WaveAddition.png */; };
@@ -487,6 +488,7 @@
 		A9E77342170B12D0009897C7 /* NOCShapeFollower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShapeFollower.m; sourceTree = "<group>"; };
 		A9E77343170B12D0009897C7 /* NOCShapeFollowersSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCShapeFollowersSketchViewController.h; sourceTree = "<group>"; };
 		A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShapeFollowersSketchViewController.m; sourceTree = "<group>"; };
+		A9E7734A170B4A7C009897C7 /* NOCGuiShapeFollowers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiShapeFollowers.xib; sourceTree = "<group>"; };
 		A9F0F1651708D0F500B9A6F6 /* NOCSharedFollowerTrail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSharedFollowerTrail.h; sourceTree = "<group>"; };
 		A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSharedFollowerTrail.m; sourceTree = "<group>"; };
 		A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiFollowers.xib; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				A92A94C41708AFBC00780256 /* NOCFollowersSketchViewController.h */,
 				A92A94C51708AFBC00780256 /* NOCFollowersSketchViewController.m */,
 				A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */,
+				A9E7734A170B4A7C009897C7 /* NOCGuiShapeFollowers.xib */,
 				A9E77341170B12D0009897C7 /* NOCShapeFollower.h */,
 				A9E77342170B12D0009897C7 /* NOCShapeFollower.m */,
 				A9E77343170B12D0009897C7 /* NOCShapeFollowersSketchViewController.h */,
@@ -1249,6 +1252,7 @@
 				A9E2256716ED7C16002DC1F3 /* 9.png in Resources */,
 				A9E2256816ED7C16002DC1F3 /* 9@2x.png in Resources */,
 				A9F0F1691708D88900B9A6F6 /* NOCGuiFollowers.xib in Resources */,
+				A9E7734B170B4A7C009897C7 /* NOCGuiShapeFollowers.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

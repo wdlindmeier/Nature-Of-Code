@@ -20,10 +20,11 @@
 {
     
     NOCBox3D _moverBounds;
-    NSMutableArray *_followers;
+    NSArray *_followerGroups;
     GLKVector3 _vecNavigation;
     
     int _numBatchFollowers;
+    int _numFollowersGroups;
     int _generationFrame;
     int _numFramesPerGeneration;
     int _numUpdates;
@@ -55,7 +56,7 @@ static NSString * UniformColor = @"color";
 
 - (NSString *)nibNameForControlGUI
 {
-    return @"NOCGuiFollowers";
+    return @"NOCGuiShapeFollowers";
 }
 
 - (void)updateFromSliders
@@ -81,7 +82,8 @@ static NSString * UniformColor = @"color";
     _circleRadius = 0.45f;
     
     _updateSpeed = 1;
-    _numBatchFollowers = 30;
+    _numBatchFollowers = 20;
+    _numFollowersGroups = 15;
     _generationFrame = 0;
     _numFramesPerGeneration = MaxBeingLifespan;
     
@@ -114,11 +116,21 @@ static NSString * UniformColor = @"color";
     _numUpdates = 0;
     _generationFrame = 0;
     
-    _followers = [NSMutableArray arrayWithCapacity:_numBatchFollowers];
+    NSMutableArray *followerGroups = [NSMutableArray arrayWithCapacity:_numFollowersGroups];
+    
+    for(int i=0;i<_numFollowersGroups;i++){
+        
+        NSMutableArray *followers = [NSMutableArray arrayWithCapacity:_numBatchFollowers];
 
-    for(int i=0;i<_numBatchFollowers;i++){
-        [_followers addObject:[self randomFollower]];
+        for(int j=0;j<_numBatchFollowers;j++){
+            [followers addObject:[self randomFollower]];
+        }
+        
+        [followerGroups addObject:[NSArray arrayWithArray:followers]];
     }
+    
+    _followerGroups = [NSArray arrayWithArray:followerGroups];
+    
 }
 
 - (NOCBeing *)randomFollower
@@ -197,55 +209,102 @@ static NSString * UniformColor = @"color";
 {
     _generationFrame = 0;
 
+    NSMutableArray *newGroups = [NSMutableArray arrayWithCapacity:_numFollowersGroups];
+    
     // Find the max fitness so we can normalize
-    float maxFitness = ((NOCShapeFollower *)_followers[0]).fitness;
-    float minFitness = maxFitness;
-    for(NOCShapeFollower *f in _followers){
-        if(f.fitness > maxFitness){
-            maxFitness = f.fitness;
-        }
-        if(f.fitness < minFitness){
-            minFitness = f.fitness;
-        }
-    }
-    float fitnessRange = maxFitness - minFitness;
-    
-    int bucketSize = MAX(_numBatchFollowers * 5, 2); // large number so small fish still have a chance
-    NSMutableArray *genePool = [NSMutableArray arrayWithCapacity:bucketSize];
-    
-    for(NOCShapeFollower *f in _followers){
+    for(NSArray *followers in _followerGroups){
         
-        // Normalize all of the fitnesses between 0 and 1
-        float normalFitness = (f.fitness-minFitness) / fitnessRange;
-        int numInPool = round(bucketSize * normalFitness);
-        for(int i=0;i<numInPool;i++){
-            [genePool addObject:f];
-        }
-    }
-    
-    if(genePool.count == 0){
-        // Reuse
-        genePool = [NSArray arrayWithArray:_followers];
-    }
+        // NOTE: This gives all of the followers a say
+        
+        /*
 
-    _followers = [NSMutableArray arrayWithCapacity:_numBatchFollowers];
-    
-    for(int i=0;i<_numBatchFollowers;i++){
-        
-        int randIdxA = arc4random() % genePool.count;
-        int randIdxB = arc4random() % genePool.count;
-        
-        NOCShapeFollower *parentA = genePool[randIdxA];
-        NOCShapeFollower *parentB = genePool[randIdxB];
-        
-        NOCShapeFollower *nextGen = (NOCShapeFollower *)[parentA crossover:parentB];
-
-        if(!nextGen){
-            NSLog(@"ERROR: Couldn't cross over next gen");
-        }else{
-            [_followers addObject:nextGen];
+        float maxFitness = ((NOCShapeFollower *)followers[0]).fitness;
+        float minFitness = maxFitness;
+        for(NOCShapeFollower *f in followers){
+            if(f.fitness > maxFitness){
+                maxFitness = f.fitness;
+            }
+            if(f.fitness < minFitness){
+                minFitness = f.fitness;
+            }
         }
+        float fitnessRange = maxFitness - minFitness;
+        
+        int bucketSize = MAX(_numBatchFollowers * 5, 2); // large number so small fish still have a chance
+        NSMutableArray *genePool = [NSMutableArray arrayWithCapacity:bucketSize];
+        
+        for(NOCShapeFollower *f in followers){
+            
+            // Normalize all of the fitnesses between 0 and 1
+            float normalFitness = (f.fitness-minFitness) / fitnessRange;
+            int numInPool = round(bucketSize * normalFitness);
+            for(int i=0;i<numInPool;i++){
+                [genePool addObject:f];
+            }
+        }
+        
+        if(genePool.count == 0){
+            // Reuse
+            genePool = [NSArray arrayWithArray:followers];
+        }
+        
+        NSMutableArray *newFollowers = [NSMutableArray arrayWithCapacity:_numBatchFollowers];
+        
+        for(int i=0;i<_numBatchFollowers;i++){
+            
+            int randIdxA = arc4random() % genePool.count;
+            int randIdxB = arc4random() % genePool.count;
+            
+            NOCShapeFollower *parentA = genePool[randIdxA];
+            NOCShapeFollower *parentB = genePool[randIdxB];
+            
+            NOCShapeFollower *nextGen = (NOCShapeFollower *)[parentA crossover:parentB];
+
+            if(!nextGen){
+                NSLog(@"ERROR: Couldn't cross over next gen");
+            }else{
+                [newFollowers addObject:nextGen];
+            }
+        }
+         
+        [newGroups addObject:[NSArray arrayWithArray:newFollowers]];
+         
+         */
+        
+        // This approach only breeds the most successful 2.
+        // This might be a better approach considering our ability to mutate
+        
+        NSArray *sortedFollowers = [followers sortedArrayUsingComparator:^NSComparisonResult(NOCShapeFollower *f1, NOCShapeFollower *f2) {
+            if(f1.fitness > f2.fitness){
+                return  NSOrderedAscending;
+            }else{
+                return  NSOrderedDescending;
+            }
+        }];
+        
+        NSArray *genePool = [sortedFollowers subarrayWithRange:NSMakeRange(0, 2)];
+        
+        NSMutableArray *newFollowers = [NSMutableArray arrayWithCapacity:_numBatchFollowers];
+        for(int i=0;i<_numBatchFollowers;i++){
+            
+            NOCShapeFollower *parentA = genePool[0];
+            NOCShapeFollower *parentB = genePool[1];
+            
+            NOCShapeFollower *nextGen = (NOCShapeFollower *)[parentA crossover:parentB];
+            
+            if(!nextGen){
+                NSLog(@"ERROR: Couldn't cross over next gen");
+            }else{
+                [newFollowers addObject:nextGen];
+            }
+        }
+        
+        [newGroups addObject:[NSArray arrayWithArray:newFollowers]];
+
+        
     }
+    
+    _followerGroups = [NSArray arrayWithArray:newGroups];
     
 }
 
@@ -260,7 +319,8 @@ static NSString * UniformColor = @"color";
     if(_generationFrame >= _numFramesPerGeneration){
         
         [self selectNextGeneration];
-        self.labelGeneration.text = [NSString stringWithFormat:@"Generation: %i", [_followers[0] generation]];
+        self.labelGeneration.text = [NSString stringWithFormat:@"Generation: %i",
+                                     [_followerGroups[0][0] generation]];
         
     }else if(_generationFrame == _numFramesPerGeneration-1){
         
@@ -269,36 +329,40 @@ static NSString * UniformColor = @"color";
         
     }
 
-    for(NOCShapeFollower *follower in _followers){
+    for(NSArray *followers in _followerGroups){
         
-        BOOL ShouldConstrain = NO;
-        
-        if(ShouldConstrain){
+        for(NOCShapeFollower *follower in followers){
             
-            follower.wallContact = WallSideNone;
-            WallSide contactWall = [self detectCollisionWithWallsOnFollower:follower];
+            BOOL ShouldConstrain = NO;
             
-            if(contactWall != WallSideNone){
-                follower.wallContact = contactWall;
-                [self applyWallContact:contactWall onFollower:follower];
+            if(ShouldConstrain){
+                
+                follower.wallContact = WallSideNone;
+                WallSide contactWall = [self detectCollisionWithWallsOnFollower:follower];
+                
+                if(contactWall != WallSideNone){
+                    follower.wallContact = contactWall;
+                    [self applyWallContact:contactWall onFollower:follower];
+                }
+                
+                [follower stepInBox:_moverBounds
+                         shouldWrap:NO];            
+            }else{
+                
+                [follower step];
+                
             }
             
-            [follower stepInBox:_moverBounds
-                     shouldWrap:NO];            
-        }else{
+            // A simple circle
+            float distFromCenter = GLKVector3Distance(follower.position, GLKVector3Zero);
+            float distFromClosestSurface = fabsf(_circleRadius - distFromCenter);
             
-            [follower step];
+            // Update the fitness
+            [follower updateFitnessWithDistanceToShapeSurface:distFromClosestSurface];
             
         }
-        
-        // A simple circle
-        float distFromCenter = GLKVector3Distance(follower.position, GLKVector3Zero);
-        float distFromClosestSurface = fabsf(_circleRadius - distFromCenter);
-        
-        // Update the fitness
-        [follower updateFitnessWithDistanceToShapeSurface:distFromClosestSurface];
-        
     }
+    
     
     // Either repeat or continue
     _numUpdates++;
@@ -307,6 +371,7 @@ static NSString * UniformColor = @"color";
     }else{
         _numUpdates = 0;
     }
+
 }
 
 - (void)applyWallContact:(WallSide)wallSide onFollower:(NOCShapeFollower *)follower
@@ -425,27 +490,55 @@ static NSString * UniformColor = @"color";
                  forUniform:UniformMVProjectionMatrix];
     [self drawWalls];
 
-    for(NOCShapeFollower *follower in _followers){
-        [follower renderHistory];
+    BOOL drawFittestTrails = self.switchDrawFittestLines.on;
+    BOOL drawBodies = self.switchDrawBodies.on;
+    
+    // NOTE:
+    // Only draw the fittest trail
+    for(NSArray *followers in _followerGroups){
+        
+        NOCShapeFollower *fittestFollower = followers[0];
+        
+        for(NOCShapeFollower *follower in followers){
+
+            if(drawFittestTrails){
+                if(follower.fitness > fittestFollower.fitness){
+                    fittestFollower = follower;
+                }
+            }else{
+                [follower renderHistory];
+            }
+        }
+        
+        if(drawFittestTrails){
+            [fittestFollower renderHistory];
+        }
+        
     }
     
-    NOCShaderProgram *shaderFollowers = [self shaderNamed:ShaderNameFollowers];
-    [shaderFollowers use];
-    
-    for(NOCShapeFollower *follower in _followers){
+    if(drawBodies){
         
-        GLKMatrix4 modelMat = [follower modelMatrix];
-        GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);
-        GLKMatrix4 mvpMatrix = GLKMatrix4Multiply(matScene, modelMat);
+        NOCShaderProgram *shaderFollowers = [self shaderNamed:ShaderNameFollowers];
+        [shaderFollowers use];
         
-        GLfloat beingColor[4];
-        [follower glColor:beingColor];
-        [shaderFollowers set4DFloatArray:beingColor withNumElements:1 forUniform:UniformColor];
-        
-        [shaderFollowers setMatrix4:mvpMatrix forUniform:UniformMVProjectionMatrix];
-        [shaderFollowers setMatrix3:normalMatrix forUniform:UniformNormalMatrix];
-        
-        [follower render];
+        for(NSArray *followers in _followerGroups){
+            
+            for(NOCShapeFollower *follower in followers){
+
+                GLKMatrix4 modelMat = [follower modelMatrix];
+                GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);
+                GLKMatrix4 mvpMatrix = GLKMatrix4Multiply(matScene, modelMat);
+                
+                GLfloat beingColor[4];
+                [follower glColor:beingColor];
+                [shaderFollowers set4DFloatArray:beingColor withNumElements:1 forUniform:UniformColor];
+                
+                [shaderFollowers setMatrix4:mvpMatrix forUniform:UniformMVProjectionMatrix];
+                [shaderFollowers setMatrix3:normalMatrix forUniform:UniformNormalMatrix];
+                
+                [follower render];
+            }
+        }
         
     }
 }

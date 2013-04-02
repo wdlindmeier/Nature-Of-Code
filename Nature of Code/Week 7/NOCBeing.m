@@ -18,7 +18,6 @@ static const float ForceDistMulti = 0.005;
     float _fitness;
     GLKVector3 _vectors[MaxBeingLifespan];
     GLKVector3 _positionHistory[MaxBeingLifespan];
-    GLKVector3 _startingPosition;
     float _distTravelled;
     int _numChildren;
     int _frameLastBaby;
