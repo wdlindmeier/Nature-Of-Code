@@ -7,7 +7,7 @@
 //
 
 #import "NOCTracersSketchViewController.h"
-#import "NOCTracer.h"
+#import "NOCTracer3D.h"
 
 @interface NOCTracersSketchViewController ()
 {
@@ -57,9 +57,9 @@ static NSString * UniformColor = @"color";
     }
     
     float mutationRate = self.sliderMutationRate.value * 0.001;
-    if(mutationRate != [NOCTracer mutationRate]){
-        [NOCTracer setMutationRate:mutationRate];
-        NSLog(@"Mutation rate: %f", [NOCTracer mutationRate]);
+    if(mutationRate != [NOCTracer3D mutationRate]){
+        [NOCTracer3D setMutationRate:mutationRate];
+        NSLog(@"Mutation rate: %f", [NOCTracer3D mutationRate]);
     }
     
 }
@@ -119,9 +119,9 @@ static NSString * UniformColor = @"color";
     
 }
 
-- (NOCTracer *)randomTracer
+- (NOCTracer3D *)randomTracer
 {
-    NOCTracer *randTracer = [[NOCTracer alloc] initWithLifeSpan:_numFramesPerGeneration];
+    NOCTracer3D *randTracer = [[NOCTracer3D alloc] initWithLifeSpan:_numFramesPerGeneration];
     [randTracer expressDNA];
     return randTracer;
 }
@@ -190,9 +190,9 @@ static NSString * UniformColor = @"color";
     for(NSArray *tracers in _tracerGroups){
         
         // Find the max fitness so we can normalize
-        float maxFitness = ((NOCTracer *)tracers[0]).fitness;
+        float maxFitness = ((NOCTracer3D *)tracers[0]).fitness;
         float minFitness = maxFitness;
-        for(NOCTracer *t in tracers){
+        for(NOCTracer3D *t in tracers){
             float fitness = [t overallFitnessForCircleOfRadius:_circleRadius];
             if(fitness > maxFitness){
                 maxFitness = fitness;
@@ -206,7 +206,7 @@ static NSString * UniformColor = @"color";
         int bucketSize = _numBatchTracers * 5; // large number so small fish still have a chance
         NSMutableArray *genePool = [NSMutableArray arrayWithCapacity:bucketSize];
         
-        for(NOCTracer *t in tracers){
+        for(NOCTracer3D *t in tracers){
             
             float fitness = [t overallFitnessForCircleOfRadius:_circleRadius];
             
@@ -225,10 +225,10 @@ static NSString * UniformColor = @"color";
             int randIdxA = arc4random() % genePool.count;
             int randIdxB = arc4random() % genePool.count;
             
-            NOCTracer *parentA = genePool[randIdxA];
-            NOCTracer *parentB = genePool[randIdxB];
+            NOCTracer3D *parentA = genePool[randIdxA];
+            NOCTracer3D *parentB = genePool[randIdxB];
             
-            NOCTracer *nextGen = (NOCTracer *)[parentA crossover:parentB];
+            NOCTracer3D *nextGen = (NOCTracer3D *)[parentA crossover:parentB];
             
             if(!nextGen){
                 NSLog(@"ERROR: Couldn't cross over next gen");
@@ -307,7 +307,7 @@ static NSString * UniformColor = @"color";
     
     for(NSArray *tracers in _tracerGroups){
         
-        for(NOCTracer *tracer in tracers){
+        for(NOCTracer3D *tracer in tracers){
             [tracer step];
         }
         
@@ -348,9 +348,9 @@ static NSString * UniformColor = @"color";
     
     for(NSArray *tracers in _tracerGroups){
         
-        NOCTracer *fittestTracer = tracers[0];
+        NOCTracer3D *fittestTracer = tracers[0];
         
-        for(NOCTracer *tracer in tracers){
+        for(NOCTracer3D *tracer in tracers){
             
             if(drawFittest){
                 if(tracer.fitness > fittestTracer.fitness){

@@ -12,6 +12,8 @@
 @interface NOCTracer : NOCBreeder
 
 @property (nonatomic, assign) int lifespan;
+@property (nonatomic, assign) int framesAlive;
+@property (nonatomic, retain) UIColor *color;
 
 - (id)initWithLifeSpan:(int)lifespan;
 - (NOCTracer *)crossover:(NOCTracer *)mate;
@@ -21,7 +23,5 @@
 
 - (void)glColor:(GLfloat *)components;
 - (void)render:(BOOL)colored;
-
-- (float)overallFitnessForCircleOfRadius:(float)radius;
 
 @end

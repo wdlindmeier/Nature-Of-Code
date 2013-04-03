@@ -11,7 +11,7 @@
 
 #if DEBUG
 
-#import "NOCTracersSketchViewController.h"
+#import "NOCTracerTargetSketchViewController.h"
 
 #endif
 
@@ -25,10 +25,9 @@
     
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
-    // [UIApplication sharedApplication].idleTimerDisabled = YES;
-    // self.viewController = [[NOCTracersSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-//                                                                            bundle:nil];
-    
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+    self.viewController = [[NOCTracerTargetSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+                                                                                bundle:nil];
 #endif
     
     if(!self.viewController){

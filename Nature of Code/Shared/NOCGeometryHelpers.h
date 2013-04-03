@@ -10,6 +10,8 @@
 #import "CGGeometry.h"
 #import "NOCOpenGLHelpers.h"
 
+#define f(n)    [n floatValue]
+
 #ifndef Nature_of_Code_NOCOpenGLHelpers_h
 #define Nature_of_Code_NOCOpenGLHelpers_h
 

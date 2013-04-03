@@ -25,6 +25,6 @@
 - (void)mutate;
 
 + (double)mutationRate;
-+ (void)setMutationRate:(float)newRate;
++ (void)setMutationRate:(double)newRate;
 
 @end

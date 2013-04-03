@@ -75,12 +75,12 @@
 
 static double BreederMutationRate = 0.01;
 
-+ (float)mutationRate
++ (double)mutationRate
 {
     return BreederMutationRate;
 }
 
-+ (void)setMutationRate:(float)newRate
++ (void)setMutationRate:(double)newRate
 {
     BreederMutationRate = newRate;
 }
