@@ -201,9 +201,17 @@
 			</dict>
 			<dict>
 				<key>Name</key>
-				<string>ShapeFollowers</string>
+				<string>Evolving Tracers</string>
 				<key>Description</key>
-				<string>Double tap to reset.</string>
+				<string>Lines that evolve towards a target. Touble tap to reset the simulation.</string>
+				<key>Controller</key>
+				<string>TracerTarget</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Shape Followers</string>
+				<key>Description</key>
+				<string>A collection of Tracer Beings that evolve to conform to the surface of a sphere. Double tap to reset.</string>
 				<key>Controller</key>
 				<string>ShapeFollowers</string>
 			</dict>

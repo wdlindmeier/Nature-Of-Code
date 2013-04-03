@@ -49,7 +49,7 @@ const static float ForceDistMulti = 0.005;
 
 - (void)initTracer2D
 {
-    _maxVelocity = 0;
+    _maxVelocity = 0.02;
     _framesToFinish = 0;
     _recordDistance = 10000;
     _fitness = -10000;
@@ -246,15 +246,15 @@ const static float ForceDistMulti = 0.005;
         
         if(self.didHitTarget){
             
-            myColor[0] = 0;
+            myColor[0] = 0.2;
             myColor[1] = 1;
-            myColor[2] = 0;
+            myColor[2] = 0.2;
 
         }else if(self.didHitObstruction){
             
             myColor[0] = 1;
-            myColor[1] = 0;
-            myColor[2] = 0;
+            myColor[1] = 0.2;
+            myColor[2] = 0.2;
 
         }else{
             
