@@ -51,7 +51,7 @@ static GLfloat __unused BeingBodyDrawBuffer[BeingNumDataVerts];
 - (NOCBeing *)crossover:(NOCBeing *)mate;
 - (void)randomizeDNA;
 - (void)glColor:(GLfloat *)components;
-- (void)renderHistory;
+- (void)renderHistory:(BOOL)colored;
 
 + (void)calculateGeometry;
 + (float)mutationRate;

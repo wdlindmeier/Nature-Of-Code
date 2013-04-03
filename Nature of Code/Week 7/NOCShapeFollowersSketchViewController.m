@@ -10,12 +10,6 @@
 #import "NOCShaderProgram.h"
 #import "NOCShapeFollower.h"
 
-@interface NOC3DSketchViewController(Private)
-
-- (void)rotateQuaternionWithVector:(CGPoint)delta;
-
-@end
-
 @interface NOCShapeFollowersSketchViewController ()
 {
     
@@ -27,7 +21,6 @@
     int _numFollowersGroups;
     int _generationFrame;
     int _numFramesPerGeneration;
-    int _numUpdates;
     int _updateSpeed;
     
     GLKVector3 _surfBottomWall[4];
@@ -113,7 +106,6 @@ static NSString * UniformColor = @"color";
 
 - (void)setupInitialFollowers
 {
-    _numUpdates = 0;
     _generationFrame = 0;
     
     NSMutableArray *followerGroups = [NSMutableArray arrayWithCapacity:_numFollowersGroups];
@@ -311,9 +303,18 @@ static NSString * UniformColor = @"color";
 - (void)update
 {
     [super update];
-    
     [self updateFromSliders];
     
+    for(int i=0;i<_updateSpeed;i++){
+        if(![self stepFrame]){
+            // Force render if stepFrame returns NO
+            break;
+        }
+    }
+}
+
+- (BOOL)stepFrame
+{
     _generationFrame++;
     
     if(_generationFrame >= _numFramesPerGeneration){
@@ -324,8 +325,7 @@ static NSString * UniformColor = @"color";
         
     }else if(_generationFrame == _numFramesPerGeneration-1){
         
-        // Force the screen to render before a new generation
-        _numUpdates = _updateSpeed;
+        return NO;
         
     }
 
@@ -363,15 +363,7 @@ static NSString * UniformColor = @"color";
         }
     }
     
-    
-    // Either repeat or continue
-    _numUpdates++;
-    if(_numUpdates < _updateSpeed){
-        [self update];
-    }else{
-        _numUpdates = 0;
-    }
-
+    return YES;
 }
 
 - (void)applyWallContact:(WallSide)wallSide onFollower:(NOCShapeFollower *)follower
@@ -490,57 +482,79 @@ static NSString * UniformColor = @"color";
                  forUniform:UniformMVProjectionMatrix];
     [self drawWalls];
 
-    BOOL drawFittestTrails = self.switchDrawFittestLines.on;
+    BOOL drawFittest = self.switchDrawFittestLines.on;
     BOOL drawBodies = self.switchDrawBodies.on;
-    
-    // NOTE:
-    // Only draw the fittest trail
+    BOOL coloredHistory = self.switchRenderColoredHistory.on;
+
+    //glEnable (GL_BLEND);
+    //glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     for(NSArray *followers in _followerGroups){
         
         NOCShapeFollower *fittestFollower = followers[0];
         
         for(NOCShapeFollower *follower in followers){
 
-            if(drawFittestTrails){
+            if(drawFittest){
                 if(follower.fitness > fittestFollower.fitness){
                     fittestFollower = follower;
                 }
             }else{
-                [follower renderHistory];
+                [follower renderHistory:coloredHistory];
             }
         }
         
-        if(drawFittestTrails){
-            [fittestFollower renderHistory];
+        if(drawFittest){
+            [fittestFollower renderHistory:coloredHistory];
         }
         
     }
+    //glDisable(GL_BLEND);
     
     if(drawBodies){
         
         NOCShaderProgram *shaderFollowers = [self shaderNamed:ShaderNameFollowers];
+        
         [shaderFollowers use];
         
         for(NSArray *followers in _followerGroups){
             
+            NOCShapeFollower *fittestFollower = followers[0];
+            
             for(NOCShapeFollower *follower in followers){
-
-                GLKMatrix4 modelMat = [follower modelMatrix];
-                GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);
-                GLKMatrix4 mvpMatrix = GLKMatrix4Multiply(matScene, modelMat);
                 
-                GLfloat beingColor[4];
-                [follower glColor:beingColor];
-                [shaderFollowers set4DFloatArray:beingColor withNumElements:1 forUniform:UniformColor];
-                
-                [shaderFollowers setMatrix4:mvpMatrix forUniform:UniformMVProjectionMatrix];
-                [shaderFollowers setMatrix3:normalMatrix forUniform:UniformNormalMatrix];
-                
-                [follower render];
+                if(drawFittest){
+                    if(follower.fitness > fittestFollower.fitness){
+                        fittestFollower = follower;
+                    }
+                }else{
+                    [self renderFollower:follower inScene:matScene withShader:shaderFollowers];
+                }
             }
-        }
-        
+            
+            if(drawFittest){
+                [self renderFollower:fittestFollower inScene:matScene withShader:shaderFollowers];
+            }
+        }        
     }
+}
+    
+- (void)renderFollower:(NOCShapeFollower *)follower
+               inScene:(GLKMatrix4)matScene
+            withShader:(NOCShaderProgram *)shader
+{
+    GLKMatrix4 modelMat = [follower modelMatrix];
+    GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);
+    GLKMatrix4 mvpMatrix = GLKMatrix4Multiply(matScene, modelMat);
+    
+    GLfloat beingColor[4];
+    [follower glColor:beingColor];
+    [shader set4DFloatArray:beingColor withNumElements:1 forUniform:UniformColor];
+    
+    [shader setMatrix4:mvpMatrix forUniform:UniformMVProjectionMatrix];
+    [shader setMatrix3:normalMatrix forUniform:UniformNormalMatrix];
+    
+    [follower render];
 }
 
 - (void)drawWalls

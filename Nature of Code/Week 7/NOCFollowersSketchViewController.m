@@ -454,7 +454,7 @@ static NSString * UniformColor = @"color";
     [self drawWalls];
 
     for(NOCFollower *follower in _followers){
-        [follower renderHistory];
+        [follower renderHistory:NO];
     }
     
     NOCShaderProgram *shaderFollowers = [self shaderNamed:ShaderNameFollowers];

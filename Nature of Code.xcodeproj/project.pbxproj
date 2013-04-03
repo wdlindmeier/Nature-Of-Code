@@ -73,6 +73,10 @@
 		A95C900B16BD7351003C8F5B /* NOCSampleSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C900516BD7351003C8F5B /* NOCSampleSketchViewController.m */; };
 		A95C900E16BD7351003C8F5B /* NOCShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */; };
 		A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */; };
+		A96653E2170B88DA004DACF8 /* NOCTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = A96653E1170B88DA004DACF8 /* NOCTracer.m */; };
+		A96653E5170B89FC004DACF8 /* NOCBreeder.m in Sources */ = {isa = PBXBuildFile; fileRef = A96653E4170B89FC004DACF8 /* NOCBreeder.m */; };
+		A96653E8170B9BFD004DACF8 /* NOCTracersSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96653E7170B9BFD004DACF8 /* NOCTracersSketchViewController.m */; };
+		A96653EC170B9F77004DACF8 /* NOCGuiTracers.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96653EB170B9F76004DACF8 /* NOCGuiTracers.xib */; };
 		A975327216C42044004CFE43 /* NOCMultiMoverSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A975327116C42044004CFE43 /* NOCMultiMoverSketchViewController.m */; };
 		A975327516C42CCF004CFE43 /* NOCGuiMultiMover.xib in Resources */ = {isa = PBXBuildFile; fileRef = A975327416C42CCE004CFE43 /* NOCGuiMultiMover.xib */; };
 		A987361016BDF37E001D74E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A987360F16BDF37E001D74E8 /* CoreMotion.framework */; };
@@ -321,6 +325,13 @@
 		A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTemplateSketchViewController.m; sourceTree = "<group>"; };
 		A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCOpenGLHelpers.h; path = Shared/NOCOpenGLHelpers.h; sourceTree = "<group>"; };
 		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NOCGeometryHelpers.h; path = Shared/NOCGeometryHelpers.h; sourceTree = "<group>"; };
+		A96653E0170B88DA004DACF8 /* NOCTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTracer.h; sourceTree = "<group>"; };
+		A96653E1170B88DA004DACF8 /* NOCTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTracer.m; sourceTree = "<group>"; };
+		A96653E3170B89FC004DACF8 /* NOCBreeder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBreeder.h; sourceTree = "<group>"; };
+		A96653E4170B89FC004DACF8 /* NOCBreeder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCBreeder.m; sourceTree = "<group>"; };
+		A96653E6170B9BFD004DACF8 /* NOCTracersSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTracersSketchViewController.h; sourceTree = "<group>"; };
+		A96653E7170B9BFD004DACF8 /* NOCTracersSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTracersSketchViewController.m; sourceTree = "<group>"; };
+		A96653EB170B9F76004DACF8 /* NOCGuiTracers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiTracers.xib; sourceTree = "<group>"; };
 		A975327016C42044004CFE43 /* NOCMultiMoverSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCMultiMoverSketchViewController.h; path = "Nature of Code/Week 2/NOCMultiMoverSketchViewController.h"; sourceTree = SOURCE_ROOT; };
 		A975327116C42044004CFE43 /* NOCMultiMoverSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCMultiMoverSketchViewController.m; path = "Nature of Code/Week 2/NOCMultiMoverSketchViewController.m"; sourceTree = SOURCE_ROOT; };
 		A975327416C42CCE004CFE43 /* NOCGuiMultiMover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NOCGuiMultiMover.xib; path = "Nature of Code/Week 2/NOCGuiMultiMover.xib"; sourceTree = SOURCE_ROOT; };
@@ -587,12 +598,15 @@
 			children = (
 				A92A94B9170744F600780256 /* NOCBeing.h */,
 				A92A94BA170744F600780256 /* NOCBeing.m */,
+				A96653E3170B89FC004DACF8 /* NOCBreeder.h */,
+				A96653E4170B89FC004DACF8 /* NOCBreeder.m */,
 				A92A94C11708AF9900780256 /* NOCFollower.h */,
 				A92A94C21708AF9900780256 /* NOCFollower.m */,
 				A92A94C41708AFBC00780256 /* NOCFollowersSketchViewController.h */,
 				A92A94C51708AFBC00780256 /* NOCFollowersSketchViewController.m */,
 				A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */,
 				A9E7734A170B4A7C009897C7 /* NOCGuiShapeFollowers.xib */,
+				A96653EB170B9F76004DACF8 /* NOCGuiTracers.xib */,
 				A9E77341170B12D0009897C7 /* NOCShapeFollower.h */,
 				A9E77342170B12D0009897C7 /* NOCShapeFollower.m */,
 				A9E77343170B12D0009897C7 /* NOCShapeFollowersSketchViewController.h */,
@@ -601,6 +615,10 @@
 				A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */,
 				A92A94B6170734B600780256 /* NOCTankSketchViewController.h */,
 				A92A94B7170734B600780256 /* NOCTankSketchViewController.m */,
+				A96653E0170B88DA004DACF8 /* NOCTracer.h */,
+				A96653E1170B88DA004DACF8 /* NOCTracer.m */,
+				A96653E6170B9BFD004DACF8 /* NOCTracersSketchViewController.h */,
+				A96653E7170B9BFD004DACF8 /* NOCTracersSketchViewController.m */,
 			);
 			path = "Week 7";
 			sourceTree = "<group>";
@@ -1253,6 +1271,7 @@
 				A9E2256816ED7C16002DC1F3 /* 9@2x.png in Resources */,
 				A9F0F1691708D88900B9A6F6 /* NOCGuiFollowers.xib in Resources */,
 				A9E7734B170B4A7C009897C7 /* NOCGuiShapeFollowers.xib in Resources */,
+				A96653EC170B9F77004DACF8 /* NOCGuiTracers.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1335,6 +1354,9 @@
 				A9F0F1671708D0F500B9A6F6 /* NOCSharedFollowerTrail.m in Sources */,
 				A9E77345170B12D0009897C7 /* NOCShapeFollower.m in Sources */,
 				A9E77346170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m in Sources */,
+				A96653E2170B88DA004DACF8 /* NOCTracer.m in Sources */,
+				A96653E5170B89FC004DACF8 /* NOCBreeder.m in Sources */,
+				A96653E8170B9BFD004DACF8 /* NOCTracersSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

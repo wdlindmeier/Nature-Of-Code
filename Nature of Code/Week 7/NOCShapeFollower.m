@@ -19,6 +19,8 @@
     if(self){
         _distanceFitness = 0;
         self.fitness = 0;
+        // TMP
+        self.maxVelocity = 0;
     }
     return self;
 }

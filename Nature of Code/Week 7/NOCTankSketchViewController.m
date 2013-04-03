@@ -371,13 +371,13 @@ static NSString * UniformColor = @"color";
     
     for(NOCBeing *being in _deadBeings) {
         
-        [being renderHistory];
+        [being renderHistory:NO];
         
     }
     
     for(NOCBeing *being in _beings){
         
-        [being renderHistory];
+        [being renderHistory:NO];
 
         /*
         switch (being.wallContact) {

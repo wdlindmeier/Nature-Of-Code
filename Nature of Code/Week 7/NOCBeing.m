@@ -246,20 +246,41 @@ static const float ForceDistMulti = 0.005;
     glDrawArrays( GL_TRIANGLE_STRIP, 0, BeingNumRenderVerts );
 }
 
-- (void)renderHistory
+- (void)renderHistory:(BOOL)colored
 {
-    GLfloat historyColor[_framesAlive*4];
-    for(int i=0;i<_framesAlive;i++){
-        historyColor[i*4+0] = 0.35;
-        historyColor[i*4+1] = 0.35;
-        historyColor[i*4+2] = 0.35;
-        historyColor[i*4+3] = 1.0;
+    GLfloat myColor[4];
+    if(colored){
+        [self glColor:myColor];
+    }else{
+        myColor[0] = 0.75;
+        myColor[1] = 0.75;
+        myColor[2] = 0.75;
     }
+    
+    GLfloat historyColor[_framesAlive*4];
+    GLfloat historyVecs[_framesAlive * 3];
+    
+    for(int i=0;i<_framesAlive;i++){
+        historyColor[i*4+0] = myColor[0];
+        historyColor[i*4+1] = myColor[1];
+        historyColor[i*4+2] = myColor[2];
+        historyColor[i*4+3] = 0.5;
+
+        historyVecs[i*3] = _positionHistory[i].x;
+        historyVecs[i*3+1] = _positionHistory[i].y;
+        historyVecs[i*3+2] = _positionHistory[i].z;
+    }
+    
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribColor);
-    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_positionHistory);
+    
+    // NOTE: Is this bad mojo?
+    // Getting some odd crashes. ( e.g. EXC_??? )
+    //glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_positionHistory);
+    glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &historyVecs);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &historyColor);
     glDrawArrays( GL_LINE_STRIP, 0, _framesAlive );
+    //glDrawArrays( GL_TRIANGLE_STRIP, 0, _framesAlive );
 }
 
 // Based on Cinder gl::drawSphere
