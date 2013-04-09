@@ -154,6 +154,19 @@
 		A9D1AEC516B9A77D000BE623 /* NOCTableOfContentsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC416B9A77D000BE623 /* NOCTableOfContentsCell.m */; };
 		A9D1AEC816B9A7B1000BE623 /* NOCChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC716B9A7B1000BE623 /* NOCChapter.m */; };
 		A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AECA16B9A806000BE623 /* NOCSketch.m */; };
+		A9D54F631714AFC90024C8D0 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F621714AFC90024C8D0 /* target.png */; };
+		A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F641714B0F70024C8D0 /* ColoredTexture.fsh */; };
+		A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F651714B0F70024C8D0 /* ColoredTexture.vsh */; };
+		A9D54F721714B9430024C8D0 /* thumb_FlowField.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F681714B9430024C8D0 /* thumb_FlowField.png */; };
+		A9D54F731714B9430024C8D0 /* thumb_FlowField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F691714B9430024C8D0 /* thumb_FlowField@2x.png */; };
+		A9D54F741714B9430024C8D0 /* thumb_ShapeFollowers.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6A1714B9430024C8D0 /* thumb_ShapeFollowers.png */; };
+		A9D54F751714B9430024C8D0 /* thumb_ShapeFollowers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6B1714B9430024C8D0 /* thumb_ShapeFollowers@2x.png */; };
+		A9D54F761714B9430024C8D0 /* thumb_Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6C1714B9430024C8D0 /* thumb_Tank.png */; };
+		A9D54F771714B9430024C8D0 /* thumb_Tank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6D1714B9430024C8D0 /* thumb_Tank@2x.png */; };
+		A9D54F781714B9430024C8D0 /* thumb_TouchFlowField.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6E1714B9430024C8D0 /* thumb_TouchFlowField.png */; };
+		A9D54F791714B9430024C8D0 /* thumb_TouchFlowField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6F1714B9430024C8D0 /* thumb_TouchFlowField@2x.png */; };
+		A9D54F7A1714B9430024C8D0 /* thumb_TracerTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F701714B9430024C8D0 /* thumb_TracerTarget.png */; };
+		A9D54F7B1714B9430024C8D0 /* thumb_TracerTarget@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F711714B9430024C8D0 /* thumb_TracerTarget@2x.png */; };
 		A9D7CB5616C1E86E00BD5331 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */; };
 		A9D7CB5716C1E86E00BD5331 /* Default-Landscape@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */; };
 		A9D7CB5816C1E86E00BD5331 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */; };
@@ -460,6 +473,19 @@
 		A9D1AEC916B9A806000BE623 /* NOCSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCSketch.h; path = "Nature of Code/NOCSketch.h"; sourceTree = "<group>"; };
 		A9D1AECA16B9A806000BE623 /* NOCSketch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCSketch.m; path = "Nature of Code/NOCSketch.m"; sourceTree = "<group>"; };
 		A9D1AECC16B9A850000BE623 /* NOCGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCGlobals.h; sourceTree = "<group>"; };
+		A9D54F621714AFC90024C8D0 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
+		A9D54F641714B0F70024C8D0 /* ColoredTexture.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColoredTexture.fsh; sourceTree = "<group>"; };
+		A9D54F651714B0F70024C8D0 /* ColoredTexture.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ColoredTexture.vsh; sourceTree = "<group>"; };
+		A9D54F681714B9430024C8D0 /* thumb_FlowField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_FlowField.png; sourceTree = "<group>"; };
+		A9D54F691714B9430024C8D0 /* thumb_FlowField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_FlowField@2x.png"; sourceTree = "<group>"; };
+		A9D54F6A1714B9430024C8D0 /* thumb_ShapeFollowers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_ShapeFollowers.png; sourceTree = "<group>"; };
+		A9D54F6B1714B9430024C8D0 /* thumb_ShapeFollowers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_ShapeFollowers@2x.png"; sourceTree = "<group>"; };
+		A9D54F6C1714B9430024C8D0 /* thumb_Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Tank.png; sourceTree = "<group>"; };
+		A9D54F6D1714B9430024C8D0 /* thumb_Tank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Tank@2x.png"; sourceTree = "<group>"; };
+		A9D54F6E1714B9430024C8D0 /* thumb_TouchFlowField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_TouchFlowField.png; sourceTree = "<group>"; };
+		A9D54F6F1714B9430024C8D0 /* thumb_TouchFlowField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_TouchFlowField@2x.png"; sourceTree = "<group>"; };
+		A9D54F701714B9430024C8D0 /* thumb_TracerTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_TracerTarget.png; sourceTree = "<group>"; };
+		A9D54F711714B9430024C8D0 /* thumb_TracerTarget@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_TracerTarget@2x.png"; sourceTree = "<group>"; };
 		A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~iphone.png"; sourceTree = "<group>"; };
 		A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -600,6 +626,8 @@
 				A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */,
 				A9C05C7316E78D190009F8C8 /* thumb_FaceMesh.png */,
 				A9C05C7416E78D190009F8C8 /* thumb_FaceMesh@2x.png */,
+				A9D54F681714B9430024C8D0 /* thumb_FlowField.png */,
+				A9D54F691714B9430024C8D0 /* thumb_FlowField@2x.png */,
 				A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */,
 				A9BC923E16CC10DE009AD45C /* thumb_Movers3D@2x.png */,
 				A9077A3A16CB4ECF008032C7 /* thumb_MultiMover.png */,
@@ -612,6 +640,14 @@
 				A920CEB816C0373D00284EAF /* thumb_PerlinWalker@2x.png */,
 				A920CEB916C0373D00284EAF /* thumb_RandomWalker.png */,
 				A920CEBA16C0373D00284EAF /* thumb_RandomWalker@2x.png */,
+				A9D54F6A1714B9430024C8D0 /* thumb_ShapeFollowers.png */,
+				A9D54F6B1714B9430024C8D0 /* thumb_ShapeFollowers@2x.png */,
+				A9D54F6C1714B9430024C8D0 /* thumb_Tank.png */,
+				A9D54F6D1714B9430024C8D0 /* thumb_Tank@2x.png */,
+				A9D54F6E1714B9430024C8D0 /* thumb_TouchFlowField.png */,
+				A9D54F6F1714B9430024C8D0 /* thumb_TouchFlowField@2x.png */,
+				A9D54F701714B9430024C8D0 /* thumb_TracerTarget.png */,
+				A9D54F711714B9430024C8D0 /* thumb_TracerTarget@2x.png */,
 				A9C05C7516E78D190009F8C8 /* thumb_TriangleSpiral.png */,
 				A9C05C7616E78D190009F8C8 /* thumb_TriangleSpiral@2x.png */,
 				A9C05C7716E78D190009F8C8 /* thumb_Triangulation.png */,
@@ -730,6 +766,7 @@
 				A9F78ADA16D9180400073D16 /* flame_red.png */,
 				A95A5A5F16C2E7AC0001D07D /* mover.png */,
 				A95C704116D034660058D8BA /* shiny_sphere.png */,
+				A9D54F621714AFC90024C8D0 /* target.png */,
 				A9E2253016ED77D4002DC1F3 /* thumb_Beardly.png */,
 				A9E2253116ED77D4002DC1F3 /* thumb_Beardly@2x.png */,
 				A9E2253216ED77D4002DC1F3 /* thumb_Hair.png */,
@@ -745,6 +782,8 @@
 				A92A94BD1707A99600780256 /* Being.vsh */,
 				A9A60DB816E39C3100F0E5B9 /* ColoredPoints.fsh */,
 				A9A60DB616E39C2C00F0E5B9 /* ColoredPoints.vsh */,
+				A9D54F641714B0F70024C8D0 /* ColoredTexture.fsh */,
+				A9D54F651714B0F70024C8D0 /* ColoredTexture.vsh */,
 				A9A60DC016E3A95C00F0E5B9 /* ColoredVerts.fsh */,
 				A9A60DC116E3A95C00F0E5B9 /* ColoredVerts.vsh */,
 				A9F78AD316D913F200073D16 /* FlameParticle.fsh */,
@@ -1337,6 +1376,17 @@
 				A98661AA170F8CB800412735 /* NOCGuiPhotoTracers.xib in Resources */,
 				A9E6F61E1713D030001622B4 /* arrow.png in Resources */,
 				A9E6F62C1713D642001622B4 /* NOCGuiFlowField.xib in Resources */,
+				A9D54F631714AFC90024C8D0 /* target.png in Resources */,
+				A9D54F721714B9430024C8D0 /* thumb_FlowField.png in Resources */,
+				A9D54F731714B9430024C8D0 /* thumb_FlowField@2x.png in Resources */,
+				A9D54F741714B9430024C8D0 /* thumb_ShapeFollowers.png in Resources */,
+				A9D54F751714B9430024C8D0 /* thumb_ShapeFollowers@2x.png in Resources */,
+				A9D54F761714B9430024C8D0 /* thumb_Tank.png in Resources */,
+				A9D54F771714B9430024C8D0 /* thumb_Tank@2x.png in Resources */,
+				A9D54F781714B9430024C8D0 /* thumb_TouchFlowField.png in Resources */,
+				A9D54F791714B9430024C8D0 /* thumb_TouchFlowField@2x.png in Resources */,
+				A9D54F7A1714B9430024C8D0 /* thumb_TracerTarget.png in Resources */,
+				A9D54F7B1714B9430024C8D0 /* thumb_TracerTarget@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1431,6 +1481,8 @@
 				A9E6F62A1713D642001622B4 /* NOCFlowFieldSketchViewController.m in Sources */,
 				A9E6F62B1713D642001622B4 /* NOCFlowParticle.m in Sources */,
 				A9E6F62D1713D642001622B4 /* NOCTouchFlowFieldSketchViewController.m in Sources */,
+				A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Sources */,
+				A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

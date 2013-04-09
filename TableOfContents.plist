@@ -6,7 +6,7 @@
 		<key>Week Number</key>
 		<integer>1</integer>
 		<key>Name</key>
-		<string>Introduction</string>
+		<string>Randomness</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -203,7 +203,7 @@
 				<key>Name</key>
 				<string>Evolving Tracers</string>
 				<key>Description</key>
-				<string>Lines that evolve towards a target. Touble tap to reset the simulation.</string>
+				<string>Lines that evolve towards a target. Drag your finger to add obstructions. Double tap to reset the simulation.</string>
 				<key>Controller</key>
 				<string>TracerTarget</string>
 			</dict>
@@ -228,7 +228,7 @@
 				<key>Name</key>
 				<string>Perlin Flow Field</string>
 				<key>Description</key>
-				<string>A flow field generated with Perlin noise. Dragging your finger affects the flow.</string>
+				<string>A flow field generated with Perlin noise. Dragging your finger modifies the flow.</string>
 				<key>Controller</key>
 				<string>TouchFlowField</string>
 			</dict>
@@ -236,7 +236,7 @@
 				<key>Name</key>
 				<string>Steering Flow Field</string>
 				<key>Description</key>
-				<string>Particles that follow the current of the flow field. Double-tap to hide and show the flow field.</string>
+				<string>Particles follow the current of a 3-dimensional flow field. Double-tap to hide and show the flow field.</string>
 				<key>Controller</key>
 				<string>FlowField</string>
 			</dict>

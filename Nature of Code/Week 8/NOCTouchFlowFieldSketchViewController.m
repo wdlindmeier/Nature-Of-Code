@@ -22,6 +22,14 @@
 static NSString * ShaderNameFlowField = @"ColoredVerts";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
+#pragma mark - View
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.sliderBeta.value =  0.65065;
+}
+
 #pragma mark - GUI
 
 - (NSString *)nibNameForControlGUI
@@ -100,8 +108,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     [shaderFF setMatrix4:_projectionMatrix2D forUniform:UniformMVProjectionMatrix];
     [_flowField renderInRect:CGRectMake(-1.0, -1.0 / _viewAspect,
                                         2.0, 2.0 / _viewAspect)
-                   lineWidth:0.015
-                    weighted:YES];
+                   lineWidth:0.005
+                    weighted:NO];
 }
 
 - (void)teardown
@@ -135,7 +143,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     float plotWidth = 2.0 / _flowField.dimensions.width;
     float plotHeight = 2.0 / _viewAspect / _flowField.dimensions.height;
     
-    float maxRange = 0.3;
+    float maxRange = 0.2;
     float touchInfluence = 0.35;
     
     

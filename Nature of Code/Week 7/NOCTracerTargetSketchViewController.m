@@ -32,6 +32,8 @@ static NSString * UniformTexture = @"texture";
     float _targetRadius;
     BOOL _didReachTarget;
     
+    GLKTextureInfo *_textureTarget;
+    
     GLKMatrix4 _projectionMatrixFBO;
     NOCFrameBuffer *_fboTouches;
     NSMutableDictionary *_activeTouches;
@@ -120,6 +122,8 @@ static NSString * UniformTexture = @"texture";
                                  @"texCoord" : @(GLKVertexAttribTexCoord0)};
     textureShader.uniformNames = @[ UniformMVProjectionMatrix, UniformTexture ];
     [self addShader:textureShader named:ShaderNameTexture];
+    
+    _textureTarget = NOCLoadGLTextureWithName(@"target");
     
     [self setupInitialTracers];
 }
@@ -343,6 +347,9 @@ static NSString * UniformTexture = @"texture";
 
     [self renderTouchTexture];
     
+    // Draw the target
+    [self renderTarget];
+    
     NOCShaderProgram *shaderTracers = [self shaderNamed:ShaderNameTracers];
     [shaderTracers use];
     [shaderTracers setMatrix4:_projectionMatrix2D
@@ -358,9 +365,6 @@ static NSString * UniformTexture = @"texture";
         renderTouchesToFBO = YES;
     }
     
-    // Draw the target
-    [self renderTarget];
-
     // Draw the tracers
     [self renderTracers];
         
@@ -497,6 +501,15 @@ static NSString * UniformTexture = @"texture";
 - (void)renderTarget
 {
     int numSegments = 32;
+    
+    NOCShaderProgram *shaderTexture = [self shaderNamed:ShaderNameTexture];
+    [shaderTexture use];
+    [shaderTexture setMatrix4:_projectionMatrix2D
+                   forUniform:UniformMVProjectionMatrix];
+    glEnable(GL_TEXTURE_2D);
+    glActiveTexture(0);
+    glBindTexture(GL_TEXTURE_2D, _textureTarget.name);
+    [shaderTexture setInt:0 forUniform:UniformTexture];
 
     // automatically determine the number of segments from the circumference
     if( numSegments <= 0 ) {
@@ -506,11 +519,14 @@ static NSString * UniformTexture = @"texture";
     
     // TODO: Cache this
     GLfloat verts[(numSegments+2)*2];
+    GLfloat texs[(numSegments+2)*2];
     GLfloat colors[(numSegments+2)*4];
     
     verts[0] = _targetPosition.x;
     verts[1] = _targetPosition.y;
-    
+    texs[0] = 0.5;
+    texs[1] = 0.5;
+
     colors[0] = _didReachTarget;
     colors[1] = 1;
     colors[2] = 1;
@@ -518,8 +534,15 @@ static NSString * UniformTexture = @"texture";
     
     for( int s = 0; s <= numSegments; s++ ) {
         float t = s / (float)numSegments * 2.0f * 3.14159f;
-        verts[(s+1)*2+0] = _targetPosition.x + cos( t ) * _targetRadius;
-        verts[(s+1)*2+1] = _targetPosition.y + sin( t ) * _targetRadius;
+        
+        float radX = cos( t );
+        float radY = sin( t );
+        
+        verts[(s+1)*2+0] = _targetPosition.x + radX * _targetRadius;
+        verts[(s+1)*2+1] = _targetPosition.y + radY * _targetRadius;
+        
+        texs[(s+1)*2+0] = (1.0 + radX) * 0.5;
+        texs[(s+1)*2+1] = 1.0 - ((1.0 + radY) * 0.5);
         
         colors[(s+1)*4+0] = _didReachTarget;
         colors[(s+1)*4+1] = 1;
@@ -529,11 +552,14 @@ static NSString * UniformTexture = @"texture";
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribColor);
+    glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     
     glVertexAttribPointer(GLKVertexAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, &verts);
+    glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, &texs);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &colors);
 
     glDrawArrays( GL_TRIANGLE_FAN, 0, numSegments + 2 );
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 }
 
