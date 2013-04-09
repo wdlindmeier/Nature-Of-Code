@@ -57,10 +57,9 @@ static const float MaxFrequency = 1.f;
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
     float moverSize = 2.0f / (NumMovers-1) * 2;
     for(int i=0;i<NumMovers;i++){
-        float x = (i * (moverSize * 0.5)) - 1.0f;// + (moverSize * 0.5);
+        float x = (i * (moverSize * 0.5)) - 1.0f;
         NOCMover2D *mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(moverSize, moverSize)
-                                                    position:GLKVector2Make(x, 0)
-                                                        mass:0.1f];
+                                                    position:GLKVector2Make(x, 0)];
         [movers addObject:mover];
     }
     _movers = [NSArray arrayWithArray:movers];

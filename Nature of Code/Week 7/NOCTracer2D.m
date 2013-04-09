@@ -63,6 +63,16 @@ const static float ForceDistMulti = 0.005;
     if(_history) free(_history);
 }
 
+#pragma mark - Accessors
+
+- (GLKVector2)positionAtFrame:(int)frame
+{
+    if(frame <= self.framesAlive && frame >= 0){
+        return _history[frame];
+    }
+    return GLKVector2Zero;
+}
+
 #pragma mark - Life
 
 - (BOOL)isDead
@@ -88,9 +98,9 @@ const static float ForceDistMulti = 0.005;
     int idx = self.lifespan * 2;
     
     // Color
-    float r = f([self DNA][idx+0]) * 2 - 1.0f;
-    float g = f([self DNA][idx+1]) * 2 - 1.0f;
-    float b = f([self DNA][idx+2]) * 2 - 1.0f;
+    float r = f([self DNA][idx+0]);
+    float g = f([self DNA][idx+1]);
+    float b = f([self DNA][idx+2]);
     self.color = [UIColor colorWithRed:r green:g blue:b alpha:1];
     
     if(_vectors) free(_vectors);

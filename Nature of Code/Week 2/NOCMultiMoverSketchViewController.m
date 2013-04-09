@@ -67,8 +67,7 @@ static NSString * UniformMoverTexture = @"texture";
         float randMass = 0.3 + RAND_SCALAR * 1.5;
         float dimension = 0.1 * randMass;
         NOCMover2D *mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(dimension, dimension)
-                                                    position:GLKVector2Make(randX, randY)
-                                                        mass:randMass];
+                                                    position:GLKVector2Make(randX, randY)];
         [movers addObject:mover];
     }
     _movers = [NSArray arrayWithArray:movers];

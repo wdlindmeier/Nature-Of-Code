@@ -12,9 +12,8 @@
 
 @interface NOCMover2D : NOCParticle2D <NOCPositionedMass2D>
 
-@property (nonatomic, assign) float mass;
-
-- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position mass:(float)mass;
 - (void)stepInRect:(CGRect)rect shouldWrap:(BOOL)shouldWrap;
+
+@property (nonatomic, assign) float mass;
 
 @end

@@ -13,14 +13,13 @@
 
 #pragma mark - Init
 
-- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position mass:(float)mass
+- (id)initWithSize:(GLKVector2)size position:(GLKVector2)position
 {
     self = [super initWithSize:size position:position];
     if(self){
         self.velocity = GLKVector2Zero;
         self.acceleration = GLKVector2Zero;
         self.maxVelocity = 5.0f;
-        self.mass = mass;
     }
     return self;
 }

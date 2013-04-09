@@ -328,15 +328,10 @@ static NSString * UniformColor = @"color";
 {
     [self clear];
     
-    GLKMatrix4 matCam = GLKMatrix4MakeTranslation(0, 0, self.cameraDepth);
-    GLKMatrix4 matScene = GLKMatrix4Multiply(_projectionMatrix3D, matCam);
-    
-    matScene = [self rotateMatrixWithArcBall:matScene];
-    
     // Draw the scene box
     NOCShaderProgram *shaderScene = [self shaderNamed:ShaderNameSceneBox];
     [shaderScene use];
-    [shaderScene setMatrix4:matScene
+    [shaderScene setMatrix4:_projectionMatrix3D
                  forUniform:UniformMVProjectionMatrix];
     [self drawWalls];
     

@@ -68,8 +68,7 @@ static NSString * UniformMoverTexture = @"texture";
 
     // Setup the Mover
     _mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(0.1, 0.1)
-                                     position:GLKVector2Zero
-                                         mass:1.0f];
+                                     position:GLKVector2Zero];
     
 }
 

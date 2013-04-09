@@ -18,5 +18,6 @@
 - (float)evaluateFitness;
 - (void)checkTarget:(GLKVector2)target radius:(float)targetRadius;
 - (void)stepInRect:(CGRect)rect;
+- (GLKVector2)positionAtFrame:(int)frame;
 
 @end

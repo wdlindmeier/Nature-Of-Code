@@ -195,6 +195,11 @@ static inline GLKVector3 GLKVector3Random()
     return GLKVector3Normalize(GLKVector3Make(x,y,z));
 }
 
+static inline GLKVector2 GLKVector2Normal(GLKVector2 vec)
+{
+    return GLKVector2Make(vec.y * -1, vec.x);
+}
+
 static inline GLKVector2 GLKVector2Limit(GLKVector2 vec, float max)
 {
     float vecLength = GLKVector2Length(vec);

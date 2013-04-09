@@ -18,11 +18,13 @@
 /*
 static NSString * ShaderName = @"SampleShader";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
-static NSString * UniformTexture = @"texture";
+static NSString * UniformNormalMatrix = @"normalMatrix";
 */
 
 - (void)setup
 {
+    [super setup];
+    
     // Setup the shader
     /*
      NOCShaderProgram *shader = [[NOCShaderProgram alloc] initWithName:ShaderName];
@@ -38,7 +40,7 @@ static NSString * UniformTexture = @"texture";
 
 - (void)update
 {
-    //...
+    [super update];
 }
 
 - (void)draw
@@ -48,7 +50,7 @@ static NSString * UniformTexture = @"texture";
 
 - (void)teardown
 {
-    //...
+    [super teardown];
 }
 
 @end

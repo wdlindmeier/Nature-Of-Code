@@ -10,6 +10,8 @@
 
 @interface NOCSceneBox : NSObject
 
+@property (nonatomic, strong) UIColor *color;
+
 - (id)initWithAspect:(float)aspect;
 - (void)resizeWithAspect:(float)aspect;
 - (void)render;
