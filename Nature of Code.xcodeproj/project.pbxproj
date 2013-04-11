@@ -73,6 +73,7 @@
 		A95C900B16BD7351003C8F5B /* NOCSampleSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C900516BD7351003C8F5B /* NOCSampleSketchViewController.m */; };
 		A95C900E16BD7351003C8F5B /* NOCShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C900A16BD7351003C8F5B /* NOCShaderProgram.m */; };
 		A95C901816BD7EBB003C8F5B /* NOCTemplateSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */; };
+		A963749C1715FC870030C88C /* NOCOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A963749B1715FC870030C88C /* NOCOBJ.m */; };
 		A96653E2170B88DA004DACF8 /* NOCTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = A96653E1170B88DA004DACF8 /* NOCTracer.m */; };
 		A96653E5170B89FC004DACF8 /* NOCBreeder.m in Sources */ = {isa = PBXBuildFile; fileRef = A96653E4170B89FC004DACF8 /* NOCBreeder.m */; };
 		A96653E8170B9BFD004DACF8 /* NOCTracersSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96653E7170B9BFD004DACF8 /* NOCTracersSketchViewController.m */; };
@@ -167,6 +168,14 @@
 		A9D54F791714B9430024C8D0 /* thumb_TouchFlowField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6F1714B9430024C8D0 /* thumb_TouchFlowField@2x.png */; };
 		A9D54F7A1714B9430024C8D0 /* thumb_TracerTarget.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F701714B9430024C8D0 /* thumb_TracerTarget.png */; };
 		A9D54F7B1714B9430024C8D0 /* thumb_TracerTarget@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F711714B9430024C8D0 /* thumb_TracerTarget@2x.png */; };
+		A9D54F7E1715A1E40024C8D0 /* NOCFlockSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F7D1715A1E40024C8D0 /* NOCFlockSketchViewController.m */; };
+		A9D54F811715A20D0024C8D0 /* NOCFlocker.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F801715A20D0024C8D0 /* NOCFlocker.m */; };
+		A9D54F831715A6300024C8D0 /* NOCGuiFlocking.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F821715A62F0024C8D0 /* NOCGuiFlocking.xib */; };
+		A9D54F9F1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F9E1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m */; };
+		A9D798EE171603D700AE91D6 /* cone.obj in Resources */ = {isa = PBXBuildFile; fileRef = A9D798ED171603D700AE91D6 /* cone.obj */; };
+		A9D798F017160CAB00AE91D6 /* sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = A9D798EF17160CAB00AE91D6 /* sphere.obj */; };
+		A9D798F2171631A600AE91D6 /* NOCGuiOBJLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D798F1171631A600AE91D6 /* NOCGuiOBJLoader.xib */; };
+		A9D798F4171673FB00AE91D6 /* sharp_sphere.obj in Resources */ = {isa = PBXBuildFile; fileRef = A9D798F3171673FB00AE91D6 /* sharp_sphere.obj */; };
 		A9D7CB5616C1E86E00BD5331 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */; };
 		A9D7CB5716C1E86E00BD5331 /* Default-Landscape@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */; };
 		A9D7CB5816C1E86E00BD5331 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */; };
@@ -350,6 +359,8 @@
 		A95C901716BD7EBB003C8F5B /* NOCTemplateSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTemplateSketchViewController.m; sourceTree = "<group>"; };
 		A95C901E16BD81FA003C8F5B /* NOCOpenGLHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCOpenGLHelpers.h; path = Shared/NOCOpenGLHelpers.h; sourceTree = "<group>"; };
 		A95C902116BDA1EE003C8F5B /* NOCGeometryHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NOCGeometryHelpers.h; path = Shared/NOCGeometryHelpers.h; sourceTree = "<group>"; };
+		A963749A1715FC870030C88C /* NOCOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCOBJ.h; sourceTree = "<group>"; };
+		A963749B1715FC870030C88C /* NOCOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCOBJ.m; sourceTree = "<group>"; };
 		A96653E0170B88DA004DACF8 /* NOCTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTracer.h; sourceTree = "<group>"; };
 		A96653E1170B88DA004DACF8 /* NOCTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTracer.m; sourceTree = "<group>"; };
 		A96653E3170B89FC004DACF8 /* NOCBreeder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCBreeder.h; sourceTree = "<group>"; };
@@ -486,6 +497,17 @@
 		A9D54F6F1714B9430024C8D0 /* thumb_TouchFlowField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_TouchFlowField@2x.png"; sourceTree = "<group>"; };
 		A9D54F701714B9430024C8D0 /* thumb_TracerTarget.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_TracerTarget.png; sourceTree = "<group>"; };
 		A9D54F711714B9430024C8D0 /* thumb_TracerTarget@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_TracerTarget@2x.png"; sourceTree = "<group>"; };
+		A9D54F7C1715A1E40024C8D0 /* NOCFlockSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFlockSketchViewController.h; sourceTree = "<group>"; };
+		A9D54F7D1715A1E40024C8D0 /* NOCFlockSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFlockSketchViewController.m; sourceTree = "<group>"; };
+		A9D54F7F1715A20D0024C8D0 /* NOCFlocker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFlocker.h; sourceTree = "<group>"; };
+		A9D54F801715A20D0024C8D0 /* NOCFlocker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFlocker.m; sourceTree = "<group>"; };
+		A9D54F821715A62F0024C8D0 /* NOCGuiFlocking.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiFlocking.xib; sourceTree = "<group>"; };
+		A9D54F9D1715C1680024C8D0 /* NOCOBJLoaderSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCOBJLoaderSketchViewController.h; sourceTree = "<group>"; };
+		A9D54F9E1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCOBJLoaderSketchViewController.m; sourceTree = "<group>"; };
+		A9D798ED171603D700AE91D6 /* cone.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cone.obj; sourceTree = "<group>"; };
+		A9D798EF17160CAB00AE91D6 /* sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sphere.obj; sourceTree = "<group>"; };
+		A9D798F1171631A600AE91D6 /* NOCGuiOBJLoader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiOBJLoader.xib; sourceTree = "<group>"; };
+		A9D798F3171673FB00AE91D6 /* sharp_sphere.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sharp_sphere.obj; sourceTree = "<group>"; };
 		A9D7CB5016C1E86E00BD5331 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		A9D7CB5116C1E86E00BD5331 /* Default-Landscape@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~iphone.png"; sourceTree = "<group>"; };
 		A9D7CB5216C1E86E00BD5331 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -902,6 +924,8 @@
 		A95C900816BD7351003C8F5B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A963749A1715FC870030C88C /* NOCOBJ.h */,
+				A963749B1715FC870030C88C /* NOCOBJ.m */,
 				A9F78AF716D9780800073D16 /* NOCFrameBuffer.h */,
 				A9F78AF816D9780800073D16 /* NOCFrameBuffer.m */,
 				A95C701D16D0318E0058D8BA /* NOCMover2D.h */,
@@ -1041,7 +1065,6 @@
 		A9D1AEAB16B99E68000BE623 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				A9E2253816ED7C16002DC1F3 /* TOC */,
 				A9E2251316ED6365002DC1F3 /* camera.png */,
 				A9E2251416ED6365002DC1F3 /* camera@2x.png */,
 				A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */,
@@ -1059,8 +1082,10 @@
 				A9D1AEAF16B99E68000BE623 /* Icon@2x~iphone.png */,
 				A9D1AEB016B99E68000BE623 /* Icon~ipad.png */,
 				A9D1AEB116B99E68000BE623 /* Icon~iphone.png */,
+				A9D798EC171603D700AE91D6 /* obj */,
 				A95A5A5E16C2E7AC0001D07D /* sketches */,
 				A920CEB416C0373D00284EAF /* thumbnails */,
+				A9E2253816ED7C16002DC1F3 /* TOC */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1102,6 +1127,16 @@
 				A9D1AEC116B9A288000BE623 /* TableOfContents.plist */,
 			);
 			name = Data;
+			sourceTree = "<group>";
+		};
+		A9D798EC171603D700AE91D6 /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				A9D798F3171673FB00AE91D6 /* sharp_sphere.obj */,
+				A9D798EF17160CAB00AE91D6 /* sphere.obj */,
+				A9D798ED171603D700AE91D6 /* cone.obj */,
+			);
+			path = obj;
 			sourceTree = "<group>";
 		};
 		A9E2251916ED6A02002DC1F3 /* Week 6 */ = {
@@ -1158,13 +1193,21 @@
 		A9E6F61F1713D642001622B4 /* Week 8 */ = {
 			isa = PBXGroup;
 			children = (
+				A9D54F7F1715A20D0024C8D0 /* NOCFlocker.h */,
+				A9D54F801715A20D0024C8D0 /* NOCFlocker.m */,
+				A9D54F7C1715A1E40024C8D0 /* NOCFlockSketchViewController.h */,
+				A9D54F7D1715A1E40024C8D0 /* NOCFlockSketchViewController.m */,
 				A9E6F6201713D642001622B4 /* NOCFlowField.h */,
 				A9E6F6211713D642001622B4 /* NOCFlowField.m */,
 				A9E6F6221713D642001622B4 /* NOCFlowFieldSketchViewController.h */,
 				A9E6F6231713D642001622B4 /* NOCFlowFieldSketchViewController.m */,
 				A9E6F6241713D642001622B4 /* NOCFlowParticle.h */,
 				A9E6F6251713D642001622B4 /* NOCFlowParticle.m */,
+				A9D54F821715A62F0024C8D0 /* NOCGuiFlocking.xib */,
 				A9E6F6261713D642001622B4 /* NOCGuiFlowField.xib */,
+				A9D798F1171631A600AE91D6 /* NOCGuiOBJLoader.xib */,
+				A9D54F9D1715C1680024C8D0 /* NOCOBJLoaderSketchViewController.h */,
+				A9D54F9E1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m */,
 				A9E6F6271713D642001622B4 /* NOCTouchFlowFieldSketchViewController.h */,
 				A9E6F6281713D642001622B4 /* NOCTouchFlowFieldSketchViewController.m */,
 			);
@@ -1387,6 +1430,11 @@
 				A9D54F791714B9430024C8D0 /* thumb_TouchFlowField@2x.png in Resources */,
 				A9D54F7A1714B9430024C8D0 /* thumb_TracerTarget.png in Resources */,
 				A9D54F7B1714B9430024C8D0 /* thumb_TracerTarget@2x.png in Resources */,
+				A9D54F831715A6300024C8D0 /* NOCGuiFlocking.xib in Resources */,
+				A9D798EE171603D700AE91D6 /* cone.obj in Resources */,
+				A9D798F017160CAB00AE91D6 /* sphere.obj in Resources */,
+				A9D798F2171631A600AE91D6 /* NOCGuiOBJLoader.xib in Resources */,
+				A9D798F4171673FB00AE91D6 /* sharp_sphere.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1483,6 +1531,10 @@
 				A9E6F62D1713D642001622B4 /* NOCTouchFlowFieldSketchViewController.m in Sources */,
 				A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Sources */,
 				A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Sources */,
+				A9D54F7E1715A1E40024C8D0 /* NOCFlockSketchViewController.m in Sources */,
+				A9D54F811715A20D0024C8D0 /* NOCFlocker.m in Sources */,
+				A9D54F9F1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m in Sources */,
+				A963749C1715FC870030C88C /* NOCOBJ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

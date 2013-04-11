@@ -221,7 +221,7 @@
 		<key>Week Number</key>
 		<integer>8</integer>
 		<key>Name</key>
-		<string>Flow Fields</string>
+		<string>Steering</string>
 		<key>Sketches</key>
 		<array>
 			<dict>
@@ -239,6 +239,14 @@
 				<string>Particles follow the current of a 3-dimensional flow field. Double-tap to hide and show the flow field.</string>
 				<key>Controller</key>
 				<string>FlowField</string>
+			</dict>
+			<dict>
+				<key>Name</key>
+				<string>Flocking</string>
+				<key>Description</key>
+				<string>Basic flocking simulation. Double-tap to reset.</string>
+				<key>Controller</key>
+				<string>Flock</string>
 			</dict>
 		</array>
 	</dict>

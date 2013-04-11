@@ -77,7 +77,6 @@
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 24, &CubeVertexData);
     glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 24, &CubeVertexData[3]);
     glDrawArrays(GL_TRIANGLES, 0, 36);
-
 }
 
 @end

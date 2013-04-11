@@ -375,6 +375,7 @@ static NSString * UniformColor = @"color";
         [being renderHistory:NO];
 
         /*
+         // Uncomment to draw the position on the walls
         switch (being.wallContact) {
             case WallSideNone:
                 break;
@@ -539,7 +540,6 @@ static NSString * UniformColor = @"color";
     glEnableVertexAttribArray(GLKVertexAttribColor);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &color);
     glDrawArrays(GL_LINE_LOOP, 0, 5);
-    //glDrawArrays(GL_TRIANGLE_STRIP, 0, 5);
 
 }
 

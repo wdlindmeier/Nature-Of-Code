@@ -11,8 +11,8 @@
 
 #if DEBUG
 
-//#import "NOCFlowFieldSketchViewController.h"
-#import "NOCTouchFlowFieldSketchViewController.h"
+#import "NOCFlockSketchViewController.h"
+#import "NOCOBJLoaderSketchViewController.h"
 
 #endif
 
@@ -27,8 +27,8 @@
 #if DEBUG
     // A shortcut to jump directly to the sketch I'm working on
     //[UIApplication sharedApplication].idleTimerDisabled = YES;
-    //self.viewController = [[NOCTouchFlowFieldSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
-    //                                                                              bundle:nil];
+    //self.viewController = [[NOCFlockSketchViewController alloc] initWithNibName:@"NOCSketchViewController"
+    //                                                                     bundle:nil];
 #endif
     
     if(!self.viewController){

@@ -274,13 +274,9 @@ static const float ForceDistMulti = 0.005;
     glEnableVertexAttribArray(GLKVertexAttribPosition);
     glEnableVertexAttribArray(GLKVertexAttribColor);
     
-    // NOTE: Is this bad mojo?
-    // Getting some odd crashes. ( e.g. EXC_??? )
-    //glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &_positionHistory);
     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &historyVecs);
     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 0, &historyColor);
     glDrawArrays( GL_LINE_STRIP, 0, _framesAlive );
-    //glDrawArrays( GL_TRIANGLE_STRIP, 0, _framesAlive );
 }
 
 // Based on Cinder gl::drawSphere

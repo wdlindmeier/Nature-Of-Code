@@ -12,6 +12,7 @@
 @interface NOC3DSketchViewController : NOCSketchViewController <UIGestureRecognizerDelegate>
 {
     GLKMatrix4 _projectionMatrix3D;
+    GLKMatrix4 _projectionMatrix3DStatic;
 }
 
 @property (nonatomic, assign) BOOL isArcballEnabled;

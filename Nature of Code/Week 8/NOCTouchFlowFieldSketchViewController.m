@@ -135,8 +135,7 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
 
 - (void)affectFieldFromTouchPoint:(GLKVector2)pos1 toPoint:(GLKVector2)pos2
 {
-    // For the moment, let's iterate over the entire grid
-    // Compare the position of the plot with the line
+
     GLKVector2 vec = GLKVector2Subtract(pos2, pos1);
     GLKVector2 vecUnit = GLKVector2Normalize(vec);
     
@@ -148,7 +147,8 @@ static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
     
     
     // TODO:
-    // Only iterate over the ones that are close to the touch
+    // We could limit the number of calculations by only
+    // looping over the plots that we know are close.
     
     for(int x=0;x<_flowField.dimensions.width;x++){
         for(int y=0;y<_flowField.dimensions.height;y++){

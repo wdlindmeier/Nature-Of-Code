@@ -13,7 +13,6 @@
     float _radiansPerPixel;
     CGPoint _posTouchInit;
 	GLKQuaternion _quatArcball;
-    GLKMatrix4 _projectionMatrix3DStatic;
     float _cameraDepth;
     float _camDepthScalingBegan;
     UIPinchGestureRecognizer *_depthGestureRecognizer;
