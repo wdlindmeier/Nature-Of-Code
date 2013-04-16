@@ -16,6 +16,10 @@
 				<string>A particle that moves in a random direction each frame.</string>
 				<key>Controller</key>
 				<string>RandomWalker</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/01_vectors.asc</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%201/NOCRandomWalkerSketchViewController.m</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -24,6 +28,10 @@
 				<string>A Random Walker that probabilistically follows a touch point, or the device tilt.</string>
 				<key>Controller</key>
 				<string>DirectedWalker</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%201/NOCDirectedWalkerSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/01_vectors.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -32,6 +40,10 @@
 				<string>A Radom Walker whos direction is determined by Perlin Noise.</string>
 				<key>Controller</key>
 				<string>PerlinWalker</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%201/NOCPerlinWalker.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/01_vectors.asc</string>
 			</dict>
 		</array>
 	</dict>
@@ -49,6 +61,10 @@
 				<string>A Mover whos velocity is influenced by acceleration.</string>
 				<key>Controller</key>
 				<string>AccelMover</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%202/NOCAccelMoverSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/02_forces.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -57,6 +73,10 @@
 				<string>Multiple movers that are mutually repulsed when near and attracted when distant. Acceleration is also affected by swipe gestures.</string>
 				<key>Controller</key>
 				<string>MultiMover</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%202/NOCMultiMoverSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/02_forces.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -65,6 +85,10 @@
 				<string>A Mover swarm in 3D. Does not react to touch.</string>
 				<key>Controller</key>
 				<string>Movers3D</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%202/NOCMovers3DSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/02_forces.asc</string>
 			</dict>
 		</array>
 	</dict>
@@ -82,6 +106,10 @@
 				<string>2 oscillating waves combined. Drag your finger to change the amplitude and frequency of wave 2. </string>
 				<key>Controller</key>
 				<string>WaveAddition</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%203/NOCWaveAdditionSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -90,6 +118,10 @@
 				<string>Tapping the screen generates additive waves. Position of the tap determines the amplitude and frequency.</string>
 				<key>Controller</key>
 				<string>WaveTap</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%203/NOCWaveTapSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -98,6 +130,10 @@
 				<string>Tapping the screen sends waves through a 3D grid of cubes.</string>
 				<key>Controller</key>
 				<string>WaveMatrix</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%203/NOCWaveMatrixSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
 			</dict>
 		</array>
 	</dict>
@@ -115,6 +151,10 @@
 				<string>A simple particle emitter that reacts to touch dragging. The options panel allows you to choose blend mode parameters, which are passed into glBlendFunc().</string>
 				<key>Controller</key>
 				<string>ParticleSystem</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%204/NOCParticleSystemSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/04_particles.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -123,6 +163,10 @@
 				<string>Touch the screen to spawn flames that will consume the paper. Flames are attracted to the whitest parts of the paper. The direction of the flame trails respond to device orientation.</string>
 				<key>Controller</key>
 				<string>PaperBurn</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%204/NOCPaperBurnSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/04_particles.asc</string>
 			</dict>
 		</array>
 	</dict>
@@ -140,6 +184,10 @@
 				<string>A basic example of Delaunay  Triangulation. Nodes are randomly added to an image which are incorporated into the triangle mesh.</string>
 				<key>Controller</key>
 				<string>Triangulation</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%205/NOCTriangulationSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>http://en.wikipedia.org/wiki/Delaunay_triangulation</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -148,6 +196,10 @@
 				<string>Generate a triangulated mesh that connects a spiral. Tapping the screen in various locations adjusts the spiral configuration.</string>
 				<key>Controller</key>
 				<string>TriangleSpiral</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%205/NOCTriangleSpiralSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>http://en.wikipedia.org/wiki/Delaunay_triangulation</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -156,6 +208,10 @@
 				<string>Renders a triangulated mesh over your face.</string>
 				<key>Controller</key>
 				<string>FaceMesh</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%205/NOCFaceMeshSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>http://en.wikipedia.org/wiki/Delaunay_triangulation</string>
 			</dict>
 		</array>
 	</dict>
@@ -173,6 +229,10 @@
 				<string>Hair is simulated by connecting particles with springs. Touching the screen adds wind forces.</string>
 				<key>Controller</key>
 				<string>Hair</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%206/NOCHairSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -181,6 +241,10 @@
 				<string>Uses face detection to map a beard onto you. Drag your finger to add wind forces. Double tap to reset the beard.</string>
 				<key>Controller</key>
 				<string>Beardly</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%206/NOCBeardlySketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
 			</dict>
 		</array>
 	</dict>
@@ -198,6 +262,10 @@
 				<string>A tank full of &quot;Beings&quot; that procreate when they touch. Double tap to reset.</string>
 				<key>Controller</key>
 				<string>Tank</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%207/NOCTankSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/09_ga.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -206,6 +274,10 @@
 				<string>Lines that evolve towards a target. Drag your finger to add obstructions. Double tap to reset the simulation.</string>
 				<key>Controller</key>
 				<string>TracerTarget</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%207/NOCTracerTargetSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/09_ga.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -214,6 +286,10 @@
 				<string>A collection of Tracer Beings that evolve to conform to the surface of a sphere. Double tap to reset.</string>
 				<key>Controller</key>
 				<string>ShapeFollowers</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%207/NOCShapeFollowersSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/09_ga.asc</string>
 			</dict>
 		</array>
 	</dict>
@@ -231,6 +307,10 @@
 				<string>A flow field generated with Perlin noise. Dragging your finger modifies the flow.</string>
 				<key>Controller</key>
 				<string>TouchFlowField</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%208/NOCTouchFlowFieldSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/06_steering.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -239,6 +319,10 @@
 				<string>Particles follow the current of a 3-dimensional flow field. Double-tap to hide and show the flow field.</string>
 				<key>Controller</key>
 				<string>FlowField</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%208/NOCFlowFieldSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/06_steering.asc</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -247,6 +331,10 @@
 				<string>Basic flocking simulation. Double-tap to reset.</string>
 				<key>Controller</key>
 				<string>Flock</string>
+				<key>Code URL</key>
+				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%208/NOCFlockSketchViewController.m</string>
+				<key>Book URL</key>
+				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/06_steering.asc</string>
 			</dict>
 		</array>
 	</dict>

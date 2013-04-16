@@ -7,6 +7,7 @@
 //
 
 #import "NOCTracer.h"
+#import "NOCColorHelpers.h"
 
 @implementation NOCTracer
 {
@@ -77,14 +78,7 @@
 
 - (void)glColor:(GLfloat *)components
 {
-    const CGFloat *myColor = CGColorGetComponents(_color.CGColor);
-    if(CGColorGetNumberOfComponents(_color.CGColor) < 3){
-        myColor = CGColorGetComponents([UIColor whiteColor].CGColor);
-    }
-    components[0] = myColor[0];
-    components[1] = myColor[1];
-    components[2] = myColor[2];
-    components[3] = myColor[3];
+    NOCColorComponentsForColor(components, self.color);
 }
 
 - (void)render:(BOOL)colored

@@ -19,9 +19,9 @@
     UIPanGestureRecognizer *_gestureRecognizerDrawer;
     long _frameCount;
     NSMutableDictionary *_shaders;
-
-
+    UIActionSheet *_actionSheet;
 }
+
 @property (strong, nonatomic) GLKBaseEffect *effect;
 
 - (void)setupGL;
@@ -149,6 +149,11 @@ static const float DrawerRevealHeight = 20.0f;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    UIBarButtonItem *actionItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                target:self
+                                                                                action:@selector(buttonActionPressed:)];
+    
+    self.navigationItem.rightBarButtonItem = actionItem;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
@@ -158,6 +163,12 @@ static const float DrawerRevealHeight = 20.0f;
     [self resize];
     [self repositionDrawer:YES];
     [self teaseDrawer];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [_actionSheet dismissWithClickedButtonIndex:_actionSheet.cancelButtonIndex animated:NO];
 }
 
 - (BOOL)shouldAutorotate
@@ -345,6 +356,40 @@ static const float DrawerRevealHeight = 20.0f;
 - (IBAction)buttonHideControlsPressed:(id)sender
 {
     [self closeDrawer];
+}
+
+static NSString *const NOCActionButtonTitleReadMore = @"Read About This Topic";
+static NSString *const NOCActionButtonTitleViewCode = @"View Code";
+
+- (IBAction)buttonActionPressed:(UIBarButtonItem *)sender
+{
+    if(_actionSheet){
+        [_actionSheet dismissWithClickedButtonIndex:_actionSheet.cancelButtonIndex
+                                           animated:NO];
+    }
+    _actionSheet = [[UIActionSheet alloc] initWithTitle:@"Online Resources"
+                                               delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                 destructiveButtonTitle:nil
+                                      otherButtonTitles:NOCActionButtonTitleReadMore,
+                                                        NOCActionButtonTitleViewCode,
+                                        nil];
+    [_actionSheet showFromBarButtonItem:sender
+                               animated:YES];
+}
+
+#pragma mark - UIActionSheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex != [actionSheet cancelButtonIndex]){
+        if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NOCActionButtonTitleReadMore]){
+            [[UIApplication sharedApplication] openURL:self.sketch.URLReadMore];
+        }else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:NOCActionButtonTitleViewCode]){
+            [[UIApplication sharedApplication] openURL:self.sketch.URLCode];
+        }
+    }
+    _actionSheet = nil;
 }
 
 #pragma mark - GL

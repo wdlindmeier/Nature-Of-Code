@@ -179,7 +179,8 @@
                                                            initWithNibName:@"NOCSketchViewController"
                                                            bundle:nil];
     sketchViewController.title = _selectedSketch.name;
-    
+    sketchViewController.sketch = _selectedSketch;
+
     // Remove the sketch
     [self dismissSelectedSketch:NO];
 

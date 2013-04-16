@@ -7,6 +7,7 @@
 //
 
 #import "NOCShapeFollower.h"
+#import "NOCColorHelpers.h"
 
 @implementation NOCShapeFollower
 {
@@ -27,14 +28,7 @@
 
 - (void)glColor:(GLfloat *)components
 {
-    const CGFloat *myColor = CGColorGetComponents(self.color.CGColor);
-    if(CGColorGetNumberOfComponents(self.color.CGColor) < 3){
-        myColor = CGColorGetComponents([UIColor whiteColor].CGColor);
-    }
-    components[0] = myColor[0];
-    components[1] = myColor[1];
-    components[2] = myColor[2];
-    components[3] = myColor[3];
+    NOCColorComponentsForColor(components, self.color);
 }
 
 - (void)step

@@ -13,6 +13,8 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *description;
 @property (nonatomic, copy) NSString *controllerName;
+@property (nonatomic, strong) NSURL *URLReadMore;
+@property (nonatomic, strong) NSURL *URLCode;
 
 - (id)initWithSketchInfo:(NSDictionary *)sketchInfo;
 

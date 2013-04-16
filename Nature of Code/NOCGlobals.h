@@ -13,6 +13,8 @@ static NSString * __unused NOCTOCKeyChapterName = @"Name";
 static NSString * __unused NOCTOCKeyChapterSketches = @"Sketches";
 static NSString * __unused NOCTOCKeySketchName = @"Name";
 static NSString * __unused NOCTOCKeyWeekNumber = @"Week Number";
+static NSString * __unused NOCTOCKeyCodeURL = @"Code URL";
+static NSString * __unused NOCTOCKeyBookURL = @"Book URL";
 static NSString * __unused NOCTOCKeySketchDescription = @"Description";
 static NSString * __unused NOCTOCKeySketchControllerName = @"Controller";
 

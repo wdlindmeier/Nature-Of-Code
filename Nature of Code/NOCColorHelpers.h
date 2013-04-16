@@ -49,4 +49,22 @@ static inline HSVcolor HSVfromRGB(RGBcolor rgb)
     return hsv;
 }
 
+static inline void NOCColorComponentsForColor(GLfloat *components, UIColor *color)
+{
+    const CGFloat *myColor = CGColorGetComponents(color.CGColor);
+    int numColorComponents = CGColorGetNumberOfComponents(color.CGColor);
+    if(numColorComponents == 4){
+        components[0] = myColor[0];
+        components[1] = myColor[1];
+        components[2] = myColor[2];
+        components[3] = myColor[3];
+    }else{
+        // NSLog(@"ERROR: Could not find 4 color components. Found %i", numColorComponents);
+        components[0] = 1.0f;
+        components[1] = 1.0f;
+        components[2] = 1.0f;
+        components[3] = 1.0f;
+    }
+}
+
 #endif

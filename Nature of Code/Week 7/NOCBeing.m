@@ -132,16 +132,13 @@ static const float ForceDistMulti = 0.005;
         // Populate the DNA
         baby.vectors[i] = RAND_SCALAR < myWeight ? [self vectors][i] : [mate vectors][i];
     }
-        
-    const CGFloat *myColor = CGColorGetComponents(self.color.CGColor);
-    if(CGColorGetNumberOfComponents(self.color.CGColor) < 3){
-        myColor = CGColorGetComponents([UIColor whiteColor].CGColor);
-    }
-    const CGFloat *mateColor = CGColorGetComponents(mate.color.CGColor);
-    if(CGColorGetNumberOfComponents(mate.color.CGColor) < 3){
-        mateColor = CGColorGetComponents([UIColor whiteColor].CGColor);
-    }
     
+    CGFloat myColor[4];
+    NOCColorComponentsForColor(myColor, self.color);
+
+    CGFloat mateColor[4];
+    NOCColorComponentsForColor(mateColor, mate.color);
+
     baby.color = [UIColor colorWithRed:RAND_SCALAR < myWeight ? myColor[0] : mateColor[0]
                                  green:RAND_SCALAR < myWeight ? myColor[1] : mateColor[1]
                                   blue:RAND_SCALAR < myWeight ? myColor[2] : mateColor[2]

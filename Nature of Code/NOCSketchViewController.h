@@ -11,10 +11,11 @@
 #import "NOCShaderProgram.h"
 #import "NOCOpenGLHelpers.h"
 #import "CAEAGLLayer+Retained.h"
+#import "NOCSketch.h"
 
 @class CMMotionManager;
 
-@interface NOCSketchViewController : GLKViewController
+@interface NOCSketchViewController : GLKViewController <UIActionSheetDelegate>
 {
     // Geometry
     CGSize _sizeView;
@@ -29,9 +30,11 @@
 @property (nonatomic, strong) IBOutlet UIView *viewControls;
 @property (nonatomic, strong) IBOutlet UIButton *buttonHideControls;
 @property (strong, nonatomic) EAGLContext *context;
+@property (nonatomic, strong) NOCSketch *sketch;
 
 // IBActions
 - (IBAction)buttonHideControlsPressed:(id)sender;
+- (IBAction)buttonActionPressed:(id)sender;
 
 // Shaders
 - (NOCShaderProgram *)shaderNamed:(NSString *)shaderName;

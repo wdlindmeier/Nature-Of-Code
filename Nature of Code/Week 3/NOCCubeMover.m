@@ -7,7 +7,7 @@
 //
 
 #import "NOCCubeMover.h"
-
+#import "NOCColorHelpers.h"
 
 @implementation NOCCubeMover
 {
@@ -43,24 +43,16 @@
 - (void)updateColorData
 {
 
-    int numComponents = CGColorGetNumberOfComponents(self.color.CGColor);
-    
-    if (numComponents == 4)
-    {
-        const CGFloat *components = CGColorGetComponents(self.color.CGColor);
-        CGFloat red = components[0];
-        CGFloat green = components[1];
-        CGFloat blue = components[2];
-        CGFloat alpha = components[3];
-        for(int i=0;i<36;i++){
-            moverColorData[i*4+0] = red;
-            moverColorData[i*4+1] = green;
-            moverColorData[i*4+2] = blue;
-            moverColorData[i*4+3] = alpha;
-        }
-    }else{
-        NSLog(@"ERROR: Could not get 4 color components for Cube Mover");
+    CGFloat myColor[4];
+    NOCColorComponentsForColor(myColor, self.color);
+
+    for(int i=0;i<36;i++){
+        moverColorData[i*4+0] = myColor[0];
+        moverColorData[i*4+1] = myColor[1];
+        moverColorData[i*4+2] = myColor[2];
+        moverColorData[i*4+3] = myColor[3];
     }
+
 }
 
 #pragma mark - Draw
