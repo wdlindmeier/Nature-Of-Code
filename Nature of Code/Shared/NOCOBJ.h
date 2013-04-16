@@ -15,9 +15,11 @@
 @property (nonatomic, readonly) GLfloat *normals;
 @property (nonatomic, readonly) GLfloat *texCoords;
 @property (nonatomic, readonly) GLfloat *vertsAndNormals;
+@property (nonatomic, readonly) GLuint vertexArray;
+@property (nonatomic, readonly) GLuint vertexBuffer;
 
 - (id)initWithFilename:(NSString *)filename;
-
 - (BOOL)parseObjFileAtPath:(NSString *)filePath;
+- (void)recalculateNormals;
 
 @end

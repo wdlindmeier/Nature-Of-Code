@@ -127,6 +127,8 @@
 		A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */; };
 		A9C4FCDC16E6F40C00BB8809 /* TextureBlend.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */; };
 		A9C4FCDD16E6F40C00BB8809 /* TextureBlend.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */; };
+		A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Sources */ = {isa = PBXBuildFile; fileRef = A9C85894171BB00B00266255 /* UniformColoredVerts.fsh */; };
+		A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Sources */ = {isa = PBXBuildFile; fileRef = A9C85895171BB00B00266255 /* UniformColoredVerts.vsh */; };
 		A9CB7E7116E2598500CEF634 /* NOCFaceCapSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */; };
 		A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */; };
 		A9CB7E7916E269B600CEF634 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7816E269B500CEF634 /* AVFoundation.framework */; };
@@ -182,6 +184,8 @@
 		A9D7CB5916C1E86E00BD5331 /* Default-Landscape~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5316C1E86E00BD5331 /* Default-Landscape~iphone.png */; };
 		A9D7CB5A16C1E86E00BD5331 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */; };
 		A9D7CB5B16C1E86E00BD5331 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */; };
+		A9D859C9171CF82900B46C05 /* thumb_Flock.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D859C7171CF82900B46C05 /* thumb_Flock.png */; };
+		A9D859CA171CF82900B46C05 /* thumb_Flock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D859C8171CF82900B46C05 /* thumb_Flock@2x.png */; };
 		A9E2250416ED167C002DC1F3 /* beard_hair.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250316ED167C002DC1F3 /* beard_hair.png */; };
 		A9E2250916ED39EE002DC1F3 /* beard_mask_lincoln.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250816ED39EE002DC1F3 /* beard_mask_lincoln.png */; };
 		A9E2250B16ED3B75002DC1F3 /* beard_mask_wolverine.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E2250A16ED3B75002DC1F3 /* beard_mask_wolverine.png */; };
@@ -444,6 +448,8 @@
 		A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCCannedTriangles.h; sourceTree = "<group>"; };
 		A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TextureBlend.fsh; sourceTree = "<group>"; };
 		A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TextureBlend.vsh; sourceTree = "<group>"; };
+		A9C85894171BB00B00266255 /* UniformColoredVerts.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = UniformColoredVerts.fsh; sourceTree = "<group>"; };
+		A9C85895171BB00B00266255 /* UniformColoredVerts.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = UniformColoredVerts.vsh; sourceTree = "<group>"; };
 		A9CB7E6F16E2598500CEF634 /* NOCFaceCapSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCFaceCapSketchViewController.h; sourceTree = "<group>"; };
 		A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCFaceCapSketchViewController.m; sourceTree = "<group>"; };
 		A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCVideoSession.h; sourceTree = "<group>"; };
@@ -514,6 +520,8 @@
 		A9D7CB5316C1E86E00BD5331 /* Default-Landscape~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~iphone.png"; sourceTree = "<group>"; };
 		A9D7CB5416C1E86E00BD5331 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		A9D7CB5516C1E86E00BD5331 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		A9D859C7171CF82900B46C05 /* thumb_Flock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_Flock.png; sourceTree = "<group>"; };
+		A9D859C8171CF82900B46C05 /* thumb_Flock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_Flock@2x.png"; sourceTree = "<group>"; };
 		A9E2250316ED167C002DC1F3 /* beard_hair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_hair.png; sourceTree = "<group>"; };
 		A9E2250816ED39EE002DC1F3 /* beard_mask_lincoln.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_lincoln.png; sourceTree = "<group>"; };
 		A9E2250A16ED3B75002DC1F3 /* beard_mask_wolverine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beard_mask_wolverine.png; sourceTree = "<group>"; };
@@ -648,6 +656,8 @@
 				A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */,
 				A9C05C7316E78D190009F8C8 /* thumb_FaceMesh.png */,
 				A9C05C7416E78D190009F8C8 /* thumb_FaceMesh@2x.png */,
+				A9D859C7171CF82900B46C05 /* thumb_Flock.png */,
+				A9D859C8171CF82900B46C05 /* thumb_Flock@2x.png */,
 				A9D54F681714B9430024C8D0 /* thumb_FlowField.png */,
 				A9D54F691714B9430024C8D0 /* thumb_FlowField@2x.png */,
 				A9BC923D16CC10DE009AD45C /* thumb_Movers3D.png */,
@@ -830,6 +840,8 @@
 				A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */,
 				A936F0C616DE9D1200A6EBD8 /* Triangulation.fsh */,
 				A936F0C716DE9D1200A6EBD8 /* Triangulation.vsh */,
+				A9C85894171BB00B00266255 /* UniformColoredVerts.fsh */,
+				A9C85895171BB00B00266255 /* UniformColoredVerts.vsh */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -1435,6 +1447,8 @@
 				A9D798F017160CAB00AE91D6 /* sphere.obj in Resources */,
 				A9D798F2171631A600AE91D6 /* NOCGuiOBJLoader.xib in Resources */,
 				A9D798F4171673FB00AE91D6 /* sharp_sphere.obj in Resources */,
+				A9D859C9171CF82900B46C05 /* thumb_Flock.png in Resources */,
+				A9D859CA171CF82900B46C05 /* thumb_Flock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1535,6 +1549,8 @@
 				A9D54F811715A20D0024C8D0 /* NOCFlocker.m in Sources */,
 				A9D54F9F1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m in Sources */,
 				A963749C1715FC870030C88C /* NOCOBJ.m in Sources */,
+				A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Sources */,
+				A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

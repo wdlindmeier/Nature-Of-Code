@@ -44,6 +44,7 @@ static NSString * UniformColor = @"color";
 {
 
     _objCone = [[NOCOBJ alloc] initWithFilename:@"cone"];
+    //_objCone = [[NOCOBJ alloc] initWithFilename:@"sharp_sphere"];
 
     self.isArcballEnabled = NO;
     self.isGestureNavigationEnabled = YES;
@@ -75,7 +76,6 @@ static NSString * UniformColor = @"color";
 - (void)setupInitialFlockers
 {
 
-    // Setup the Movers
     NSMutableArray *flockers = [NSMutableArray arrayWithCapacity:NumFlockers];
     
     for(int i=0;i<NumFlockers;i++){

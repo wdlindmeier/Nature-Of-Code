@@ -76,6 +76,7 @@ static void NOCReleaseDataBuffer( void *p , const void *cp , size_t l ) {
     
     UIImage* perlinImage = [UIImage imageWithCGImage:imageRef];
     
+    CGImageRelease(imageRef);
     CGContextRelease(context);
     free(rawData);
     

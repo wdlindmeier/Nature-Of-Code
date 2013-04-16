@@ -31,6 +31,7 @@ static const int HistoryLength = 20;
     return self;
 }
 
+// This aligns the body of the flocker with it's current heading
 - (GLKMatrix4)modelMatrix
 {
     GLKMatrix4 modelMat = [super modelMatrix];

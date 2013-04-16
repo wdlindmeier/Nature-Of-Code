@@ -22,6 +22,9 @@ Videos
 * Triangulated Face Mesh: http://www.youtube.com/watch?v=O5cPGKUQlXg
 * Hair Simulation: http://www.youtube.com/watch?v=2DoK6I5ZTP0
 * The Beard Booth: http://www.youtube.com/watch?v=Cvme3jZMEmo
+* Evolution: http://www.youtube.com/watch?v=fPmtyAXgfBQ
+* Flow Field: http://www.youtube.com/watch?v=DNZyVbagqyw
+* Flocking: http://www.youtube.com/watch?v=4KL_X_X8O7c
 
 ---
 
