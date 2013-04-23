@@ -130,17 +130,8 @@ static NSString * UniformColor = @"color";
     NOCShaderProgram *shader = [self shaderNamed:ShaderNameOBJ];
     [shader use];
 
-    GLKVector3 zAxis = GLKVector3Make(0, 0, -1);
-    GLKVector3 vecAlign = GLKVector3Make(vec.x, vec.y, vec.z * -1);
-    float rotRads = acos(GLKVector3DotProduct(vecAlign, zAxis));
-    if( fabs(rotRads) > 0.00001 )
-    {
-        GLKVector3 rotAxis = GLKVector3Normalize(GLKVector3CrossProduct(vecAlign, zAxis));
-        GLKQuaternion quat = GLKQuaternionMakeWithAngleAndAxis(rotRads, rotAxis.x, rotAxis.y, rotAxis.z);
-        GLKMatrix4 matRot = GLKMatrix4MakeWithQuaternion(quat);
-        mvpMat = GLKMatrix4Multiply(mvpMat, matRot);
-    }
-    
+    mvpMat = GLKMatrix4AlignWithVector3Heading(mvpMat, vec);
+
     GLKMatrix3 normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelMat), NULL);
     
     [shader setMatrix4:mvpMat

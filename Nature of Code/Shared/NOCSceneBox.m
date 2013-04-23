@@ -70,7 +70,10 @@
                   options:NSKeyValueObservingOptionNew
                   context:&_kvoContextColorBack];
         
-        [self generateColorArrays];
+        [self generateColorArray];
+        
+        [self generateWallColorArrays];
+        
     }
     return self;
 }
@@ -93,10 +96,14 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    [self generateColorArrays];
+    if(context == &_kvoContextColor){
+        [self generateColorArray];
+    }else{
+        [self generateWallColorArrays];
+    }
 }
 
-- (void)generateColorArrays
+- (void)generateColorArray
 {
     GLfloat segColors[4];
     NOCColorComponentsForColor(segColors, self.color);
@@ -106,7 +113,10 @@
         _sceneBoxColors[i*4+2] = segColors[2];
         _sceneBoxColors[i*4+3] = segColors[3];
     }
-    
+}
+
+- (void)generateWallColorArrays
+{
     for(int i=0;i<6;i++){
         GLfloat segColors[4];
         WallSide side = i+1;

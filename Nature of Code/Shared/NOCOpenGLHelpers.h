@@ -147,3 +147,59 @@ typedef enum WallSides {
     WallSideBottom
 } WallSide;
 
+static inline BOOL NOCBox3DContainsPoint(NOCBox3D box, GLKVector3 point)
+{
+    return point.x >= box.origin.x &&
+    point.y >= box.origin.y &&
+    point.z >= box.origin.z &&
+    point.x <= box.origin.x + box.size.x &&
+    point.y <= box.origin.y + box.size.y &&
+    point.z <= box.origin.z + box.size.z;
+}
+
+static inline GLKVector3 NOCVecModBox3D(GLKVector3 point, NOCBox3D box)
+{
+    float x = point.x;
+    float y = point.y;
+    float z = point.z;
+    
+    float maxX = box.origin.x + box.size.x;
+    if(x < box.origin.x) x = maxX + fmod(x - box.origin.x, box.size.x * -1);
+    else if(x > maxX) x = box.origin.x + fmod(x - maxX, box.size.x);
+    
+    float maxY = box.origin.y + box.size.y;
+    if(y < box.origin.y) y = maxY + fmod(y - box.origin.y, box.size.y * -1);
+    else if(y > maxY) y = box.origin.y + fmod(y - maxY, box.size.y);
+    
+    float maxZ = box.origin.z + box.size.z;
+    if(z < box.origin.z) z = maxZ + fmod(z - box.origin.z, box.size.z * -1);
+    else if(z > maxZ) z = box.origin.z + fmod(z - maxZ, box.size.z);
+    
+    return GLKVector3Make(x, y, z);
+    
+}
+
+static inline GLKMatrix4 GLKMatrix4AlignWithVector3Heading(GLKMatrix4 mat, GLKVector3 vecHeading)
+{
+    GLKVector3 zAxis = GLKVector3Make(0, 0, -1);
+    GLKVector3 vecAlign = GLKVector3Make(vecHeading.x, vecHeading.y, vecHeading.z * -1);
+    float rotRads = acos(GLKVector3DotProduct(vecAlign, zAxis));
+    if( fabs(rotRads) > 0.00001 )
+    {
+        GLKVector3 rotAxis = GLKVector3Normalize(GLKVector3CrossProduct(vecAlign, zAxis));
+        GLKQuaternion quat = GLKQuaternionMakeWithAngleAndAxis(rotRads, rotAxis.x, rotAxis.y, rotAxis.z);
+        GLKMatrix4 matRot = GLKMatrix4MakeWithQuaternion(quat);
+        mat = GLKMatrix4Multiply(mat, matRot);
+    }
+    return mat;
+}
+
+static inline GLKMatrix4 GLKMatrix4Lerp(GLKMatrix4 matLeft, GLKMatrix4 matRight, float amount)
+{
+    GLKMatrix4 matDelta = GLKMatrix4Subtract(matLeft, matRight);
+    GLKMatrix4 matBlend = matLeft;
+    for(int i=0;i<16;i++){
+        matBlend.m[i] -= matDelta.m[i] * amount;
+    }
+    return matBlend;
+}

@@ -112,18 +112,6 @@ static const float DrawerRevealHeight = 20.0f;
 {
     [super viewDidLoad];
     
-    _frameCount = 0;
-    
-    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-    
-    if (!self.context) {
-        NSLog(@"Failed to create ES context");
-    }
-    
-    GLKView *view = (GLKView *)self.view;
-    view.context = self.context;
-    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
-
     [self setupGL];
     
     // Setup the GUI Drawer
@@ -394,9 +382,27 @@ static NSString *const NOCActionButtonTitleViewCode = @"View Code";
 
 #pragma mark - GL
 
+
+- (void)loadGLContext
+{
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    
+    if (!self.context) {
+        NSLog(@"Failed to create ES context");
+    }
+    
+    GLKView *view = (GLKView *)self.view;
+    view.context = self.context;
+    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    [EAGLContext setCurrentContext:self.context];
+    
+}
+
 - (void)setupGL
 {
-    [EAGLContext setCurrentContext:self.context];
+    _frameCount = 0;
+    [self loadGLContext];
     [self resize];
     [self setup];
     [self loadShaders];

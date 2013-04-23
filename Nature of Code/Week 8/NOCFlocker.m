@@ -37,17 +37,8 @@ static const int HistoryLength = 20;
 {
     GLKMatrix4 modelMat = [super modelMatrix];
   
-    GLKVector3 zAxis = GLKVector3Make(0, 0, -1);
-    GLKVector3 vecAlign = GLKVector3Make(_vecHeading.x, _vecHeading.y, _vecHeading.z * -1);
-    float rotRads = acos(GLKVector3DotProduct(vecAlign, zAxis));
-    if( fabs(rotRads) > 0.00001 )
-    {
-        GLKVector3 rotAxis = GLKVector3Normalize(GLKVector3CrossProduct(vecAlign, zAxis));
-        GLKQuaternion quat = GLKQuaternionMakeWithAngleAndAxis(rotRads, rotAxis.x, rotAxis.y, rotAxis.z);
-        GLKMatrix4 matRot = GLKMatrix4MakeWithQuaternion(quat);
-        modelMat = GLKMatrix4Multiply(modelMat, matRot);
-    }
-
+    modelMat = GLKMatrix4AlignWithVector3Heading(modelMat, _vecHeading);
+    
     return modelMat;
 }
 
