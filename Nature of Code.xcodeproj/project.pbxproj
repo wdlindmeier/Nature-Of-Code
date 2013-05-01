@@ -125,6 +125,10 @@
 		A9C05C8416E7C93C0009F8C8 /* NOCSpring.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8316E7C93B0009F8C8 /* NOCSpring.m */; };
 		A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */; };
 		A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */; };
+		A9C15C1F1730C6F600A1FC9E /* button_drawer_toggle.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C15C1D1730C6F600A1FC9E /* button_drawer_toggle.png */; };
+		A9C15C201730C6F600A1FC9E /* button_drawer_toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C15C1E1730C6F600A1FC9E /* button_drawer_toggle@2x.png */; };
+		A9C15C231730CBE300A1FC9E /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C15C211730CBE300A1FC9E /* banner.png */; };
+		A9C15C241730CBE300A1FC9E /* banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C15C221730CBE300A1FC9E /* banner@2x.png */; };
 		A9C4FCDC16E6F40C00BB8809 /* TextureBlend.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */; };
 		A9C4FCDD16E6F40C00BB8809 /* TextureBlend.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */; };
 		A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Sources */ = {isa = PBXBuildFile; fileRef = A9C85894171BB00B00266255 /* UniformColoredVerts.fsh */; };
@@ -445,6 +449,10 @@
 		A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring2D.m; sourceTree = "<group>"; };
 		A9C05C8816E7CE5F0009F8C8 /* NOCSpring3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSpring3D.h; sourceTree = "<group>"; };
 		A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSpring3D.m; sourceTree = "<group>"; };
+		A9C15C1D1730C6F600A1FC9E /* button_drawer_toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_drawer_toggle.png; sourceTree = "<group>"; };
+		A9C15C1E1730C6F600A1FC9E /* button_drawer_toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_drawer_toggle@2x.png"; sourceTree = "<group>"; };
+		A9C15C211730CBE300A1FC9E /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		A9C15C221730CBE300A1FC9E /* banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner@2x.png"; sourceTree = "<group>"; };
 		A9C4FCD916E6BDD800BB8809 /* NOCCannedTriangles.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCCannedTriangles.h; sourceTree = "<group>"; };
 		A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TextureBlend.fsh; sourceTree = "<group>"; };
 		A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TextureBlend.vsh; sourceTree = "<group>"; };
@@ -1077,6 +1085,10 @@
 		A9D1AEAB16B99E68000BE623 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A9C15C211730CBE300A1FC9E /* banner.png */,
+				A9C15C221730CBE300A1FC9E /* banner@2x.png */,
+				A9C15C1D1730C6F600A1FC9E /* button_drawer_toggle.png */,
+				A9C15C1E1730C6F600A1FC9E /* button_drawer_toggle@2x.png */,
 				A9E2251316ED6365002DC1F3 /* camera.png */,
 				A9E2251416ED6365002DC1F3 /* camera@2x.png */,
 				A95C8FE916BD6E11003C8F5B /* Default-568h@2x.png */,
@@ -1449,6 +1461,10 @@
 				A9D798F4171673FB00AE91D6 /* sharp_sphere.obj in Resources */,
 				A9D859C9171CF82900B46C05 /* thumb_Flock.png in Resources */,
 				A9D859CA171CF82900B46C05 /* thumb_Flock@2x.png in Resources */,
+				A9C15C1F1730C6F600A1FC9E /* button_drawer_toggle.png in Resources */,
+				A9C15C201730C6F600A1FC9E /* button_drawer_toggle@2x.png in Resources */,
+				A9C15C231730CBE300A1FC9E /* banner.png in Resources */,
+				A9C15C241730CBE300A1FC9E /* banner@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

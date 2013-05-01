@@ -13,7 +13,6 @@
     float _radiansPerPixel;
     CGPoint _posTouchInit;
 	GLKQuaternion _quatArcball;
-    float _cameraDepth;
     float _camDepthScalingBegan;
     UIPinchGestureRecognizer *_depthGestureRecognizer;
     UIRotationGestureRecognizer *_rotationGestureRecognizer;
@@ -50,6 +49,7 @@
     self.isArcballEnabled = NO;
     self.isGestureNavigationEnabled = NO;
     _cameraDepth = -3.0f;
+    _cameraDepthMin = -100.0f;
 }
 
 #pragma mark - View
@@ -91,7 +91,7 @@
         default:
             break;
     }
-    _cameraDepth = _camDepthScalingBegan * (1.0f/gr.scale);
+    _cameraDepth = MAX(_cameraDepthMin, _camDepthScalingBegan * (1.0f/gr.scale));
 }
 
 - (void)handleRotationGesture:(UIRotationGestureRecognizer *)gr

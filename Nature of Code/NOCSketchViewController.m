@@ -186,58 +186,59 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (void)handleGesture:(UIPanGestureRecognizer *)gr
 {
-    if(!_isDrawerOpen){
-        
-        BOOL shouldOpenDrawer = NO;
-        BOOL shouldCloseDrawer = NO;
-        CGPoint grPos = [gr locationInView:self.view];
-        CGPoint grTrans = [gr translationInView:self.view];
-        CGSize sizeDrawer = self.viewControls.frame.size;
+    BOOL shouldOpenDrawer = NO;
+    BOOL shouldCloseDrawer = NO;
+    CGPoint grPos = [gr locationInView:self.view];
+    CGPoint grTrans = [gr translationInView:self.view];
+    CGSize sizeDrawer = self.viewControls.frame.size;
 
-        switch (gr.state) {
-                
-            case UIGestureRecognizerStateBegan:
-                _isDraggingDrawer = NO;
-                if(fabs(grTrans.y) > fabs(grTrans.x * 2)){
-                    // This is a vertical swipe
-                    _isDraggingDrawer = YES;
+    switch (gr.state) {
+            
+        case UIGestureRecognizerStateBegan:
+            _isDraggingDrawer = NO;
+            if(fabs(grTrans.y) > fabs(grTrans.x * 2)){
+                // This is a vertical swipe
+                _isDraggingDrawer = YES;
+            }
+            break;
+        case UIGestureRecognizerStateChanged:
+            
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:
+            if(_isDraggingDrawer){
+                float minTravelDist = sizeDrawer.height * 0.25;
+                shouldCloseDrawer = grTrans.y > minTravelDist;
+                if(!shouldCloseDrawer){
+                    shouldOpenDrawer = fabs(grTrans.y) > minTravelDist;
                 }
-                break;
-            case UIGestureRecognizerStateChanged:
-                
-                break;
-            case UIGestureRecognizerStateEnded:
-                if(_isDraggingDrawer){
-                    if(grTrans.y * -1 > sizeDrawer.height * 0.25){
+                if(!shouldCloseDrawer && !shouldOpenDrawer){
+                    if(_isDrawerOpen){
                         shouldOpenDrawer = YES;
                     }else{
                         shouldCloseDrawer = YES;
                     }
                 }
-                _isDraggingDrawer = NO;
-                break;
-            case UIGestureRecognizerStateCancelled:
-                shouldCloseDrawer = _isDraggingDrawer;
-                _isDraggingDrawer = NO;
-                break;
-            case UIGestureRecognizerStateFailed:
-                shouldCloseDrawer = _isDraggingDrawer;
-                _isDraggingDrawer = NO;
-                break;
-            default:
-                break;
-        }
-
-        if(_isDraggingDrawer){
-            self.viewControls.center = CGPointMake(_posDrawerClosed.x,
-                                                   MAX(grPos.y + (sizeDrawer.height*0.5),
-                                                       _posDrawerOpen.y));
-        }else{
-            if(shouldCloseDrawer){
-                [self closeDrawer];
-            }else if(shouldOpenDrawer){
-                [self openDrawer];
             }
+            _isDraggingDrawer = NO;
+            break;
+        default:
+            break;
+    }
+
+    if(_isDraggingDrawer){
+        
+        self.viewControls.center = CGPointMake(_posDrawerClosed.x,
+                                               MAX(grPos.y + (sizeDrawer.height*0.5),
+                                                   _posDrawerOpen.y));
+        
+    }else{
+        
+        if(shouldCloseDrawer){
+            [self closeDrawer];
+        }else if(shouldOpenDrawer){
+            [self openDrawer];
         }
     }
 }
@@ -304,7 +305,7 @@ static const float DrawerRevealHeight = 20.0f;
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = NO;
-                         self.viewControls.gestureRecognizers = @[_gestureRecognizerDrawer];
+                         self.buttonHideControls.layer.transform = CATransform3DMakeScale(1, 1, 1);
                      }];
 }
 
@@ -316,19 +317,20 @@ static const float DrawerRevealHeight = 20.0f;
                      }
                      completion:^(BOOL finished) {
                          _isDrawerOpen = YES;
-                         self.viewControls.gestureRecognizers = @[];
+                         // Flip the toggle button so it's facing down
+                         self.buttonHideControls.layer.transform = CATransform3DMakeScale(1, -1, 1);
                      }];
 }
 
 - (void)teaseDrawer
 {
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.35
                      animations:^{
                          self.viewControls.center = CGPointMake(_posDrawerClosed.x,
                                                                 _posDrawerClosed.y - 50.0f);
                      }
                      completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.5
+                         [UIView animateWithDuration:0.25
                                                delay:0.3
                                              options:0
                                           animations:^{
@@ -343,7 +345,11 @@ static const float DrawerRevealHeight = 20.0f;
 
 - (IBAction)buttonHideControlsPressed:(id)sender
 {
-    [self closeDrawer];
+    if(_isDrawerOpen){
+        [self closeDrawer];
+    }else{
+        [self openDrawer];
+    }
 }
 
 static NSString *const NOCActionButtonTitleReadMore = @"Read About This Topic";

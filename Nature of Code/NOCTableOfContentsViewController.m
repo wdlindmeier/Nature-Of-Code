@@ -72,18 +72,33 @@
     CGRect rectLabel = CGRectMake(0, 0, sizeView.width, 0);
     float headerHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 200.0f : 100.0f;
     rectLabel.size.height = headerHeight;
-    UILabel *label = [[UILabel alloc] initWithFrame:rectLabel];
-    label.backgroundColor = [UIColor colorWithRed:0.91
-                                            green:0.1
-                                             blue:0.36
-                                            alpha:1.0];
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont boldSystemFontOfSize:24.0f];
-    label.textAlignment = NSTextAlignmentCenter;
-    label.autoresizingMask =
-    UIViewAutoresizingFlexibleWidth;
-    label.text = NSLocalizedString(@"NATURE OF CODE", @"Table of Contents Header");
-    self.tableView.tableHeaderView = label;
+    
+    UIView *banner = [[UIView alloc] initWithFrame:rectLabel];
+    banner.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    banner.backgroundColor = [UIColor colorWithRed:0.91
+                                             green:0.1
+                                              blue:0.36
+                                             alpha:1.0];
+    UIImageView *bannerImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banner"]];
+    bannerImg.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [banner addSubview:bannerImg];
+    
+    UIButton *buttonInfo = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    [buttonInfo addTarget:self
+                   action:@selector(buttonInfoPressed:)
+         forControlEvents:UIControlEventTouchUpInside];
+    CGSize buttonSize = CGSizeMake(40, 40);
+    float margin = 10;
+    buttonInfo.frame = CGRectMake(rectLabel.size.width - buttonSize.width - margin,
+                                  margin,
+                                  buttonSize.width,
+                                  buttonSize.height);
+    buttonInfo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
+                                  UIViewAutoresizingFlexibleBottomMargin;
+    [banner addSubview:buttonInfo];
+    
+    self.tableView.tableHeaderView = banner;
+    
 }
 
 #pragma mark - Table view data source
@@ -163,9 +178,12 @@
     [self presentSelectedSketch:sketch];
 }
 
-#pragma mark - Selected Sketch View
-
 #pragma mark - IBActions
+
+- (IBAction)buttonInfoPressed:(id)sender
+{
+    NSLog(@"TODO: Show info panel");
+}
 
 - (IBAction)buttonRunSketchPressed:(id)sender
 {

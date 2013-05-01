@@ -13,6 +13,8 @@
 {
     GLKMatrix4 _projectionMatrix3D;
     GLKMatrix4 _projectionMatrix3DStatic;
+    float _cameraDepth;
+    float _cameraDepthMin;
 }
 
 @property (nonatomic, assign) BOOL isArcballEnabled;

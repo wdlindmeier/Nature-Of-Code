@@ -8,7 +8,6 @@
 
 attribute vec4 position;
 attribute vec3 normal;
-//attribute vec4 color;
 
 varying lowp vec4 colorVarying;
 
