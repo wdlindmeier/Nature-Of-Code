@@ -70,7 +70,8 @@
 {
     CGSize sizeView = self.view.frame.size;
     CGRect rectLabel = CGRectMake(0, 0, sizeView.width, 0);
-    float headerHeight = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 200.0f : 100.0f;
+    BOOL isIPad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+    float headerHeight = isIPad ? 200.0f : 100.0f;
     rectLabel.size.height = headerHeight;
     
     UIView *banner = [[UIView alloc] initWithFrame:rectLabel];
@@ -79,16 +80,31 @@
                                              green:0.1
                                               blue:0.36
                                              alpha:1.0];
-    UIImageView *bannerImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"banner"]];
-    bannerImg.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    [banner addSubview:bannerImg];
+    UIImage *imgBanner = [UIImage imageNamed:@"banner"];
+    CGSize sizeImg = imgBanner.size;
+    float ar = sizeImg.width / sizeImg.height;
+    UIImageView *bannerImgView = [[UIImageView alloc] initWithImage:imgBanner];
+    if(!isIPad){
+        CGSize sizeView = self.view.frame.size;
+        float headerWidth = headerHeight * ar;
+        float marginLeft = (headerWidth - sizeView.width) * 0.5;
+        bannerImgView.frame = CGRectMake(marginLeft * -1, 0, headerWidth, headerHeight);
+    }
+    bannerImgView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
+                                    UIViewAutoresizingFlexibleRightMargin;
+    [banner addSubview:bannerImgView];
     
     UIButton *buttonInfo = [UIButton buttonWithType:UIButtonTypeInfoLight];
     [buttonInfo addTarget:self
                    action:@selector(buttonInfoPressed:)
          forControlEvents:UIControlEventTouchUpInside];
     CGSize buttonSize = CGSizeMake(40, 40);
+    
     float margin = 10;
+    if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad){
+        margin = 0;
+    }
+    
     buttonInfo.frame = CGRectMake(rectLabel.size.width - buttonSize.width - margin,
                                   margin,
                                   buttonSize.width,
@@ -137,7 +153,10 @@
 
 - (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30.0f;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        return 30.0f;
+    }
+    return 20.0f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -148,12 +167,19 @@
     rectLabel.size.height = [self tableView:tableView heightForHeaderInSection:section];
     UIView *viewHeader = [[UIView alloc] initWithFrame:rectLabel];
     viewHeader.backgroundColor = [UIColor blackColor];
-    
-    rectLabel.origin.x = 15.0f;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        rectLabel.origin.x = 15.0f;
+    }else{
+        rectLabel.origin.x = 10.0f;
+    }
     UILabel *label = [[UILabel alloc] initWithFrame:rectLabel];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:20.0f];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        label.font = [UIFont systemFontOfSize:20.0f];
+    }else{
+        label.font = [UIFont systemFontOfSize:12.0f];
+    }
     label.textAlignment = NSTextAlignmentLeft;
     label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     NOCChapter *chapter = _tableOfContents[section];

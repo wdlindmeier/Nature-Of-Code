@@ -87,8 +87,17 @@
                                                   [self.chapter.weekNumber integerValue]]];
     _imgViewSectionNum.image = imgSectionNum;
     [_imgViewSectionNum sizeToFit];
-    _imgViewSectionNum.center = CGPointMake(15.0 + imgSectionNum.size.width * 0.5,
-                                            (imgSectionNum.size.height * 0.5) - 10.0f); 
+    if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad){
+        // scale
+        CGRect frameImage = _imgViewSectionNum.frame;
+        CGSize sizeImage = imgSectionNum.size;
+        frameImage.origin = CGPointMake(10, -5);
+        frameImage.size = CGSizeMake(sizeImage.width * 0.5, sizeImage.height * 0.5);
+        _imgViewSectionNum.frame = frameImage;
+    }else{
+        _imgViewSectionNum.center = CGPointMake(15.0 + imgSectionNum.size.width * 0.5,
+                                                (imgSectionNum.size.height * 0.5) - 10.0f);
+    }
 
     // Remove previous buttons
     for(UIView *v in _scrollView.subviews){
