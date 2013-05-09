@@ -7,9 +7,12 @@
 //
 
 #import "NOCSketchViewController.h"
+#ifdef USE_SKETCH_CONTROLS
+#import "NOCControlsSketchViewController.h"
+#endif
 #import <GLKit/GLKit.h>
 
-@interface NOC2DSketchViewController : NOCSketchViewController
+@interface NOC2DSketchViewController : NOCSketchViewControllerBase
 {
     GLKMatrix4 _projectionMatrix2D;
 }

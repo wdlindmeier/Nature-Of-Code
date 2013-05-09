@@ -208,7 +208,29 @@
 
 - (IBAction)buttonInfoPressed:(id)sender
 {
-    NSLog(@"TODO: Show info panel");
+    [[NSBundle mainBundle] loadNibNamed:@"InfoView"
+                                  owner:self
+                                options:0];
+    self.viewInfo.alpha = 0;
+    self.viewInfo.frame = self.view.bounds;
+    [self.view addSubview:self.viewInfo];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.viewInfo.alpha = 1;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+}
+
+- (IBAction)buttonCloseInfoPressed:(id)sender
+{
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         self.viewInfo.alpha = 0;
+                     } completion:^(BOOL finished) {
+                         [self.viewInfo removeFromSuperview];
+                         self.viewInfo = nil;
+                     }];
 }
 
 - (IBAction)buttonRunSketchPressed:(id)sender

@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -45,7 +45,7 @@
 							<object class="IBUIImageView" id="757419561">
 								<reference key="NSNextResponder" ref="984320310"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{44, 68}, {240, 136}}</string>
+								<string key="NSFrame">{{40, 68}, {240, 136}}</string>
 								<reference key="NSSuperview" ref="984320310"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="302963315"/>
@@ -56,7 +56,7 @@
 							<object class="IBUILabel" id="267075769">
 								<reference key="NSNextResponder" ref="984320310"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{44, 23}, {240, 27}}</string>
+								<string key="NSFrame">{{40, 23}, {240, 27}}</string>
 								<reference key="NSSuperview" ref="984320310"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="757419561"/>
@@ -90,7 +90,7 @@
 							<object class="IBUITextView" id="302963315">
 								<reference key="NSNextResponder" ref="984320310"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{36, 222}, {248, 145}}</string>
+								<string key="NSFrame">{{32, 222}, {257, 145}}</string>
 								<reference key="NSSuperview" ref="984320310"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="771756443"/>
@@ -170,7 +170,7 @@
 							<object class="IBUIButton" id="183669177">
 								<reference key="NSNextResponder" ref="984320310"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{194, 414}, {105, 44}}</string>
+								<string key="NSFrame">{{194, 416}, {105, 44}}</string>
 								<reference key="NSSuperview" ref="984320310"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -367,11 +367,21 @@
 					<string key="superclassName">UITableViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="buttonCancelSketchPressed:">id</string>
+						<string key="buttonCloseInfoPressed:">id</string>
+						<string key="buttonInfoPressed:">id</string>
 						<string key="buttonRunSketchPressed:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="buttonCancelSketchPressed:">
 							<string key="name">buttonCancelSketchPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="buttonCloseInfoPressed:">
+							<string key="name">buttonCloseInfoPressed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="buttonInfoPressed:">
+							<string key="name">buttonInfoPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="buttonRunSketchPressed:">
@@ -384,6 +394,7 @@
 						<string key="labelSketchName">UILabel</string>
 						<string key="selectedSketchView">UIView</string>
 						<string key="textViewSketchDescription">UITextView</string>
+						<string key="viewInfo">UIView</string>
 						<string key="viewSketchInfoContainer">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -402,6 +413,10 @@
 						<object class="IBToOneOutletInfo" key="textViewSketchDescription">
 							<string key="name">textViewSketchDescription</string>
 							<string key="candidateClassName">UITextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewInfo">
+							<string key="name">viewInfo</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="viewSketchInfoContainer">
 							<string key="name">viewSketchInfoContainer</string>

@@ -13,7 +13,15 @@
 #import "CAEAGLLayer+Retained.h"
 #import "NOCSketch.h"
 
-@class CMMotionManager;
+#ifndef USE_SKETCH_CONTROLS
+#ifndef NOCSketchViewControllerBase
+#define NOCSketchViewControllerBase NOCSketchViewController
+#endif
+#else
+#ifndef NOCSketchViewControllerBase
+#define NOCSketchViewControllerBase NOCControlsSketchViewController
+#endif
+#endif
 
 @interface NOCSketchViewController : GLKViewController <UIActionSheetDelegate>
 {
@@ -27,24 +35,11 @@
 @property (nonatomic, readonly) long frameCount;
 
 // Outlets
-@property (nonatomic, strong) IBOutlet UIView *viewControls;
-@property (nonatomic, strong) IBOutlet UIButton *buttonHideControls;
 @property (strong, nonatomic) EAGLContext *context;
-@property (nonatomic, strong) NOCSketch *sketch;
-
-// IBActions
-- (IBAction)buttonHideControlsPressed:(id)sender;
-- (IBAction)buttonActionPressed:(id)sender;
 
 // Shaders
 - (NOCShaderProgram *)shaderNamed:(NSString *)shaderName;
 - (void)addShader:(NOCShaderProgram *)shader named:(NSString *)shaderName;
-
-// GUI
-- (NSString *)nibNameForControlGUI;
-
-// Motion
-- (GLKVector2)motionVectorFromManager:(CMMotionManager *)motionManager;
 
 // Loop
 - (void)setup;

@@ -7,9 +7,12 @@
 //
 
 #import "NOCSketchViewController.h"
+#ifdef USE_SKETCH_CONTROLS
+#import "NOCControlsSketchViewController.h"
+#endif
 #import <GLKit/GLKit.h>
 
-@interface NOC3DSketchViewController : NOCSketchViewController <UIGestureRecognizerDelegate>
+@interface NOC3DSketchViewController : NOCSketchViewControllerBase <UIGestureRecognizerDelegate>
 {
     GLKMatrix4 _projectionMatrix3D;
     GLKMatrix4 _projectionMatrix3DStatic;

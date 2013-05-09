@@ -244,6 +244,8 @@
 		A9E77345170B12D0009897C7 /* NOCShapeFollower.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E77342170B12D0009897C7 /* NOCShapeFollower.m */; };
 		A9E77346170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */; };
 		A9E7734B170B4A7C009897C7 /* NOCGuiShapeFollowers.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E7734A170B4A7C009897C7 /* NOCGuiShapeFollowers.xib */; };
+		A9E8C9C6173BF589007A24DE /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E8C9C5173BF589007A24DE /* InfoView.xib */; };
+		A9E8C9C9173C0750007A24DE /* NOCControlsSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E8C9C8173C0750007A24DE /* NOCControlsSketchViewController.m */; };
 		A9F0F1671708D0F500B9A6F6 /* NOCSharedFollowerTrail.m in Sources */ = {isa = PBXBuildFile; fileRef = A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */; };
 		A9F0F1691708D88900B9A6F6 /* NOCGuiFollowers.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */; };
 		A9F6CB7716D1BD5D00F4BDF9 /* thumb_WaveAddition.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F6CB7116D1BD5D00F4BDF9 /* thumb_WaveAddition.png */; };
@@ -597,6 +599,9 @@
 		A9E77343170B12D0009897C7 /* NOCShapeFollowersSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCShapeFollowersSketchViewController.h; sourceTree = "<group>"; };
 		A9E77344170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCShapeFollowersSketchViewController.m; sourceTree = "<group>"; };
 		A9E7734A170B4A7C009897C7 /* NOCGuiShapeFollowers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiShapeFollowers.xib; sourceTree = "<group>"; };
+		A9E8C9C5173BF589007A24DE /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		A9E8C9C7173C0750007A24DE /* NOCControlsSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCControlsSketchViewController.h; sourceTree = "<group>"; };
+		A9E8C9C8173C0750007A24DE /* NOCControlsSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCControlsSketchViewController.m; sourceTree = "<group>"; };
 		A9F0F1651708D0F500B9A6F6 /* NOCSharedFollowerTrail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCSharedFollowerTrail.h; sourceTree = "<group>"; };
 		A9F0F1661708D0F500B9A6F6 /* NOCSharedFollowerTrail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCSharedFollowerTrail.m; sourceTree = "<group>"; };
 		A9F0F1681708D88900B9A6F6 /* NOCGuiFollowers.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NOCGuiFollowers.xib; sourceTree = "<group>"; };
@@ -1121,6 +1126,8 @@
 				A99889BD16C1FB09002C924F /* NOC2DSketchViewController.m */,
 				A9BC923116CBEE36009AD45C /* NOC3DSketchViewController.h */,
 				A9BC923216CBEE36009AD45C /* NOC3DSketchViewController.m */,
+				A9E8C9C7173C0750007A24DE /* NOCControlsSketchViewController.h */,
+				A9E8C9C8173C0750007A24DE /* NOCControlsSketchViewController.m */,
 				A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */,
 				A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */,
 				A9D1AEA316B99A78000BE623 /* NOCSketchViewController~ipad.xib */,
@@ -1137,6 +1144,7 @@
 				A9D1AEC316B9A77D000BE623 /* NOCTableOfContentsCell.h */,
 				A9D1AEC416B9A77D000BE623 /* NOCTableOfContentsCell.m */,
 				A99889BF16C2AA88002C924F /* NOCSketchDescriptionView.xib */,
+				A9E8C9C5173BF589007A24DE /* InfoView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1465,6 +1473,7 @@
 				A9C15C201730C6F600A1FC9E /* button_drawer_toggle@2x.png in Resources */,
 				A9C15C231730CBE300A1FC9E /* banner.png in Resources */,
 				A9C15C241730CBE300A1FC9E /* banner@2x.png in Resources */,
+				A9E8C9C6173BF589007A24DE /* InfoView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1567,6 +1576,7 @@
 				A963749C1715FC870030C88C /* NOCOBJ.m in Sources */,
 				A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Sources */,
 				A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Sources */,
+				A9E8C9C9173C0750007A24DE /* NOCControlsSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

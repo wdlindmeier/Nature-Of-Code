@@ -7,7 +7,10 @@
 //
 
 #import "NOCSketchViewController.h"
+#ifdef USE_SKETCH_CONTROLS
+#import "NOCControlsSketchViewController.h"
+#endif
 
-@interface NOCSampleSketchViewController : NOCSketchViewController
+@interface NOCSampleSketchViewController : NOCSketchViewControllerBase
 
 @end
