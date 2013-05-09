@@ -60,8 +60,13 @@ static const int NumFramesWithoutFaceToResetBeard = 30;
     CGSize sizeCam = buttonCamera.frame.size;
     [buttonCamera setBackgroundColor:[UIColor clearColor]];
     [buttonCamera addTarget:self action:@selector(buttonCameraPressed:) forControlEvents:UIControlEventTouchUpInside];
-    buttonCamera.frame = CGRectMake(50, 50, sizeCam.width + 20, sizeCam.height + 16);
-    buttonCamera.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        buttonCamera.frame = CGRectMake(50, 50, sizeCam.width + 20, sizeCam.height + 16);
+        buttonCamera.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    }else{
+        buttonCamera.frame = CGRectMake(10, 10, sizeCam.width + 20, sizeCam.height + 16);
+        buttonCamera.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    }
     [self.view addSubview:buttonCamera];
 }
 

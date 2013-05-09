@@ -17,7 +17,7 @@
 				<key>Controller</key>
 				<string>RandomWalker</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/01_vectors.asc</string>
+				<string>http://natureofcode.com/book/chapter-1-vectors/</string>
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%201/NOCRandomWalkerSketchViewController.m</string>
 			</dict>
@@ -31,7 +31,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%201/NOCDirectedWalkerSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/01_vectors.asc</string>
+				<string>http://natureofcode.com/book/chapter-1-vectors/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -43,7 +43,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%201/NOCPerlinWalker.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/01_vectors.asc</string>
+				<string>http://natureofcode.com/book/chapter-1-vectors/</string>
 			</dict>
 		</array>
 	</dict>
@@ -64,7 +64,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%202/NOCAccelMoverSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/02_forces.asc</string>
+				<string>http://natureofcode.com/book/chapter-2-forces/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -76,7 +76,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%202/NOCMultiMoverSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/02_forces.asc</string>
+				<string>http://natureofcode.com/book/chapter-2-forces/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -88,7 +88,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%202/NOCMovers3DSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/02_forces.asc</string>
+				<string>http://natureofcode.com/book/chapter-2-forces/</string>
 			</dict>
 		</array>
 	</dict>
@@ -103,13 +103,13 @@
 				<key>Name</key>
 				<string>Wave Addition</string>
 				<key>Description</key>
-				<string>2 oscillating waves combined. Drag your finger to change the amplitude and frequency of wave 2. </string>
+				<string>Two oscillating waves combined. Drag your finger to change the amplitude and frequency of the second wave.</string>
 				<key>Controller</key>
 				<string>WaveAddition</string>
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%203/NOCWaveAdditionSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
+				<string>http://natureofcode.com/book/chapter-3-oscillation/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -121,7 +121,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%203/NOCWaveTapSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
+				<string>http://natureofcode.com/book/chapter-3-oscillation/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -133,7 +133,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%203/NOCWaveMatrixSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
+				<string>http://natureofcode.com/book/chapter-3-oscillation/</string>
 			</dict>
 		</array>
 	</dict>
@@ -154,7 +154,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%204/NOCParticleSystemSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/04_particles.asc</string>
+				<string>http://natureofcode.com/book/chapter-4-particle-systems/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -166,7 +166,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%204/NOCPaperBurnSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/04_particles.asc</string>
+				<string>http://natureofcode.com/book/chapter-4-particle-systems/</string>
 			</dict>
 		</array>
 	</dict>
@@ -232,7 +232,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%206/NOCHairSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
+				<string>http://natureofcode.com/book/chapter-3-oscillation/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -244,7 +244,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%206/NOCBeardlySketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/03_oscillation.asc</string>
+				<string>http://natureofcode.com/book/chapter-3-oscillation/</string>
 			</dict>
 		</array>
 	</dict>
@@ -265,7 +265,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%207/NOCTankSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/09_ga.asc</string>
+				<string>http://natureofcode.com/book/chapter-9-the-evolution-of-code/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -277,19 +277,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%207/NOCTracerTargetSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/09_ga.asc</string>
-			</dict>
-			<dict>
-				<key>Name</key>
-				<string>Shape Followers</string>
-				<key>Description</key>
-				<string>A collection of Tracer Beings that evolve to conform to the surface of a sphere. Double tap to reset.</string>
-				<key>Controller</key>
-				<string>ShapeFollowers</string>
-				<key>Code URL</key>
-				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%207/NOCShapeFollowersSketchViewController.m</string>
-				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/09_ga.asc</string>
+				<string>http://natureofcode.com/book/chapter-9-the-evolution-of-code/</string>
 			</dict>
 		</array>
 	</dict>
@@ -302,18 +290,6 @@
 		<array>
 			<dict>
 				<key>Name</key>
-				<string>Perlin Flow Field</string>
-				<key>Description</key>
-				<string>A flow field generated with Perlin noise. Dragging your finger modifies the flow.</string>
-				<key>Controller</key>
-				<string>TouchFlowField</string>
-				<key>Code URL</key>
-				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%208/NOCTouchFlowFieldSketchViewController.m</string>
-				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/06_steering.asc</string>
-			</dict>
-			<dict>
-				<key>Name</key>
 				<string>Steering Flow Field</string>
 				<key>Description</key>
 				<string>Particles follow the current of a 3-dimensional flow field. Double-tap to hide and show the flow field.</string>
@@ -322,7 +298,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%208/NOCFlowFieldSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/06_steering.asc</string>
+				<string>http://natureofcode.com/book/chapter-6-autonomous-agents/</string>
 			</dict>
 			<dict>
 				<key>Name</key>
@@ -334,7 +310,7 @@
 				<key>Code URL</key>
 				<string>https://github.com/wdlindmeier/Nature-Of-Code/blob/master/Nature%20of%20Code/Week%208/NOCFlockSketchViewController.m</string>
 				<key>Book URL</key>
-				<string>https://github.com/shiffman/The-Nature-of-Code/blob/master/raw/chapters/06_steering.asc</string>
+				<string>http://natureofcode.com/book/chapter-6-autonomous-agents/</string>
 			</dict>
 		</array>
 	</dict>

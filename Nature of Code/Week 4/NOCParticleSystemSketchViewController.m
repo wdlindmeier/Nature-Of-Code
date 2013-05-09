@@ -16,6 +16,7 @@
     NOCParticleSystem *_particleSystem;
     GLKVector2 _vecWind;
     GLKVector2 _vecLift;
+    NSMutableSet *_touches;
 }
 
 @end
@@ -111,10 +112,14 @@ static NSString * UniformParticleAge = @"scalarAge";
     // Flame always raises a little
     _vecLift = GLKVector2Make(0, 0.0005);
     
+    _touches = [NSMutableSet setWithCapacity:5];
+    
 }
 
 - (void)update
 {
+    [self updateWindWithTouches];
+    
     // We don't want the particle system to
     // have to know about the specific particle
     // subclasses and constructors, so we'll pass
@@ -202,22 +207,49 @@ static NSString * UniformParticleAge = @"scalarAge";
 
 #pragma mark - Touch
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for(UITouch *t in touches){
+        [_touches addObject:t];
+    }
+}
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for(UITouch *t in touches){
+        [_touches removeObject:t];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for(UITouch *t in touches){
+        [_touches removeObject:t];
+    }
+}
+
+- (void)updateWindWithTouches
+{
+
+    GLKVector2 wind = GLKVector2Zero;
+    
+    for(UITouch *t in _touches){
+        
         CGPoint posTouch = [t locationInView:self.view];
-
+        
         float scalarX = posTouch.x / _sizeView.width;
         float scalarY = posTouch.y / _sizeView.height;
         
         float glX = (scalarX * 2.0f) - 1.0f;
         float glY = (scalarY * (2.0f / _viewAspect)) - (1.0 / _viewAspect);
         
-        _vecWind = GLKVector2Make(_particleSystem.position.x - glX,
-                                  glY - _particleSystem.position.y);
-        _vecWind = GLKVector2MultiplyScalar(_vecWind, 0.0015);
+        wind = GLKVector2Add(wind, GLKVector2Make(_particleSystem.position.x - glX,
+                                                  glY - _particleSystem.position.y));
+        
     }
+    
+    _vecWind = GLKVector2MultiplyScalar(wind, 0.0015);
+    
 }
 
 @end

@@ -101,9 +101,9 @@ static NSString * UniformMoverTexture = @"texture";
     
     // Step w/in the bounds
 
-    // Update the world variables based on the sliders
-    Gravity = self.sliderGravity.value;
-    _repulsion = self.sliderRepulsion.value * 2; // (0..2)
+    // These were sliders and now they're not
+    Gravity = 0.4;
+    _repulsion = 0.5;
     
     float sceneWidth = 2.0f;
     float sceneHeight = 2.0f/_viewAspect;
@@ -130,8 +130,7 @@ static NSString * UniformMoverTexture = @"texture";
     [self clear];
     
     // Multiply matrix by the camera depth
-    
-    float camDepth = self.sliderCameraDepth.value;
+    const static float camDepth = -3.1;
     GLKMatrix4 matCam = GLKMatrix4MakeTranslation(0, 0, camDepth);
     GLKMatrix4 matScene = GLKMatrix4Multiply(_projectionMatrix3D, matCam);
     

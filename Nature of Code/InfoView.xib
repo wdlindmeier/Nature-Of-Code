@@ -36,18 +36,18 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIButton" id="8813782">
+					<object class="IBUIButton" id="852960091">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 20}, {81, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="20160976"/>
+						<reference key="NSNextKeyView" ref="122734127"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC43NQA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace" id="910031652">
+							<bytes key="NSWhite">MAA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace" id="627252714">
 								<int key="NSID">2</int>
 							</object>
 						</object>
@@ -56,14 +56,14 @@
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUINormalTitle">Close</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="311351670">
+						<object class="NSColor" key="IBUIHighlightedTitleColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
-							<reference key="NSCustomColorSpace" ref="910031652"/>
+							<bytes key="NSWhite">MQA</bytes>
+							<reference key="NSCustomColorSpace" ref="627252714"/>
 						</object>
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">3</int>
@@ -79,7 +79,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUITextView" id="20160976">
+					<object class="IBUITextView" id="122734127">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">319</int>
 						<string key="NSFrame">{{12, 85}, {288, 463}}</string>
@@ -88,8 +88,8 @@
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MSAwAA</bytes>
-							<reference key="NSCustomColorSpace" ref="910031652"/>
+							<bytes key="NSWhite">MC4yNSAwAA</bytes>
+							<reference key="NSCustomColorSpace" ref="627252714"/>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -110,112 +110,113 @@ YXMgYSBmb3VuZGF0aW9uYWwgY29kZS1iYXNlIHRvIGV4cGxvcmUgdGhlc2UgaWRlYXMgZnVydGhlci4K
 CgpFeHRlbmQgVGhlc2UgRXhhbXBsZXMKClRoZSBzb3VyY2UgY29kZSBmb3IgZXZlcnkgZXhhbXBsZSBp
 cyBhdmFpbGFibGUgdG8gdmlldyBhbmQgZG93bmxvYWQgb25saW5lLiBDbGljayB0aGUgImFjdGlvbiIg
 YnV0dG9uIGF0IHRoZSB0b3Agb2YgYW55IGV4YW1wbGUgdG8gbGluayBvdXQgdG8gdGhlIGNvZGUgb24g
-R2l0aHViIG9yIHRoZSByZWxldmFudCBjaGFwdGVyIGluIFRoZSBOYXR1cmUgb2YgQ29kZS4gCgoKQ29u
-dGFjdAoKVGhlc2Ugc2tldGNoZXMgd2VyZSB3cml0dGVuIGJ5IFdpbGxpYW0gTGluZG1laWVyIGZvciBU
-aGUgTmF0dXJlIG9mIENvZGUgY291cnNlIGF0IElUUC4gRW1haWwgbWUgd2l0aCBhbnkgcXVlc3Rpb25z
-OiBiaWxsQHdkbGluZG1laWVyLmNvbS4KCgpUaGFua3MKCkEgaHVnZSB0aGFua3MgdG8gRGFuaWVsIFNo
-aWZmbWFuIGZvciBtYWtpbmcgdGhlIGNvbnRlbnRzIG9mIGhpcyBib29rIGVuZ2FnaW5nIGFuZCBhY2Nl
-c3NpYmxlLg</string>
+R2l0aHViIG9yIHRoZSByZWxldmFudCBjaGFwdGVyIGluIFRoZSBOYXR1cmUgb2YgQ29kZS4gR2l0IHB1
+bGwgcmVxdWVzdHMgYW5kIGFkZGl0aW9uYWwgZXhhbXBsZXMgYXJlIHdlbGNvbWUuCgpodHRwczovL2dp
+dGh1Yi5jb20vd2RsaW5kbWVpZXIvTmF0dXJlLU9mLUNvZGUKCkNvbnRhY3QKClRoZXNlIHNrZXRjaGVz
+IHdlcmUgd3JpdHRlbiBieSBXaWxsaWFtIExpbmRtZWllciBmb3IgVGhlIE5hdHVyZSBvZiBDb2RlIGNv
+dXJzZSBhdCBJVFAuIEVtYWlsIG1lIHdpdGggYW55IHF1ZXN0aW9uczogYmlsbEB3ZGxpbmRtZWllci5j
+b20uCgoKVGhhbmtzCgpBIGh1Z2UgdGhhbmtzIHRvIERhbmllbCBTaGlmZm1hbiBmb3IgbWFraW5nIHRo
+ZSBjb250ZW50cyBvZiBoaXMgYm9vayBlbmdhZ2luZyBhbmQgYWNjZXNzaWJsZS4</string>
 							<array class="NSMutableArray" key="NSAttributes">
 								<dictionary>
-									<object class="NSColor" key="NSColor" id="234563707">
+									<object class="NSColor" key="NSColor" id="995310285">
 										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MQA</bytes>
-										<reference key="NSCustomColorSpace" ref="910031652"/>
+										<bytes key="NSWhite">MC4yNQA</bytes>
+										<reference key="NSCustomColorSpace" ref="627252714"/>
 									</object>
 									<object class="NSFont" key="NSFont">
 										<string key="NSName">HelveticaNeue-Bold</string>
 										<double key="NSSize">20</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<object class="NSMutableParagraphStyle" key="NSParagraphStyle" id="585660760">
+									<object class="NSMutableParagraphStyle" key="NSParagraphStyle" id="626506449">
 										<nil key="NSTabStops"/>
 									</object>
 								</dictionary>
 								<dictionary>
-									<reference key="NSColor" ref="234563707"/>
-									<object class="NSFont" key="NSFont" id="991711804">
+									<reference key="NSColor" ref="995310285"/>
+									<object class="NSFont" key="NSFont" id="102538922">
 										<string key="NSName">HelveticaNeue</string>
 										<double key="NSSize">14</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<reference key="NSParagraphStyle" ref="585660760"/>
+									<reference key="NSParagraphStyle" ref="626506449"/>
 								</dictionary>
 								<dictionary>
-									<object class="NSColor" key="NSColor" id="557416526">
+									<object class="NSColor" key="NSColor" id="289638888">
 										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MQA</bytes>
-										<reference key="NSCustomColorSpace" ref="910031652"/>
+										<bytes key="NSWhite">MC4yNQA</bytes>
+										<reference key="NSCustomColorSpace" ref="627252714"/>
 									</object>
-									<object class="NSFont" key="NSFont">
+									<object class="NSFont" key="NSFont" id="130284642">
 										<string key="NSName">HelveticaNeue</string>
 										<double key="NSSize">16</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<reference key="NSParagraphStyle" ref="585660760"/>
+									<reference key="NSParagraphStyle" ref="626506449"/>
 								</dictionary>
 								<dictionary>
-									<reference key="NSColor" ref="557416526"/>
+									<reference key="NSColor" ref="289638888"/>
 									<object class="NSFont" key="NSFont">
 										<string key="NSName">HelveticaNeue-Italic</string>
 										<double key="NSSize">16</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<reference key="NSParagraphStyle" ref="585660760"/>
+									<reference key="NSParagraphStyle" ref="626506449"/>
 								</dictionary>
 								<dictionary>
-									<object class="NSColor" key="NSColor">
+									<object class="NSColor" key="NSColor" id="1045789234">
 										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MQA</bytes>
-										<reference key="NSCustomColorSpace" ref="910031652"/>
+										<bytes key="NSWhite">MC4yNQA</bytes>
+										<reference key="NSCustomColorSpace" ref="627252714"/>
 									</object>
 									<object class="NSFont" key="NSFont">
 										<string key="NSName">LucidaGrande</string>
 										<double key="NSSize">18</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<reference key="NSParagraphStyle" ref="585660760"/>
+									<reference key="NSParagraphStyle" ref="626506449"/>
 								</dictionary>
 								<dictionary>
-									<reference key="NSColor" ref="311351670"/>
-									<reference key="NSFont" ref="991711804"/>
+									<reference key="NSColor" ref="1045789234"/>
+									<reference key="NSFont" ref="102538922"/>
 									<object class="NSParagraphStyle" key="NSParagraphStyle">
 										<double key="NSTighteningFactorForTruncation">0.05000000074505806</double>
 										<array key="NSTabStops">
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="171385115">
 												<double key="NSLocation">28</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="25686176">
 												<double key="NSLocation">56</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="827453600">
 												<double key="NSLocation">84</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="312807319">
 												<double key="NSLocation">112</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="604384272">
 												<double key="NSLocation">140</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="553931179">
 												<double key="NSLocation">168</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="391918823">
 												<double key="NSLocation">196</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="377630386">
 												<double key="NSLocation">224</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="766157314">
 												<double key="NSLocation">252</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="486621536">
 												<double key="NSLocation">280</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="162088348">
 												<double key="NSLocation">308</double>
 											</object>
-											<object class="NSTextTab">
+											<object class="NSTextTab" id="184315364">
 												<double key="NSLocation">336</double>
 											</object>
 										</array>
@@ -223,20 +224,53 @@ c3NpYmxlLg</string>
 								</dictionary>
 								<dictionary>
 									<object class="NSColor" key="NSColor">
-										<int key="NSColorSpace">3</int>
-										<bytes key="NSWhite">MQA</bytes>
-										<reference key="NSCustomColorSpace" ref="910031652"/>
+										<int key="NSColorSpace">1</int>
+										<bytes key="NSRGB">MC4yNTA5ODAzOTIyIDAuMjUwOTgwMzkyMiAwLjI1MDk4MDM5MjIAA</bytes>
 									</object>
+									<reference key="NSFont" ref="102538922"/>
+									<reference key="NSParagraphStyle" ref="626506449"/>
+								</dictionary>
+								<dictionary>
+									<object class="NSColor" key="NSColor">
+										<int key="NSColorSpace">1</int>
+										<bytes key="NSRGB">MC4yNTA5ODAzOTIyIDAuMjUwOTgwMzkyMiAwLjI1MDk4MDM5MjIAA</bytes>
+									</object>
+									<reference key="NSFont" ref="130284642"/>
+									<object class="NSURL" key="NSLink">
+										<nil key="NS.base"/>
+										<string key="NS.relative">https://github.com/wdlindmeier/Nature-Of-Code</string>
+									</object>
+									<object class="NSParagraphStyle" key="NSParagraphStyle">
+										<double key="NSTighteningFactorForTruncation">0.05000000074505806</double>
+										<array key="NSTabStops">
+											<reference ref="171385115"/>
+											<reference ref="25686176"/>
+											<reference ref="827453600"/>
+											<reference ref="312807319"/>
+											<reference ref="604384272"/>
+											<reference ref="553931179"/>
+											<reference ref="391918823"/>
+											<reference ref="377630386"/>
+											<reference ref="766157314"/>
+											<reference ref="486621536"/>
+											<reference ref="162088348"/>
+											<reference ref="184315364"/>
+										</array>
+									</object>
+								</dictionary>
+								<dictionary>
+									<reference key="NSColor" ref="995310285"/>
 									<object class="NSFont" key="NSFont">
 										<string key="NSName">HelveticaNeue</string>
 										<double key="NSSize">20</double>
 										<int key="NSfFlags">16</int>
 									</object>
-									<reference key="NSParagraphStyle" ref="585660760"/>
+									<reference key="NSParagraphStyle" ref="626506449"/>
 								</dictionary>
 							</array>
 							<object class="NSMutableData" key="NSAttributeInfo">
-								<bytes key="NS.bytes">BQACAUQCEgP6AwIBBAEFAQEVAAEBAQC9AQISAwMCAQUBAQcAAQEBBjUCEgNDAgEBAQUGAAEBAQBdAg</bytes>
+								<bytes key="NS.bytes">BQACAUQCEgP6AwIBBAEFAQEVAAEBAQC9AQISAzgCAQYBAi0HAQUBAQcAAQEBCDUCEgNDAgEBAQUGAAEB
+AQBdAg</bytes>
 							</object>
 						</object>
 						<bool key="IBUIEditable">NO</bool>
@@ -244,15 +278,17 @@ c3NpYmxlLg</string>
 							<int key="IBUIAutocapitalizationType">2</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
+						<int key="IBUIDataDetectorTypes">2</int>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="8813782"/>
+				<reference key="NSNextKeyView" ref="852960091"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MCAwLjgAA</bytes>
+					<bytes key="NSWhite">MSAwLjkAA</bytes>
+					<reference key="NSCustomColorSpace" ref="627252714"/>
 				</object>
 				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUISimulatedFreeformSizeMetricsSentinel</string>
@@ -274,7 +310,7 @@ c3NpYmxlLg</string>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">buttonCloseInfoPressed:</string>
-						<reference key="source" ref="8813782"/>
+						<reference key="source" ref="852960091"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -293,8 +329,8 @@ c3NpYmxlLg</string>
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="8813782"/>
-							<reference ref="20160976"/>
+							<reference ref="852960091"/>
+							<reference ref="122734127"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -311,12 +347,12 @@ c3NpYmxlLg</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
-						<reference key="object" ref="8813782"/>
+						<reference key="object" ref="852960091"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">8</int>
-						<reference key="object" ref="20160976"/>
+						<reference key="object" ref="122734127"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>

@@ -282,6 +282,9 @@
     self.selectedSketchView.frame = self.view.bounds;
     
     CGSize sizeSketchView = self.selectedSketchView.frame.size;
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad){
+        self.viewSketchInfoContainer.frame = self.view.bounds;
+    }
     self.viewSketchInfoContainer.center = CGPointMake(sizeSketchView.width * 0.5,
                                                       sizeSketchView.height * 0.5);
 
