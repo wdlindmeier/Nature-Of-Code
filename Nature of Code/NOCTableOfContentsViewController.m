@@ -214,6 +214,9 @@
     self.viewInfo.alpha = 0;
     self.viewInfo.frame = self.view.bounds;
     [self.view addSubview:self.viewInfo];
+    
+    self.tableView.scrollEnabled = NO;
+    
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.viewInfo.alpha = 1;
@@ -224,6 +227,8 @@
 
 - (IBAction)buttonCloseInfoPressed:(id)sender
 {
+    self.tableView.scrollEnabled = YES;
+    
     [UIView animateWithDuration:0.3
                      animations:^{
                          self.viewInfo.alpha = 0;
