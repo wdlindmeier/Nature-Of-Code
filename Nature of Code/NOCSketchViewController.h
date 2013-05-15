@@ -11,7 +11,6 @@
 #import "NOCShaderProgram.h"
 #import "NOCOpenGLHelpers.h"
 #import "CAEAGLLayer+Retained.h"
-#import "NOCSketch.h"
 
 #ifndef USE_SKETCH_CONTROLS
 #ifndef NOCSketchViewControllerBase

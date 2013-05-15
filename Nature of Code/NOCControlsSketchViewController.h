@@ -7,6 +7,7 @@
 //
 
 #import "NOCSketchViewController.h"
+#import "NOCSketch.h"
 
 @class CMMotionManager;
 
