@@ -1,0 +1,3 @@
+[submodule "Nature of Code/Shared"]
+	path = Nature of Code/Shared
+	url = git@github.com:wdlindmeier/NOC-GLES.git
