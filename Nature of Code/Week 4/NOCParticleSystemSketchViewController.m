@@ -128,10 +128,10 @@ static NSString * UniformParticleAge = @"scalarAge";
     
     // NOTE: The particle position is relative to the
     // system position.
-    float pDimesion = 0.5 * RAND_SCALAR;
+    float pDimesion = 0.5 * RandScalar();
     NOCFlameParticle *p = [[NOCFlameParticle alloc] initWithSize:GLKVector2Make(pDimesion, pDimesion)
-                                                        position:GLKVector2Make(0.025 * RAND_SCALAR,
-                                                                                0.025 * RAND_SCALAR)];
+                                                        position:GLKVector2Make(0.025 * RandScalar(),
+                                                                                0.025 * RandScalar())];
     p.stepLimit = 100;
     p.texture = _textures[arc4random() % _textures.count];
 

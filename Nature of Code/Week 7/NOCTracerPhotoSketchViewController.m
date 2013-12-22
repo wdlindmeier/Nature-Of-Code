@@ -160,7 +160,7 @@ static NSString * UniformTexture = @"texture";
     
     for(int i=0;i<_numTracerGroups;i++){
         
-        GLKVector2 startingPos = GLKVector2Make(RAND_SCALAR * 2.0 - 1.0, RAND_SCALAR * 2.0 - 1.0);
+        GLKVector2 startingPos = GLKVector2Make(RandScalar() * 2.0 - 1.0, RandScalar() * 2.0 - 1.0);
         
         NSMutableArray *tracers = [NSMutableArray arrayWithCapacity:_numBatchTracers];
         for(int j=0;j<_numBatchTracers;j++){

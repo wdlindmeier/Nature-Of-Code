@@ -63,11 +63,11 @@
     // This is quite a bit
     mutRate = mutRate * 5;
     
-    if(RAND_SCALAR < mutRate){
+    if(RandScalar() < mutRate){
         
-        float randX = (RAND_SCALAR * 1.9) - 0.95f;
-        float randY = (RAND_SCALAR * 1.9) - 0.95f;
-        float randZ = (RAND_SCALAR * 1.9) - 0.95f;
+        float randX = (RandScalar() * 1.9) - 0.95f;
+        float randY = (RandScalar() * 1.9) - 0.95f;
+        float randZ = (RandScalar() * 1.9) - 0.95f;
         _startingPosition = GLKVector3Make(randX, randY, randZ);
         self.position = _startingPosition;
     }

@@ -8,7 +8,7 @@
 
 #import "NOCPerlinWalker.h"
 #import "perlin.h"
-#import "NOCGeometryHelpers.h"
+#import "NOCGeometry.h"
 #import "CGGeometry.h"
 
 @implementation NOCPerlinWalker

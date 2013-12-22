@@ -36,8 +36,8 @@ static NSString * UniformScale = @"scale";
 
 - (void)addRandomPoint
 {
-    float glX = (2.0 * RAND_SCALAR) - 1.0;
-    float glY = ((2.0 * RAND_SCALAR) - 1.0) / _viewAspect;
+    float glX = (2.0 * RandScalar()) - 1.0;
+    float glY = ((2.0 * RandScalar()) - 1.0) / _viewAspect;
     DelaunayPoint *newPoint = [DelaunayPoint pointAtX:glX
                                                  andY:glY];
     

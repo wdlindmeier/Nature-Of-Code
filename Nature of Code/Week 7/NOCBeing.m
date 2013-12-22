@@ -77,17 +77,17 @@ static const float ForceDistMulti = 0.005;
 - (void)randomizeDNA
 {
     for(int i=0;i<MaxBeingLifespan;i++){
-        GLKVector3 vec = GLKVector3Make((RAND_SCALAR*2) - 1.0,
-                                        (RAND_SCALAR*2) - 1.0,
-                                        (RAND_SCALAR*2) - 1.0);
+        GLKVector3 vec = GLKVector3Make((RandScalar()*2) - 1.0,
+                                        (RandScalar()*2) - 1.0,
+                                        (RandScalar()*2) - 1.0);
         vec = GLKVector3Normalize(vec);
         vec = GLKVector3MultiplyScalar(vec, ForceDistMulti);
         _vectors[i] = vec;
     }
     
-    self.color = [UIColor colorWithRed:RAND_SCALAR
-                                 green:RAND_SCALAR
-                                  blue:RAND_SCALAR
+    self.color = [UIColor colorWithRed:RandScalar()
+                                 green:RandScalar()
+                                  blue:RandScalar()
                                  alpha:1];
 }
 
@@ -121,16 +121,16 @@ static const float ForceDistMulti = 0.005;
     
     float myWeight = self.fitness / (self.fitness + mate.fitness);
     
-    float bRadius = RAND_SCALAR < myWeight ? self.radius : mate.radius;
-     GLKVector3 bPosition = RAND_SCALAR < myWeight ? self.startingPosition : mate.startingPosition;
-    float bMass = RAND_SCALAR < myWeight ? self.mass : mate.mass;
+    float bRadius = RandScalar() < myWeight ? self.radius : mate.radius;
+     GLKVector3 bPosition = RandScalar() < myWeight ? self.startingPosition : mate.startingPosition;
+    float bMass = RandScalar() < myWeight ? self.mass : mate.mass;
     
     baby = [[[self class] alloc] initWithRadius:bRadius
                                        position:bPosition
                                            mass:bMass];    
     for(int i=0;i<MaxBeingLifespan;i++){
         // Populate the DNA
-        baby.vectors[i] = RAND_SCALAR < myWeight ? [self vectors][i] : [mate vectors][i];
+        baby.vectors[i] = RandScalar() < myWeight ? [self vectors][i] : [mate vectors][i];
     }
     
     CGFloat myColor[4];
@@ -139,9 +139,9 @@ static const float ForceDistMulti = 0.005;
     CGFloat mateColor[4];
     NOCColorComponentsForColor(mateColor, mate.color);
 
-    baby.color = [UIColor colorWithRed:RAND_SCALAR < myWeight ? myColor[0] : mateColor[0]
-                                 green:RAND_SCALAR < myWeight ? myColor[1] : mateColor[1]
-                                  blue:RAND_SCALAR < myWeight ? myColor[2] : mateColor[2]
+    baby.color = [UIColor colorWithRed:RandScalar() < myWeight ? myColor[0] : mateColor[0]
+                                 green:RandScalar() < myWeight ? myColor[1] : mateColor[1]
+                                  blue:RandScalar() < myWeight ? myColor[2] : mateColor[2]
                                  alpha:1];
     
     [baby mutate];
@@ -157,31 +157,31 @@ static const float ForceDistMulti = 0.005;
 - (void)mutate
 {
     for(int i=0;i<MaxBeingLifespan;i++){
-        if(RAND_SCALAR < BeingMutationRate){
-            GLKVector3 vec = GLKVector3Make((RAND_SCALAR*2) - 1.0,
-                                            (RAND_SCALAR*2) - 1.0,
-                                            (RAND_SCALAR*2) - 1.0);
+        if(RandScalar() < BeingMutationRate){
+            GLKVector3 vec = GLKVector3Make((RandScalar()*2) - 1.0,
+                                            (RandScalar()*2) - 1.0,
+                                            (RandScalar()*2) - 1.0);
             vec = GLKVector3Normalize(vec);
             vec = GLKVector3MultiplyScalar(vec, ForceDistMulti);
             _vectors[i] = vec;            
         }
     }
     
-    float rand = RAND_SCALAR;
+    float rand = RandScalar();
     if(rand < BeingMutationRate){
-        self.color = [UIColor colorWithRed:RAND_SCALAR
-                                     green:RAND_SCALAR
-                                      blue:RAND_SCALAR
+        self.color = [UIColor colorWithRed:RandScalar()
+                                     green:RandScalar()
+                                      blue:RandScalar()
                                      alpha:1];
     }else{
         //NSLog(@"no change rand: %f BeingMutationRate %f", rand, BeingMutationRate);
     }
     
     // NOTE: This is making assumptions about the size of the world
-    if(RAND_SCALAR < BeingMutationRate){
-        float randX = (RAND_SCALAR * 1.9) - 0.95f;
-        float randY = (RAND_SCALAR * 1.9) - 0.95f;
-        float randZ = (RAND_SCALAR * 1.9) - 0.95f;
+    if(RandScalar() < BeingMutationRate){
+        float randX = (RandScalar() * 1.9) - 0.95f;
+        float randY = (RandScalar() * 1.9) - 0.95f;
+        float randZ = (RandScalar() * 1.9) - 0.95f;
         _startingPosition = GLKVector3Make(randX, randY, randZ);
         self.position = _startingPosition;
     }

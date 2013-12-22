@@ -59,13 +59,13 @@ static const float RangeConstrain = MaxConstrain - MinConstrain;
 {
     double mutRate = [NOCTracer mutationRate];
     for(int i=0;i<self.lifespan+1;i++){
-        if(RAND_SCALAR < mutRate){
+        if(RandScalar() < mutRate){
             
             GLKVector3 pos = _positions[i];
             
-            float x = ((RAND_SCALAR * 2) - 1.0f) * MaxConstrain;
-            float y = ((RAND_SCALAR * 2) - 1.0f) * MaxConstrain;
-            float z = ((RAND_SCALAR * 2) - 1.0f) * MaxConstrain;
+            float x = ((RandScalar() * 2) - 1.0f) * MaxConstrain;
+            float y = ((RandScalar() * 2) - 1.0f) * MaxConstrain;
+            float z = ((RandScalar() * 2) - 1.0f) * MaxConstrain;
             GLKVector3 offset = GLKVector3Make(x, y, z);
             
             GLKVector3 newPos = GLKVector3Add(pos, offset);

@@ -86,9 +86,9 @@ static NSString * UniformColor = @"color";
 
 - (NOCBeing *)randomBeing
 {
-    float randX = (RAND_SCALAR * 1.9) - 0.95f;
-    float randY = (RAND_SCALAR * 1.9) - 0.95f;
-    float randZ = (RAND_SCALAR * 1.9) - 0.95f;
+    float randX = (RandScalar() * 1.9) - 0.95f;
+    float randY = (RandScalar() * 1.9) - 0.95f;
+    float randZ = (RandScalar() * 1.9) - 0.95f;
     GLKVector3 startingPoint = GLKVector3Make(randX, randY, randZ);
     float mass = 1.0f;
     float radius = 0.05;

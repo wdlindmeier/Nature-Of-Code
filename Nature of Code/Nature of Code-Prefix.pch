@@ -9,11 +9,12 @@
 #endif
 
 #define USE_SKETCH_CONTROLS 1
+#define RETAIN_BACKING_BUFFER 1
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "NOCGlobals.h"
-    #import "NOCGeometryHelpers.h"
+    #import "NOCGeometry.h"
     #import "NOCUIKitHelpers.h"
 #endif

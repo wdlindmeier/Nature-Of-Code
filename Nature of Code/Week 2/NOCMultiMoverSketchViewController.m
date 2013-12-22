@@ -8,7 +8,7 @@
 
 #import "NOCMultiMoverSketchViewController.h"
 #import "NOCMover2D.h"
-#import "NOCGeometryHelpers.h"
+#import "NOCGeometry.h"
 
 @interface NOCMultiMoverSketchViewController ()
 {
@@ -62,9 +62,9 @@ static NSString * UniformMoverTexture = @"texture";
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
 
     for(int i=0;i<NumMovers;i++){
-        float randX = (RAND_SCALAR * 2.0) - 1.0f;
-        float randY = (RAND_SCALAR * 2.0) - 1.0f;
-        float randMass = 0.3 + RAND_SCALAR * 1.5;
+        float randX = (RandScalar() * 2.0) - 1.0f;
+        float randY = (RandScalar() * 2.0) - 1.0f;
+        float randMass = 0.3 + RandScalar() * 1.5;
         float dimension = 0.1 * randMass;
         NOCMover2D *mover = [[NOCMover2D alloc] initWithSize:GLKVector2Make(dimension, dimension)
                                                     position:GLKVector2Make(randX, randY)];
@@ -181,7 +181,7 @@ static NSString * UniformMoverTexture = @"texture";
                 }
 
                 // The attraction or repulstion amount between the two
-                float magnitudeMoverForce = map(distance, 0, _distThreshold, -1, 1);
+                float magnitudeMoverForce = CGMap(distance, 0, _distThreshold, -1, 1);
                 
                 GLKVector2 vecMoverForce = GLKVector2MultiplyScalar(vecNormal, magnitudeMoverForce);
                 vecReaction = GLKVector2Subtract(vecReaction, vecMoverForce);

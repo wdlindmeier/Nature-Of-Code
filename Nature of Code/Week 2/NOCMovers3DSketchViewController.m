@@ -8,7 +8,7 @@
 
 #import "NOCMovers3DSketchViewController.h"
 #import "NOCMover3D.h"
-#import "NOCGeometryHelpers.h"
+#import "NOCGeometry.h"
 #import "NOCSceneBox.h"
 
 @interface NOCMovers3DSketchViewController ()
@@ -67,11 +67,11 @@ static NSString * UniformMoverTexture = @"texture";
     NSMutableArray *movers = [NSMutableArray arrayWithCapacity:NumMovers];
     
     for(int i=0;i<NumMovers;i++){
-        float randX = (RAND_SCALAR * 2.0) - 1.0f;
-        float randY = (RAND_SCALAR * 2.0) - 1.0f;
-        float randZ = (RAND_SCALAR * 2.0) - 1.0f;
+        float randX = (RandScalar() * 2.0) - 1.0f;
+        float randY = (RandScalar() * 2.0) - 1.0f;
+        float randZ = (RandScalar() * 2.0) - 1.0f;
         // Make them the same size so depth is more apparent
-        float randMass = 1.0f;//0.3 + RAND_SCALAR * 1.5;
+        float randMass = 1.0f;//0.3 + RandScalar() * 1.5;
         float dimension = 0.1;// * randMass;
         NOCMover3D *mover = [[NOCMover3D alloc] initWithSize:GLKVector3Make(dimension, dimension, dimension)
                                                     position:GLKVector3Make(randX, randY, randZ)
@@ -215,7 +215,7 @@ static NSString * UniformMoverTexture = @"texture";
             }
             
             // The attraction or repulstion amount between the two
-            float magnitudeMoverForce = map(distance, 0, _distThreshold, -1, 1);
+            float magnitudeMoverForce = CGMap(distance, 0, _distThreshold, -1, 1);
             
             GLKVector3 vecMoverForce = GLKVector3MultiplyScalar(vecNormal, magnitudeMoverForce);
             vecReaction = GLKVector3Subtract(vecReaction, vecMoverForce);

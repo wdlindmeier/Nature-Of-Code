@@ -114,8 +114,8 @@ static const float MotionLiftAffectOnBurnDirection = 0.35 / MotionLiftMultiplier
     
     // Create a perlin map which is the paper
     
-    // float scalarX = 0.5 + (RAND_SCALAR * 0.5);
-    // float scalarY = RAND_SCALAR * 0.5;
+    // float scalarX = 0.5 + (RandScalar() * 0.5);
+    // float scalarY = RandScalar() * 0.5;
     float alpha = 1.0f; //map(scalarX, 0.0, 1.0, 0.5, 2.0);
     float beta = 0.02; //map(scalarY, 0.0, 1.0, 0.0, 0.25);
     int numOctaves = 4; //4 + (arc4random() % 3);

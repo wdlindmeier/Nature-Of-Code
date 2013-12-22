@@ -37,7 +37,7 @@
     
     // If our random number falls within the probability of following the point,
     // follow it. Otherwise chose another direction.
-    float direction = RAND_SCALAR;
+    float direction = RandScalar();
     if(direction > self.probabilityOfFollowingPoint){
         
         // Choose another direction

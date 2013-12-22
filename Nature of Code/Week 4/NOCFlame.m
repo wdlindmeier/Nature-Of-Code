@@ -9,7 +9,7 @@
 #import "NOCFlame.h"
 #import "NOCFlameParticle.h"
 #import "NOCShaderProgram.h"
-#import "NOCGeometryHelpers.h"
+#import "NOCGeometry.h"
 
 static NSString * NOCParticleShaderName = @"FlameParticle";
 static NSString * UniformMVProjectionMatrix = @"modelViewProjectionMatrix";
@@ -82,10 +82,10 @@ const static int NumDistHistory = 5;
 - (void)stepWithLift:(GLKVector2)vecUp
 {
     // Always add another particle
-    float pDimesion = (0.2 + (0.2 * RAND_SCALAR)) * _brightness; // Make them smaller if the flame is dimmer
+    float pDimesion = (0.2 + (0.2 * RandScalar())) * _brightness; // Make them smaller if the flame is dimmer
     NOCFlameParticle *p = [[NOCFlameParticle alloc] initWithSize:GLKVector2Make(pDimesion, pDimesion)
-                                                        position:GLKVector2Make(-0.025 + (0.05 * RAND_SCALAR),
-                                                                                -0.025 + (0.05 * RAND_SCALAR))];
+                                                        position:GLKVector2Make(-0.025 + (0.05 * RandScalar()),
+                                                                                -0.025 + (0.05 * RandScalar()))];
     p.stepLimit = 75; // this is the life span
     p.texture = _texture;
     [self addParticle:p];

@@ -359,7 +359,7 @@ static const int FBODimension = 128;
             float dStep = i*_distStep;
             
             // Randomize the distance for a jittery effect
-            dStep *= 1.0 + ((RAND_SCALAR * 0.5) - 0.25);
+            dStep *= 1.0 + ((RandScalar() * 0.5) - 0.25);
             
             float x = cosf(cStep) * dStep;
             float y = sinf(cStep) * dStep / _viewAspect;

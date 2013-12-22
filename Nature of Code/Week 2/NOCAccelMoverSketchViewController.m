@@ -9,7 +9,7 @@
 #import "NOCAccelMoverSketchViewController.h"
 #import "NOCShaderProgram.h"
 #import "NOCMover2D.h"
-#import "NOCGeometryHelpers.h"
+#import "NOCGeometry.h"
 
 @implementation NOCAccelMoverSketchViewController
 {

@@ -85,9 +85,9 @@ static NSString * UniformColor = @"color";
                                                           mass:0.05
                                                           body:_objCone];
         flocker.maxVelocity = 0.035;
-        flocker.color = [UIColor colorWithRed:RAND_SCALAR
-                                        green:RAND_SCALAR
-                                         blue:RAND_SCALAR
+        flocker.color = [UIColor colorWithRed:RandScalar()
+                                        green:RandScalar()
+                                         blue:RandScalar()
                                         alpha:1];
         [flockers addObject:flocker];
     }
@@ -212,7 +212,7 @@ static NSString * UniformColor = @"color";
                 
                 if(distance < repulsionDistThreshold){
                     
-                    float magnitudeRepulsion = 1.0 - map(distance, 0.0, repulsionDistThreshold, 0.0, 1.0);
+                    float magnitudeRepulsion = 1.0 - CGMap(distance, 0.0, repulsionDistThreshold, 0.0, 1.0);
                     
                     // Apply repulsion
                     float magRepulstion = magnitudeRepulsion * amtRepulsion;
@@ -222,7 +222,7 @@ static NSString * UniformColor = @"color";
                 }
                 if(distance > repulsionDistThreshold && distance < alignDistThreshold){
                     
-                    float magnitudeAlignment = map(distance, repulsionDistThreshold, alignDistThreshold, 0.0, 1.0);
+                    float magnitudeAlignment = CGMap(distance, repulsionDistThreshold, alignDistThreshold, 0.0, 1.0);
 
                     // Apply alignment. This is based on velocity.
                     float magAlignment = magnitudeAlignment * amtAlignment;
@@ -234,7 +234,7 @@ static NSString * UniformColor = @"color";
                 }                
                 if(distance > alignDistThreshold && distance < attractionDistThreshold){
                     
-                    float magnitudeAttraction = map(distance, alignDistThreshold, attractionDistThreshold, 0.0, 1.0);
+                    float magnitudeAttraction = CGMap(distance, alignDistThreshold, attractionDistThreshold, 0.0, 1.0);
 
                     // Apply attraction
                     float magAttraction = magnitudeAttraction * amtAttraction;

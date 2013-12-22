@@ -86,7 +86,7 @@ const static float ForceDistMulti = 0.005;
 {
     NSMutableArray *newDNA = [NSMutableArray arrayWithCapacity:self.DNALength];
     for(int i=0;i<self.DNALength;i++){
-        NSNumber *n = (RAND_SCALAR < 0.5) ? dna1[i] : dna2[i];
+        NSNumber *n = (RandScalar() < 0.5) ? dna1[i] : dna2[i];
         [newDNA addObject:n];
     }
     self.DNA = [NSArray arrayWithArray:newDNA];

@@ -26,7 +26,7 @@
 {
     NSMutableArray *newDNA = [NSMutableArray arrayWithCapacity:self.DNALength];
     for(int i=0;i<self.DNALength;i++){
-        [newDNA addObject:@(RAND_SCALAR)];
+        [newDNA addObject:@(RandScalar())];
     }
     self.DNA = [NSArray arrayWithArray:newDNA];
     self.generation = 0;
@@ -66,8 +66,8 @@
 {
     NSMutableArray *newDNA = [NSMutableArray arrayWithArray:self.DNA];
     for(int i=0;i<self.DNALength;i++){
-        if(RAND_SCALAR < BreederMutationRate){
-            newDNA[i] = @(RAND_SCALAR);
+        if(RandScalar() < BreederMutationRate){
+            newDNA[i] = @(RandScalar());
         }
     }
     self.DNA = [NSArray arrayWithArray:newDNA];

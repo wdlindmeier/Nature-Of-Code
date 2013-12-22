@@ -7,7 +7,7 @@
 //
 
 #import "NOCWalker.h"
-#import "NOCGeometryHelpers.h"
+#import "NOCGeometry.h"
 #import <GLKit/GLKit.h>
 
 // Walker Shape

@@ -93,8 +93,8 @@ static NSString * UniformTexture = @"texture";
     NSMutableArray *particles = [NSMutableArray arrayWithCapacity:numParticles];
     for(int i=0;i<numParticles;i++){
         NOCFlowParticle *p = [[NOCFlowParticle alloc] initWithSize:GLKVector2Make(0.1, 0.1)
-                                                          position:GLKVector2Make((RAND_SCALAR * 2) - 1,
-                                                                                  (RAND_SCALAR * 2) - 1)];
+                                                          position:GLKVector2Make((RandScalar() * 2) - 1,
+                                                                                  (RandScalar() * 2) - 1)];
         p.maxVelocity = 0.01;
         [particles addObject:p];
     }
@@ -165,7 +165,7 @@ static NSString * UniformTexture = @"texture";
                 }
                 
                 // The attraction or repulstion amount between the two
-                float magnitudeMoverForce = map(distance, 0, distThreshold, -1, 0);
+                float magnitudeMoverForce = CGMap(distance, 0, distThreshold, -1, 0);
                 
                 GLKVector2 vecMoverForce = GLKVector2MultiplyScalar(vecNormal, magnitudeMoverForce);
                 vecReaction = GLKVector2Subtract(vecReaction, vecMoverForce);
