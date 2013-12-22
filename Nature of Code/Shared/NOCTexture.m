@@ -11,18 +11,11 @@
 
 @implementation NOCTexture
 
-- (id)initWithImageNamed:(NSString *)imageName
+- (id)initWithImage:(UIImage *)image
 {
     self = [super init];
     if (self)
     {
-        UIImage *image = [UIImage imageNamed:imageName];
-        if (!image)
-        {
-            NSLog(@"ERROR: Could not find the glyph image: %@", imageName);
-            return nil;
-        }
-        
         self.vertAttribLocation = GLKVertexAttribPosition;
         self.texCoordAttribLocation = GLKVertexAttribTexCoord0;
         
@@ -40,6 +33,17 @@
         }
     }
     return self;
+}
+
+- (id)initWithImageNamed:(NSString *)imageName
+{
+    UIImage *image = [UIImage imageNamed:imageName];
+    if (!image)
+    {
+        NSLog(@"ERROR: Could not find the texture image: %@", imageName);
+        return nil;
+    }
+    return [self initWithImage:image];
 }
 
 - (GLuint)textureID

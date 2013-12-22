@@ -51,6 +51,16 @@ static CGRect regionForChar(char c)
 
 @implementation NOCTextureFont
 
+- (id)initWithFontName:(NSString *)fontName
+{
+    UIImage *image = [NOCTextureFont imageMapForFontNamed:fontName];
+    if (!image)
+    {
+        return nil;
+    }
+    return [self initWithImage:image];
+}
+
 - (id)initWithImageNamed:(NSString *)imageName
 {
     self = [super initWithImageNamed:imageName];
@@ -167,6 +177,66 @@ static CGRect regionForChar(char c)
 
     glDisableVertexAttribArray(self.vertAttribLocation);
     glDisableVertexAttribArray(self.texCoordAttribLocation);
+}
+
+// Dynamically building an image map
+
+const static int kDynamicMapWidth = 1024;
+const static int kDynamicMapHeight = 1024;
+const static float kReferenceFontSize = 106.65f;
+
++ (UIImage *)imageMapForFontNamed:(NSString *)fontName
+{
+    UIFont *font = [UIFont fontWithName:fontName size:kReferenceFontSize];
+    
+    if ( !font )
+    {
+        NSLog(@"ERROR: Couldn't find a font with name: %@", fontName);
+        NSLog(@"All font names:");
+        for ( NSString *familyName in [UIFont familyNames] )
+        {
+            NSLog(@"%@", [UIFont fontNamesForFamilyName:familyName]);
+        }
+        
+        return nil;
+    }
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(kDynamicMapWidth, kDynamicMapHeight), NO, 1.0);
+    
+    // Pick the max font size that fits within the bounds.
+    // We'll use a capital 'W' as a reference character, since it's
+    // generally among the widest chars.
+    float pickFontSize = 1.0f;
+    CGSize wSize = CGSizeZero;
+    while (wSize.width < kGlyphWidth)
+    {
+        UIFont *testFont = [UIFont fontWithName:fontName size:pickFontSize];
+        wSize = [@"W" sizeWithAttributes:@{ NSFontAttributeName : testFont }];
+        pickFontSize += 1.0f;
+    }
+    font = [UIFont fontWithName:fontName size:pickFontSize - 1.0f];
+
+    for (int i = 0; i < kNumGlyphs; ++i)
+    {
+        NSString *charText = [NSString stringWithFormat:@"%c", kCharacters[i]];
+        CGSize charSize = [charText sizeWithAttributes:@{ NSFontAttributeName : font }];
+        CGRect charRegion = regionForChar(kCharacters[i]);
+        
+        CGPoint drawPoint = CGPointMake(charRegion.origin.x + ((charRegion.size.width - charSize.width) * 0.5f),
+                                        charRegion.origin.y);
+        
+        // NSLog(@"%@ draw size: %@ region size: %@", charText, NSStringFromCGSize(charSize), NSStringFromCGSize(charRegion.size));
+
+        [charText drawAtPoint:drawPoint
+               withAttributes:@{ NSFontAttributeName : font,
+                                 NSForegroundColorAttributeName : [UIColor whiteColor] }];
+    }
+
+    // transfer image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

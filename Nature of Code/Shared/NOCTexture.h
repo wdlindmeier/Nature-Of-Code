@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GLKit/GLKit.h>
 
 @interface NOCTexture : NSObject
 {
@@ -14,6 +15,7 @@
 }
 
 - (id)initWithImageNamed:(NSString *)imageName;
+- (id)initWithImage:(UIImage *)image;
 - (void)enableAndBind:(GLuint)uniformSamplerLocation;
 - (void)unbind;
 - (void)render;
