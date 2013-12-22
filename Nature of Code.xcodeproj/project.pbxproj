@@ -11,6 +11,9 @@
 		A9077A3D16CB4ECF008032C7 /* thumb_AccelMover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9077A3916CB4ECF008032C7 /* thumb_AccelMover@2x.png */; };
 		A9077A3E16CB4ECF008032C7 /* thumb_MultiMover.png in Resources */ = {isa = PBXBuildFile; fileRef = A9077A3A16CB4ECF008032C7 /* thumb_MultiMover.png */; };
 		A9077A3F16CB4ECF008032C7 /* thumb_MultiMover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9077A3B16CB4ECF008032C7 /* thumb_MultiMover@2x.png */; };
+		A917FCAF1867559400DD0C2C /* NOCSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A917FCAE1867559400DD0C2C /* NOCSketchViewController.m */; };
+		A917FCB4186755A200DD0C2C /* NOCTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = A917FCB1186755A200DD0C2C /* NOCTexture.m */; };
+		A917FCB5186755A200DD0C2C /* NOCTextureFont.m in Sources */ = {isa = PBXBuildFile; fileRef = A917FCB3186755A200DD0C2C /* NOCTextureFont.m */; };
 		A920CEBB16C0373D00284EAF /* thumb_DirectedWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB516C0373D00284EAF /* thumb_DirectedWalker.png */; };
 		A920CEBC16C0373D00284EAF /* thumb_DirectedWalker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */; };
 		A920CEBD16C0373D00284EAF /* thumb_PerlinWalker.png in Resources */ = {isa = PBXBuildFile; fileRef = A920CEB716C0373D00284EAF /* thumb_PerlinWalker.png */; };
@@ -131,8 +134,8 @@
 		A9C15C241730CBE300A1FC9E /* banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C15C221730CBE300A1FC9E /* banner@2x.png */; };
 		A9C4FCDC16E6F40C00BB8809 /* TextureBlend.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDA16E6F40C00BB8809 /* TextureBlend.fsh */; };
 		A9C4FCDD16E6F40C00BB8809 /* TextureBlend.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C4FCDB16E6F40C00BB8809 /* TextureBlend.vsh */; };
-		A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Sources */ = {isa = PBXBuildFile; fileRef = A9C85894171BB00B00266255 /* UniformColoredVerts.fsh */; };
-		A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Sources */ = {isa = PBXBuildFile; fileRef = A9C85895171BB00B00266255 /* UniformColoredVerts.vsh */; };
+		A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C85894171BB00B00266255 /* UniformColoredVerts.fsh */; };
+		A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9C85895171BB00B00266255 /* UniformColoredVerts.vsh */; };
 		A9CB7E7116E2598500CEF634 /* NOCFaceCapSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7016E2598500CEF634 /* NOCFaceCapSketchViewController.m */; };
 		A9CB7E7716E25F9600CEF634 /* NOCVideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */; };
 		A9CB7E7916E269B600CEF634 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CB7E7816E269B500CEF634 /* AVFoundation.framework */; };
@@ -147,7 +150,6 @@
 		A9D1AE8C16B99A77000BE623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AE8A16B99A77000BE623 /* InfoPlist.strings */; };
 		A9D1AE8E16B99A77000BE623 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE8D16B99A77000BE623 /* main.m */; };
 		A9D1AE9216B99A77000BE623 /* NOCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE9116B99A77000BE623 /* NOCAppDelegate.m */; };
-		A9D1AE9F16B99A78000BE623 /* NOCSketchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */; };
 		A9D1AEA216B99A78000BE623 /* NOCSketchViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEA016B99A78000BE623 /* NOCSketchViewController~iphone.xib */; };
 		A9D1AEA516B99A78000BE623 /* NOCSketchViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEA316B99A78000BE623 /* NOCSketchViewController~ipad.xib */; };
 		A9D1AEB216B99E68000BE623 /* Icon1024.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D1AEAC16B99E68000BE623 /* Icon1024.png */; };
@@ -162,8 +164,8 @@
 		A9D1AEC816B9A7B1000BE623 /* NOCChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AEC716B9A7B1000BE623 /* NOCChapter.m */; };
 		A9D1AECB16B9A806000BE623 /* NOCSketch.m in Sources */ = {isa = PBXBuildFile; fileRef = A9D1AECA16B9A806000BE623 /* NOCSketch.m */; };
 		A9D54F631714AFC90024C8D0 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F621714AFC90024C8D0 /* target.png */; };
-		A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F641714B0F70024C8D0 /* ColoredTexture.fsh */; };
-		A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Sources */ = {isa = PBXBuildFile; fileRef = A9D54F651714B0F70024C8D0 /* ColoredTexture.vsh */; };
+		A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F641714B0F70024C8D0 /* ColoredTexture.fsh */; };
+		A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F651714B0F70024C8D0 /* ColoredTexture.vsh */; };
 		A9D54F721714B9430024C8D0 /* thumb_FlowField.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F681714B9430024C8D0 /* thumb_FlowField.png */; };
 		A9D54F731714B9430024C8D0 /* thumb_FlowField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F691714B9430024C8D0 /* thumb_FlowField@2x.png */; };
 		A9D54F741714B9430024C8D0 /* thumb_ShapeFollowers.png in Resources */ = {isa = PBXBuildFile; fileRef = A9D54F6A1714B9430024C8D0 /* thumb_ShapeFollowers.png */; };
@@ -279,6 +281,12 @@
 		A9077A3916CB4ECF008032C7 /* thumb_AccelMover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_AccelMover@2x.png"; sourceTree = "<group>"; };
 		A9077A3A16CB4ECF008032C7 /* thumb_MultiMover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_MultiMover.png; sourceTree = "<group>"; };
 		A9077A3B16CB4ECF008032C7 /* thumb_MultiMover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_MultiMover@2x.png"; sourceTree = "<group>"; };
+		A917FCAD1867559400DD0C2C /* NOCSketchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NOCSketchViewController.h; path = Shared/NOCSketchViewController.h; sourceTree = "<group>"; };
+		A917FCAE1867559400DD0C2C /* NOCSketchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NOCSketchViewController.m; path = Shared/NOCSketchViewController.m; sourceTree = "<group>"; };
+		A917FCB0186755A200DD0C2C /* NOCTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTexture.h; sourceTree = "<group>"; };
+		A917FCB1186755A200DD0C2C /* NOCTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTexture.m; sourceTree = "<group>"; };
+		A917FCB2186755A200DD0C2C /* NOCTextureFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOCTextureFont.h; sourceTree = "<group>"; };
+		A917FCB3186755A200DD0C2C /* NOCTextureFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOCTextureFont.m; sourceTree = "<group>"; };
 		A920CEB516C0373D00284EAF /* thumb_DirectedWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_DirectedWalker.png; sourceTree = "<group>"; };
 		A920CEB616C0373D00284EAF /* thumb_DirectedWalker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumb_DirectedWalker@2x.png"; sourceTree = "<group>"; };
 		A920CEB716C0373D00284EAF /* thumb_PerlinWalker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_PerlinWalker.png; sourceTree = "<group>"; };
@@ -480,8 +488,6 @@
 		A9D1AE8F16B99A77000BE623 /* Nature of Code-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nature of Code-Prefix.pch"; sourceTree = "<group>"; };
 		A9D1AE9016B99A77000BE623 /* NOCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCAppDelegate.h; sourceTree = "<group>"; };
 		A9D1AE9116B99A77000BE623 /* NOCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOCAppDelegate.m; sourceTree = "<group>"; };
-		A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NOCSketchViewController.h; sourceTree = "<group>"; };
-		A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NOCSketchViewController.m; sourceTree = "<group>"; };
 		A9D1AEA116B99A78000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/NOCSketchViewController~iphone.xib"; sourceTree = "<group>"; };
 		A9D1AEA416B99A78000BE623 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "en.lproj/NOCSketchViewController~ipad.xib"; sourceTree = "<group>"; };
 		A9D1AEAC16B99E68000BE623 /* Icon1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon1024.png; sourceTree = "<group>"; };
@@ -949,14 +955,14 @@
 		A95C900816BD7351003C8F5B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				A963749A1715FC870030C88C /* NOCOBJ.h */,
-				A963749B1715FC870030C88C /* NOCOBJ.m */,
 				A9F78AF716D9780800073D16 /* NOCFrameBuffer.h */,
 				A9F78AF816D9780800073D16 /* NOCFrameBuffer.m */,
 				A95C701D16D0318E0058D8BA /* NOCMover2D.h */,
 				A95C701E16D0318E0058D8BA /* NOCMover2D.m */,
 				A95C701F16D0318E0058D8BA /* NOCMover3D.h */,
 				A95C702016D0318E0058D8BA /* NOCMover3D.m */,
+				A963749A1715FC870030C88C /* NOCOBJ.h */,
+				A963749B1715FC870030C88C /* NOCOBJ.m */,
 				A9F78AE416D9243C00073D16 /* NOCParticle.h */,
 				A9F78AE616D926DE00073D16 /* NOCParticle.m */,
 				A95A5A5B16C2DABC0001D07D /* NOCParticle2D.h */,
@@ -976,6 +982,10 @@
 				A9C05C8616E7C9570009F8C8 /* NOCSpring2D.m */,
 				A9C05C8816E7CE5F0009F8C8 /* NOCSpring3D.h */,
 				A9C05C8916E7CE600009F8C8 /* NOCSpring3D.m */,
+				A917FCB0186755A200DD0C2C /* NOCTexture.h */,
+				A917FCB1186755A200DD0C2C /* NOCTexture.m */,
+				A917FCB2186755A200DD0C2C /* NOCTextureFont.h */,
+				A917FCB3186755A200DD0C2C /* NOCTextureFont.m */,
 				A9CB7E7516E25F9600CEF634 /* NOCVideoSession.h */,
 				A9CB7E7616E25F9600CEF634 /* NOCVideoSession.m */,
 			);
@@ -1128,8 +1138,8 @@
 				A9BC923216CBEE36009AD45C /* NOC3DSketchViewController.m */,
 				A9E8C9C7173C0750007A24DE /* NOCControlsSketchViewController.h */,
 				A9E8C9C8173C0750007A24DE /* NOCControlsSketchViewController.m */,
-				A9D1AE9D16B99A77000BE623 /* NOCSketchViewController.h */,
-				A9D1AE9E16B99A78000BE623 /* NOCSketchViewController.m */,
+				A917FCAD1867559400DD0C2C /* NOCSketchViewController.h */,
+				A917FCAE1867559400DD0C2C /* NOCSketchViewController.m */,
 				A9D1AEA316B99A78000BE623 /* NOCSketchViewController~ipad.xib */,
 				A9D1AEA016B99A78000BE623 /* NOCSketchViewController~iphone.xib */,
 				A9D1AEB816B9A111000BE623 /* NOCTableOfContentsViewController.h */,
@@ -1315,6 +1325,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9C4FCDC16E6F40C00BB8809 /* TextureBlend.fsh in Resources */,
+				A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Resources */,
+				A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Resources */,
+				A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Resources */,
+				A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Resources */,
 				A9C4FCDD16E6F40C00BB8809 /* TextureBlend.vsh in Resources */,
 				A9A60DC216E3A95C00F0E5B9 /* ColoredVerts.fsh in Resources */,
 				A9A60DC316E3A95C00F0E5B9 /* ColoredVerts.vsh in Resources */,
@@ -1486,7 +1500,6 @@
 			files = (
 				A9D1AE8E16B99A77000BE623 /* main.m in Sources */,
 				A9D1AE9216B99A77000BE623 /* NOCAppDelegate.m in Sources */,
-				A9D1AE9F16B99A78000BE623 /* NOCSketchViewController.m in Sources */,
 				A9D1AEBB16B9A111000BE623 /* NOCTableOfContentsViewController.m in Sources */,
 				A9D1AEC516B9A77D000BE623 /* NOCTableOfContentsCell.m in Sources */,
 				A9D1AEC816B9A7B1000BE623 /* NOCChapter.m in Sources */,
@@ -1503,6 +1516,7 @@
 				A99889B516C1FADB002C924F /* NOCPerlinWalker.m in Sources */,
 				A99889B616C1FADB002C924F /* NOCPerlinWalkerSketchViewController.m in Sources */,
 				A99889B716C1FADB002C924F /* NOCRandomWalker.m in Sources */,
+				A917FCB4186755A200DD0C2C /* NOCTexture.m in Sources */,
 				A99889B816C1FADB002C924F /* NOCRandomWalkerSketchViewController.m in Sources */,
 				A99889B916C1FADB002C924F /* NOCWalker.m in Sources */,
 				A99889BE16C1FB09002C924F /* NOC2DSketchViewController.m in Sources */,
@@ -1540,6 +1554,7 @@
 				A9A60DBF16E39DBD00F0E5B9 /* NOCTriangleSpiralSketchViewController.m in Sources */,
 				A9A60DC616E3C12700F0E5B9 /* NOCFaceMeshSketchViewController.m in Sources */,
 				A9C05C8416E7C93C0009F8C8 /* NOCSpring.m in Sources */,
+				A917FCB5186755A200DD0C2C /* NOCTextureFont.m in Sources */,
 				A9C05C8716E7C9570009F8C8 /* NOCSpring2D.m in Sources */,
 				A9C05C8A16E7CE600009F8C8 /* NOCSpring3D.m in Sources */,
 				A9E2251216ED609A002DC1F3 /* NOCSketchViewController+OpenGLScreenCapture.m in Sources */,
@@ -1558,6 +1573,7 @@
 				A9E77346170B12D0009897C7 /* NOCShapeFollowersSketchViewController.m in Sources */,
 				A96653E2170B88DA004DACF8 /* NOCTracer.m in Sources */,
 				A96653E5170B89FC004DACF8 /* NOCBreeder.m in Sources */,
+				A917FCAF1867559400DD0C2C /* NOCSketchViewController.m in Sources */,
 				A96653E8170B9BFD004DACF8 /* NOCTracersSketchViewController.m in Sources */,
 				A96653EF170C72FE004DACF8 /* NOCTracer3D.m in Sources */,
 				A96653F2170C7309004DACF8 /* NOCTracer2D.m in Sources */,
@@ -1568,14 +1584,10 @@
 				A9E6F62A1713D642001622B4 /* NOCFlowFieldSketchViewController.m in Sources */,
 				A9E6F62B1713D642001622B4 /* NOCFlowParticle.m in Sources */,
 				A9E6F62D1713D642001622B4 /* NOCTouchFlowFieldSketchViewController.m in Sources */,
-				A9D54F661714B0F70024C8D0 /* ColoredTexture.fsh in Sources */,
-				A9D54F671714B0F70024C8D0 /* ColoredTexture.vsh in Sources */,
 				A9D54F7E1715A1E40024C8D0 /* NOCFlockSketchViewController.m in Sources */,
 				A9D54F811715A20D0024C8D0 /* NOCFlocker.m in Sources */,
 				A9D54F9F1715C1690024C8D0 /* NOCOBJLoaderSketchViewController.m in Sources */,
 				A963749C1715FC870030C88C /* NOCOBJ.m in Sources */,
-				A9C85896171BB00B00266255 /* UniformColoredVerts.fsh in Sources */,
-				A9C85897171BB00B00266255 /* UniformColoredVerts.vsh in Sources */,
 				A9E8C9C9173C0750007A24DE /* NOCControlsSketchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

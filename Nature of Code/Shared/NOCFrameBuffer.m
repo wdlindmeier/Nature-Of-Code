@@ -8,6 +8,7 @@
 
 #import "NOCFrameBuffer.h"
 #import "NOCUIKitHelpers.h"
+#import "NOCOpenGLHelpers.h"
 
 @implementation NOCFrameBuffer
 {

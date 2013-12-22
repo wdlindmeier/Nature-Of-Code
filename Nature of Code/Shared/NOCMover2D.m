@@ -31,7 +31,7 @@
     GLKVector2 vecDir = GLKVector2Subtract(positionedMass.position, self.position);
     float magnitude = GLKVector2Length(vecDir);
     vecDir = GLKVector2Normalize(vecDir);
-    float forceMagnitude = (Gravity * self.mass * positionedMass.mass) / (magnitude * magnitude);
+    float forceMagnitude = (kGravity * self.mass * positionedMass.mass) / (magnitude * magnitude);
     GLKVector2 vecForce = GLKVector2MultiplyScalar(vecDir, forceMagnitude);
     return vecForce;
 }

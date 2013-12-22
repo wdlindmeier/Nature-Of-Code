@@ -8,6 +8,8 @@
 
 #import "NOCSceneBox.h"
 #import "NOCColorHelpers.h"
+#import "NOCGeometryHelpers.h"
+#import "NOCOpenGLHelpers.h"
 
 @implementation NOCSceneBox
 {    
@@ -156,7 +158,7 @@
 - (void)resizeWithAspect:(float)aspect
 {    
     for(int i =0;i<48;i++){
-        float val = CubeStrokedVertexData[i];
+        float val = kCubeStrokedVertexData[i];
         val = val * 2;
         if(i%3==1){
             // This is Y. Scale by the aspect.

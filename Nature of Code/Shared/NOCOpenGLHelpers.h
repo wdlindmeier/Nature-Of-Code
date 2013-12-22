@@ -203,3 +203,30 @@ static inline GLKMatrix4 GLKMatrix4Lerp(GLKMatrix4 matLeft, GLKMatrix4 matRight,
     }
     return matBlend;
 }
+
+static inline GLKMatrix4 GLKMatrix4Divide(GLKMatrix4 mat, float divisor)
+{
+    GLKMatrix4 m;
+    
+    m.m[0] = mat.m[0] / divisor;
+    m.m[1] = mat.m[1] / divisor;
+    m.m[2] = mat.m[2] / divisor;
+    m.m[3] = mat.m[3] / divisor;
+    
+    m.m[4] = mat.m[4] / divisor;
+    m.m[5] = mat.m[5] / divisor;
+    m.m[6] = mat.m[6] / divisor;
+    m.m[7] = mat.m[7] / divisor;
+    
+    m.m[8] = mat.m[8] / divisor;
+    m.m[9] = mat.m[9] / divisor;
+    m.m[10] = mat.m[10] / divisor;
+    m.m[11] = mat.m[11] / divisor;
+    
+    m.m[12] = mat.m[12] / divisor;
+    m.m[13] = mat.m[13] / divisor;
+    m.m[14] = mat.m[14] / divisor;
+    m.m[15] = mat.m[15] / divisor;
+    
+    return m;
+}

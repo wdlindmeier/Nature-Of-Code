@@ -9,6 +9,8 @@
 #import "NOCSketchViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreMotion/CoreMotion.h>
+#import "NOCOpenGLHelpers.h"
+#import "NOCGeometryHelpers.h"
 
 @interface NOCSketchViewController ()
 {
@@ -111,11 +113,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+#ifdef USE_SKETCH_CONTROLS
     UIBarButtonItem *actionItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                                 target:self
                                                                                 action:@selector(buttonActionPressed:)];
     
     self.navigationItem.rightBarButtonItem = actionItem;
+#endif
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
@@ -220,9 +224,9 @@
     _viewAspect = _sizeView.width / _sizeView.height;
     
     for(int i=0;i<4;i++){
-        _screen3DBillboardVertexData[i*3+0] = Square3DBillboardVertexData[i*3+0] * 2;
-        _screen3DBillboardVertexData[i*3+1] = Square3DBillboardVertexData[i*3+1] * 2 / _viewAspect;
-        _screen3DBillboardVertexData[i*3+2] = Square3DBillboardVertexData[i*3+2] * 2;
+        _screen3DBillboardVertexData[i*3+0] = kSquare3DBillboardVertexData[i*3+0] * 2;
+        _screen3DBillboardVertexData[i*3+1] = kSquare3DBillboardVertexData[i*3+1] * 2 / _viewAspect;
+        _screen3DBillboardVertexData[i*3+2] = kSquare3DBillboardVertexData[i*3+2] * 2;
     }
 }
 

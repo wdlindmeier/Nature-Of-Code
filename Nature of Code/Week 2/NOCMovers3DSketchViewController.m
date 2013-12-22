@@ -102,7 +102,7 @@ static NSString * UniformMoverTexture = @"texture";
     // Step w/in the bounds
 
     // These were sliders and now they're not
-    Gravity = 0.4;
+    kGravity = 0.4;
     _repulsion = 0.5;
     
     float sceneWidth = 2.0f;

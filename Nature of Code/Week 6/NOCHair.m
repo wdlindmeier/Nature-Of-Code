@@ -288,7 +288,7 @@
         pRenderBlock(modelMat, p);
 
         glEnableVertexAttribArray(GLKVertexAttribPosition);
-        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &Square3DBillboardVertexData);
+        glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 0, &kSquare3DBillboardVertexData);
         
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         

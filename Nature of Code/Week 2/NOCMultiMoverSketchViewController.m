@@ -79,7 +79,7 @@ static NSString * UniformMoverTexture = @"texture";
     [super update];
     
     // Update the world variables based on the sliders
-    Gravity = self.sliderGravity.value;
+    kGravity = self.sliderGravity.value;
     _repulsion = self.sliderRepulsion.value * 2; // (0..2)
     
     float sceneWidth = 2.0f;

@@ -19,11 +19,11 @@
 
 // NOTE: What's the right way of defining this variable
 // so I don't get "Unused" compiler warnings?
-static float __unused Gravity = 0.4f;
+static float __unused kGravity = 0.4f;
 
 // A cube for 3D rendering.
 // This is geometry and normals.
-static const GLfloat CubeVertexData[216] =
+static const GLfloat kCubeVertexData[216] =
 {
     0.5f, -0.5f, -0.5f,        1.0f, 0.0f, 0.0f,
     0.5f, 0.5f, -0.5f,         1.0f, 0.0f, 0.0f,
@@ -69,7 +69,7 @@ static const GLfloat CubeVertexData[216] =
 };
 
 // A flat square.
-static const GLfloat Square3DBillboardVertexData[12] =
+static const GLfloat kSquare3DBillboardVertexData[12] =
 {
     -0.5f, -0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
@@ -78,7 +78,7 @@ static const GLfloat Square3DBillboardVertexData[12] =
 };
 
 // A flat square covering the screen minus the aspect
-static const GLfloat FullSquare3DBillboardVertexData[12] =
+static const GLfloat kFullSquare3DBillboardVertexData[12] =
 {
     -1.f, -1.f, 0.0f,
     1.f, -1.f, 0.0f,
@@ -87,7 +87,7 @@ static const GLfloat FullSquare3DBillboardVertexData[12] =
 };
 
 // 2D Texture coords for billboard rendering.
-static const GLfloat Square3DTexCoords[8] =
+static const GLfloat kSquare3DTexCoords[8] =
 {
     0.f, 1.f,
     1.f, 1.f,
@@ -96,7 +96,7 @@ static const GLfloat Square3DTexCoords[8] =
 };
 
 // Same as CubeVertexData w/out normals
-static const GLfloat CubeFilledVertexData[108] =
+static const GLfloat kCubeFilledVertexData[108] =
 {
     0.5f, -0.5f, -0.5f,
     0.5f, 0.5f, -0.5f,
@@ -142,7 +142,7 @@ static const GLfloat CubeFilledVertexData[108] =
 };
 
 // Cube geometry for stroked lines, not triangle fill
-static const GLfloat CubeStrokedVertexData[48] =
+static const GLfloat kCubeStrokedVertexData[48] =
 {
     -0.5, 0.5, -0.5,
     0.5, 0.5, -0.5,
@@ -161,7 +161,6 @@ static const GLfloat CubeStrokedVertexData[48] =
     0.5, 0.5, 0.5,
     0.5, 0.5, -0.5
 };
-
 
 static inline float map(float n, float minIn, float maxIn, float minOut, float maxOut)
 {
